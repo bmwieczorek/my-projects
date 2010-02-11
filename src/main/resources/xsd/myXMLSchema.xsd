@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bawi.com/myService/"
+	xmlns="http://www.bawi.com/myService/" elementFormDefault="qualified">
+
+	<!-- tworzona jest jedna klasa na xsd element -->
+
+	<xsd:element name="myComplex">
+		<xsd:complexType>
+			<xsd:attribute name="defaultParam" type="xsd:boolean" />
+			<xsd:attribute name="optionalParam" use="optional" type="xsd:boolean" />
+			<xsd:attribute name="requiredParam" use="required" type="xsd:boolean" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- stworzony zostanie enum -->
+	<xsd:simpleType name="myEnum">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="AA" />
+			<xsd:enumeration value="BB" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="NewOperationRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="stringIn" type="xsd:string" />
+				<xsd:element name="booleanIn" type="xsd:boolean" />
+				<xsd:element name="intIn" type="xsd:int" />
+				<xsd:element name="patternIn">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="[A-Z]"></xsd:pattern>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+
+				<!-- complex i simple type daje obiekt, ktory jest automatycznie required -->
+				<xsd:element name="myEnum" type="myEnum" />
+				<xsd:element ref="myComplex" />
+
+				<!-- unbounded daje liste, ktora jest automatycznie required -->
+				<xsd:element name="unboundedString" type="xsd:string" maxOccurs="unbounded" />
+			</xsd:sequence>
+			<xsd:attribute name="myAtt" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>	
+	
+	<xsd:element name="NewOperationResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="out" type="xsd:string" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
