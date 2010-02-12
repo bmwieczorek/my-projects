@@ -1,6 +1,6 @@
 <projectDescription>
   <name>my-maven</name>
-  <comment/>
+  <comment>Run Junit tests in test phase and Itests in itest phase which has separate process (singleton state is not shared between different execution phases)</comment>
   <projects/>
   <buildSpec>
     <buildCommand>
