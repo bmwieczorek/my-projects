@@ -1,17 +1,13 @@
 <projectDescription>
-  <name>my-maven</name>
-  <comment>Run Junit tests in test phase and Itests in itest phase which has separate process (singleton state is not shared between different execution phases)</comment>
+  <name>my-spring</name>
+  <comment>Simple JUnit with Spring context runner</comment>
   <projects/>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>
     </buildCommand>
-    <buildCommand>
-      <name>org.maven.ide.eclipse.maven2Builder</name>
-    </buildCommand>
   </buildSpec>
   <natures>
     <nature>org.eclipse.jdt.core.javanature</nature>
-    <nature>org.maven.ide.eclipse.maven2Nature</nature>
   </natures>
 </projectDescription>
