@@ -5,7 +5,7 @@
 	<artifactId>my-spring</artifactId>
 	<name>My Spring project</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<description>Simple JUnit with Spring context runner</description>
+	<description>Spring junit tests will reuse cached bean if they the same context file, or instantiate new beans in case of differently named context files. </description>
 	<build>
 		<plugins>
 			<plugin>
