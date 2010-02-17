@@ -14,23 +14,20 @@
 		</pluginManagement>
 		<plugins>
 			<!--
-				<plugin> <groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-codegen-plugin</artifactId> <version>2.2.5</version>
-				<extensions>true</extensions> <executions> <execution>
-				<phase>generate-sources</phase> <goals> <goal>wsdl2java</goal>
-				</goals> <configuration>
+				<plugin> <groupId>org.apache.cxf</groupId> <artifactId>cxf-codegen-plugin</artifactId>
+				<version>2.2.5</version> <extensions>true</extensions> <executions> <execution>
+				<phase>generate-sources</phase> <goals> <goal>wsdl2java</goal> </goals> <configuration>
 				<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
 			-->
 			<!-- or  -->
 			<!--
 				<wsdlOptions> <wsdlOption> <wsdlRoot> <wsdl>
-				<wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl>
-				</wsdl> </wsdlRoot> </wsdlOption> </wsdlOptions>
+				<wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl> </wsdl> </wsdlRoot> </wsdlOption>
+				</wsdlOptions>
 			-->
 			<!--
-				<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot> <includes>
-				<include>*Service.wsdl</include> </includes> </configuration>
-				</execution> </executions> </plugin>
+				<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot> <includes> <include>*Service.wsdl</include>
+				</includes> </configuration> </execution> </executions> </plugin>
 			-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -73,8 +70,7 @@
 					</dependency>
 
 					<!--
-						.toString(), .hashCode(), .equals() utility methods
-						jaxb-commons-lang-plugin -Xcommons-lang
+						.toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang
 					-->
 					<dependency>
 						<groupId>org.jvnet.jaxb2_commons_extra</groupId>
@@ -110,12 +106,15 @@
 			<name>Java.net Maven 2 Repository</name>
 			<url>http://download.java.net/maven/2</url>
 		</repository>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
 		<!--
-			required by generic .toString(), .hashCode(), .equals() utility
-			methods created by jaxb-commons-lang-plugin
+			required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin
 		-->
 		<dependency>
 			<groupId>commons-lang</groupId>
