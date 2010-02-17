@@ -30,6 +30,8 @@ public class MyTransformer {
 		JAXBContext jaxbContext = JAXBContext
 				.newInstance(JAXB_PACKAGE);
 		Marshaller marshaller = jaxbContext.createMarshaller();
+		marshaller.setProperty("jaxb.fragment", Boolean.TRUE);
+		marshaller.setProperty("jaxb.formatted.output", Boolean.TRUE);
 		StringWriter writer = new StringWriter();
 		marshaller.marshal(o, writer);
 		return writer.toString();
@@ -48,36 +50,15 @@ public class MyTransformer {
 			TransformerException {
 		MyTransformer myTransformer = new MyTransformer();
 		String xml = myTransformer.toXml(createRequest());
-
-		String formattedxml = formatXml(xml);
-
-		System.out.println(formattedxml);
+		System.out.println(xml);
 
 		NewOperationRequestEx fromXml = (NewOperationRequestEx) myTransformer
-				.fromXml(formattedxml);
+				.fromXml(xml);
 
 		System.out.println(fromXml.print());
 
 	}
 
-	private static String formatXml(String xml)
-			throws TransformerFactoryConfigurationError,
-			TransformerConfigurationException, TransformerException {
-		TransformerFactory transformerFactory = TransformerFactory
-				.newInstance();
-		Transformer transformer = transformerFactory.newTransformer();
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-		transformer.setOutputProperty(
-				"{http://xml.apache.org/xslt}indent-amount", "4");
-		StringReader stringReader = new StringReader(xml);
-		StringWriter stringWriter = new StringWriter();
-		transformer.transform(new StreamSource(stringReader), new StreamResult(
-				stringWriter));
-		String formattedString = stringWriter.toString().replaceAll("\r\n",
-				"\n").trim();
-		return formattedString;
-	}
 
 	private static Object createRequest() {
 		return new NewOperationRequest().withBooleanIn(true).withIntIn(1)
