@@ -9,7 +9,7 @@ mvn install:install-file -DgroupId=javax.management -DartifactId=jmxri -Dversion
 
 mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
 
-M2_HOME=/home/bawi/dev/environment/apache-maven-2.2.1 && PATH=$M2_HOME/bin:$PATH && mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
+M2_HOME=$HOME/dev/environment/apache-maven-2.2.1 && PATH=$M2_HOME/bin:$PATH && mvn install:install-file -DgroupId=com.sun.jmx -DartifactId=jmxri -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxri.jar
 
 
 
@@ -20,6 +20,7 @@ Try downloading the file manually from: http://java.sun.com/products/JavaManagem
 Then, install it using the command: 
 mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar
 
-M2_HOME=/home/bawi/dev/environment/apache-maven-2.2.1 && PATH=$M2_HOME/bin:$PATH && mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools  -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar
+M2_HOME=$HOME/dev/environment/apache-maven-2.2.1 && PATH=$M2_HOME/bin:$PATH && mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools  -Dversion=1.2.1 -Dpackaging=jar -Dfile=jmxtools.jar
 
-
+3)
+M2_HOME=$HOME/dev/environment/apache-maven-2.2.1 && PATH=$M2_HOME/bin:$PATH && mvn install:install-file -DpomFile=jaxb-commons-lang-plugin-2.1.3.pom -Dfile=jaxb-commons-lang-plugin-2.1.3.jar -DlocalRepositoryPath=$HOME/.m2/repository
