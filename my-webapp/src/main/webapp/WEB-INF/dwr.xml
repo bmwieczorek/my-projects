@@ -1,0 +1,17 @@
+<!DOCTYPE dwr PUBLIC
+"-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+"http://getahead.org/dwr/dwr20.dtd">
+
+<!-- not used any more, substituted in web.xml with spring integration, rewritten in applicationContext.xml -->
+<dwr>
+    <allow>
+    	<convert match="com.bawi.mywebapp.domain.Person" converter="bean"/>
+        <create creator="new" javascript="People"  scope="script">
+            <param name="class" value="com.bawi.mywebapp.dwr.People"/>
+        </create>
+        
+        <create creator="new" javascript="Admin">
+        	<param name="class" value="com.bawi.mywebapp.dwr.Admin"/> 
+        </create>
+    </allow>
+</dwr>
