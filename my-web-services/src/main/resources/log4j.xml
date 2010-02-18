@@ -54,27 +54,11 @@
 		</filter>
 	</appender>
 
-	<logger name="K0">
-		<level value="WARN" />
-		<appender-ref ref="R" />
-	</logger>
-
-
-	<logger name="K1">
-		<level value="INFO" />
-		<appender-ref ref="R" />
-	</logger>
-
-	<logger name="K2">
-		<level value="ERROR" />
-		<appender-ref ref="R" />
-	</logger>
-
 	<!--                           -->
 	<!-- setup log4j's root logger -->
 	<!--                           -->
 	<root>
 		<level value="ERROR" />
-		<appender-ref ref="R" />
+		<appender-ref ref="STDOUT" />
 	</root>
 </log4j:configuration>

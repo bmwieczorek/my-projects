@@ -1,4 +1,5 @@
-package com.bawi.myservice.jaxb;
+package com.bawi.myservice;
+
 
 
 public class ObjectFactoryEx extends ObjectFactory {

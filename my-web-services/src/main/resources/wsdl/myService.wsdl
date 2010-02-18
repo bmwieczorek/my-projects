@@ -9,7 +9,7 @@
 	<wsdl:types>
 		<xsd:schema>
 
-			<xsd:import namespace="http://www.bawi.com/myService/" schemaLocation="../xsd/NewXMLSchema.xsd" />
+			<xsd:import namespace="http://www.bawi.com/myService/" schemaLocation="../xsd/myXMLSchema.xsd" />
 		<!-- 
 			<xsd:schema targetNamespace="http://www.bawi.com/myService/">
 				<xsd:element name="NewOperationRequest">
@@ -35,13 +35,13 @@
 	<wsdl:message name="NewOperationResponse">
 		<wsdl:part element="tns:NewOperationResponse" name="parameters" />
 	</wsdl:message>
-	<wsdl:portType name="myService">
+	<wsdl:portType name="myServiceInterface">
 		<wsdl:operation name="NewOperation">
 			<wsdl:input message="tns:NewOperationRequest" />
 			<wsdl:output message="tns:NewOperationResponse" />
 		</wsdl:operation>
 	</wsdl:portType>
-	<wsdl:binding name="myServiceSOAP" type="tns:myService">
+	<wsdl:binding name="myServiceSOAP" type="tns:myServiceInterface">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 		<wsdl:operation name="NewOperation">
 			<soap:operation soapAction="http://www.example.org/myService/NewOperationRequest" />
@@ -55,7 +55,7 @@
 	</wsdl:binding>
 	<wsdl:service name="myService">
 		<wsdl:port binding="tns:myServiceSOAP" name="myServiceSOAP">
-			<soap:address location="http://www.bawi.com/" />
+			<soap:address location="http://www.bawi.com/myservice" />
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

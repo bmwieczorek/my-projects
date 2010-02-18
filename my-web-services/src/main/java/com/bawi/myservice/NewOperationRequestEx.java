@@ -1,6 +1,6 @@
-package com.bawi.myservice.jaxb;
+package com.bawi.myservice;
 
-import com.bawi.myservice.jaxb.NewOperationRequest;
+import com.bawi.myservice.NewOperationRequest;
 
 public class NewOperationRequestEx extends NewOperationRequest {
 	
