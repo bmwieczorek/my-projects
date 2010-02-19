@@ -12,8 +12,6 @@ import javax.xml.transform.TransformerException;
 import com.bawi.myservice.MyComplex;
 import com.bawi.myservice.MyEnum;
 import com.bawi.myservice.NewOperationRequest;
-import com.bawi.mywebservices.NewOperationRequestEx;
-import com.bawi.mywebservices.ObjectFactoryEx;
 
 public class MyTransformer {
 
