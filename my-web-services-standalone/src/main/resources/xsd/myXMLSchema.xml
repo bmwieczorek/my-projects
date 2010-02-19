@@ -1,0 +1,14 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<p:NewOperationRequest xmlns:p="http://www.bawi.com/myService/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.bawi.com/myService/ myXMLSchema.xsd ">
+			<p:stringIn>p:stringIn</p:stringIn>
+			<p:booleanIn>true</p:booleanIn>
+			<p:intIn>0</p:intIn>
+			<p:patternIn>p:patternIn</p:patternIn>
+			<p:myEnum>AA</p:myEnum>
+			<p:myComplex requiredParam="true" />
+			<p:unboundedString>p:unboundedString</p:unboundedString>
+		</p:NewOperationRequest>
+	</soap:Body>
+</soap:Envelope>
