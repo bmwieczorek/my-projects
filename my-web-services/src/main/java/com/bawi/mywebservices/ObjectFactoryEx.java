@@ -1,4 +1,4 @@
-package com.bawi.mywebservices.processor;
+package com.bawi.mywebservices;
 
 import com.bawi.myservice.NewOperationRequest;
 import com.bawi.myservice.ObjectFactory;
