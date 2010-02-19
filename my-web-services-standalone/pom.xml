@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bawi</groupId>
-	<artifactId>my-web-services</artifactId>
+	<artifactId>my-web-services-standalone</artifactId>
 	<packaging>war</packaging>
-	<name>My Web Services Project</name>
+	<name>My Web Services Standalone Project</name>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
