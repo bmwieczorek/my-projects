@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.bawi.com/calculator"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="calculator"
+	targetNamespace="http://services.bawi.com/calculator">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://services.bawi.com/calculator" schemaLocation="../xsd/calculator.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="CalculatorRQ">
+		<wsdl:part element="tns:CalculatorRQ" name="request" />
+	</wsdl:message>
+	<wsdl:message name="CalculatorRS">
+		<wsdl:part element="tns:CalculatorRS" name="response" />
+	</wsdl:message>
+	<wsdl:message name="CalculatorFault">
+		<wsdl:part element="tns:CalculatorFault" name="fault" />
+	</wsdl:message>
+	
+	<wsdl:portType name="calculatorServiceInterface">
+		<wsdl:operation name="calculate">
+			<wsdl:input name="calculatorRequest" message="tns:CalculatorRQ" />
+			<wsdl:output name="calculatorResponse" message="tns:CalculatorRS" />
+			<wsdl:fault name="calculatorError" message="tns:CalculatorFault" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="calculatorSOAP" type="tns:calculatorServiceInterface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="calculate">
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="calculator">
+		<wsdl:port binding="tns:calculatorSOAP" name="calculatorSOAP">
+			<soap:address location="http://services.bawi.com/calculator" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

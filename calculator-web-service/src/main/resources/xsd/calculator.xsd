@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.bawi.com/calculator"
+	xmlns="http://services.bawi.com/calculator" elementFormDefault="unqualified">
+
+	<xsd:simpleType name="operation">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ADD" />
+			<xsd:enumeration value="SUBSTRACT" />
+			<xsd:enumeration value="MULTIPLY" />
+			<xsd:enumeration value="DIVIDE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="calculatorRQ">
+		<xsd:sequence>
+			<xsd:element name="parameters" type="xsd:int" minOccurs="1" maxOccurs="unbounded" />
+			<xsd:element name="operation" type="operation" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="calculatorRS">
+		<xsd:sequence>
+			<xsd:element name="result" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="calculatorFault">
+		<xsd:sequence>
+			<xsd:element name="error" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="CalculatorRQ" type="calculatorRQ" />
+
+	<xsd:element name="CalculatorRS" type="calculatorRS" />
+
+	<xsd:element name="CalculatorFault" type="calculatorFault" />
+
+</xsd:schema>

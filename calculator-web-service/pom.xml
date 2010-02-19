@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bawi</groupId>
-	<artifactId>my-web-services-standalone</artifactId>
+	<artifactId>calculator-web-service</artifactId>
 	<name>My Web Services Standalone Project</name>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -21,25 +21,18 @@
 						</goals>
 						<configuration>
 							<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-							<!-- or  -->
-							<!--
-								<wsdlOptions> <wsdlOption> <wsdlRoot> <wsdl>
-								<wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl> </wsdl> </wsdlRoot> </wsdlOption>
-								</wsdlOptions>
-							-->
 							<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
 							<includes>
 								<include>*Service.wsdl</include>
 							</includes>
-
 							<wsdlOptions>
 								<wsdlOption>
 									<extraargs>
 										<extraarg>-nexclude</extraarg>
-										<extraarg>http://www.bawi.com/myService/</extraarg>
+										<extraarg>http://services.bawi.com/calculator</extraarg>
 									</extraargs>
-									<wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl>
-									<wsdlLocation>wsdl/myService.wsdl</wsdlLocation>
+									<wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
+									<wsdlLocation>wsdl/calculatorService.wsdl</wsdlLocation>
 								</wsdlOption>
 							</wsdlOptions>
 
@@ -62,7 +55,7 @@
 				<configuration>
 					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
 					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
-					<schemaFiles>myXMLSchema.xsd</schemaFiles>
+					<schemaFiles>calculator.xsd</schemaFiles>
 					<clearOutputDir>false</clearOutputDir>
 					<extension>true</extension>
 
