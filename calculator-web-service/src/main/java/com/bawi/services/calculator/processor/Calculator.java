@@ -2,9 +2,13 @@ package com.bawi.services.calculator.processor;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.bawi.services.calculator.Operation;
 
 public class Calculator {
+	
+	private static final Logger logger = Logger.getLogger(Calculator.class);
 
 	public int calculate(Operation operation, List<Integer> parameters) {
 		switch (operation) {
@@ -12,7 +16,7 @@ public class Calculator {
 			return add(parameters);
 
 		default:
-			throw new IllegalArgumentException("Operation: " + operation);
+			throw new IllegalArgumentException("Invalid operation: " + operation);
 		}
 	}
 

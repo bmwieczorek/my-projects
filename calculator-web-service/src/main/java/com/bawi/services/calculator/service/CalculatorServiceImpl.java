@@ -2,8 +2,9 @@ package com.bawi.services.calculator.service;
 
 import java.util.List;
 
+import org.springframework.util.Assert;
+
 import com.bawi.services.calculator.CalculatorRQ;
-import com.bawi.services.calculator.CalculatorRQEx;
 import com.bawi.services.calculator.CalculatorRS;
 import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.Operation;
@@ -25,7 +26,8 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
 
 	private void validate(CalculatorRQ request) {
-		((CalculatorRQEx)request).validate();
+		Assert.notNull(request.getOperation());
+		Assert.notEmpty(request.getParameters());
 	}
 
 }
