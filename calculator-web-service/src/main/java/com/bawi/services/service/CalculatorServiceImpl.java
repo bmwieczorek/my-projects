@@ -6,9 +6,9 @@ import com.bawi.services.calculator.CalculatorRQ;
 import com.bawi.services.calculator.CalculatorRS;
 import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.Operation;
+import com.bawi.services.calculator.validator.RequestValidator;
 import com.bawi.services.processor.Calculator;
 import com.bawi.services.service.exception.CalculatorRequestValidator;
-import com.bawi.services.service.validator.RequestValidator;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 	

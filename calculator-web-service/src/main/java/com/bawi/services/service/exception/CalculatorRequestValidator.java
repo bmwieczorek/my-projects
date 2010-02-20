@@ -1,6 +1,6 @@
 package com.bawi.services.service.exception;
 
-import com.bawi.services.service.validator.RequestValidator;
+import com.bawi.services.calculator.validator.RequestValidator;
 
 public class CalculatorRequestValidator implements RequestValidator {
 

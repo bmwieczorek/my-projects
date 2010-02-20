@@ -1,4 +1,4 @@
-package com.bawi.services.runner;
+package com.bawi.services.calculator.runner;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
