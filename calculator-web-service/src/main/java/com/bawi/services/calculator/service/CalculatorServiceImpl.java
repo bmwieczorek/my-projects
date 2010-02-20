@@ -1,4 +1,4 @@
-package com.bawi.services.service;
+package com.bawi.services.calculator.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.bawi.services.calculator.CalculatorRQEx;
 import com.bawi.services.calculator.CalculatorRS;
 import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.Operation;
-import com.bawi.services.processor.Calculator;
+import com.bawi.services.calculator.processor.Calculator;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 	
