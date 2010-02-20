@@ -1,4 +1,4 @@
-package com.bawi.mywebservices.runner;
+package com.bawi.services.runner;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
