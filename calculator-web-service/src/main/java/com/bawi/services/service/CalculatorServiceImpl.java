@@ -1,14 +1,14 @@
-package com.bawi.mywebservices.service;
+package com.bawi.services.service;
 
 import java.util.List;
 
-import com.bawi.mywebservices.processor.Calculator;
-import com.bawi.mywebservices.service.exception.CalculatorRequestValidator;
-import com.bawi.mywebservices.service.validator.RequestValidator;
 import com.bawi.services.calculator.CalculatorRQ;
 import com.bawi.services.calculator.CalculatorRS;
 import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.Operation;
+import com.bawi.services.processor.Calculator;
+import com.bawi.services.service.exception.CalculatorRequestValidator;
+import com.bawi.services.service.validator.RequestValidator;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 	

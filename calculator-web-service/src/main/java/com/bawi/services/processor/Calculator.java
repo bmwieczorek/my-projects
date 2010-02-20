@@ -1,4 +1,4 @@
-package com.bawi.mywebservices.processor;
+package com.bawi.services.processor;
 
 import java.util.List;
 

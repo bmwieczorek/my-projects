@@ -4,6 +4,6 @@
 	xsi:schemaLocation="
            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="calculatorService" class="com.bawi.mywebservices.service.CalculatorServiceImpl" />
+	<bean id="calculatorService" class="com.bawi.services.service.CalculatorServiceImpl" />
 
 </beans>

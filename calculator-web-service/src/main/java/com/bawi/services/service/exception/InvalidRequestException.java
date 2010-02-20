@@ -1,4 +1,4 @@
-package com.bawi.mywebservices.service.exception;
+package com.bawi.services.service.exception;
 
 public class InvalidRequestException extends RuntimeException {
 
