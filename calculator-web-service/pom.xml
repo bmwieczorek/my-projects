@@ -76,7 +76,8 @@
 					</dependency>
 
 					<!--
-						.toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang
+						.toString(), .hashCode(), .equals() utility methods
+						jaxb-commons-lang-plugin -Xcommons-lang
 					-->
 					<dependency>
 						<groupId>org.jvnet.jaxb2_commons_extra</groupId>
@@ -119,7 +120,10 @@
 	</repositories>
 
 	<dependencies>
-		<!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception  -->
+		<!--
+			jaxb unmarshaller impl of setProperty; build in java6 throws
+			exception
+		-->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -127,7 +131,8 @@
 		</dependency>
 
 		<!--
-			required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin
+			required by generic .toString(), .hashCode(), .equals() utility
+			methods created by jaxb-commons-lang-plugin
 		-->
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -168,6 +173,12 @@
 			<version>2.2.6</version>
 		</dependency>
 
+		<!-- cxf logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.5.8</version>
+		</dependency>
 
 		<!-- spring -->
 		<dependency>
@@ -175,6 +186,7 @@
 			<artifactId>spring</artifactId>
 			<version>2.5.6</version>
 		</dependency>
+
 	</dependencies>
 
 </project>
