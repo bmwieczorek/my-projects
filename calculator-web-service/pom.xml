@@ -94,6 +94,30 @@
 
 				</dependencies>
 			</plugin>
+
+			<!-- execute java main program within the build process -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<executions>
+					<execution>
+						<id>rename java class files</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>com.bawi.services.calculator.maven.build.ClassTransformer</mainClass>
+					<arguments>
+						<argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/CalculatorRQ.java</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -102,6 +126,20 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
+				<executions>
+					<execution>
+						<id>compile build program before main sources compilation</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/ClassTransformer.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -187,6 +225,29 @@
 			<version>2.5.6</version>
 		</dependency>
 
+		<!--  testing and validation -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+		</dependency>
+
+		<!-- apache java utilities -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 	</dependencies>
 
 </project>
