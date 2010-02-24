@@ -11,8 +11,6 @@ import static org.apache.commons.lang.StringUtils.substring;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
-
 public class ClassTransformer {
 
 	private static final String POSTFIX = "ModelBase";

@@ -9,7 +9,6 @@ import com.bawi.services.calculator.CalculatorRS;
 import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.Operation;
 import com.bawi.services.calculator.processor.Calculator;
-import com.bawi.services.calculator.transformer.JavaXmlTransformer;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
