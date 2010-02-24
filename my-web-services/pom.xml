@@ -68,14 +68,12 @@
 
 					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
 					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
-
-
-					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
 					<schemaFiles>myXMLSchema.xsd</schemaFiles>
-					<outputDirectory>${basedir}/target/generated/main/java</outputDirectory>
 					<clearOutputDir>false</clearOutputDir>
 					<extension>true</extension>
-
+					<!-- 
+					<bindingFiles>jaxb-bindings.xsd</bindingFiles>
+					 -->
 
 
 					<!-- override defaults -->

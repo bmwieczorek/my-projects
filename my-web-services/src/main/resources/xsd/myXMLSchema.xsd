@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bawi.com/myService/"
-	xmlns="http://www.bawi.com/myService/" elementFormDefault="qualified">
+	xmlns="http://www.bawi.com/myService/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jaxb:globalBindings>
+				<xjc:simple />
+			</jaxb:globalBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
 
 	<!-- tworzona jest jedna klasa na xsd element -->
 
@@ -43,13 +51,14 @@
 			</xsd:sequence>
 			<xsd:attribute name="myAtt" type="xsd:string" />
 		</xsd:complexType>
-	</xsd:element>	
-	
-	<xsd:element name="NewOperationResponse">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="out" type="xsd:string" />
-			</xsd:sequence>
-		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="NewOperationResponse">
+		<xsd:sequence>
+			<xsd:element name="out" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="NewOperationResponse" type="NewOperationResponse">
 	</xsd:element>
 </xsd:schema>

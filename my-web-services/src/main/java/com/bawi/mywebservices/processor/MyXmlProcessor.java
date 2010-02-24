@@ -12,13 +12,14 @@ import javax.xml.transform.TransformerException;
 import com.bawi.myservice.MyComplex;
 import com.bawi.myservice.MyEnum;
 import com.bawi.myservice.NewOperationRequest;
+import com.bawi.myservice.NewOperationResponse;
 import com.bawi.mywebservices.NewOperationRequestEx;
 import com.bawi.mywebservices.ObjectFactoryEx;
 
-public class MyTransformer {
+public class MyXmlProcessor {
 
-	private static final String JAXB_PACKAGE = "com.bawi.myservice.jaxb";
-	
+	private static final String JAXB_PACKAGE = "com.bawi.myservice";
+
 	private static JAXBContext jaxbContext;
 
 	static {
@@ -47,7 +48,7 @@ public class MyTransformer {
 
 	public static void main(String[] args) throws JAXBException,
 			TransformerException {
-		MyTransformer myTransformer = new MyTransformer();
+		MyXmlProcessor myTransformer = new MyXmlProcessor();
 		String xml = myTransformer.toXml(createRequest());
 		System.out.println(xml);
 
@@ -55,10 +56,22 @@ public class MyTransformer {
 				.fromXml(xml);
 
 		System.out.println(fromXml.print());
+		
+
+		String xml2 = myTransformer.toXml(createResponse());
+		//String xml2 ="<newOperationResponse xmlns=\"http://www.bawi.com/myService/\"><out>AAA</out></newOperationResponse>";
+		System.out.println(xml2);
+
+		NewOperationResponse fromXml2 = (NewOperationResponse) myTransformer
+				.fromXml(xml2);
+
+		System.out.println(fromXml2.toString());
+		
+
 
 	}
 
-	private static Object createRequest() {
+	private static NewOperationRequest createRequest() {
 		return new NewOperationRequest().withBooleanIn(true).withIntIn(1)
 				.withMyAtt("A").withMyComplex(
 						new MyComplex().withRequiredParam(false)).withMyEnum(
@@ -66,4 +79,9 @@ public class MyTransformer {
 				.withUnboundedString("x", "y");
 	}
 
+	
+	private static NewOperationResponse createResponse() {
+		return new NewOperationResponse().withOut("AAA");
+	}
+	
 }
