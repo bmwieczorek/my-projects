@@ -76,7 +76,7 @@ public class MyXmlProcessor {
 				.withMyAtt("A").withMyComplex(
 						new MyComplex().withRequiredParam(false)).withMyEnum(
 						MyEnum.AA).withPatternIn("pp").withStringIn("ss")
-				.withUnboundedString("x", "y");
+				.withUnboundedStrings("x", "y");
 	}
 
 	
