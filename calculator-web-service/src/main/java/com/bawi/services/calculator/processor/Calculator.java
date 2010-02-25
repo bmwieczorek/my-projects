@@ -2,7 +2,7 @@ package com.bawi.services.calculator.processor;
 
 import java.util.List;
 
-import com.bawi.services.calculator.Operation;
+import com.bawi.services.calculator.model.Operation;
 
 public class Calculator {
 	

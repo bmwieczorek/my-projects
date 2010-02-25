@@ -4,17 +4,16 @@ import javax.xml.bind.JAXBException;
 
 import org.apache.log4j.Logger;
 
-import com.bawi.services.calculator.CalculatorFault;
-import com.bawi.services.calculator.CalculatorRQ;
-import com.bawi.services.calculator.CalculatorRS;
-import com.bawi.services.calculator.CalculatorServiceInterface;
 import com.bawi.services.calculator.jaxbtransformer.JaxbTransformer;
+import com.bawi.services.calculator.model.CalculatorFault;
+import com.bawi.services.calculator.model.CalculatorRQ;
+import com.bawi.services.calculator.model.CalculatorRS;
+import com.bawi.services.calculator.model.CalculatorServiceInterface;
 import com.bawi.services.calculator.processor.Calculator;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
-	private static Logger logger = Logger
-			.getLogger(CalculatorServiceImpl.class);
+	private static final Logger logger = Logger.getLogger(CalculatorServiceImpl.class);
 	private Calculator calculator = new Calculator();
 
 	@Override

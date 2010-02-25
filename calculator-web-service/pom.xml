@@ -20,6 +20,7 @@
 							<goal>wsdl2java</goal>
 						</goals>
 						<configuration>
+
 							<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
 							<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
 							<includes>
@@ -30,6 +31,9 @@
 									<extraargs>
 										<extraarg>-nexclude</extraarg>
 										<extraarg>http://services.bawi.com/calculator</extraarg>
+										<!-- override package of the generated classes  defined in the namespace-->
+										<extraarg>-p</extraarg>
+										<extraarg>com.bawi.services.calculator.model</extraarg>
 									</extraargs>
 									<wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
 									<wsdlLocation>wsdl/calculatorService.wsdl</wsdlLocation>
@@ -55,6 +59,7 @@
 				<configuration>
 					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
 					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
+					<packageName>com.bawi.services.calculator.model</packageName>
 					<schemaFiles>calculator.xsd</schemaFiles>
 					<clearOutputDir>false</clearOutputDir>
 					<extension>true</extension>
@@ -115,7 +120,7 @@
 				<configuration>
 					<mainClass>com.bawi.services.calculator.maven.build.ClassTransformer</mainClass>
 					<arguments>
-						<argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/CalculatorRQ.java</argument>
+						<argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/model/CalculatorRQ.java</argument>
 					</arguments>
 				</configuration>
 			</plugin>

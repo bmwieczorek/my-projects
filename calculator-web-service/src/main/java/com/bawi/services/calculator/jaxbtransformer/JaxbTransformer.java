@@ -1,6 +1,6 @@
 package com.bawi.services.calculator.jaxbtransformer;
 
-import static com.bawi.services.calculator.Operation.ADD;
+import static com.bawi.services.calculator.model.Operation.ADD;
 
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -11,8 +11,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.TransformerException;
 
-import com.bawi.services.calculator.CalculatorRQ;
-import com.bawi.services.calculator.CalculatorRS;
+import com.bawi.services.calculator.model.CalculatorRQ;
+import com.bawi.services.calculator.model.CalculatorRS;
 
 public class JaxbTransformer {
 	private static final String JAXB_PACKAGE = "com.bawi.services.calculator";

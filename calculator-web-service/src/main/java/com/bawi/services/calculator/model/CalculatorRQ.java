@@ -5,7 +5,7 @@
 // Generated on: 2010.02.25 at 07:57:21 PM CET 
 //
 
-package com.bawi.services.calculator;
+package com.bawi.services.calculator.model;
 
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
