@@ -30,8 +30,6 @@ public class ClassTransformer {
 		File inputFile = new File(inputFileName);
 		String inputFileText = readFileToString(inputFile);
 		String outputFileText = replace(inputFileText,
-				"\"" + fileBaseName +"\"", "\"" + fileBaseName + postfix + "\"");
-		outputFileText = replace(outputFileText,
 				"public class " + fileBaseName, "public abstract class " + fileBaseName + postfix);
 		outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
 		writeStringToFile(new File(outputFileName), outputFileText);
