@@ -43,30 +43,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-			<!-- execute java main program within the build process -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
-					<execution>
-						<id>run java main program</id>
-						<phase>test</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-						<configuration>
-						</configuration>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>MyMainClass</mainClass>
-					<arguments>
-						<argument>${basedir}/src/main/java/MyClass.java</argument>
-					</arguments>
-				</configuration>
-			</plugin>
+			</plugin>			
 		</plugins>
 	</build>
 	<dependencies>
