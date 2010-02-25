@@ -1,6 +1,14 @@
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://services.bawi.com/calculator" xmlns="http://services.bawi.com/calculator"
-	elementFormDefault="unqualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://services.bawi.com/calculator"
+	xmlns="http://services.bawi.com/calculator" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jaxb:globalBindings>
+				<xjc:simple />
+			</jaxb:globalBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+
 
 	<xsd:simpleType name="operation">
 		<xsd:restriction base="xsd:string">
@@ -11,22 +19,29 @@
 		</xsd:restriction>
 	</xsd:simpleType>
 
+	<xsd:element name="CalculatorRQ">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="parameters" type="xsd:int" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element name="operation" type="operation" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+
+	<xsd:element name="CalculatorRS" type="calculatorRS" />
+	
 	<xsd:complexType name="calculatorRS">
 		<xsd:sequence>
 			<xsd:element name="result" type="xsd:int" />
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:element name="CalculatorRQ">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="parameters" type="xsd:int" minOccurs="1"
-					maxOccurs="unbounded" />
-				<xsd:element name="operation" type="operation" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<!--
+		<xsd:element name="CalculatorRS"> <xsd:complexType> <xsd:sequence> <xsd:element name="result" type="xsd:int"
+		/> </xsd:sequence> </xsd:complexType> </xsd:element>
+	-->
 
-	<xsd:element name="CalculatorRS" type="calculatorRS" />
+
 
 </xsd:schema>

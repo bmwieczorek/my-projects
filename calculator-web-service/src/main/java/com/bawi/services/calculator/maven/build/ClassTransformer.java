@@ -6,7 +6,6 @@ import static org.apache.commons.io.FilenameUtils.getBaseName;
 import static org.apache.commons.io.FilenameUtils.getExtension;
 import static org.apache.commons.io.FilenameUtils.getFullPath;
 import static org.apache.commons.lang.StringUtils.replace;
-import static org.apache.commons.lang.StringUtils.substring;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,10 +29,11 @@ public class ClassTransformer {
 				+ postfix + "." + getExtension(inputFileName);
 		File inputFile = new File(inputFileName);
 		String inputFileText = readFileToString(inputFile);
-		String fileBaseNameWithoutFirstChar = substring(fileBaseName, 1);
 		String outputFileText = replace(inputFileText,
-				fileBaseNameWithoutFirstChar, fileBaseNameWithoutFirstChar
-						+ postfix);
+				"\"" + fileBaseName +"\"", "\"" + fileBaseName + postfix + "\"");
+		outputFileText = replace(outputFileText,
+				"public class " + fileBaseName, "public abstract class " + fileBaseName + postfix);
+		outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
 		writeStringToFile(new File(outputFileName), outputFileText);
 		inputFile.delete();
 		System.out.println("Renamed class " + inputFileName + " to "

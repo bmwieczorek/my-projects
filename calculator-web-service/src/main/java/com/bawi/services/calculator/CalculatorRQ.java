@@ -2,10 +2,13 @@ package com.bawi.services.calculator;
 
 import static org.apache.commons.collections.CollectionUtils.isEmpty;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.apache.log4j.Logger;
 
 import com.bawi.services.calculator.exception.InvalidRequestException;
 
+@XmlRootElement(name = "CalculatorRQ")
 public class CalculatorRQ extends CalculatorRQModelBase {
 
 	private static Logger logger = Logger.getLogger(CalculatorRQ.class);
