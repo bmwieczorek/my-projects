@@ -30,7 +30,7 @@ public class ClassTransformer {
 		File inputFile = new File(inputFileName);
 		String inputFileText = readFileToString(inputFile);
 		String outputFileText = replace(inputFileText,
-				"public class " + fileBaseName, "public abstract class " + fileBaseName + postfix);
+				"public class " + fileBaseName, "public class " + fileBaseName + postfix);
 		outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
 		writeStringToFile(new File(outputFileName), outputFileText);
 		inputFile.delete();
