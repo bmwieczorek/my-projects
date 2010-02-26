@@ -18,6 +18,5 @@
 	<root>
 		<level value="ERROR" />
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="R" />
 	</root>
 </log4j:configuration>

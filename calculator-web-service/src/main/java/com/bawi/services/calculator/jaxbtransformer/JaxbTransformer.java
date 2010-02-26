@@ -15,7 +15,7 @@ import com.bawi.services.calculator.model.CalculatorRQ;
 import com.bawi.services.calculator.model.CalculatorRS;
 
 public class JaxbTransformer {
-	private static final String JAXB_PACKAGE = "com.bawi.services.calculator";
+	private static final String JAXB_PACKAGE = "com.bawi.services.calculator.model";
 
 	private static JAXBContext jaxbContext;
 
