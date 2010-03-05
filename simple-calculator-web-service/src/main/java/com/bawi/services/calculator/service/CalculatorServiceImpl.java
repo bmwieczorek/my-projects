@@ -19,11 +19,11 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
 	@Override
 	public CalculatorRS calculate(CalculatorRQ request) throws CalculatorFault {
 		String requestXml = transformFromJavaToXml(request);
-		logger.debug("Request valid:" + requestXml);
+		// logger.debug("Request valid:" + requestXml);
 		int result = calculator.calculate(request.getOperation(), request.getParameters());
 		CalculatorRS response = new CalculatorRS().withResult(result);
 		String responseXml = transformFromJavaToXml(response);
-		logger.debug("Response valid:" + responseXml);
+		// logger.debug("Response valid:" + responseXml);
 		return response;
 	}
 

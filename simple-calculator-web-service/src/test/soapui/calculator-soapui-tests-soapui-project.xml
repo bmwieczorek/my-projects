@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="calculator-soapui-tests" resourceRoot="" soapui-version="3.5" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="calculatorSOAP" type="wsdl" bindingName="{http://services.bawi.com/calculator}calculatorSOAP" soapVersion="1_1" anonymous="optional" definition="file:/home/bawi/dev/workspace/simple-calculator-web-service/src/main/resources/wsdl/calculatorService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/bawi/dev/workspace/simple-calculator-web-service/src/main/resources/wsdl/calculatorService.wsdl"><con:part><con:url>file:/home/bawi/dev/workspace/simple-calculator-web-service/src/main/resources/wsdl/calculatorService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="calculator" targetNamespace="http://services.bawi.com/calculator" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.bawi.com/calculator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://services.bawi.com/calculator" schemaLocation="../xsd/calculator.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CalculatorRQ">
+    <wsdl:part element="tns:CalculatorRQ" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="CalculatorRS">
+    <wsdl:part element="tns:CalculatorRS" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="CalculatorFault">
+    <wsdl:part element="tns:CalculatorRS" name="fault"/>
+  </wsdl:message>
+  <wsdl:portType name="calculatorServiceInterface">
+    <wsdl:operation name="calculate">
+      <wsdl:input name="calculatorRequest" message="tns:CalculatorRQ"/>
+      <wsdl:output name="calculatorResponse" message="tns:CalculatorRS"/>
+      <wsdl:fault name="calculatorError" message="tns:CalculatorFault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="calculatorSOAP" type="tns:calculatorServiceInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculate">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="calculator">
+    <wsdl:port binding="tns:calculatorSOAP" name="calculatorSOAP">
+      <soap:address location="http://services.bawi.com/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/bawi/dev/workspace/simple-calculator-web-service/src/main/resources/xsd/calculator.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://services.bawi.com/calculator" jaxb:version="2.0" jaxb:extensionBindingPrefixes="xjc" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://services.bawi.com/calculator" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+  <xsd:annotation>
+    <xsd:appinfo>
+      <jaxb:globalBindings>
+        <xjc:simple/>
+      </jaxb:globalBindings>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <!--Xml elements-->
+  <xsd:element name="CalculatorRQ" type="CalculatorRQ"/>
+  <xsd:element name="CalculatorRS" type="CalculatorRS"/>
+  <!--Xml types-->
+  <xsd:simpleType name="operation">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ADD"/>
+      <xsd:enumeration value="SUBSTRACT"/>
+      <xsd:enumeration value="MULTIPLY"/>
+      <xsd:enumeration value="DIVIDE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="CalculatorRQ">
+    <xsd:sequence>
+      <xsd:element name="parameters" type="xsd:int" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element name="operation" type="operation"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CalculatorRS">
+    <xsd:sequence>
+      <xsd:element name="result" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:7890/calculator</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="calculate" bindingOperationName="calculate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7890/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://services.bawi.com/calculator">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cal:CalculatorRQ>
+         <!--1 or more repetitions:-->
+         <parameters>?</parameters>
+         <operation>?</operation>
+      </cal:CalculatorRQ>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://services.bawi.com/calculator/calculatorServiceInterface/calculateRequest"/></con:call></con:operation></con:interface><con:testSuite name="calculatorSOAP TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="calculate TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="calculate"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>calculatorSOAP</con:interface><con:operation>calculate</con:operation><con:request name="calculate"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7890/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cal="http://services.bawi.com/calculator">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cal:CalculatorRQ>
+         <!--1 or more repetitions:-->
+         <parameters>2</parameters><parameters>5</parameters>
+         <operation>ADD</operation>
+      </cal:CalculatorRQ>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://services.bawi.com/calculator/calculatorServiceInterface/calculateRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>500</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>false</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>TIME</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>0</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval><con:reportParameters/></con:loadTest><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:requirements/><con:properties/><con:wssContainer/><con:databaseConnectionContainer/></con:soapui-project>
