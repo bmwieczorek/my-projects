@@ -9,7 +9,7 @@
 	</appender>
 
 	<logger name="com.bawi.services.calculator">
-		<level value="ERROR" />
+		<level value="DEBUG" />
 	</logger>
 
 	<!--                           -->

@@ -75,10 +75,9 @@
 				</executions>
 				<configuration>
 					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
-					<schemaFiles>calculator.xsd</schemaFiles>
 					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
 					
-					<!-- external binding file -->
+					<!-- external binding files (xjb) -->
 					<bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
 					
 					<!--  -->
