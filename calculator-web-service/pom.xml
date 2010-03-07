@@ -21,25 +21,40 @@
 						</goals>
 						<configuration>
 							<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-							<!-- 
-							<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
-							<includes>
-								<include>*Service.wsdl</include>
-							</includes>
-							 -->
+							<!--
+								<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
+								<includes> <include>*Service.wsdl</include> </includes>
+							-->
 							<wsdlOptions>
 								<wsdlOption>
 									<extraargs>
 										<extraarg>-nexclude</extraarg>
+										
+										<!-- for external binding file -->
+										<extraarg>http://services.bawi.com/calculator=com.bawi.services.calculator.model</extraarg>
+
+										<!-- for non-external binding file -->
+										<!-- 
 										<extraarg>http://services.bawi.com/calculator</extraarg>
-										<!-- override package of the generated classes  defined in the namespace-->
-										<extraarg>-p</extraarg>
-										<extraarg>com.bawi.services.calculator.model</extraarg>
+										 -->
+
+										<!--
+											override all packages of the generated classes defined in the namespace
+										-->
+										
+										<!-- for non-external binding file -->
+										<!--
+											<extraarg>-p</extraarg>
+											<extraarg>com.bawi.services.calculator.model</extraarg>
+										-->
 									</extraargs>
 									<wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
-									<!-- 
-									<wsdlLocation>wsdl/calculatorService.wsdl</wsdlLocation>
-									 -->
+
+									<!-- binding defined in external bindings file -->
+									<bindingFiles>
+										<bindingFile>${basedir}/src/main/resources/jaxb/configuration-wsdl-bindings.xml</bindingFile>
+									</bindingFiles>
+									
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
@@ -60,8 +75,17 @@
 				</executions>
 				<configuration>
 					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
+					<schemaFiles>calculator.xsd</schemaFiles>
 					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
+					
+					<!-- external binding file -->
+					<bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
+					
+					<!--  -->
+					<!-- 
 					<packageName>com.bawi.services.calculator.model</packageName>
+					 -->
+					
 					<schemaFiles>calculator.xsd</schemaFiles>
 					<clearOutputDir>false</clearOutputDir>
 					<extension>true</extension>
