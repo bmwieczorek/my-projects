@@ -1,12 +1,13 @@
 #!/bin/sh
+
+
 ##############
 #ssi only file
 ##############
 
 
 CATALINA_BASE=/home/sg0920709/dev/workspace/apache-tomcat-5.5.28
-EMAIL='Adam.Czepil@sabre-holdings.com,Arkadiusz.Milczarek@sabre-holdings.com,Bartosz.Bankowski@sabre-holdings.com,Bartosz.Wieczorek.ctr@sabre.com,Grzegorz.Pietrzyk@sabre.com,Krzysztof.Karczmarczyk@sabre.com,Pawel.Trendota@sabre-holdings.com,Piotr.Jagielski@sabre-holdings.com,Rafal.Sontowski@sabre-holdings.com,Tomasz.Bak@sabre-holdings.com'
-
+EMAIL='Bartosz.Wieczorek.ctr@sabre.com'
 HOST="$HOSTNAME"".dev.sabre.com"
 
 
@@ -25,9 +26,6 @@ SSI_OPTS="-Dssi.service.port=8080 \
           -Dssi.service.email.to=$EMAIL"
 
 CATALINA_OPTS="$CATALINA_OPTS $SSI_OPTS"
-
-#TPTP_OPTS='-agentlib:JPIBootLoader=JPIAgent;CGProf'
-#TPTP_OPTS=
 
 JAVA_OPTS='-Xmx2048m -XX:MaxPermSize=512m '$TPTP_OPTS
 
