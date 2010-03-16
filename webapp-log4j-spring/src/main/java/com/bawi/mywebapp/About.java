@@ -19,9 +19,10 @@ public class About {
 	@SuppressWarnings("unchecked")
 	private void displaySystemProperties() {
 		TreeMap treeMap = new TreeMap(System.getProperties());
-		for (Object key : treeMap.keySet()) {
-			logger.debug(key + "=" + treeMap.get(key));
-		}
+		logger.debug(treeMap);
+		// for (Object key : treeMap.keySet()) {
+		// logger.debug(key + "=" + treeMap.get(key));
+		// }
 	}
 	
 	public void destroy(){
