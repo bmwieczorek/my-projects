@@ -1,0 +1,37 @@
+############## ESS cache configuration ############### 
+
+### These defaults will be used for all regions
+jcs.default=
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+jcs.default.cacheattributes.MaxObjects=20000
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+
+# MEMORY SHRINKER
+jcs.default.cacheattributes.UseMemoryShrinker=true
+jcs.default.cacheattributes.MaxMemoryIdleTimeSeconds=420
+jcs.default.cacheattributes.ShrinkerIntervalSeconds=180
+jcs.default.cacheattributes.useDisk=false
+jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
+jcs.default.elementattributes.IsEternal=false
+
+##################### IMPORTANT NOTE #######################
+# The MaxLifeSeconds value overriden by the min and range defined in ice.properties file.
+# Code was added for JCSCache.put to allow for a staggered cache timeout.
+# To override the MaxLifeSeconds, use these 2 values in ice.properties file
+# ice.local.cache.element.life.minimum=360
+# ice.local.cache.timeToLive.range=240 << Range can be 0 for absolute maxlife
+############################################################
+jcs.default.elementattributes.MaxLifeSeconds=180
+
+####################################################
+# (ATHID) (SessionData) Region
+#################################################### 
+#jcs.region.ATH_ID_SESSION_DATA_REGION=
+####################################################
+# (LNIATA) (ATHID) Region
+#################################################### 
+#jcs.region.LNIATA_ATH_ID_REGION=
+####################################################
+#  (Authz only cache)
+#################################################### 
+#jcs.region.AUTHZ_REGION=
