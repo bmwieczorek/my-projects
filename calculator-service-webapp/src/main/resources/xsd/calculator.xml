@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:CalculatorRQ xmlns:p="http://services.bawi.com/calculator"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://services.bawi.com/calculator calculator.xsd ">
+	<parameters>0</parameters>
+	<operation>ADD</operation>
+</p:CalculatorRQ>

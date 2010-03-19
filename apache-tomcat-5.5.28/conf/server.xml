@@ -34,6 +34,21 @@
   <Listener className="org.apache.catalina.core.AprLifecycleListener" />
   <Listener className="org.apache.catalina.mbeans.ServerLifecycleListener" />
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+
+<!--
+First, set CATALINA_HOME to the root of your unpacked binary distribution of Tomcat 5.5.x.
+
+Next build the JMXAdaptorLifecycleListener like this:
+$ javac -classpath $CATALINA_HOME/server/lib/catalina.jar:$CATALINA_HOME/bin/commons-logging-api-1.1.1.jar container/catalina/src/share/org/apache/catalina/mbeans/JMXAdaptorLifecycleListener.java
+
+Then copy the resulting class file into place like this:
+mkdir -p $CATALINA_HOME/server/lib/org/apache/catalina/mbeans
+cp container/catalina/src/share/org/apache/catalina/mbeans/JMXAdaptorLifecycleListener.class $CATALINA_HOME/server/classes/org/apache/catalina/mbeans
+-->
+<!--
+  <Listener className="org.apache.catalina.mbeans.JMXAdaptorLifecycleListener" namingPort="8083" port="8084" host="localhost" /> 
+-->
+
   <Listener className="org.apache.catalina.storeconfig.StoreConfigLifecycleListener"/>
 
   <!-- Global JNDI resources -->

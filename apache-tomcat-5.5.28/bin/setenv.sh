@@ -22,7 +22,11 @@ SSI_OPTS="-Dssi.service.port=8080 \
           -Dssi.community.portal.spml.environment=DEV \
           -Dssi.service.momServiceName=devService \
           -Dice.config.dir=$CATALINA_BASE/conf/ice-config \
-	  -Dssi.log4j.env=dev \
+	  -Dlog4j.configuration=log4j/log4j-local.xml \
+          -Dcom.sun.management.jmxremote.port=8082 \
+          -Dcom.sun.management.jmxremote.ssl=false \
+          -Dcom.sun.management.jmxremote.authenticate=false \
+	  -Dcom.sun.management.jmxremote \
           -Dssi.service.email.to=$EMAIL"
 
 CATALINA_OPTS="$CATALINA_OPTS $SSI_OPTS"
