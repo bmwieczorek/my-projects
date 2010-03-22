@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Scheduler -->
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronPrintTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cronPrintTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="printJobDetail" />
+		<property name="cronExpression" value="0/2 * * * * ?" />
+	</bean>
+
+	<bean id="printJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="printService" />
+		<property name="targetMethod" value="execute" />
+	</bean>
+
+	<bean id="printService" class="com.bawi.myjmxscheduler.scheduler.PrintServiceImpl" />
+
+</beans>
