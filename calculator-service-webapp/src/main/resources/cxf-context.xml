@@ -20,13 +20,33 @@
 		</jaxws:properties>
 	</jaxws:endpoint>
 
+	<!-- 
 	<bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+	 -->
+	 
 	<bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+	
+	<!-- 
+	<bean id="logInbound2"
+		class="com.bawi.services.calculator.cxf.interceptor.LoggingInInterceptor" />
+	 -->
 
+	<bean id="requestContentInterceptor"
+		class="com.bawi.services.calculator.cxf.interceptor.RequestContentInterceptor" />
+	<bean id="requestParamInterceptor"
+		class="com.bawi.services.calculator.cxf.interceptor.RequestParamInterceptor" />
+	<bean id="requestLoggingInterceptor"
+		class="com.bawi.services.calculator.cxf.interceptor.RequestLoggingInterceptor" />
 
 	<cxf:bus>
 		<cxf:inInterceptors>
-			<ref bean="logInbound" />
+			<!--
+				<ref bean="logInbound" /> 
+				<ref bean="logInbound2"/>
+			-->
+			<ref bean="requestContentInterceptor" />
+			<ref bean="requestParamInterceptor" />
+			<ref bean="requestLoggingInterceptor" />
 		</cxf:inInterceptors>
 		<cxf:inFaultInterceptors>
 			<ref bean="logInbound" />
