@@ -5,7 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.cxf.helpers.IOUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
@@ -28,7 +28,7 @@ public class RequestContentInterceptor extends AbstractPhaseInterceptor<Message>
 			try {
 				byte[] bytes = getBytes(is);
 				message.setContent(InputStream.class, new ByteArrayInputStream(bytes));
-				content = IOUtils.newStringFromBytes(bytes);
+				content = new String(bytes, "utf-8");
 			} catch (IOException e) {
 				throw new Fault(e);
 			}
@@ -42,7 +42,6 @@ public class RequestContentInterceptor extends AbstractPhaseInterceptor<Message>
 		IOUtils.copy(is, bos);
 		is.close();
 		byte[] bytes = bos.toByteArray();
-		bos.flush();
 		bos.close();
 		return bytes;
 	}
