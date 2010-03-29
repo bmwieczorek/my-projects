@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bawi.com/myService/"
-	xmlns="http://www.bawi.com/myService/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
-	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.bawi.com/myService/" xmlns="http://www.bawi.com/myService/"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jaxb:extensionBindingPrefixes="xjc">
 	<xsd:annotation>
 		<xsd:appinfo>
 			<jaxb:globalBindings>
@@ -15,8 +17,10 @@
 	<xsd:element name="myComplex">
 		<xsd:complexType>
 			<xsd:attribute name="defaultParam" type="xsd:boolean" />
-			<xsd:attribute name="optionalParam" use="optional" type="xsd:boolean" />
-			<xsd:attribute name="requiredParam" use="required" type="xsd:boolean" />
+			<xsd:attribute name="optionalParam" use="optional"
+				type="xsd:boolean" />
+			<xsd:attribute name="requiredParam" use="required"
+				type="xsd:boolean" />
 		</xsd:complexType>
 	</xsd:element>
 
@@ -26,6 +30,10 @@
 			<xsd:enumeration value="AA" />
 			<xsd:enumeration value="BB" />
 		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="myList">
+		<xsd:list itemType="xsd:int"  />
 	</xsd:simpleType>
 
 	<xsd:element name="NewOperationRequest">
@@ -42,12 +50,18 @@
 					</xsd:simpleType>
 				</xsd:element>
 
-				<!-- complex i simple type daje obiekt, ktory jest automatycznie required -->
+				<!--
+					complex i simple type daje obiekt, ktory jest automatycznie
+					required
+				-->
 				<xsd:element name="myEnum" type="myEnum" />
+				<xsd:element name="myList" type="myList" />
+
 				<xsd:element ref="myComplex" />
 
 				<!-- unbounded daje liste, ktora jest automatycznie required -->
-				<xsd:element name="unboundedString" type="xsd:string" maxOccurs="unbounded" />
+				<xsd:element name="unboundedString" type="xsd:string"
+					maxOccurs="unbounded" />
 			</xsd:sequence>
 			<xsd:attribute name="myAtt" type="xsd:string" />
 		</xsd:complexType>
