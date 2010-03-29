@@ -27,6 +27,7 @@ public class RequestContentInterceptor extends AbstractPhaseInterceptor<Message>
 		if (is != null) {
 			try {
 				byte[] bytes = getBytes(is);
+				is.close();
 				message.setContent(InputStream.class, new ByteArrayInputStream(bytes));
 				content = new String(bytes, "utf-8");
 			} catch (IOException e) {
@@ -40,9 +41,6 @@ public class RequestContentInterceptor extends AbstractPhaseInterceptor<Message>
 	private byte[] getBytes(InputStream is) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		IOUtils.copy(is, bos);
-		is.close();
-		byte[] bytes = bos.toByteArray();
-		bos.close();
-		return bytes;
+		return bos.toByteArray();
 	}
 }
