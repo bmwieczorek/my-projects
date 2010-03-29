@@ -2,15 +2,18 @@ package mock;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyMock<V> {
 
-	static Object value = null;
+	private static Map<Key, Object> map = new HashMap<Key, Object>();
+	private static Key currentKey;
 
-	static class MyInvocationHandler implements InvocationHandler {
-
+	private static class MyInvocationHandler implements InvocationHandler {
 		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-			return value;
+			currentKey = new Key(method, args);
+			return map.get(currentKey);
 		}
 	};
 
@@ -24,6 +27,6 @@ public class MyMock<V> {
 	}
 
 	public void thenReturn(V v) {
-		value = v;
+		map.put(currentKey, v);
 	}
 }
