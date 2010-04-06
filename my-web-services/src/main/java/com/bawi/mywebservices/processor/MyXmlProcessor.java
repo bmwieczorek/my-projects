@@ -2,6 +2,7 @@ package com.bawi.mywebservices.processor;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.math.BigInteger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -41,47 +42,49 @@ public class MyXmlProcessor {
 
 	public Object fromXml(String xml) throws JAXBException {
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		unmarshaller.setProperty("com.sun.xml.bind.ObjectFactory",
-				new ObjectFactoryEx());
+		unmarshaller.setProperty("com.sun.xml.bind.ObjectFactory", new ObjectFactoryEx());
 		return unmarshaller.unmarshal(new StringReader(xml));
 	}
 
-	public static void main(String[] args) throws JAXBException,
-			TransformerException {
+	@SuppressWarnings("unchecked")
+	public <T> T fromXml(String xml, Class<T> clazz) throws JAXBException {
+		return (T) fromXml(xml);
+	}
+
+	public static void main(String[] args) throws JAXBException, TransformerException {
 		MyXmlProcessor myTransformer = new MyXmlProcessor();
-		String xml = myTransformer.toXml(createRequest());
+		System.out.println("request");
+		NewOperationRequest request = createRequest();
+		System.out.println(request);
+		String xml = myTransformer.toXml(request);
 		System.out.println(xml);
-
-		NewOperationRequestEx fromXml = (NewOperationRequestEx) myTransformer
-				.fromXml(xml);
-
+		NewOperationRequest fromXmlRaw = (NewOperationRequest) myTransformer.fromXml(xml);
+		System.out.println(fromXmlRaw);
+		NewOperationRequestEx fromXml = (NewOperationRequestEx) fromXmlRaw;
 		System.out.println(fromXml.print());
-		
 
+		System.out.println("response");
 		String xml2 = myTransformer.toXml(createResponse());
-		//String xml2 ="<newOperationResponse xmlns=\"http://www.bawi.com/myService/\"><out>AAA</out></newOperationResponse>";
+		// String xml2
+		// ="<newOperationResponse xmlns=\"http://www.bawi.com/myService/\"><out>AAA</out></newOperationResponse>";
 		System.out.println(xml2);
 
-		NewOperationResponse fromXml2 = (NewOperationResponse) myTransformer
-				.fromXml(xml2);
+		NewOperationResponse fromXml2 = (NewOperationResponse) myTransformer.fromXml(xml2);
 
 		System.out.println(fromXml2.toString());
-		
-
 
 	}
 
 	private static NewOperationRequest createRequest() {
-		return new NewOperationRequest().withBooleanIn(true).withIntIn(1)
-				.withMyAtt("A").withMyComplex(
-						new MyComplex().withRequiredParam(false)).withMyEnum(
-						MyEnum.AA).withPatternIn("pp").withStringIn("ss")
+		return new NewOperationRequest().withBooleanIn(true).withIntIn(1).withMyAtt("A").withMyComplex(
+				new MyComplex().withRequiredParam(false)).withMyEnum(MyEnum.AA).withMyList(1).withMyList(2).withMyList(
+				3).withTripleIntegers(BigInteger.valueOf(1L)).withTripleIntegers(BigInteger.valueOf(2L))
+				.withTripleIntegers(BigInteger.valueOf(4L)).withPatternIn("pp").withStringIn("ss")
 				.withUnboundedStrings("x", "y");
 	}
 
-	
 	private static NewOperationResponse createResponse() {
 		return new NewOperationResponse().withOut("AAA");
 	}
-	
+
 }

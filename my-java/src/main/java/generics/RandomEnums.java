@@ -4,8 +4,9 @@ package generics;
 enum City {
     Amsterdam, Krakow;
 }
+
 class A {
-    A() {
+	A() {
         System.out.println(getClass().getName());
     }
 }

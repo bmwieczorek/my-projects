@@ -1,0 +1,14 @@
+<ns2:NewOperationRequest myAtt="A" xmlns:ns2="http://www.bawi.com/myService/">
+    <stringIn>ss</stringIn>
+    <booleanIn>true</booleanIn>
+    <intIn>1</intIn>
+    <patternIn>pp</patternIn>
+    <tripleInteger>1</tripleInteger>
+    <tripleInteger>2</tripleInteger>
+    <tripleInteger>4</tripleInteger>
+    <myEnum>AA</myEnum>
+    <myList>1 2 3</myList>
+    <ns2:myComplex requiredParam="false"/>
+    <unboundedString>x</unboundedString>
+    <unboundedString>y</unboundedString>
+</ns2:NewOperationRequest>
