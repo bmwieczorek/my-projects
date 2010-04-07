@@ -1,4 +1,5 @@
-package generics;
+package generics.example;
+
 
 public class Car implements Comparable<Car> {
 

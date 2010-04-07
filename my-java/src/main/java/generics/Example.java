@@ -45,5 +45,6 @@ public class Example<T> {
 
 		example.printExtendingTypes(figures);
 		List<? extends Figure> printExtendingTypes = example.printExtendingTypes(circles);
+		printExtendingTypes.clear();
 	}
 }
