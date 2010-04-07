@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:Company xmlns:c="http://www.company.org" xmlns:per="http://www.person.org" xmlns:pro="http://www.product.org"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.company.org Company.xsd ">
+    <c:Person>
+        <per:Name>per:Name</per:Name>
+        <per:SSN>per:SSN</per:SSN>
+    </c:Person>
+    <c:Product>
+        <pro:Type>pro:Type</pro:Type>
+    </c:Product>
+</c:Company>

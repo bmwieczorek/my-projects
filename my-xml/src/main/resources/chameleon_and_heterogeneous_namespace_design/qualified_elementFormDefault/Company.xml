@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:Company xmlns:c="http://myxml.com.bawi/company" xmlns:pro="http://myxml.com.bawi/product" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://myxml.com.bawi/company Company.xsd ">
+  <c:Person>
+    <c:Name>c:Name</c:Name>
+    <c:SSN>c:SSN</c:SSN>
+  </c:Person>
+  <c:Product>
+    <pro:Type>pro:Type</pro:Type>
+  </c:Product>
+</c:Company>
