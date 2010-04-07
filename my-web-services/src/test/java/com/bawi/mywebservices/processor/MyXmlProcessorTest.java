@@ -3,7 +3,6 @@ package com.bawi.mywebservices.processor;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigInteger;
 
 import javax.xml.bind.JAXBException;
 
@@ -33,10 +32,9 @@ public class MyXmlProcessorTest {
 		System.out.println(unmarshalledRequest);
 
 		NewOperationRequest expectedRequest = new NewOperationRequest().withMyAtt("A").withStringIn("ss")
-				.withBooleanIn(true).withIntIn(1).withPatternIn("Z").withTripleIntegers(BigInteger.valueOf(1L))
-				.withTripleIntegers(BigInteger.valueOf(2L)).withTripleIntegers(BigInteger.valueOf(4L)).withMyEnum(
-						MyEnum.AA).withMyList(1, 2, 3).withMyComplex(new MyComplex().withRequiredParam(false))
-				.withUnboundedStrings("x").withUnboundedStrings("y");
+				.withBooleanIn(true).withIntIn(1).withPatternIn("Z").withMyEnum(MyEnum.AA).withMyList(1, 2, 3)
+				.withMyComplex(new MyComplex().withRequiredParam(false)).withUnboundedStrings("x")
+				.withUnboundedStrings("y");
 
 		Assert.assertEquals(expectedRequest, unmarshalledRequest);
 	}
