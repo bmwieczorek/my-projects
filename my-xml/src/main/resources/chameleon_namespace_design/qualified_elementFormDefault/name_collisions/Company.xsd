@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.company.org"
+    xmlns="http://www.company.org" elementFormDefault="qualified">
+    <xsd:include schemaLocation="PersonA.xsd" />
+    <xsd:include schemaLocation="PersonB.xsd" />
+    <xsd:element name="Company">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="PersonType" type="PersonType" maxOccurs="unbounded" />
+                <xsd:element name="PersonName" type="PersonName" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

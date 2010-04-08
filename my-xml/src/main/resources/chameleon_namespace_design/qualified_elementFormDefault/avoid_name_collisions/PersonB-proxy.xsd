@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/PersonB-proxy"
+    xmlns="http://www.example.org/PersonB-proxy" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="PersonB.xsd"></xsd:include>
+
+</xsd:schema>

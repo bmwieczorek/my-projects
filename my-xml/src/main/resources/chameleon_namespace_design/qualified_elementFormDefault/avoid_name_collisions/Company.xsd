@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns="http://www.company.org" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:a="http://www.example.org/PersonA-proxy" xmlns:b="http://www.example.org/PersonB-proxy"
+    targetNamespace="http://www.company.org" elementFormDefault="qualified">
+
+    <xsd:import namespace="http://www.example.org/PersonA-proxy" schemaLocation="PersonA-proxy.xsd" />
+    <xsd:import namespace="http://www.example.org/PersonB-proxy" schemaLocation="PersonB-proxy.xsd" />
+
+    <xsd:element name="Company">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="PersonType" type="a:PersonType" maxOccurs="unbounded" />
+                <xsd:element name="PersonName" type="b:PersonName" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

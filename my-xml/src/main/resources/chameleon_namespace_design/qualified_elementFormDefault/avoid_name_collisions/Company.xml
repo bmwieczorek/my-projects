@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c:Company xmlns:a="http://www.example.org/PersonA-proxy" xmlns:b="http://www.example.org/PersonB-proxy"
+    xmlns:c="http://www.company.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.company.org Company.xsd ">
+    <c:PersonType>
+        <a:Name>a:Name</a:Name>
+        <a:SSN>a:SSN</a:SSN>
+    </c:PersonType>
+    <c:PersonName>
+        <b:first>b:first</b:first>
+        <b:last>b:last</b:last>
+    </c:PersonName>
+</c:Company>
