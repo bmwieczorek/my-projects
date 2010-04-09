@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<bindings xmlns="http://java.sun.com/xml/ns/jaxws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	wsdlLocation="../wsdl/calculatorService.wsdl" >
-	<package name="com.bawi.services.calculator.model" />
-</bindings>
