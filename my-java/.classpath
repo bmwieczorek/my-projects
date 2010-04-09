@@ -2,6 +2,10 @@
   <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="var" path="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4.jar" sourcepath="M2_REPO/commons-lang/commons-lang/2.4/commons-lang-2.4-sources.jar"/>
-  <classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar" sourcepath="M2_REPO/junit/junit/4.4/junit-4.4-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.4/junit-4.4.jar" sourcepath="M2_REPO/junit/junit/4.4/junit-4.4-sources.jar">
+    <attributes>
+      <attribute value="jar:file:/home/sg0920709/dev/inventory_gui/dev-env/apache-maven-2.0.9/localRepo/junit/junit/4.4/junit-4.4-javadoc.jar!/" name="javadoc_location"/>
+    </attributes>
+  </classpathentry>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 </classpath>
