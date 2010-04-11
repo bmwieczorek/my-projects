@@ -16,8 +16,8 @@ public class Car implements Comparable<Car> {
 		Car c2 = new Car();
 		c2.price = 1;
 
-		int compare = c1.compare(c2);
-		System.out.println(compare);
+		int result = c1.compare(c2);
+		System.out.println(result);
 
 	}
 

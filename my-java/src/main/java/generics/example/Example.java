@@ -28,10 +28,8 @@ public class Example {
 				return t1.compare(t2);
 			}
 		};
-
 		Collections.sort(elements, comparator);
 		return elements;
-
 	}
 
 	public static void main(String[] args) {
@@ -51,6 +49,5 @@ public class Example {
 		System.out.println(comparedElements);
 		
 		// compare(elements2);
-
 	}
 }
