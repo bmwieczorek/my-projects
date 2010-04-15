@@ -1,4 +1,4 @@
-package serialization;
+package tokens;
 
 import java.util.StringTokenizer;
 
