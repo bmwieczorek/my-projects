@@ -17,6 +17,5 @@ public class SerializeCircular {
         FileOutputStream f = new FileOutputStream("TestSerial");
         // List alist = new ArrayList();
         new ObjectOutputStream(f).writeObject(new CC2());
-
     }
 }
