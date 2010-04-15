@@ -1,6 +1,6 @@
 package autoboxing;
 
-public class Example {
+public class NPEExample {
 	public static void main(String[] args) {
 		int i = returnInteger();
 		System.out.println(i);

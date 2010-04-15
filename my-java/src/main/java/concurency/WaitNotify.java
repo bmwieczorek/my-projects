@@ -1,6 +1,5 @@
 package concurency;
 
-import java.util.Map;
 
 class Block {
     // wait(), notify() must be within synchronized block
@@ -61,7 +60,6 @@ public class WaitNotify {
     public static void main(String[] args) throws InterruptedException {
         final Thread t1;
         final Thread t2;
-        Map map;
         final Block block = new Block();
 
         t1 = new Thread(new Runnable() {

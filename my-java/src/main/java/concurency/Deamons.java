@@ -11,7 +11,7 @@ public class Deamons {
     public static void main(String[] args) throws InterruptedException {
         Thread.currentThread().setName("main bawi thread");
         System.err.println(Thread.currentThread());
-        final B b = new B();
+		// final B b = new B();
 
         Thread thread = new Thread(new Runnable() {
             public void run() {
