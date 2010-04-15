@@ -24,7 +24,6 @@ public class MySet<E> {
 
     final private Entry[] entries = new Entry[]{new Entry("ania", 26), new Entry("bartek", 27)};
 
-    @SuppressWarnings("unchecked")
     public MySet(E[] array) {
         // myarray = (E[])new Object[10];
         myarray = array;
