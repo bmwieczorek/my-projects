@@ -45,7 +45,7 @@ public class Cloner1 implements Cloneable {
         } catch (Exception ex) {
             return -1;
         } finally {
-            return 0;
+			// return 0;
         }
     }
 
