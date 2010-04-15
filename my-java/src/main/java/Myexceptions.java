@@ -14,9 +14,8 @@ class Dddd extends Ccc {
 }
 
 public class Myexceptions {
-    public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
         Ccc c = new Dddd();
-        //c.myM();
+		c.myM();
     }
-
 }
