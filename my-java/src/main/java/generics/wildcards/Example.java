@@ -10,6 +10,7 @@ public class Example {
 	static void popAll(List<? super Number> list) {
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		// List<Number> list = new ArrayList<Integer>(); // doesn't compile
