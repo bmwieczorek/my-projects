@@ -21,9 +21,11 @@ public class Example {
         
     }
     
+	@SuppressWarnings("unused")
     public static void main(String[] args) {
-        E e = new E();
-//        D d = (D)e;
+
+		E e = new E();
+		// D d = (D) e; // compilation failure
         C c = new C();
         A a = (A)( (Runnable)c );
         a.equals(null);
