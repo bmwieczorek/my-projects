@@ -1,6 +1,5 @@
 package inheritance;
 
-import java.util.ArrayList;
 
 interface One {
     void myOne();
@@ -61,7 +60,6 @@ class Claska2 extends Claska{
 public class IfaceCanOnlyImplementIfaceButClassCanBothExtendClassAndImplementIface {
     public static void main(String[] args) {
         new Cl();
-        new ArrayList().add(new Object());
     }
 }
     
