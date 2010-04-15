@@ -35,6 +35,8 @@ class Utils {
 }
 
 public class Example {
+
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		// explicitly specify the value of type parameter when invoking generic constructors
