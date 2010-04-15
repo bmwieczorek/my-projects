@@ -5,8 +5,9 @@ public class ValueTypeExample {
         return new Response("a",1,"b");
     }
         
+	@SuppressWarnings("unused")
     private static final class Response{
-        final String body;
+		final String body;
         final int statusCode;
         final String exception;
         Response(String body, int statusCode, String exception) {
