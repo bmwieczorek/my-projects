@@ -19,6 +19,7 @@ public class Comarch {
     
    
 
+	@SuppressWarnings("unused")
     public static void main(String[] args) {
         System.out.println((new RuntimeException()) instanceof Exception);
 
@@ -26,7 +27,7 @@ public class Comarch {
         // Long i = Long.valueOf(1); //not for long
         
         short i = 1;
-        int b = i;
+		int b = i;
         char cc = 's';
         int c = cc;
         //int i = 1;
