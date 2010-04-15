@@ -20,8 +20,10 @@ class CarFactory implements Factory{
 }
 
 public class Example {
+
+	@SuppressWarnings("unused")
     public static void main(String[] args) {
         Factory carFactory = new CarFactory();
-        Product car = carFactory.create();
+		Product car = carFactory.create();
     }
 }
