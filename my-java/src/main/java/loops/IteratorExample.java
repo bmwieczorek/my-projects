@@ -5,25 +5,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-class Ania {
-    void myF() {
-        System.out.println("Ania");
-    }
-}
-
-class Kasia extends Ania {
-    void myG() {
-        super.myF();
-        this.myF();
-        myF();
-    }
-
-    @Override
-    void myF() {
-        System.out.println("Kasia");
-    }
-}
-
 public class IteratorExample {
     enum Lower {
         a, b, c

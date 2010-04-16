@@ -11,8 +11,7 @@ public class Example {
         BeanInfo beanInfo = Introspector.getBeanInfo(MyJavaBean.class);
         MethodDescriptor[] methodDescriptors = beanInfo.getMethodDescriptors();
         for (int i = 0; i < methodDescriptors.length; i++) {
-            MethodDescriptor methodDescriptor = methodDescriptors[i];
-            System.out.println(methodDescriptor.getName());
+            System.out.println(methodDescriptors[i].getName());
         }
     }
 }
