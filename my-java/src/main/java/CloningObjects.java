@@ -1,10 +1,10 @@
-public class Cloner implements Cloneable{
+public class CloningObjects implements Cloneable{
 
     private final String foo = "Boiled Eggs";
 
     public static void main(String[] args) throws Exception {
-        Cloner aClone = new Cloner();
-        Cloner anotherClone = (Cloner) aClone.clone();
+        CloningObjects aClone = new CloningObjects();
+        CloningObjects anotherClone = (CloningObjects) aClone.clone();
         System.out.println(anotherClone.toString());
     }
 
