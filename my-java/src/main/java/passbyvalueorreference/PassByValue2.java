@@ -1,3 +1,4 @@
+package passbyvalueorreference;
 class AA {
 	public int x;
 
@@ -10,7 +11,7 @@ class AA {
 	}
 }
 
-public class CallDemo2 {
+public class PassByValue2 {
 	static void f(AA arg1) {
 		arg1 = null;
 	}

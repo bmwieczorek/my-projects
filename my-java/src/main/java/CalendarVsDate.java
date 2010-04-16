@@ -7,6 +7,7 @@ public class CalendarVsDate {
 		Date d = new Date();
 		System.out.println(d.getTime());
 
+
 		Calendar c = Calendar.getInstance();
 		// c.add(Calendar.DATE, 5);
 
