@@ -1,6 +1,27 @@
 package statickeyword;
 
-public class RunExample {
+class Car {
+	static void drive() {
+		System.out.println("Car drive");
+	}
+}
+
+class Audi extends Car {
+	static void drive() {
+		System.out.println("Audi drive");
+	}
+}
+
+class Dog extends Animal {
+}
+
+class Animal {
+	static void makeNoise() {
+		System.out.println("Animal noise");
+	}
+}
+
+public class StaticNoPolymorphicCallExample {
 
     @SuppressWarnings("static-access")
     public static void main(String[] args) {

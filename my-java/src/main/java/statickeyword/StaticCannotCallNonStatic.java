@@ -1,6 +1,6 @@
 package statickeyword;
 
-public class Calling {
+public class StaticCannotCallNonStatic {
     
     int i = 10;
     
@@ -15,7 +15,7 @@ public class Calling {
         //this.i = 20;
         
         //only this way
-        Calling c = new Calling();
+        StaticCannotCallNonStatic c = new StaticCannotCallNonStatic();
         c.finstance();
         c.i = 20;
     }

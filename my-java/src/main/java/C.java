@@ -26,6 +26,7 @@ public class C {
 		System.out.println("C");
 		A a = new B();
 		a.main(null);  //print A
+
 		String s = "aaaa";
 		int i = 10;
 		System.out.println("1:" + s + ">" + i);
