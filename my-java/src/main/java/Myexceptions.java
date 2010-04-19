@@ -1,14 +1,12 @@
-import java.io.FileNotFoundException;
 
 class Ccc {
-    void myM() throws Exception {
+	void myM() throws Exception {
         System.out.println(0);
     }
 }
 
 class Dddd extends Ccc {
-    @Override
-    void myM() throws FileNotFoundException {
+	void myM() throws RuntimeException {
         System.out.println(1);
     }
 }
