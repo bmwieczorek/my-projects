@@ -11,7 +11,7 @@ class Dddd extends Ccc {
     }
 }
 
-public class Myexceptions {
+public class ExceptionsInMethodSignature {
 	public static void main(String[] args) throws Exception {
         Ccc c = new Dddd();
 		c.myM();
