@@ -1,5 +1,6 @@
+package concurency;
 
-public class CopyOfConcurrentListAccess {
+public class ConcurrentListAccess {
     public static void main(String[] args) {
         System.out.println("before");
         Thread thread = new Thread(new Runnable() {

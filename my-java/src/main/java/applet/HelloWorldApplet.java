@@ -1,9 +1,10 @@
+package applet;
 import java.applet.Applet;
 import java.awt.Graphics;
 
 //No need to extend JApplet, since we don't add any components;
 //we just paint.
-public class HelloWorld extends Applet {
+public class HelloWorldApplet extends Applet {
 
 	private static final long serialVersionUID = 1L;
 

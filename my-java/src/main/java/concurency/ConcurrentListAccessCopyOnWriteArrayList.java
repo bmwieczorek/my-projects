@@ -1,8 +1,9 @@
+package concurency;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ConcurrentListAccess {
+public class ConcurrentListAccessCopyOnWriteArrayList {
     // using ArrayList by 2 threads (one reading, second writing (adding
     // element) causes concurrent access exception, as a solution use
     // CopyOnWriteArrayList
@@ -10,7 +11,7 @@ public class ConcurrentListAccess {
     private List<Integer> ints = new CopyOnWriteArrayList<Integer>();
 
     public static void main(String[] args) {
-        final ConcurrentListAccess cls = new ConcurrentListAccess();
+        final ConcurrentListAccessCopyOnWriteArrayList cls = new ConcurrentListAccessCopyOnWriteArrayList();
         System.out.println("before");
         new Thread(new Runnable() {
             public void run() {
