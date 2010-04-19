@@ -1,4 +1,5 @@
-public class TestCatchExceptions {
+package exceptions;
+public class CatchingExceptionExample {
 
     public static void main(String[] args) {
 

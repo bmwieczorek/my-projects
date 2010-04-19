@@ -1,15 +1,12 @@
-public class TestPassing {
+package passbyvalueorreference;
+public class PassByValueTest {
     private int value;
 
-    public static void main(String[] args) {
-        new TestPassing().run();
-    }
-    
     public static void add(int a, int b) {
         a = a + b;
     }
 
-    public void subtract(TestPassing tp, int b) {
+    public void subtract(PassByValueTest tp, int b) {
         tp.value = tp.value - b;
     }
 
@@ -24,19 +21,8 @@ public class TestPassing {
         subtract(this, 3);
         System.out.println(value);
     }
+
+    public static void main(String[] args) {
+        new PassByValueTest().run();
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

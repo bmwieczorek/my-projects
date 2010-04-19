@@ -1,3 +1,4 @@
+package javabeans;
 import java.io.IOException;
 
 
@@ -11,7 +12,7 @@ class MyBean{
     }
 }
 
-public class Test123 {
+public class InvokeSetterAndGetterExample {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         makeValueNull(new MyBean());
     }
@@ -22,7 +23,7 @@ public class Test123 {
 
         // We want to set the objects "Value" property to null.
         try {
-            //o.getClass().getMethod("setValue", new Class[] {String.class}).invoke(o,new Object[] {null});
+			o.getClass().getMethod("setValue", new Class[] { String.class }).invoke(o, new Object[] { "Kasia" });
             System.out.println(((MyBean)o).getValue());
         } catch (Exception e) {
            System.out.println("Couldn't set the value");

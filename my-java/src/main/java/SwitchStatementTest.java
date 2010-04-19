@@ -1,4 +1,4 @@
-public class Test {
+public class SwitchStatementTest {
 
     public static void main(String[] args) {
         int a = 3;

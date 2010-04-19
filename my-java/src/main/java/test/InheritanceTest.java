@@ -16,7 +16,7 @@ class SuperClass {
 
 class SubClass extends SuperClass {
     void printIt() {
-        System.out.println("SubClass");
+		System.out.println("SubClass");
     }
 }
 

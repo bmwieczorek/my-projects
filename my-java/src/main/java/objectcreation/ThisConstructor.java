@@ -1,3 +1,4 @@
+package objectcreation;
 class AClass {
 	public String getName() {
 		return name;
