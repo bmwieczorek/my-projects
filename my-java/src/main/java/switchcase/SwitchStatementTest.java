@@ -1,3 +1,4 @@
+package switchcase;
 public class SwitchStatementTest {
 
     public static void main(String[] args) {
