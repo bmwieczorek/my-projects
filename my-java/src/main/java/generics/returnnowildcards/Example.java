@@ -1,7 +1,7 @@
 package generics.returnnowildcards;
 
-import generics.example.Car;
-import generics.example.Toyota;
+import generics.Car;
+import generics.Toyota;
 
 import java.util.Arrays;
 import java.util.List;

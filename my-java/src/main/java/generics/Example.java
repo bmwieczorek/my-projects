@@ -9,10 +9,6 @@ class Figure {
 class Circle extends Figure {
 }
 
-interface Comparable<E> {
-	int compare(E e);
-}
-
 public class Example<T> {
 
 	public List<T> printExactTypes(List<T> list) {

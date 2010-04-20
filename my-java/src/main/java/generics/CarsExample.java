@@ -1,4 +1,4 @@
-package generics.example;
+package generics;
 
 
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class Example {
+public class CarsExample {
 
 	public static <T extends Car> List<T> compareCars(List<T> cars) {
 

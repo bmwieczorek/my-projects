@@ -1,4 +1,4 @@
-package generics.example;
+package generics;
 
 public class Audi extends Car {
 
