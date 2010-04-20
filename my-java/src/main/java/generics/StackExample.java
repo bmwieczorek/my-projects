@@ -6,12 +6,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
 
-public class RunGenerics {
+public class StackExample {
 
-    Stack<Number> stack = new Stack<Number>();
+	Stack<Number> stack = new Stack<Number>();
     
-    
-
     void pushAll(Collection<? extends Number> src) {
         for (Number number : src) {
             stack.push(number);
@@ -28,12 +26,11 @@ public class RunGenerics {
         List<Integer> integers = Arrays.asList(1, 2, 3);
         List<Double> doubles = Arrays.asList(1.0, 2.0, 3.0);
         
-        RunGenerics runGenerics = new RunGenerics();
-        runGenerics.pushAll(integers);
-        runGenerics.pushAll(doubles);
+        StackExample stackExample = new StackExample();
+        stackExample.pushAll(integers);
+        stackExample.pushAll(doubles);
         
-        Collection<Object> dst = new ArrayList<Object>(runGenerics.stack.size());
-        runGenerics.popAll(dst);
+        Collection<Object> dst = new ArrayList<Object>(stackExample.stack.size());
+        stackExample.popAll(dst);
     }
-
 }
