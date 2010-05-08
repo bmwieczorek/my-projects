@@ -1,7 +1,8 @@
-package test;
+package inheritance;
 
-class SuperClass {
-    private void printIt() {
+class SuperCl {
+	private void printIt() {
+		// void printIt() {
         System.out.println("SuperClass");
     }
 
@@ -14,7 +15,7 @@ class SuperClass {
     }
 }
 
-class SubClass extends SuperClass {
+class SubCl extends SuperCl {
     void printIt() {
 		System.out.println("SubClass");
     }
@@ -22,7 +23,7 @@ class SubClass extends SuperClass {
 
 public class InheritanceTest {
     public static void main(String args[]) {
-        SubClass sc = new SubClass();
+		SubCl sc = new SubCl();
         sc.printIt();
         sc.printIt(false);
     }
