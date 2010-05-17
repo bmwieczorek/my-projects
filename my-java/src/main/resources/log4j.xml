@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <!-- async appenders -->
+
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="FileOut" />
+    </appender>
+
+    <appender name="K0AsyncFileOut" class="org.apache.log4j.AsyncAppender">
+    <!--
+        <param name="BufferSize" value="2147483647" />
+        
+    -->
+        <param name="BufferSize" value="500000" />
+        <appender-ref ref="K0FileOut" />
+    </appender>
+
+    <appender name="ATAsyncFileOut" class="org.apache.log4j.AsyncAppender">
+    <!-- 
+        <param name="BufferSize" value="2147483647" />
+     -->
+        <param name="BufferSize" value="500000" />
+        <appender-ref ref="ATFileOut" />
+    </appender>
+
+    <!-- file appenders -->
+
+    <appender name="FileOut" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="exampleAsync.log" />
+        <param name="MaxFileSize" value="100MB" />
+        <param name="MaxBackupIndex" value="0" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="K0FileOut" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="K0.log" />
+        <param name="MaxFileSize" value="500MB" />
+        <param name="MaxBackupIndex" value="0" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%5p (%d{DATE}) [%t] - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="ATFileOut" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="AT.log" />
+        <param name="MaxFileSize" value="500MB" />
+        <param name="MaxBackupIndex" value="0" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%5p (%d{DATE}) [%t] - %m%n" />
+        </layout>
+    </appender>
+
+    <!-- loggers -->
+
+
+    <logger name="K0.com.bawi.static">
+        <level value="DEBUG" />
+        <!-- 
+        <appender-ref ref="K0FileOut" />  
+        <appender-ref ref="K0AsyncFileOut" />
+         -->
+
+        <appender-ref ref="K0AsyncFileOut" />
+    </logger>
+    
+    
+    <logger name="AT.com.bawi.static">
+        <level value="DEBUG" />
+        <!-- 
+        <appender-ref ref="ATFileOut" />  
+        <appender-ref ref="ATAsyncFileOut" />
+         -->
+
+        <appender-ref ref="ATAsyncFileOut" />
+    </logger>
+    
+    
+    <logger name="logging" additivity="true">
+        <level value="DEBUG" />
+        <appender-ref ref="FileOut"/>
+    </logger>
+
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="ASYNC" />
+    </root>
+</log4j:configuration>
