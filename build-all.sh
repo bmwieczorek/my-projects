@@ -1,3 +1,3 @@
 #!/bin/bash
-find -maxdepth 1 -type d -name my-\* -exec bash -c "(cd {} &&  mvn clean install eclipse:eclipse)"  \;
+find -maxdepth 1 -type d -name my-\* -exec bash -c "(cd {} &&  mvn clean install eclipse:eclipse -DdownloadSources=true)"  \;
 
