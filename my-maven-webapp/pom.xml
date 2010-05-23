@@ -77,8 +77,8 @@
 
 						<!-- logging to file, instead console (default) -->
 						<!--
-							<log>${basedir}/target/cargo.log</log>
-							<output>${basedir}/target/catalina.out</output>
+							<log>${project.build.directory}/cargo.log</log>
+							<output>${project.build.directory}/catalina.out</output>
 						-->
 
 					</container>
@@ -95,7 +95,7 @@
 							webapp (different from tomcat home location), for 'existing'
 							configuration use tomcat home location as used in container
 						-->
-						<home>${basedir}/target/tomcat5x</home>
+						<home>${project.build.directory}/tomcat5x</home>
 
 						<properties>
 							<cargo.logging>high</cargo.logging>
