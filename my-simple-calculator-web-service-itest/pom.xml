@@ -1,143 +1,167 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.bawi</groupId>
-	<artifactId>my-simple-calculator-web-service-itest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<dependencies>
-		<dependency>
-			<groupId>com.bawi</groupId>
-			<artifactId>my-simple-calculator-web-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>LATEST</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-	</dependencies>
-	<build>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bawi</groupId>
+    <artifactId>my-simple-calculator-web-service-itest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.bawi</groupId>
+            <artifactId>my-simple-calculator-web-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.bawi</groupId>
+            <artifactId>my-url-forwarder</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>LATEST</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+    </dependencies>
+    <build>
 
-		<testSourceDirectory>src/itest/java</testSourceDirectory>
-		<testResources>
-			<testResource>
-				<directory>src/itest/resources</directory>
-			</testResource>
-		</testResources>
+        <testSourceDirectory>src/itest/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/itest/resources</directory>
+            </testResource>
+        </testResources>
 
-		<plugins>
+        <plugins>
 
-			<!-- java annotations -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>LATEST</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+            <!-- java annotations -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
 
-			<!-- run all tests only in integration test phase -->
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-				<executions>
-					<execution>
-						<id>surefire-itest</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <!-- run all tests only in integration test phase -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-itest</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<!-- itests starting and stoping tomcat  -->
+            <!-- itests starting and stoping tomcat  -->
 
-			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven2-plugin</artifactId>
-				<configuration>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <configuration>
 
-					<!-- waiter after cargo start; default true -->
-					<wait>false</wait>
+                    <!-- waiter after cargo start; default true -->
+                    <wait>true</wait>
 
-					<container>
-						<containerId>tomcat5x</containerId>
+                    <container>
+                        <containerId>tomcat5x</containerId>
 
-						<!--
-							'installed' = present on local file system, default (as opposed
-							to 'embedded' = supported only by jetty )
-						-->
-						<type>installed</type>
-						<home>${tomcat.home}</home>
+                        <!--
+                            'installed' = present on local file system, default (as opposed to 'embedded' =
+                            supported only by jetty )
+                        -->
+                        <type>installed</type>
+                        <home>${tomcat.home}</home>
 
-						<!-- logging to file, instead console (default) -->
-						<!--
-							<log>${project.build.directory}/cargo.log</log>
-							<output>${project.build.directory}/catalina.out</output>
-						-->
+                        <!-- logging to file, instead console (default) -->
+                        <!--
+                            <log>${project.build.directory}/cargo.log</log>
+                            <output>${project.build.directory}/catalina.out</output>
+                        -->
 
-					</container>
-					<configuration>
+                    </container>
+                    <configuration>
 
-						<!--
-							'standalone' = recreated for every build (unlike 'existing' =
-							shared across builds)
-						-->
-						<type>standalone</type>
+                        <!--
+                            'standalone' = recreated for every build (unlike 'existing' = shared across
+                            builds)
+                        -->
+                        <type>standalone</type>
 
-						<!--
-							for 'standalone' configuration specify target dir where to deploy
-							webapp (different from tomcat home location), for 'existing'
-							configuration use tomcat home location as used in container
-						-->
-						<home>${project.build.directory}/tomcat5x</home>
+                        <!--
+                            for 'standalone' configuration specify target dir where to deploy webapp
+                            (different from tomcat home location), for 'existing' configuration use tomcat
+                            home location as used in container
+                        -->
+                        <home>${project.build.directory}/tomcat5x</home>
 
-						<deployables>
-							<deployable>
-								<groupId>com.bawi</groupId>
-								<artifactId>my-simple-calculator-web-service</artifactId>
-								<type>war</type>
-							</deployable>
-						</deployables>
-					</configuration>
-				</configuration>
-				<executions>
-					<execution>
-						<id>start-container</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-container</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+                        <deployables>
+                            <deployable>
+                                <groupId>com.bawi</groupId>
+                                <artifactId>my-simple-calculator-web-service</artifactId>
+                                <type>war</type>
+                                <properties>
+                                    <context>service</context>
+                                </properties>
+                            </deployable>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tomcat.home>/home/bawi/workspace/apache-tomcat-5.5.28</tomcat.home>
-	</properties>
+                            <deployable>
+                                <groupId>com.bawi</groupId>
+                                <artifactId>my-url-forwarder</artifactId>
+                                <type>war</type>
+                                <properties>
+                                    <context>ssi</context>
+                                </properties>
+                            </deployable>
+
+                        </deployables>
+
+                        <properties>
+                            <cargo.logging>high</cargo.logging>
+                            <cargo.jvmargs><![CDATA[-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n]]></cargo.jvmargs>
+                        </properties>
+                    </configuration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-container</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-container</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tomcat.home>/home/sg0920709/workspace/apache-tomcat-5.5.28</tomcat.home>
+    </properties>
 </project>

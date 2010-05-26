@@ -45,6 +45,7 @@ public class MyServlet extends HttpServlet {
             }
         }
         log.info(builder);
+        log.info(this.getServletContext().getInitParameter("contextConfigLocation"));
     }
 
     @SuppressWarnings("unchecked")
