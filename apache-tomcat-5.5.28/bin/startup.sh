@@ -30,6 +30,10 @@ done
 PRGDIR=`dirname "$PRG"`
 EXECUTABLE=catalina.sh
 
+export JPDA_TRANSPORT=dt_socket
+export JPDA_ADDRESS=8000
+
+
 # Check that target executable exists
 if $os400; then
   # -x will Only work on the os400 if the files are: 
@@ -45,4 +49,6 @@ else
   fi
 fi 
 
-exec "$PRGDIR"/"$EXECUTABLE" start "$@"
+
+#exec "$PRGDIR"/"$EXECUTABLE" start "$@"
+exec "$PRGDIR"/"$EXECUTABLE" jpda start "$@"
