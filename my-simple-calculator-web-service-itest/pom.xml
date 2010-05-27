@@ -162,6 +162,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tomcat.home>/home/bawi/workspace/apache-tomcat-5.5.28</tomcat.home>
+		<tomcat.home>/home/sg0920709/workspace/apache-tomcat-5.5.28</tomcat.home>
 	</properties>
 </project>
