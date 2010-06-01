@@ -232,7 +232,9 @@ cp container/catalina/src/share/org/apache/catalina/mbeans/JMXAdaptorLifecycleLi
        unpackWARs="true" autoDeploy="true"
        xmlValidation="false" xmlNamespaceAware="false">
 
+       <!--
        <Context path="/forwarder" crossContext="true" /> 
+       -->
 
         <!-- Defines a cluster for this node,
              By defining this element, means that every manager will be changed.

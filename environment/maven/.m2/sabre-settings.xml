@@ -12,7 +12,7 @@
       <host>www-ad-proxy.sabre.com</host>
       <port>80</port>
       <username>sg0920709</username>
-      <password>telekom2</password>
+      <password>telekom4</password>
       <nonProxyHosts>*.sabre.com</nonProxyHosts>
     </proxy>
   </proxies>
