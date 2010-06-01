@@ -5,6 +5,8 @@
     <artifactId>my-simple-calculator-web-service-itest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <dependencies>
+    
+        <!-- Deployables -->
         <dependency>
             <groupId>com.bawi</groupId>
             <artifactId>my-simple-calculator-web-service</artifactId>
@@ -17,18 +19,28 @@
             <version>0.1-SNAPSHOT</version>
             <type>war</type>
         </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+
+        <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>LATEST</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
         </dependency>
     </dependencies>
+
     <build>
         <testSourceDirectory>src/itest/java</testSourceDirectory>
         <testResources>
@@ -78,7 +90,7 @@
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
-                    <wait>true</wait>
+                    <wait>false</wait>
 
                     <container>
                         <containerId>tomcat5x</containerId>
@@ -87,8 +99,16 @@
                             'installed' = present on local file system, default (as opposed to 'embedded' =
                             supported only by jetty )
                         -->
-                        <type>installed</type>
-                        <home>${tomcat.home}</home>
+                        <!--
+                            <type>installed</type> <home>${tomcat.home}</home>
+                        -->
+
+
+                        <zipUrlInstaller>
+                            <url>http://localhost/bin/apache-tomcat-5.5.29.zip</url>
+                            <installDir>/tmp</installDir>
+                        </zipUrlInstaller>
+
 
                         <!-- logging to file, instead console (default) -->
                         <!--
@@ -101,8 +121,7 @@
 
                         <!--
                             'standalone' = recreated for every build (unlike 'existing' = shared across
-                            builds) 
-                        <type>existing</type>
+                            builds) <type>existing</type>
                         -->
                         <type>standalone</type>
 
@@ -125,21 +144,18 @@
                                     <context>service</context>
                                 </properties>
                             </deployable>
-
                             <deployable>
                                 <groupId>com.bawi</groupId>
                                 <artifactId>my-request-forwarder</artifactId>
                                 <type>war</type>
-                                <properties>
-                                    <context>forwarder</context>
-                                </properties>
+                                <!-- context configured in META-INF/context.xml in forwarder.war -->
                             </deployable>
-
                         </deployables>
-
                         <properties>
                             <cargo.logging>high</cargo.logging>
+                            <!-- 
                             <cargo.jvmargs>${jvmargs}</cargo.jvmargs>
+                             -->
                         </properties>
                     </configuration>
                 </configuration>
@@ -165,7 +181,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tomcat.home>${user.home}/workspace/apache-tomcat-5.5.28</tomcat.home>
+        <!-- 
         <jvmargs>-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</jvmargs>
+        <tomcat.home>${user.home}/workspace/apache-tomcat-5.5.28</tomcat.home>
+         -->
     </properties>
 </project>
