@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
 
@@ -15,7 +16,8 @@ public class MavenBuildPropertiesReader {
     }
 
     public static void putToSystemProperties() throws IOException {
-        Properties systemProperties = loadSystemPropertiesFromFile();
+        // Properties systemProperties = loadSystemPropertiesFromFile();
+        Properties systemProperties = loadSystemPropertiesFromResource("maven.build.properties");
         printSystemProperties(systemProperties);
 
     }
@@ -33,6 +35,18 @@ public class MavenBuildPropertiesReader {
                     + "' is generated during maven build process. Run maven build in '" + projectBasedir + "'.");
         }
         systemProperties.load(inStream);
+        return systemProperties;
+    }
+
+    private static Properties loadSystemPropertiesFromResource(String resourceFile) throws IOException {
+        Properties systemProperties = System.getProperties();
+        // MavenBuildPropertiesReader.class.getClassLoader().get
+        InputStream resourceAsStream = MavenBuildPropertiesReader.class.getClassLoader().getResourceAsStream(
+                resourceFile);
+        if (resourceAsStream != null) {
+            throw new RuntimeException("Could not load properties file: '" + resourceFile + "'");
+        }
+        systemProperties.load(resourceAsStream);
         return systemProperties;
     }
 
