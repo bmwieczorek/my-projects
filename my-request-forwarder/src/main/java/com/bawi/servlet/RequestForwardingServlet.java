@@ -8,18 +8,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class RequestForwardingServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+    private final static Logger logger = Logger.getLogger(RequestForwardingServlet.class);
+    private final static String targetContext = "/service";
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        forwardRequestToContext(req, resp, "/service");
+        forwardRequestToContext(req, resp, targetContext);
 	}
 	
     private void forwardRequestToContext(HttpServletRequest req, HttpServletResponse resp, String targetContext)
             throws ServletException, IOException {
         ServletContext context = getServletContext().getContext(targetContext);
+        validate(context);
         String requestPathWithoutContext = req.getPathInfo();
         context.getRequestDispatcher("/" + requestPathWithoutContext).forward(req, resp);
+        logger.debug("Forwarding request to " + req.getContextPath() + "/" + requestPathWithoutContext);
+    }
+
+    private void validate(ServletContext context) {
+        if (context == null) {
+            String message = "No deployable at target context " + targetContext;
+            logger.error(message);
+            throw new RuntimeException(message);
+        }
     }
 }
