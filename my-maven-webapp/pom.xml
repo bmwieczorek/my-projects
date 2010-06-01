@@ -63,7 +63,7 @@
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
-                    <wait>true</wait>
+                    <wait>false</wait>
 
                     <container>
                         <containerId>tomcat5x</containerId>
@@ -99,7 +99,9 @@
 
                         <properties>
                             <cargo.logging>high</cargo.logging>
+                            <!-- 
                             <cargo.jvmargs><![CDATA[-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n]]></cargo.jvmargs>
+                             -->
                         </properties>
 
                     </configuration>
