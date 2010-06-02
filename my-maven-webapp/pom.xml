@@ -181,7 +181,7 @@
     <properties>
         <releaseVersion>2010.R1</releaseVersion>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tomcat.home>${user.home}/workspace/apache-tomcat-5.5.28</tomcat.home>
+        <tomcat.home>${basedir}/../apache-tomcat-5.5.28</tomcat.home>
         <maven.app.release.version>M2-2010.05</maven.app.release.version>
     </properties>
 
