@@ -1,189 +1,201 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bawi</groupId>
-    <artifactId>my-simple-calculator-web-service-itest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <dependencies>
-    
-        <!-- Deployables -->
-        <dependency>
-            <groupId>com.bawi</groupId>
-            <artifactId>my-simple-calculator-web-service</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>com.bawi</groupId>
-            <artifactId>my-request-forwarder</artifactId>
-            <version>0.1-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bawi</groupId>
+	<artifactId>my-simple-calculator-web-service-itest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<dependencies>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>
+		<!-- Deployables -->
+		<dependency>
+			<groupId>com.bawi</groupId>
+			<artifactId>my-simple-calculator-web-service</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.bawi</groupId>
+			<artifactId>my-request-forwarder</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
 
-        <!-- Testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>LATEST</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
 
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
-        </dependency>
-    </dependencies>
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>LATEST</version>
+			<scope>test</scope>
+		</dependency>
 
-    <build>
-        <testSourceDirectory>src/itest/java</testSourceDirectory>
-        <testResources>
-            <testResource>
-                <directory>src/itest/resources</directory>
-            </testResource>
-        </testResources>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+	</dependencies>
 
-        <plugins>
+	<build>
+		<testSourceDirectory>src/itest/java</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>src/itest/resources</directory>
+			</testResource>
+		</testResources>
 
-            <!-- java annotations -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>LATEST</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
+		<plugins>
 
-            <!-- run all tests only in integration test phase -->
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>surefire-itest</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+			<!-- java annotations -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>LATEST</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
 
-            <!-- itests starting and stoping tomcat  -->
+			<!-- run all tests only in integration test phase -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>surefire-itest</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <configuration>
+			<!-- itests starting and stoping tomcat  -->
 
-                    <!-- waiter after cargo start; default true -->
-                    <wait>false</wait>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<configuration>
 
-                    <container>
-                        <containerId>tomcat5x</containerId>
+					<!-- waiter after cargo start; default true -->
+					<wait>false</wait>
 
-                        <!--
-                            'installed' = present on local file system, default (as opposed to 'embedded' =
-                            supported only by jetty )
-                        -->
-                        <!--
-                            <type>installed</type> <home>${tomcat.home}</home>
-                        -->
+					<container>
+						<containerId>tomcat5x</containerId>
 
-
-                        <zipUrlInstaller>
-                            <url>file:/C:/dev/workspace/apache-tomcat-5.5.29.zip</url>
-                            <installDir>/tmp</installDir>
-                        </zipUrlInstaller>
+						<!--
+							'installed' = present on local file system, default (as opposed
+							to 'embedded' = supported only by jetty )
+						-->
+						<!--
+							<type>installed</type> <home>${tomcat.home}</home>
+						-->
 
 
-                        <!-- logging to file, instead console (default) -->
-                        <!--
-                            <log>${project.build.directory}/cargo.log</log>
-                            <output>${project.build.directory}/catalina.out</output>
-                        -->
+						<zipUrlInstaller>
+							<!--  							
+							<url>http://www.apache.org/dist/tomcat/tomcat-5/v5.5.29/bin/apache-tomcat-5.5.29.zip</url>
+							-->
+							<url>file://${basedir}/../apache-tomcat-5.5.29.zip</url>
+							<installDir>${user.tmp}</installDir>
+							<!-- 
+							<proxy>
+								<host>www-ad-proxy.sabre.com</host>
+								<port>80</port>
+								<user>sg0920709</user>
+								<password>telekom4</password>
+							</proxy>
+							 -->
+						</zipUrlInstaller>
 
-                    </container>
-                    <configuration>
 
-                        <!--
-                            'standalone' = recreated for every build (unlike 'existing' = shared across
-                            builds) <type>existing</type>
-                        -->
-                        <type>standalone</type>
+						<!-- logging to file, instead console (default) -->
+						<!--
+							<log>${project.build.directory}/cargo.log</log>
+							<output>${project.build.directory}/catalina.out</output>
+						-->
 
-                        <!--
-                            for 'standalone' configuration specify target dir where to deploy webapp
-                            (different from tomcat home location), for 'existing' configuration use tomcat
-                            home location as used in container
-                        -->
-                        <home>${project.build.directory}/tomcat5x</home>
-                        <!--
-                        <home>${tomcat.home}</home>
-                        -->
+					</container>
+					<configuration>
 
-                        <deployables>
-                            <deployable>
-                                <groupId>com.bawi</groupId>
-                                <artifactId>my-simple-calculator-web-service</artifactId>
-                                <type>war</type>
-                                <properties>
-                                    <context>service</context>
-                                </properties>
-                            </deployable>
-                            <deployable>
-                                <groupId>com.bawi</groupId>
-                                <artifactId>my-request-forwarder</artifactId>
-                                <type>war</type>
-                                <!-- context configured in META-INF/context.xml in forwarder.war -->
-                            </deployable>
-                        </deployables>
-                        <properties>
-                            <cargo.logging>high</cargo.logging>
-                            <!-- 
-                            <cargo.jvmargs>${jvmargs}</cargo.jvmargs>
-                             -->
-                        </properties>
-                    </configuration>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>start-container</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>stop-container</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+						<!--
+							'standalone' = recreated for every build (unlike 'existing' =
+							shared across builds) <type>existing</type>
+						-->
+						<type>standalone</type>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- 
-        <jvmargs>-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</jvmargs>
-        <tomcat.home>${basedir}/../apache-tomcat-5.5.28</tomcat.home>
-         -->
-    </properties>
+						<!--
+							for 'standalone' configuration specify target dir where to deploy
+							webapp (different from tomcat home location), for 'existing'
+							configuration use tomcat home location as used in container
+						-->
+						<home>${project.build.directory}/tomcat5x</home>
+						<!--
+							<home>${tomcat.home}</home>
+						-->
+
+						<deployables>
+							<deployable>
+								<groupId>com.bawi</groupId>
+								<artifactId>my-simple-calculator-web-service</artifactId>
+								<type>war</type>
+								<properties>
+									<context>service</context>
+								</properties>
+							</deployable>
+							<deployable>
+								<groupId>com.bawi</groupId>
+								<artifactId>my-request-forwarder</artifactId>
+								<type>war</type>
+								<!-- context configured in META-INF/context.xml in forwarder.war -->
+							</deployable>
+						</deployables>
+						<properties>
+							<cargo.logging>high</cargo.logging>
+							<!--
+								<cargo.jvmargs>${jvmargs}</cargo.jvmargs>
+							-->
+						</properties>
+					</configuration>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--
+			<jvmargs>-Xdebug
+			-Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</jvmargs>
+			<tomcat.home>${basedir}/../apache-tomcat-5.5.28</tomcat.home>
+		-->
+	</properties>
 </project>
