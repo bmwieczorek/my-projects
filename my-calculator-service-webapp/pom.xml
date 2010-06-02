@@ -1,304 +1,301 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.bawi</groupId>
-	<artifactId>my-calculator-service-webapp</artifactId>
-	<packaging>war</packaging>
-	<name>My Web Services Standalone Project</name>
-	<version>0.0.1-SNAPSHOT</version>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bawi</groupId>
+    <artifactId>my-calculator-service-webapp</artifactId>
+    <packaging>war</packaging>
+    <name>My Web Services Standalone Project</name>
+    <version>0.0.1-SNAPSHOT</version>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-codegen-plugin</artifactId>
-				<version>2.2.5</version>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>wsdl2java</goal>
-						</goals>
-						<configuration>
-							<sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-							<!--
-								<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot> <includes> <include>*Service.wsdl</include>
-								</includes>
-							-->
-							<wsdlOptions>
-								<wsdlOption>
-									<extraargs>
-										<extraarg>-nexclude</extraarg>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>2.2.5</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                        <configuration>
+                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            
+                            <!--
+                            <wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
+                            <includes>
+                                <include>*Service.wsdl</include>
+                            </includes>
+                            -->
+                            
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <extraargs>
+                                        <extraarg>-nexclude</extraarg>
 
-										<!-- for external binding file -->
-										<extraarg>http://services.bawi.com/calculator=com.bawi.services.calculator.model</extraarg>
+                                        <!-- for external binding file -->
+                                        <extraarg>http://services.bawi.com/calculator=com.bawi.services.calculator.model</extraarg>
 
-										<!-- for non-external binding file -->
-										<!-- 
-										<extraarg>http://services.bawi.com/calculator</extraarg>
-										 -->
+                                        <!-- for non-external binding file -->
+                                        <!-- 
+                                        <extraarg>http://services.bawi.com/calculator</extraarg>
+                                        -->
 
-										<!--
-											override all packages of the generated classes defined in the namespace
-										-->
+                                        <!-- override all packages of the generated classes defined in the namespace -->
 
-										<!-- for non-external binding file -->
-										<!--
-											<extraarg>-p</extraarg> <extraarg>com.bawi.services.calculator.model</extraarg>
-										-->
-									</extraargs>
-									<wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
+                                        <!-- for non-external binding file -->
+                                        <!--
+                                        <extraarg>-p</extraarg>
+                                        <extraarg>com.bawi.services.calculator.model</extraarg>
+                                        -->
+                                    </extraargs>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
 
-									<!-- binding defined in external bindings file -->
-									<bindingFiles>
-										<bindingFile>${basedir}/src/main/resources/jaxb/configuration-wsdl-bindings.xml</bindingFile>
-									</bindingFiles>
+                                    <!-- binding defined in external bindings file -->
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/resources/jaxb/configuration-wsdl-bindings.xml</bindingFile>
+                                    </bindingFiles>
 
-								</wsdlOption>
-							</wsdlOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>1.2</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
-					<outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
+                    <outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
 
-					<!-- external binding files (xjb) -->
-					<bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
+                    <!-- external binding files (xjb) -->
+                    <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
 
-					<!--  -->
-					<!-- 
-					<packageName>com.bawi.services.calculator.model</packageName>
-					 -->
+                    <!--
+                    <packageName>com.bawi.services.calculator.model</packageName>
+                    -->
 
-					<schemaFiles>calculator.xsd</schemaFiles>
-					<clearOutputDir>false</clearOutputDir>
-					<extension>true</extension>
+                    <schemaFiles>calculator.xsd</schemaFiles>
+                    <clearOutputDir>false</clearOutputDir>
+                    <extension>true</extension>
 
-					<!-- override defaults -->
-					<!-- 
-					<packageName>com.bawi.myservice.jaxb</packageName>
-					 -->
-					<arguments>-Xfluent-api -Xcommons-lang</arguments>
-				</configuration>
-				<!-- required for jaxb2-maven-plugin -->
-				<dependencies>
+                    <!-- override defaults -->
+                    <!--
+                    <packageName>com.bawi.myservice.jaxb</packageName>
+                    -->
+                    <arguments>-Xfluent-api -Xcommons-lang</arguments>
+                </configuration>
+                <!-- required for jaxb2-maven-plugin -->
+                <dependencies>
 
-					<!-- .with(...) fluent builder jaxb-fluent-api -Xfluent-api -->
-					<dependency>
-						<groupId>net.java.dev.jaxb2-commons</groupId>
-						<artifactId>jaxb-fluent-api</artifactId>
-						<version>2.1.8</version>
-					</dependency>
+                    <!-- .with(...) fluent builder jaxb-fluent-api -Xfluent-api -->
+                    <dependency>
+                        <groupId>net.java.dev.jaxb2-commons</groupId>
+                        <artifactId>jaxb-fluent-api</artifactId>
+                        <version>2.1.8</version>
+                    </dependency>
 
-					<!--
-						.toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang
-					-->
-					<dependency>
-						<groupId>org.jvnet.jaxb2_commons_extra</groupId>
-						<artifactId>jaxb-commons-lang-plugin</artifactId>
-						<version>2.1.3</version>
-					</dependency>
+                    <!-- .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang -->
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons_extra</groupId>
+                        <artifactId>jaxb-commons-lang-plugin</artifactId>
+                        <version>2.1.3</version>
+                    </dependency>
 
-					<!-- required by jaxb-commons-lang-plugin -->
-					<dependency>
-						<groupId>commons-lang</groupId>
-						<artifactId>commons-lang</artifactId>
-						<version>2.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+                    <!-- required by jaxb-commons-lang-plugin -->
+                    <dependency>
+                        <groupId>commons-lang</groupId>
+                        <artifactId>commons-lang</artifactId>
+                        <version>2.4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
 
-			<!-- execute java main program within the build process -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<executions>
-					<execution>
-						<id>rename java class files</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-						<configuration>
-						</configuration>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>com.bawi.services.calculator.maven.build.ClassTransformer</mainClass>
-					<arguments>
-						<argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/model/CalculatorRQ.java</argument>
-					</arguments>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-				<executions>
-					<execution>
-						<id>compile build program before main sources compilation</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-						<configuration>
-							<includes>
-								<include>**/ClassTransformer.java</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+            <!-- execute java main program within the build process -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>rename java class files</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>com.bawi.services.calculator.maven.build.ClassTransformer</mainClass>
+                    <arguments>
+                        <argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/model/CalculatorRQ.java</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile build program before main sources compilation</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/ClassTransformer.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-			<!-- mvn jetty:run  -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>LATEST</version>
-				<configuration>
-					<scanIntervalSeconds>3</scanIntervalSeconds>
-					<!-- jmx enabled -->
-					<jettyConfig>src/etc/jetty-jmx-mx4j.xml</jettyConfig>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-						<version>1.2.15</version>
-					</dependency>
-					<!-- jmx enabled -->
-					<dependency>
-						<groupId>mx4j</groupId>
-						<artifactId>mx4j-tools</artifactId>
-						<version>3.0.1</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
-	</build>
+            <!-- mvn jetty:run  -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>LATEST</version>
+                <configuration>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <!-- jmx enabled -->
+                    <jettyConfig>src/etc/jetty-jmx-mx4j.xml</jettyConfig>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                        <version>1.2.15</version>
+                    </dependency>
+                    <!-- jmx enabled -->
+                    <dependency>
+                        <groupId>mx4j</groupId>
+                        <artifactId>mx4j-tools</artifactId>
+                        <version>3.0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
-	<repositories>
-		<repository>
-			<id>maven2-repository.dev.java.net</id>
-			<name>Java.net Maven 2 Repository</name>
-			<url>http://download.java.net/maven/2</url>
-		</repository>
-		<repository>
-			<id>jboss</id>
-			<url>http://repository.jboss.com/maven2</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Maven 2 Repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.com/maven2</url>
+        </repository>
+    </repositories>
 
-	<dependencies>
-		<!--
-			jaxb unmarshaller impl of setProperty; build in java6 throws
-			exception
-		-->
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.2</version>
-		</dependency>
+    <dependencies>
+        <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2</version>
+        </dependency>
 
-		<!--
-			required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin
-		-->
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.4</version>
-		</dependency>
+        <!-- required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
 
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
-			<!-- copy log4j to tomcat/lib to be able to run jmx via jetty & tomcat --> 
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+            <!-- copy log4j to tomcat/lib to be able to run jmx via jetty & tomcat -->
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- required by maven plugin in eclipse for autobuild -->
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.8.1</version>
-		</dependency>
+        <!-- required by maven plugin in eclipse for autobuild -->
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.8.1</version>
+        </dependency>
 
-		<!-- cxf -->
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>2.2.6</version>
-		</dependency>
+        <!-- cxf -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>2.2.6</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http-jetty</artifactId>
-			<version>2.2.6</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
-		<!-- cxf logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.8</version>
-		</dependency>
+        <!-- cxf logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.5.8</version>
+        </dependency>
 
-		<!-- spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-			<version>2.5.6</version>
-		</dependency>
-<!-- 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>2.5.6</version>
-		</dependency>
- -->
-		<!--  testing and validation -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.7</version>
-		</dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+        
+        <!--
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+        -->
+        
+        <!--  testing and validation -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.7</version>
+        </dependency>
 
-		<!-- apache java utilities -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>1.3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.2.1</version>
-		</dependency>
-	</dependencies>
+        <!-- apache java utilities -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+    </dependencies>
 </project>

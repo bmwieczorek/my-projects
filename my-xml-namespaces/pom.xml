@@ -24,10 +24,9 @@
 
                     <!-- external binding files (xjb) -->
                     <!--
-                        <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
+                    <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
                     -->
 
-                    <!--  -->
                     <!--
                         <packageName>com.bawi.services.calculator.model</packageName>
                     -->
@@ -38,7 +37,7 @@
 
                     <!-- override defaults -->
                     <!--
-                        <packageName>com.bawi.myservice.jaxb</packageName>
+                    <packageName>com.bawi.myservice.jaxb</packageName>
                     -->
                     <arguments>-Xfluent-api -Xcommons-lang</arguments>
                 </configuration>
@@ -53,8 +52,7 @@
                     </dependency>
 
                     <!--
-                        .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin
-                        -Xcommons-lang
+                        .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang
                     -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons_extra</groupId>

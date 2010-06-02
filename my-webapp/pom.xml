@@ -1,186 +1,184 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.bawi</groupId>
-	<artifactId>my-webapp</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<description>War file for my spring web application</description>
-	<name>My Web Application</name>
+    <groupId>com.bawi</groupId>
+    <artifactId>my-webapp</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <description>War file for my spring web application</description>
+    <name>My Web Application</name>
 
-	<dependencies>
-		<!-- Application Framework -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
-			<version>2.5.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>2.5.6</version>
-		</dependency>
+    <dependencies>
+        <!-- Application Framework -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>2.5.6</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- JSP Standard Tag Library -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
-		</dependency>
+        <!-- JSP Standard Tag Library -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
 
-		<!-- DWR -->
-		<dependency>
-			<groupId>org.directwebremoting</groupId>
-			<artifactId>dwr</artifactId>
-			<version>2.0.2</version>
-		</dependency>
+        <!-- DWR -->
+        <dependency>
+            <groupId>org.directwebremoting</groupId>
+            <artifactId>dwr</artifactId>
+            <version>2.0.2</version>
+        </dependency>
 
-		<!-- Spring AOP @AspectJ -->
-		<dependency>
-			<groupId>aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.3</version>
-		</dependency>
-		<dependency>
-			<groupId>aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.5.3</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.15</version>
-			<scope>provided</scope>
-		</dependency>
+        <!-- Spring AOP @AspectJ -->
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
+            <scope>provided</scope>
+        </dependency>
 
-		<!-- HttpClient (GetController sends post to HTTP Post/Get requests) -->
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.1</version>
-		</dependency>
-	</dependencies>
+        <!-- HttpClient (GetController sends post to HTTP Post/Get requests) -->
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+    </dependencies>
 
-	<build>
+    <build>
 
-		<plugins>
-			<!-- support java generics -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+        <plugins>
+            <!-- support java generics -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
 
-			<!-- required to support aspectj in eclipse  -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<ajdtVersion>none</ajdtVersion>
-				</configuration>
-			</plugin>
+            <!-- required to support aspectj in eclipse  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <ajdtVersion>none</ajdtVersion>
+                </configuration>
+            </plugin>
 
-			<!-- run with mvn jetty:run, remember to enable autobuild in eclipse -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.17</version>
-				<configuration>
-					<scanIntervalSeconds>3</scanIntervalSeconds>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-						<version>1.2.15</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
-	</build>
-	<!--
+            <!-- run with mvn jetty:run, remember to enable autobuild in eclipse -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.17</version>
+                <configuration>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                        <version>1.2.15</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+    <!--
 		by default 'mvn cargo:start' will use jetty 6x, use '-P jboss' to
 		deploy on jboss
 	-->
-	<!--
-		activated in ${user.home}/.m2/settings.xml: <settings>
-		<activeProfiles> <activeProfile>jetty</activeProfile>
-		</activeProfiles> </settings>
-	-->
-	<profiles>
-		<profile>
-			<id>jetty</id>
-			<activation></activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<configuration>
-							<configuration>
-								<properties>
-									<cargo.logging>${log.level}</cargo.logging>
-								</properties>
-								<deployables>
-									<deployable>
-										<properties>
-											<!-- overwrite the root context -->
-											<context>${artifactId}</context>
-										</properties>
-									</deployable>
-								</deployables>
-							</configuration>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>jboss</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<configuration>
-							<container>
-								<containerId>jboss4x</containerId>
-								<home>${jboss4x.home}</home>
-							</container>
-							<configuration>
-								<home>${basedir}/target/jboss4x</home>
-								<properties>
-									<cargo.logging>${log.level}</cargo.logging>
-								</properties>
-							</configuration>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    <!--
+        activated in ${user.home}/.m2/settings.xml: <settings> <activeProfiles> <activeProfile>jetty</activeProfile>
+        </activeProfiles> </settings>
+    -->
+    <profiles>
+        <profile>
+            <id>jetty</id>
+            <activation></activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <configuration>
+                                <properties>
+                                    <cargo.logging>${log.level}</cargo.logging>
+                                </properties>
+                                <deployables>
+                                    <deployable>
+                                        <properties>
+                                            <!-- overwrite the root context -->
+                                            <context>${artifactId}</context>
+                                        </properties>
+                                    </deployable>
+                                </deployables>
+                            </configuration>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>jboss</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <container>
+                                <containerId>jboss4x</containerId>
+                                <home>${jboss4x.home}</home>
+                            </container>
+                            <configuration>
+                                <home>${basedir}/target/jboss4x</home>
+                                <properties>
+                                    <cargo.logging>${log.level}</cargo.logging>
+                                </properties>
+                            </configuration>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
-	<properties>
-		<!-- logging level: low,medium,high -->
-		<log.level>high</log.level>
-		<jboss.home>/home/bawi/bin/jboss-4.0.4.GA</jboss.home>
-	</properties>
-
+    <properties>
+        <!-- logging level: low,medium,high -->
+        <log.level>high</log.level>
+        <jboss.home>/home/bawi/bin/jboss-4.0.4.GA</jboss.home>
+    </properties>
 
 </project>

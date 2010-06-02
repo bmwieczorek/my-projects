@@ -5,7 +5,7 @@
     <artifactId>my-parent-maven-project</artifactId>
     <packaging>pom</packaging>
     <name>Project parent pom</name>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
