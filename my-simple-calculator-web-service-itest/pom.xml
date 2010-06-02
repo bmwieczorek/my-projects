@@ -105,7 +105,7 @@
 
 
                         <zipUrlInstaller>
-                            <url>http://localhost/bin/apache-tomcat-5.5.29.zip</url>
+                            <url>file:/C:/dev/workspace/apache-tomcat-5.5.29.zip</url>
                             <installDir>/tmp</installDir>
                         </zipUrlInstaller>
 
