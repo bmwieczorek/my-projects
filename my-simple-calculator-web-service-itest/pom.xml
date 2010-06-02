@@ -183,7 +183,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- 
         <jvmargs>-Xdebug -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n</jvmargs>
-        <tomcat.home>${user.home}/workspace/apache-tomcat-5.5.28</tomcat.home>
+        <tomcat.home>${basedir}/../apache-tomcat-5.5.28</tomcat.home>
          -->
     </properties>
 </project>
