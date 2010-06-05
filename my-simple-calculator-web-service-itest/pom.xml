@@ -107,9 +107,10 @@
                         <zipUrlInstaller>
                             <!--
                             <url>http://www.apache.org/dist/tomcat/tomcat-5/v5.5.29/bin/apache-tomcat-5.5.29.zip</url>
-                            -->
-                            <url>file://${basedir}/../apache-tomcat-5.5.29.zip</url>
                             <installDir>${java.io.tmpdir}</installDir>
+                            -->
+                            <url>file:${basedir}/../apache-tomcat-5.5.29.zip</url>
+                            <installDir>${project.build.directory}</installDir>
                             
                             <!--
                             <proxy>
