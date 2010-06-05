@@ -60,6 +60,8 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
+                <!-- temporary fix, version 1.0.1 dependency problem -->
+                <version>1.0.1-beta-3</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
