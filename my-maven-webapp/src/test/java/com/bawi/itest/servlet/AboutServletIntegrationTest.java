@@ -21,8 +21,8 @@ public class AboutServletIntegrationTest {
 		int statusCode = client.executeMethod(method);
 		assertEquals(HttpStatus.SC_OK, statusCode);
 		String responseBody = method.getResponseBodyAsString();
-		logger.error("responseBody=" + responseBody);
-		assertTrue(responseBody.contains("2010.R1"));
+		logger.debug("responseBody='" + responseBody + "'");
+		assertTrue(responseBody.contains("RC1-2010.06"));
 	}
 }
 
