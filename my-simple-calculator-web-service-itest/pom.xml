@@ -55,7 +55,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -86,7 +85,6 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.0.1-beta-3</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
@@ -100,33 +98,28 @@
                             only by jetty )
                         -->
                         <!--
-                        <type>installed</type>
-                        <home>${tomcat.home}</home>
+                            <type>installed</type> <home>${tomcat.home}</home>
                         -->
 
                         <zipUrlInstaller>
                             <!--
-                            <url>http://www.apache.org/dist/tomcat/tomcat-5/v5.5.29/bin/apache-tomcat-5.5.29.zip</url>
-                            <installDir>${java.io.tmpdir}</installDir>
+                                <url>http://www.apache.org/dist/tomcat/tomcat-5/v5.5.29/bin/apache-tomcat-5.5.29.zip</url>
+                                <installDir>${java.io.tmpdir}</installDir>
                             -->
                             <url>file:${basedir}/../apache-tomcat-5.5.29.zip</url>
                             <installDir>${project.build.directory}</installDir>
-                            
+
                             <!--
-                            <proxy>
-                                <host>www-ad-proxy.bawi.com</host>
-                                <port>80</port>
-                                <user>my-login</user>
-                                <password>my-pass</password>
-                            </proxy>
+                                <proxy> <host>www-ad-proxy.bawi.com</host> <port>80</port> <user>my-login</user>
+                                <password>my-pass</password> </proxy>
                             -->
                         </zipUrlInstaller>
 
 
                         <!-- logging to file, instead console (default) -->
                         <!--
-                        <log>${project.build.directory}/cargo.log</log>
-                        <output>${project.build.directory}/catalina.out</output>
+                            <log>${project.build.directory}/cargo.log</log>
+                            <output>${project.build.directory}/catalina.out</output>
                         -->
 
                     </container>

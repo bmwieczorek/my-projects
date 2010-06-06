@@ -5,6 +5,7 @@
     <artifactId>my-jmx-spring-web-app</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -15,7 +16,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
+            <version>1.2.16</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -61,7 +62,6 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.22</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                 </configuration>
@@ -71,5 +71,6 @@
     <properties>
         <jboss42x.home>/home/bawi/bin/tmp/jboss-4.2.2.GA</jboss42x.home>
         <log.level>high</log.level>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
