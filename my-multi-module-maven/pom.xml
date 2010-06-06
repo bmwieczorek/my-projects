@@ -19,6 +19,20 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+                    </additionalProjectnatures>
+                    <buildcommands>
+                        <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+                        <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+                    </buildcommands>
+                    <downloadSources>true</downloadSources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <properties>
