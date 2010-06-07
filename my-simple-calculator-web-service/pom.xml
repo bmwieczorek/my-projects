@@ -12,6 +12,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>LATEST</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -45,6 +46,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>LATEST</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -97,6 +99,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
