@@ -55,6 +55,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -64,6 +65,7 @@
             <!-- run all tests only in integration test phase -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -85,6 +87,7 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
