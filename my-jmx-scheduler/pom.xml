@@ -41,6 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -50,6 +51,7 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <container>
                         <containerId>jboss42x</containerId>
@@ -68,6 +70,7 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <!-- jmx enabled -->
