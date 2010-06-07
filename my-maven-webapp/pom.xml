@@ -38,6 +38,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
@@ -47,6 +48,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -58,6 +60,7 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
@@ -67,8 +70,8 @@
                         <containerId>tomcat5x</containerId>
 
                         <!--
-                            'installed' = present on local file system, default (as opposed to 'embedded' = supported
-                            only by jetty )
+                            'installed' = present on local file system, default (as opposed to 'embedded' =
+                            supported only by jetty )
                         -->
                         <type>installed</type>
                         <home>${tomcat.home}</home>
@@ -83,14 +86,15 @@
                     <configuration>
 
                         <!--
-                            'standalone' = recreated for every build (unlike 'existing' = shared across builds)
+                            'standalone' = recreated for every build (unlike 'existing' = shared across
+                            builds)
                         -->
                         <type>standalone</type>
 
                         <!--
-                            for 'standalone' configuration specify target dir where to deploy webapp (different from
-                            tomcat home location), for 'existing' configuration use tomcat home location as used in
-                            container
+                            for 'standalone' configuration specify target dir where to deploy webapp
+                            (different from tomcat home location), for 'existing' configuration use tomcat
+                            home location as used in container
                         -->
                         <home>${project.build.directory}/tomcat5x</home>
 
@@ -124,20 +128,22 @@
 
             <!--
                 <plugin> <groupId>org.codehaus.cargo</groupId> <artifactId>cargo-maven2-plugin</artifactId>
-                <configuration> <wait>false</wait> <container> <containerId>tomcat5x</containerId> <zipUrlInstaller>
-                <url>http://localhost/apache-tomcat-5.5.29.zip</url> <installDir>${installDir}</installDir>
-                </zipUrlInstaller> </container> <deployables> <deployable> <groupId>com.bawi</groupId>
-                <artifactId>my-maven-webapp</artifactId> <type>war</type> </deployable> </deployables> <configuration>
+                <configuration> <wait>false</wait> <container> <containerId>tomcat5x</containerId>
+                <zipUrlInstaller> <url>http://localhost/apache-tomcat-5.5.29.zip</url>
+                <installDir>${installDir}</installDir> </zipUrlInstaller> </container> <deployables>
+                <deployable> <groupId>com.bawi</groupId> <artifactId>my-maven-webapp</artifactId>
+                <type>war</type> </deployable> </deployables> <configuration>
                 <home>${project.build.directory}/tomcat5x/container</home> </configuration> </configuration>
                 <executions> <execution> <id>start-container</id> <phase>pre-integration-test</phase> <goals>
                 <goal>start</goal> </goals> </execution> <execution> <id>stop-container</id>
-                <phase>post-integration-test</phase> <goals> <goal>stop</goal> </goals> </execution> </executions>
-                </plugin>
+                <phase>post-integration-test</phase> <goals> <goal>stop</goal> </goals> </execution>
+                </executions> </plugin>
             -->
 
             <!-- run *.itest.* package in integration test phase -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <excludes>
                         <exclude>**/itest/**</exclude>
@@ -163,7 +169,9 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <!-- remove '@', part of email address, from default filtering delimiters  -->
                     <delimiters>
