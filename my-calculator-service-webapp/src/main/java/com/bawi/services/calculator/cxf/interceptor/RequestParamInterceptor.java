@@ -14,23 +14,23 @@ import com.bawi.services.calculator.model.Operation;
 
 public class RequestParamInterceptor extends AbstractPhaseInterceptor<SoapMessage> {
 
-	private Logger log = Logger.getLogger(RequestParamInterceptor.class);
+    private Logger log = Logger.getLogger(RequestParamInterceptor.class);
 
-	public RequestParamInterceptor() {
-		super(Phase.PRE_LOGICAL);
-	}
+    public RequestParamInterceptor() {
+        super(Phase.PRE_LOGICAL);
+    }
 
-	@Override
-	public void handleMessage(SoapMessage message) throws Fault {
-		List<?> contentElements = message.getContent(List.class);
-		for (Object element : contentElements) {
-			if (element instanceof CalculatorRQ) {
-				CalculatorRQ calculatorRQ = (CalculatorRQ) element;
-				Operation operation = calculatorRQ.getOperation();
-				MDC.put("operation", operation);
-				log.debug("operation" + operation);
-			}
-		}
-	}
+    @Override
+    public void handleMessage(SoapMessage message) throws Fault {
+        List<?> contentElements = message.getContent(List.class);
+        for (Object element : contentElements) {
+            if (element instanceof CalculatorRQ) {
+                CalculatorRQ calculatorRQ = (CalculatorRQ) element;
+                Operation operation = calculatorRQ.getOperation();
+                MDC.put("operation", operation);
+                log.debug("operation" + operation);
+            }
+        }
+    }
 
 }

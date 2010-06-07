@@ -23,7 +23,7 @@ class Car {
     synchronized void m2(String s) {
         System.out.println("[" + s + "] starting m2");
         try {
-            //can be interrupted via t.interrupt();
+            // can be interrupted via t.interrupt();
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             System.out.println("[" + s + "]" + e.getMessage());

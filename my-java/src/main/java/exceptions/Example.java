@@ -10,8 +10,8 @@ public class Example {
             System.out.println(e.getCause());
             throw new MyException("My handling", e);
         }
-        
-        //new ClassWithMethodThrowingRuntimeException().myMethod();
+
+        // new ClassWithMethodThrowingRuntimeException().myMethod();
     }
 
 }

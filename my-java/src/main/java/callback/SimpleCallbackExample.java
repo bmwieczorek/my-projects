@@ -16,10 +16,10 @@ public class SimpleCallbackExample {
 
     public static void main(String[] args) {
         CallbackTemplate callbackTemplate = new CallbackTemplate();
-        callbackTemplate.execute(new CallbackHandler(){
+        callbackTemplate.execute(new CallbackHandler() {
             public void doInCallback() {
                 System.out.println("Doing real job");
-            } 
+            }
         });
     }
 

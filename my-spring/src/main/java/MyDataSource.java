@@ -1,4 +1,3 @@
-
 public interface MyDataSource {
-	void print();
+    void print();
 }

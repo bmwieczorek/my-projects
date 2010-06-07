@@ -1,8 +1,8 @@
 package inheritance;
 
 class SuperCl {
-	private void printIt() {
-		// void printIt() {
+    private void printIt() {
+        // void printIt() {
         System.out.println("SuperClass");
     }
 
@@ -17,13 +17,13 @@ class SuperCl {
 
 class SubCl extends SuperCl {
     void printIt() {
-		System.out.println("SubClass");
+        System.out.println("SubClass");
     }
 }
 
 public class InheritanceTest {
     public static void main(String args[]) {
-		SubCl sc = new SubCl();
+        SubCl sc = new SubCl();
         sc.printIt();
         sc.printIt(false);
     }

@@ -24,14 +24,13 @@ public class UrlRedirectServlet extends HttpServlet {
     }
 
     /**
-     * This method processes the HttpServletRequest. Here the method of using
-     * sendRedirect() method is shown for the purpose of URL redirection.
+     * This method processes the HttpServletRequest. Here the method of using sendRedirect() method is shown for the
+     * purpose of URL redirection.
      */
-    public void service(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
 
-        response
-                .sendRedirect("/patch-distribution/patches");
+        response.sendRedirect("/patch-distribution/patches");
 
     }
 }

@@ -1,6 +1,5 @@
 package javatest;
 
-
 public class StopWatch {
     java.util.Calendar cal1, cal2;
 

@@ -1,7 +1,7 @@
 package exceptions;
 
 public class ClassWithMethodThrowingRuntimeException {
-    
+
     /**
      * @throws MyRuntimeException
      */

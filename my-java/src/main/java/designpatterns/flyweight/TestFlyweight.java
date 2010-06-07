@@ -39,7 +39,6 @@ public class TestFlyweight {
             flavors[i].serveTea(tables[i]);
         }
         System.out.println(" ");
-        System.out.println("total teaFlavor objects made: "
-                + teaFlavorFactory.getTotalTeaFlavorsMade());
+        System.out.println("total teaFlavor objects made: " + teaFlavorFactory.getTotalTeaFlavorsMade());
     }
 }

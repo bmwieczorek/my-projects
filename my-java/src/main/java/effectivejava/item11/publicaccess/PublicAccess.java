@@ -6,7 +6,7 @@ class Item {
     public Item(int price) {
         this.price = price;
     }
-    
+
     public int getPrice() {
         return price;
     }
@@ -28,7 +28,7 @@ public class PublicAccess {
 
         // ref cannot change, but array elements yes
         // ARR = { 9,8,7 };
-        
+
         // cannot reassign because of final
         // CAR = new Item(200);
         // CAR.price = 200;

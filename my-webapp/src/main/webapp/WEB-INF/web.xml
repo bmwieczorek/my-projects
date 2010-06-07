@@ -2,172 +2,145 @@
 
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
 
-	<display-name>My web app</display-name>
+    <display-name>My web app</display-name>
 
-	<!--
-		The 'requestContextFilter' is needed only if you want to use Spring's
-		scoping mechanism.
-	-->
-	<filter>
-		<filter-name>requestContextFilter</filter-name>
-		<filter-class>
-			org.springframework.web.filter.RequestContextFilter
-		</filter-class>
-	</filter>
+    <!-- The 'requestContextFilter' is needed only if you want to use Spring's scoping mechanism. -->
+    <filter>
+        <filter-name>requestContextFilter</filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+    </filter>
 
-	<filter-mapping>
-		<filter-name>requestContextFilter</filter-name>
-		<url-pattern>/dwr/*</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>/dwr/*</url-pattern>
+    </filter-mapping>
 
-	<!--
-		The 'contextConfigLocation' parameter tells Spring's
-		ContextLoaderListener which Spring configuration files to load.
-	-->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/applicationContext.xml
-			/WEB-INF/aop-context.xml
-		</param-value>
-		<!--
-			<param-value> classpath:sample/configuration-context.xml
-			</param-value>
-		-->
-	</context-param>
+    <!--
+        The 'contextConfigLocation' parameter tells Spring's ContextLoaderListener which Spring configuration
+        files to load.
+    -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+            /WEB-INF/aop-context.xml
+        </param-value>
 
-	<!-- used for application context -->
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
-	
+        <!--
+        <param-value> classpath:sample/configuration-context.xml</param-value>
+        -->
+    </context-param>
+
+    <!-- used for application context -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
 
-	<!-- ****************************************************** -->
-	<!--	     			Spring dispatched		  			-->
-	<!-- ****************************************************** -->
+    <!-- ****************************************************** -->
+    <!--	     			Spring dispatched		  			-->
+    <!-- ****************************************************** -->
 
-	<!--
-		DispatcherServlet controls where all our request are routed based on
-		the mapping, front controller
-	-->
-	<servlet>
-		<servlet-name>mywebapp</servlet-name>
-		<servlet-class>
-			org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>mywebapp-annotation</servlet-name>
-		<servlet-class>
-			org.springframework.web.servlet.DispatcherServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- DispatcherServlet controls where all our request are routed based on the mapping, front controller -->
+    <servlet>
+        <servlet-name>mywebapp</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>mywebapp-annotation</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>mywebapp</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>mywebapp-annotation</servlet-name>
-		<url-pattern>*.an</url-pattern>
-	</servlet-mapping>
-	<!--
-		url with an '.do' extension be routed to the 'springapp' dispatcher
-		(DispatcherServlet) it requires creating springapp-servlet.xml
-		(servlet_name-servlet.xml) in the WEB-INF
-	-->
+    <servlet-mapping>
+        <servlet-name>mywebapp</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mywebapp-annotation</servlet-name>
+        <url-pattern>*.an</url-pattern>
+    </servlet-mapping>
+    <!--
+        url with an '.do' extension be routed to the 'springapp' dispatcher (DispatcherServlet) it requires
+        creating springapp-servlet.xml (servlet_name-servlet.xml) in the WEB-INF
+    -->
 
 
-	<!-- ****************************************************** -->
-	<!--	     				DWR				  				-->
-	<!-- ****************************************************** -->
-	<servlet>
-		<servlet-name>dwr-invoker</servlet-name>
-		<display-name>DWR Servlet</display-name>
+    <!-- ****************************************************** -->
+    <!--	     				DWR				  				-->
+    <!-- ****************************************************** -->
+    <servlet>
+        <servlet-name>dwr-invoker</servlet-name>
+        <display-name>DWR Servlet</display-name>
 
-		<!-- without spring integration, requires WEB-INF/dwr.xml -->
-		<!--
-			<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
-		-->
+        <!-- without spring integration, requires WEB-INF/dwr.xml -->
+        <!--
+        <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+        -->
 
-		<!--
-			with spring integration, requires dwr schema and <dwr> configuaration
-			in application context
-		-->
-		<servlet-class>
-			org.directwebremoting.spring.DwrSpringServlet
-		</servlet-class>
-		<init-param>
-			<param-name>debug</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
+        <!-- with spring integration, requires dwr schema and <dwr> configuaration in application context -->
+        <servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>dwr-invoker</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dwr-invoker</servlet-name>
+        <url-pattern>/dwr/*</url-pattern>
+    </servlet-mapping>
 
 
+    <!-- ****************************************************** -->
+    <!--	     	My Forward Redirect Servlet  				-->
+    <!-- ****************************************************** -->
+    <servlet>
+        <servlet-name>UrlForwardServlet</servlet-name>
+        <servlet-class>com.bawi.mywebapp.servlet.UrlForwardServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<!-- ****************************************************** -->
-	<!--	     	My Forward Redirect Servlet  				-->
-	<!-- ****************************************************** -->
-	<servlet>
-		<servlet-name>UrlForwardServlet</servlet-name>
-		<servlet-class>com.bawi.mywebapp.servlet.UrlForwardServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>UrlForwardServlet</servlet-name>
-		<url-pattern>/forward</url-pattern>
-	</servlet-mapping>
-
-	
-	<servlet>
-		<servlet-name>UrlRedirectServlet</servlet-name>
-		<servlet-class>com.bawi.mywebapp.servlet.UrlRedirectServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>UrlRedirectServlet</servlet-name>
-		<url-pattern>/redirect</url-pattern>
-	</servlet-mapping>
-
-	<!-- My servlet -->
-	<servlet>
-		<servlet-name>my-servlet</servlet-name>
-		<servlet-class>com.bawi.mywebapp.servlet.MyServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <servlet-mapping>
+        <servlet-name>UrlForwardServlet</servlet-name>
+        <url-pattern>/forward</url-pattern>
+    </servlet-mapping>
 
 
-	<!-- url to servlet mapping -->
-	<servlet-mapping>
-		<servlet-name>my-servlet</servlet-name>
-		<url-pattern>/my-servlet-url</url-pattern>
-	</servlet-mapping>
+    <servlet>
+        <servlet-name>UrlRedirectServlet</servlet-name>
+        <servlet-class>com.bawi.mywebapp.servlet.UrlRedirectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>UrlRedirectServlet</servlet-name>
+        <url-pattern>/redirect</url-pattern>
+    </servlet-mapping>
 
-	<!--
-		search in webapp, jsp pages with controllers are recommended to be in
-		WEB-INF/jsp, non-controller pages can be in webapp
-	-->
-	<welcome-file-list>
-		<welcome-file>
-			table.html
-			<!-- or -->
-			<!-- WEB-INF/jsp/hello.jsp  -->
-		</welcome-file>
-	</welcome-file-list>
+    <!-- My servlet -->
+    <servlet>
+        <servlet-name>my-servlet</servlet-name>
+        <servlet-class>com.bawi.mywebapp.servlet.MyServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- url to servlet mapping -->
+    <servlet-mapping>
+        <servlet-name>my-servlet</servlet-name>
+        <url-pattern>/my-servlet-url</url-pattern>
+    </servlet-mapping>
+
+    <!--
+        search in webapp, jsp pages with controllers are recommended to be in WEB-INF/jsp, non-controller
+        pages can be in webapp
+    -->
+    <welcome-file-list>
+        <welcome-file>
+            table.html
+            <!-- or -->
+            <!-- WEB-INF/jsp/hello.jsp  -->
+        </welcome-file>
+    </welcome-file-list>
 </web-app>

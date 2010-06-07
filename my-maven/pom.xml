@@ -1,11 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.bawi</groupId>
     <artifactId>my-maven</artifactId>
     <name>My maven project</name>
     <version>0.0.1-SNAPSHOT</version>
-    <description>Run Junit tests in test phase and Itests in itest phase which has separate process (singleton state is not shared between different execution phases)</description>
+    <description>Run Junit tests in test phase and Itests in itest phase which has separate process (singleton
+        state is not shared between different execution phases)</description>
+
     <build>
         <plugins>
             <plugin>
@@ -55,8 +58,8 @@
                 </includes>
             </resource>
         </resources>
-
     </build>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

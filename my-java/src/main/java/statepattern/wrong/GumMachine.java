@@ -18,20 +18,20 @@ public class GumMachine {
 
     public void onInsertMoney() {
         switch (currentState) {
-            case NoMoney:
-                System.out.println("Money received");
-                currentState = State.HasMoney;
-                break;
-            case HasMoney:
-                System.out.println("Wait, you still have some money left!");
-                break;
-            case Sold:
-                System.out.println("In process ...");
-                break;
-            case SoldOut:
-                System.out.println("Sorry, no gums available");
-            default:
-                break;
+        case NoMoney:
+            System.out.println("Money received");
+            currentState = State.HasMoney;
+            break;
+        case HasMoney:
+            System.out.println("Wait, you still have some money left!");
+            break;
+        case Sold:
+            System.out.println("In process ...");
+            break;
+        case SoldOut:
+            System.out.println("Sorry, no gums available");
+        default:
+            break;
         }
     }
 

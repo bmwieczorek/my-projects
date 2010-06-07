@@ -1,17 +1,18 @@
 package exceptions;
 
 public class MyException extends Exception {
-    
-	private static final long serialVersionUID = 1L;
 
-	public MyException(String message) {
+    private static final long serialVersionUID = 1L;
+
+    public MyException(String message) {
         super(message);
     }
-    
-    public MyException(){
+
+    public MyException() {
         super();
     }
-    public MyException(String message, Throwable t){
+
+    public MyException(String message, Throwable t) {
         super(message, t);
     }
 }

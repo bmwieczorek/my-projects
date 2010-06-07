@@ -16,15 +16,14 @@ public class IteratorExample {
 
     public static void main(String[] args) {
         // List<Lower> lowers = Arrays.asList(Lower.values());
-        List<Higher> highers =
-                new ArrayList<Higher>(Arrays.asList(Higher.values()));
+        List<Higher> highers = new ArrayList<Higher>(Arrays.asList(Higher.values()));
         // for (Iterator<Lower> li = lowers.iterator(); li.hasNext();) {
         // Lower lower = li.next();
         int i = 0;
         for (Iterator<Higher> hi = highers.iterator(); hi.hasNext(); i++) {
             hi.next();
-            //if ((i % 2) == 0)
-                hi.remove();
+            // if ((i % 2) == 0)
+            hi.remove();
 
         }
         for (Higher higher : highers) {

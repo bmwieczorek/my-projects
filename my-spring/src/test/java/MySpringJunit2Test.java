@@ -7,8 +7,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "/my-test-context.xml" })
 public class MySpringJunit2Test {
 
-	@Test
-	public void test(){
+    @Test
+    public void test() {
 
-	}
+    }
 }

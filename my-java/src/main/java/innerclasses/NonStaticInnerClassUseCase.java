@@ -6,7 +6,7 @@ interface Service {
 
 public class NonStaticInnerClassUseCase {
 
-    // return the implementation of the interface via public access method2 
+    // return the implementation of the interface via public access method2
     public Service service() {
         return new ServiceImpl();
     }

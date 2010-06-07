@@ -1,7 +1,7 @@
-
-public class JoinThread implements Runnable{
+public class JoinThread implements Runnable {
 
     static Thread currentThread = null;
+
     public static void main(String[] args) {
         currentThread = Thread.currentThread();
         System.out.println(currentThread.getName() + "XXX");
@@ -10,7 +10,7 @@ public class JoinThread implements Runnable{
         try {
             t.join();
         } catch (InterruptedException e) {
-            System.out.println("XXX" + e.getLocalizedMessage()  );
+            System.out.println("XXX" + e.getLocalizedMessage());
         }
         System.out.println(currentThread.getName() + "XXX");
     }

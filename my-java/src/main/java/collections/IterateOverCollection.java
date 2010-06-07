@@ -13,7 +13,7 @@ public class IterateOverCollection {
             Integer integer = iterator.next();
             System.out.println(integer + ":" + iterator.hasNext());
         }
-        
+
         for (Integer integer : ints) {
             System.out.println(integer);
         }

@@ -1,6 +1,5 @@
 package inheritance;
 
-
 interface One {
     void myOne();
 }
@@ -21,17 +20,17 @@ abstract class ACl implements ThreeOfOneAndTwo {
     public ACl() {
         System.out.println("constructor of abstract class");
     }
+
     protected abstract void myTemplateMethod();
-    
-    //should not do that
-    public void wrongUsage(){        
+
+    // should not do that
+    public void wrongUsage() {
     }
-    
-    public final void okUsage(){
-        //defines a flow
+
+    public final void okUsage() {
+        // defines a flow
     }
 }
-
 
 class Cl extends ACl implements One {
     @Override
@@ -44,17 +43,17 @@ class Cl extends ACl implements One {
 
     public void myTwo() {
     }
-    
+
 }
 
-class Claska{
+class Claska {
     protected Claska() {
         System.out.println("claska");
     }
 }
 
-class Claska2 extends Claska{
-    
+class Claska2 extends Claska {
+
 }
 
 public class IfaceCanOnlyImplementIfaceButClassCanBothExtendClassAndImplementIface {
@@ -62,4 +61,3 @@ public class IfaceCanOnlyImplementIfaceButClassCanBothExtendClassAndImplementIfa
         new Cl();
     }
 }
-    

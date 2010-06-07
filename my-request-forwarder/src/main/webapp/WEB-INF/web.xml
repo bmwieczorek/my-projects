@@ -3,16 +3,16 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Request forwarder</display-name>
+    <display-name>Request forwarder</display-name>
 
-	<servlet>
-		<servlet-name>request-forwarding-servlet</servlet-name>
-		<servlet-class>com.bawi.servlet.RequestForwardingServlet</servlet-class>
-	</servlet>
+    <servlet>
+        <servlet-name>request-forwarding-servlet</servlet-name>
+        <servlet-class>com.bawi.servlet.RequestForwardingServlet</servlet-class>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>request-forwarding-servlet</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
-	
+    <servlet-mapping>
+        <servlet-name>request-forwarding-servlet</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -50,8 +50,8 @@ public class MyServlet extends HttpServlet {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
+            IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
         out.println("hello world!\n");
@@ -73,7 +73,7 @@ public class MyServlet extends HttpServlet {
             out.println("name=" + name + ",value=" + value);
         }
         session.setAttribute("bawi", new MyClass("basia"));
-        //session.putValue("bawi2", new MyClass("basia2"));
+        // session.putValue("bawi2", new MyClass("basia2"));
 
     }
 

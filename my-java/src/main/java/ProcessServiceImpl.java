@@ -30,9 +30,8 @@ public class ProcessServiceImpl {
 
     public static void main(String[] args) {
         Report report = new Report();
-        List<Processor> processors =
-                new ArrayList<Processor>(asList(new DateProcessor(),
-                        new ValueProcessor()));
+        List<Processor> processors = new ArrayList<Processor>(asList(new DateProcessor(),
+                new ValueProcessor()));
         for (Processor processor : processors) {
             processor.process(report);
         }

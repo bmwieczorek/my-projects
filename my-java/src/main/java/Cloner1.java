@@ -28,24 +28,25 @@ public class Cloner1 implements Cloneable {
         // b = a * 2;
         // }
         // System.out.println(b);
-        //divide(1, 0);
+        // divide(1, 0);
         System.out.println(stringSize(null));
-       throw new ArithmeticException();
+        throw new ArithmeticException();
     }
 
     Integer aaa = new Integer(1);
+
     public static int divide(int i, int j) {
         return i % j;
     }
 
     static public int stringSize(Object s) {
         try {
-//            return s.toString().length();
+            // return s.toString().length();
             return 2;
         } catch (Exception ex) {
             return -1;
         } finally {
-			// return 0;
+            // return 0;
         }
     }
 

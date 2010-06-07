@@ -27,9 +27,9 @@ public class SyncVsAsyncLogger {
         for (int i = 0; i < 500; i++) {
             logFromLog4jXml("K0");
             logFromLog4jXml("AT");
-        // logDynamically("K0");
-        // logDynamically("AT");
-        // Thread.sleep(10);
+            // logDynamically("K0");
+            // logDynamically("AT");
+            // Thread.sleep(10);
         }
         long end = System.currentTimeMillis();
         System.out.println("time: " + (end - start));
@@ -45,7 +45,6 @@ public class SyncVsAsyncLogger {
         Logger logger = Logger.getLogger(carrier + ".com.bawi.static");
         logger.error(createMessage());
     }
-
 
     @SuppressWarnings("unused")
     private static void logDynamically(String carrier) throws IOException, InterruptedException {
@@ -73,6 +72,5 @@ public class SyncVsAsyncLogger {
         logger.addAppender(asyncAppender);
         return logger;
     }
-
 
 }

@@ -8,7 +8,7 @@
     <tripleInteger>4</tripleInteger>
     <myEnum>AA</myEnum>
     <myList>1 2 3</myList>
-    <ns2:myComplex requiredParam="false"/>
+    <ns2:myComplex requiredParam="false" />
     <unboundedString>x</unboundedString>
     <unboundedString>y</unboundedString>
 </ns2:NewOperationRequest>

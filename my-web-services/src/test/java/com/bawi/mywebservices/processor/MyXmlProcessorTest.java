@@ -16,32 +16,33 @@ import com.bawi.myservice.NewOperationRequest;
 
 public class MyXmlProcessorTest {
 
-	private static final String XML_PATH = "src/test/resources/xml/";
+    private static final String XML_PATH = "src/test/resources/xml/";
 
-	@Test
-	public void testToXml() throws FileNotFoundException, IOException, JAXBException {
+    @Test
+    public void testToXml() throws FileNotFoundException, IOException, JAXBException {
 
-		String requestXml = IOUtils.toString(new FileReader(XML_PATH + "request.xml"));
-		System.out.println(requestXml);
-		// or
-		// String text2 = IOUtils.toString(new FileInputStream(XML_PATH + "request.xml"));
-		// System.out.println(text2);
+        String requestXml = IOUtils.toString(new FileReader(XML_PATH + "request.xml"));
+        System.out.println(requestXml);
+        // or
+        // String text2 = IOUtils.toString(new FileInputStream(XML_PATH + "request.xml"));
+        // System.out.println(text2);
 
-		MyXmlProcessor myXmlProcessor = new MyXmlProcessor();
-		NewOperationRequest unmarshalledRequest = myXmlProcessor.fromXml(requestXml, NewOperationRequest.class);
-		System.out.println(unmarshalledRequest);
+        MyXmlProcessor myXmlProcessor = new MyXmlProcessor();
+        NewOperationRequest unmarshalledRequest = myXmlProcessor.fromXml(requestXml,
+                NewOperationRequest.class);
+        System.out.println(unmarshalledRequest);
 
-		NewOperationRequest expectedRequest = new NewOperationRequest().withMyAtt("A").withStringIn("ss")
-				.withBooleanIn(true).withIntIn(1).withPatternIn("Z").withMyEnum(MyEnum.AA).withMyList(1, 2, 3)
-				.withMyComplex(new MyComplex().withRequiredParam(false)).withUnboundedStrings("x")
-				.withUnboundedStrings("y");
+        NewOperationRequest expectedRequest = new NewOperationRequest().withMyAtt("A").withStringIn("ss")
+                .withBooleanIn(true).withIntIn(1).withPatternIn("Z").withMyEnum(MyEnum.AA)
+                .withMyList(1, 2, 3).withMyComplex(new MyComplex().withRequiredParam(false))
+                .withUnboundedStrings("x").withUnboundedStrings("y");
 
-		Assert.assertEquals(expectedRequest, unmarshalledRequest);
-	}
+        Assert.assertEquals(expectedRequest, unmarshalledRequest);
+    }
 
-	@Test
-	public void testFromXml() {
-		// fail("Not yet implemented");
-	}
+    @Test
+    public void testFromXml() {
+        // fail("Not yet implemented");
+    }
 
 }

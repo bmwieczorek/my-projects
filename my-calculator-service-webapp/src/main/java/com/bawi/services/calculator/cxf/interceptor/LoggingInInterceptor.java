@@ -15,80 +15,80 @@ import org.apache.log4j.MDC;
 
 public class LoggingInInterceptor extends AbstractPhaseInterceptor<Message> {
 
-	private static final Logger LOG = Logger.getLogger(LoggingInInterceptor.class);
+    private static final Logger LOG = Logger.getLogger(LoggingInInterceptor.class);
 
-	private int limit = 100 * 1024;
+    private int limit = 100 * 1024;
 
-	public LoggingInInterceptor() {
-		super(Phase.RECEIVE);
-	}
+    public LoggingInInterceptor() {
+        super(Phase.RECEIVE);
+    }
 
-	public void handleMessage(Message message) throws Fault {
-			logging(message);
-	}
+    public void handleMessage(Message message) throws Fault {
+        logging(message);
+    }
 
-	private void logging(Message message) throws Fault {
-		if (message.containsKey(LoggingMessage.ID_KEY)) {
-			return;
-		}
-		String id = (String) message.getExchange().get(LoggingMessage.ID_KEY);
-		if (id == null) {
-			id = LoggingMessage.nextId();
-			message.getExchange().put(LoggingMessage.ID_KEY, id);
-		}
-		message.put(LoggingMessage.ID_KEY, id);
-		final LoggingMessage buffer = new LoggingMessage("Inbound Message\n----------------------------", id);
+    private void logging(Message message) throws Fault {
+        if (message.containsKey(LoggingMessage.ID_KEY)) {
+            return;
+        }
+        String id = (String) message.getExchange().get(LoggingMessage.ID_KEY);
+        if (id == null) {
+            id = LoggingMessage.nextId();
+            message.getExchange().put(LoggingMessage.ID_KEY, id);
+        }
+        message.put(LoggingMessage.ID_KEY, id);
+        final LoggingMessage buffer = new LoggingMessage("Inbound Message\n----------------------------", id);
 
-		Integer responseCode = (Integer) message.get(Message.RESPONSE_CODE);
-		if (responseCode != null) {
-			buffer.getResponseCode().append(responseCode);
-		}
+        Integer responseCode = (Integer) message.get(Message.RESPONSE_CODE);
+        if (responseCode != null) {
+            buffer.getResponseCode().append(responseCode);
+        }
 
-		String encoding = (String) message.get(Message.ENCODING);
+        String encoding = (String) message.get(Message.ENCODING);
 
-		if (encoding != null) {
-			buffer.getEncoding().append(encoding);
-		}
-		String ct = (String) message.get(Message.CONTENT_TYPE);
-		if (ct != null) {
-			buffer.getContentType().append(ct);
-		}
-		Object headers = message.get(Message.PROTOCOL_HEADERS);
+        if (encoding != null) {
+            buffer.getEncoding().append(encoding);
+        }
+        String ct = (String) message.get(Message.CONTENT_TYPE);
+        if (ct != null) {
+            buffer.getContentType().append(ct);
+        }
+        Object headers = message.get(Message.PROTOCOL_HEADERS);
 
-		if (headers != null) {
-			buffer.getHeader().append(headers);
-		}
-		String uri = (String) message.get(Message.REQUEST_URI);
-		if (uri != null) {
-			buffer.getAddress().append(uri);
-		}
+        if (headers != null) {
+            buffer.getHeader().append(headers);
+        }
+        String uri = (String) message.get(Message.REQUEST_URI);
+        if (uri != null) {
+            buffer.getAddress().append(uri);
+        }
 
-		InputStream is = message.getContent(InputStream.class);
-		if (is != null) {
-			CachedOutputStream bos = new CachedOutputStream();
-			try {
-				IOUtils.copy(is, bos);
+        InputStream is = message.getContent(InputStream.class);
+        if (is != null) {
+            CachedOutputStream bos = new CachedOutputStream();
+            try {
+                IOUtils.copy(is, bos);
 
-				bos.flush();
-				is.close();
+                bos.flush();
+                is.close();
 
-				message.setContent(InputStream.class, bos.getInputStream());
-				if (bos.getTempFile() != null) {
-					// large thing on disk...
-					buffer.getMessage().append("\nMessage (saved to tmp file):\n");
-					buffer.getMessage().append("Filename: " + bos.getTempFile().getAbsolutePath() + "\n");
-				}
-				if (bos.size() > limit) {
-					buffer.getMessage().append("(message truncated to " + limit + " bytes)\n");
-				}
-				bos.writeCacheTo(buffer.getPayload(), limit);
+                message.setContent(InputStream.class, bos.getInputStream());
+                if (bos.getTempFile() != null) {
+                    // large thing on disk...
+                    buffer.getMessage().append("\nMessage (saved to tmp file):\n");
+                    buffer.getMessage().append("Filename: " + bos.getTempFile().getAbsolutePath() + "\n");
+                }
+                if (bos.size() > limit) {
+                    buffer.getMessage().append("(message truncated to " + limit + " bytes)\n");
+                }
+                bos.writeCacheTo(buffer.getPayload(), limit);
 
-				bos.close();
-			} catch (IOException e) {
-				throw new Fault(e);
-			}
-		}
-		LOG.debug(buffer.toString());
-		MDC.put("request", buffer.toString());
-	}
+                bos.close();
+            } catch (IOException e) {
+                throw new Fault(e);
+            }
+        }
+        LOG.debug(buffer.toString());
+        MDC.put("request", buffer.toString());
+    }
 }

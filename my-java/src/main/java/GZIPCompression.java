@@ -18,8 +18,7 @@ public class GZIPCompression {
 
     static ByteArrayOutputStream compress(String data) throws IOException {
 
-        ByteArrayInputStream in =
-                new ByteArrayInputStream(data.getBytes("UTF-8"));
+        ByteArrayInputStream in = new ByteArrayInputStream(data.getBytes("UTF-8"));
 
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         GZIPOutputStream gzout = new GZIPOutputStream(os);
@@ -56,8 +55,7 @@ public class GZIPCompression {
     public void testCompression() throws IOException {
 
         // String data = "Hello world Bartek";
-        String data =
-                "fdsaaaaaaaaaaaaaaaaaafjkasdl;fjaopfho[ahfoahfa;hfil;euahrfeuioahfuioahf;dhafuidshfpiaushfkl;ahfui;aehsfiupa";
+        String data = "fdsaaaaaaaaaaaaaaaaaafjkasdl;fjaopfho[ahfoahfa;hfil;euahrfeuioahfuioahf;dhafuidshfpiaushfkl;ahfui;aehsfiupa";
         ByteArrayOutputStream os = compress(data);
         String result = uncompress(new ByteArrayInputStream(os.toByteArray()));
         assertEquals(data, result);

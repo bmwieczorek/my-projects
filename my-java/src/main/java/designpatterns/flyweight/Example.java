@@ -21,19 +21,19 @@ class Point {
     }
 }
 
-class PointManager{
+class PointManager {
     List<Point> points = new ArrayList<Point>();
-    void add(Point point){
-        points.add(point);        
+
+    void add(Point point) {
+        points.add(point);
     }
-    void advertise(){
+
+    void advertise() {
         for (Point point : points) {
             point.advertise();
         }
     }
 }
-
-
 
 class PointFlyWeight {
     int counter = 0;
@@ -41,22 +41,22 @@ class PointFlyWeight {
     String[] names = new String[100];
     PriceFactory priceFactory = new PriceFactory();
     NameFactory nameFactory = new NameFactory();
-    
+
     public PointFlyWeight() {
         System.out.println("created pointflyweight");
     }
 
-    void create(int price, String name){
+    void create(int price, String name) {
         prices[counter] = price;
         names[counter] = name;
     }
-    
-    void advertise(){
+
+    void advertise() {
         for (int i = 0; i < counter; i++) {
             System.out.println(prices[i] + ":" + names[i]);
         }
     }
-    
+
     class PriceFactory {
         private int[] cache = new int[100];
 
@@ -103,14 +103,11 @@ public class Example {
         point.advertise();
         point2.advertise();
         point3.advertise();
-//        
-//        PriceFactory priceFactory = new PriceFactory();
-//        NameFactory nameFactory = new NameFactory();
-//        PointFlyWeight pointFlyWeight = new PointFlyWeight();
-//        pointFlyWeight.create(price, name);
-        
-        
-        
-        
+        //        
+        // PriceFactory priceFactory = new PriceFactory();
+        // NameFactory nameFactory = new NameFactory();
+        // PointFlyWeight pointFlyWeight = new PointFlyWeight();
+        // pointFlyWeight.create(price, name);
+
     }
 }

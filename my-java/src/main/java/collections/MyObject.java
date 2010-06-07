@@ -16,20 +16,20 @@ public class MyObject {
     @Override
     public boolean equals(Object obj) {
         System.out.println("equals used");
-        return this.s == ((MyObject)obj).s ? true : false;
+        return this.s == ((MyObject) obj).s ? true : false;
     }
 
     @Override
     public int hashCode() {
         System.out.println("hash used");
-        //return s.hashCode();
+        // return s.hashCode();
         return "ania".hashCode();
     }
 
-//    @Override
-//    public String toString() {
-//        return this.s;
-//    }
+    // @Override
+    // public String toString() {
+    // return this.s;
+    // }
 
     public static void main(String[] args) {
         List<MyObject> arrayList = new ArrayList<MyObject>();

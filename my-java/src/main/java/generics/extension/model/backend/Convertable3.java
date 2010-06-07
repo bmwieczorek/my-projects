@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Convertable3 {
 
-	Class<?> value();
+    Class<?> value();
 
 }

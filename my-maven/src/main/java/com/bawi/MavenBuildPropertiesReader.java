@@ -9,51 +9,52 @@ import java.util.Properties;
 import java.util.Set;
 
 public class MavenBuildPropertiesReader {
-	private final static String propertiesFileName = "maven.build.properties";
-	private final static String propertiesFilePath = "target/classes/" + propertiesFileName;
+    private final static String propertiesFileName = "maven.build.properties";
+    private final static String propertiesFilePath = "target/classes/" + propertiesFileName;
 
-	public static void main(String[] args) throws IOException {
-		putToSystemProperties();
-	}
+    public static void main(String[] args) throws IOException {
+        putToSystemProperties();
+    }
 
-	public static void putToSystemProperties() throws IOException {
-		printSystemProperties(loadSystemPropertiesFromFile());
-		System.out.println("Text");
-		printSystemProperties(loadSystemPropertiesFromResource());
-	}
+    public static void putToSystemProperties() throws IOException {
+        printSystemProperties(loadSystemPropertiesFromFile());
+        System.out.println("Text");
+        printSystemProperties(loadSystemPropertiesFromResource());
+    }
 
-	private static Properties loadSystemPropertiesFromFile() throws FileNotFoundException, IOException {
-		Properties systemProperties = new Properties();
-		File file = new File(propertiesFilePath);
-		String fileAbsolutePath = file.getAbsolutePath();
-		String projectBasedir = fileAbsolutePath.replaceAll(propertiesFilePath, "");
-		FileInputStream inStream;
-		try {
-			inStream = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			throw new FileNotFoundException("File '" + fileAbsolutePath
-					+ "' is generated during maven build process. Run maven build in '" + projectBasedir + "'.");
-		}
-		systemProperties.load(inStream);
-		return systemProperties;
-	}
+    private static Properties loadSystemPropertiesFromFile() throws FileNotFoundException, IOException {
+        Properties systemProperties = new Properties();
+        File file = new File(propertiesFilePath);
+        String fileAbsolutePath = file.getAbsolutePath();
+        String projectBasedir = fileAbsolutePath.replaceAll(propertiesFilePath, "");
+        FileInputStream inStream;
+        try {
+            inStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException("File '" + fileAbsolutePath
+                    + "' is generated during maven build process. Run maven build in '" + projectBasedir
+                    + "'.");
+        }
+        systemProperties.load(inStream);
+        return systemProperties;
+    }
 
-	private static Properties loadSystemPropertiesFromResource() throws IOException {
-		Properties systemProperties = new Properties();
-		Class<MavenBuildPropertiesReader> clazz = MavenBuildPropertiesReader.class;
-		ClassLoader classLoader = clazz.getClassLoader();
-		InputStream resourceAsStream = classLoader.getResourceAsStream(propertiesFileName);
-		if (resourceAsStream == null) {
-			throw new RuntimeException("Could not load properties file: '" + propertiesFileName + "'");
-		}
-		systemProperties.load(resourceAsStream);
-		return systemProperties;
-	}
+    private static Properties loadSystemPropertiesFromResource() throws IOException {
+        Properties systemProperties = new Properties();
+        Class<MavenBuildPropertiesReader> clazz = MavenBuildPropertiesReader.class;
+        ClassLoader classLoader = clazz.getClassLoader();
+        InputStream resourceAsStream = classLoader.getResourceAsStream(propertiesFileName);
+        if (resourceAsStream == null) {
+            throw new RuntimeException("Could not load properties file: '" + propertiesFileName + "'");
+        }
+        systemProperties.load(resourceAsStream);
+        return systemProperties;
+    }
 
-	private static void printSystemProperties(Properties systemProperties) {
-		Set<String> stringPropertyNames = systemProperties.stringPropertyNames();
-		for (String propertyName : stringPropertyNames) {
-			System.out.println(propertyName + "=" + systemProperties.getProperty(propertyName));
-		}
-	}
+    private static void printSystemProperties(Properties systemProperties) {
+        Set<String> stringPropertyNames = systemProperties.stringPropertyNames();
+        for (String propertyName : stringPropertyNames) {
+            System.out.println(propertyName + "=" + systemProperties.getProperty(propertyName));
+        }
+    }
 }

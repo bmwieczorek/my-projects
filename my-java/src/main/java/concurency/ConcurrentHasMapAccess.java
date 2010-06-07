@@ -29,7 +29,6 @@ public class ConcurrentHasMapAccess {
                 }
             }
 
-
         });
         Thread thread2 = new Thread(new Runnable() {
             public void run() {

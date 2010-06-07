@@ -1,4 +1,5 @@
 package applet;
+
 import java.applet.Applet;
 import java.awt.Graphics;
 
@@ -6,39 +7,39 @@ import java.awt.Graphics;
 //we just paint.
 public class HelloWorldApplet extends Applet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	StringBuffer buffer;
+    StringBuffer buffer;
 
-	public void init() {
-		buffer = new StringBuffer();
-		addItem("initializing... ");
-		System.out.println("ania");
-	}
+    public void init() {
+        buffer = new StringBuffer();
+        addItem("initializing... ");
+        System.out.println("ania");
+    }
 
-	public void start() {
-		addItem("starting... ");
-	}
+    public void start() {
+        addItem("starting... ");
+    }
 
-	public void stop() {
-		addItem("stopping... ");
-	}
+    public void stop() {
+        addItem("stopping... ");
+    }
 
-	public void destroy() {
-		addItem("preparing for unloading...");
-	}
+    public void destroy() {
+        addItem("preparing for unloading...");
+    }
 
-	private void addItem(String newWord) {
-		System.out.println(newWord);
-		buffer.append(newWord);
-		repaint();
-	}
+    private void addItem(String newWord) {
+        System.out.println(newWord);
+        buffer.append(newWord);
+        repaint();
+    }
 
-	public void paint(Graphics g) {
-		// Draw a Rectangle around the applet's display area.
-		g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+    public void paint(Graphics g) {
+        // Draw a Rectangle around the applet's display area.
+        g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
 
-		// Draw the current string inside the rectangle.
-		g.drawString(buffer.toString(), 5, 15);
-	}
+        // Draw the current string inside the rectangle.
+        g.drawString(buffer.toString(), 5, 15);
+    }
 }

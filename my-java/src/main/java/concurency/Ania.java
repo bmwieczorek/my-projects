@@ -3,6 +3,7 @@ package concurency;
 public class Ania {
     String name;
     String surname;
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -11,6 +12,7 @@ public class Ania {
         result = prime * result + ((surname == null) ? 0 : surname.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

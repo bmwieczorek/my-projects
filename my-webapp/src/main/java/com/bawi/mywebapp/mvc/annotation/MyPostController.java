@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MyPostController {
 
     @RequestMapping(method = RequestMethod.POST)
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         ServletInputStream inputStream = request.getInputStream();
@@ -32,13 +31,13 @@ public class MyPostController {
         while ((len = inputStream.read(buf)) >= 0) {
             result.write(buf, 0, len);
         }
-        
+
         System.err.println("***");
         System.err.println(request.getAttribute("submissionId"));
         System.err.println(request.getHeader("submissionId"));
         System.err.println(request.getParameter("submissionId"));
-        System.err.println(result);        
+        System.err.println(result);
         System.err.println("###");
-        
+
     }
 }

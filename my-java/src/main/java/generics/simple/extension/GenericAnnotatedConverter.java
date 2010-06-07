@@ -10,7 +10,8 @@ import java.util.Map;
 
 // service model (without access to backend model)
 // package generics.model.service
-class PersonBase {}
+class PersonBase {
+}
 
 class Mother extends PersonBase {
     private final String name;
@@ -61,7 +62,7 @@ class ImMother extends ImPersonBase<Mother> {
 }
 
 class ServiceToBackendConverter {
-	public static ImPersonBase<?> convert(PersonBase personBase) {
+    public static ImPersonBase<?> convert(PersonBase personBase) {
         if (personBase instanceof Mother) {
             return new ImMother((Mother) personBase);
         }

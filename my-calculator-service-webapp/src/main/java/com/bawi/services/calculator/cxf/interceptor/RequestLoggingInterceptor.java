@@ -9,15 +9,15 @@ import org.apache.log4j.MDC;
 
 public class RequestLoggingInterceptor extends AbstractPhaseInterceptor<Message> {
 
-	private Logger log = Logger.getLogger(RequestLoggingInterceptor.class);
+    private Logger log = Logger.getLogger(RequestLoggingInterceptor.class);
 
-	public RequestLoggingInterceptor() {
-		super(Phase.POST_LOGICAL);
-	}
+    public RequestLoggingInterceptor() {
+        super(Phase.POST_LOGICAL);
+    }
 
-	@Override
-	public void handleMessage(Message message) throws Fault {
-		log.info(MDC.get("request"));
-	}
+    @Override
+    public void handleMessage(Message message) throws Fault {
+        log.info(MDC.get("request"));
+    }
 
 }

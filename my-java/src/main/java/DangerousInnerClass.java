@@ -1,32 +1,39 @@
-class Car{
+class Car {
     int x;
+
     public Car(int x) {
         this.x = x;
     }
+
     @Override
     public String toString() {
-        return "Car="+x;
+        return "Car=" + x;
     }
 }
 
-class MyOuter{
+class MyOuter {
     private int i = 7;
     private Car c = new Car(77);
+
     @Override
     public String toString() {
-        return "i="+i+","+c;
+        return "i=" + i + "," + c;
     }
-    class MyInner{
-        public Car getCar(){
+
+    class MyInner {
+        public Car getCar() {
             return c;
         }
-        public void setCar(Car car){
+
+        public void setCar(Car car) {
             c = car;
         }
-        public int getI(){
+
+        public int getI() {
             return i;
         }
-        public void setI(int i){
+
+        public void setI(int i) {
             MyOuter.this.i = i;
         }
     }
@@ -44,6 +51,6 @@ public class DangerousInnerClass {
         System.out.println(myOuter);
         myInner.setI(987);
         System.out.println(myOuter);
-        
+
     }
 }

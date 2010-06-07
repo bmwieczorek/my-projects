@@ -1,6 +1,6 @@
 package mypckg;
 
-class X{
+class X {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -29,31 +29,29 @@ class X{
         return result;
     }
 
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (!(obj instanceof X)) {
-//            return false;
-//        }
-//        X other = (X) obj;
-//        if (i != other.i) {
-//            return false;
-//        }
-//        return true;
-//    }
-
-    
-
+    // @Override
+    // public boolean equals(Object obj) {
+    // if (this == obj) {
+    // return true;
+    // }
+    // if (obj == null) {
+    // return false;
+    // }
+    // if (!(obj instanceof X)) {
+    // return false;
+    // }
+    // X other = (X) obj;
+    // if (i != other.i) {
+    // return false;
+    // }
+    // return true;
+    // }
 
 }
- class Y extends X{
-     
- }
+
+class Y extends X {
+
+}
 
 public class Equals {
     public static void main(String[] args) {
@@ -61,10 +59,9 @@ public class Equals {
         x.i = 1;
         X y = new Y();
         y.i = 1;
-       // System.out.println(x.equals(y));
+        // System.out.println(x.equals(y));
         System.out.println(x.equals(y) == (x.getClass() == y.getClass()));
-        
+
     }
 
 }
-

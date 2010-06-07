@@ -1,10 +1,10 @@
 public class MySingleton {
 
-	public int i;
+    public int i;
 
-	private MySingleton() {
-	}
+    private MySingleton() {
+    }
 
-	public static MySingleton INSTANCE = new MySingleton();
+    public static MySingleton INSTANCE = new MySingleton();
 
 }

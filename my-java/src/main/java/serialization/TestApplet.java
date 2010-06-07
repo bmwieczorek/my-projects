@@ -3,11 +3,11 @@ package serialization;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 
-public class TestApplet extends JApplet{
+public class TestApplet extends JApplet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public void init() {
+    public void init() {
         JButton b1 = new JButton("one");
         JButton b2 = new JButton("two");
         JButton b3 = new JButton("three");
@@ -19,5 +19,5 @@ public class TestApplet extends JApplet{
         getContentPane().add(b3);
         getContentPane().add(b4);
         getContentPane().add(b5);
-      }
-     }
+    }
+}

@@ -19,7 +19,7 @@ public class ThreadLocalExample {
                 while (true) {
                     i = i + 0.1f;
                     value.set(value.get() + 0.1f);
-                    //System.out.println("i=" + i);
+                    // System.out.println("i=" + i);
                     System.err.println("value=" + value.get());
                     try {
                         Thread.sleep(100);
@@ -35,7 +35,7 @@ public class ThreadLocalExample {
                 while (true) {
                     i = i + 1;
                     value.set(value.get() + 1f);
-                    //System.out.println("ii=" + i);
+                    // System.out.println("ii=" + i);
                     System.out.println("valuevalue=" + value.get());
                     try {
                         Thread.sleep(100);

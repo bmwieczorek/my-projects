@@ -3,8 +3,7 @@ package innerclass;
 public class RunExample {
 
     static void print(Shape shape) {
-        System.out.println(shape.toString() + ",area=" + shape.area()
-                + ",perimeter=" + shape.perimeter());
+        System.out.println(shape.toString() + ",area=" + shape.area() + ",perimeter=" + shape.perimeter());
     }
 
     static class Triangle extends AbstractShape {

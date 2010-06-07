@@ -4,8 +4,8 @@ import designpatterns.adapterpattern.Adaptee;
 
 public class ClassAdapter extends Adaptee implements Target {
 
-	public void request() {
-		makeRequest();
-	}
+    public void request() {
+        makeRequest();
+    }
 
 }

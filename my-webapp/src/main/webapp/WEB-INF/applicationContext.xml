@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="
-           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-           http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd
-           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
+    <dwr:configuration>
+        <dwr:convert type="bean" class="com.bawi.mywebapp.domain.Person" />
+    </dwr:configuration>
 
-	<dwr:configuration> 
-		<dwr:convert type="bean" class="com.bawi.mywebapp.domain.Person" />
-	</dwr:configuration>
-	
-	<dwr:controller id="dwrController" debug="true" />
+    <dwr:controller id="dwrController" debug="true" />
 
-	<bean id="people" class="com.bawi.mywebapp.dwr.People">
-		<dwr:remote javascript="People">
-			<!-- <dwr:include method="getPeople" />  -->
-		</dwr:remote>
-		<!-- not an interface derived, cannot be proxied -->
-		<!--<aop:scoped-proxy proxy-target-class="false" />
-	--></bean>
+    <bean id="people" class="com.bawi.mywebapp.dwr.People">
+        <dwr:remote javascript="People">
+            <!-- <dwr:include method="getPeople" />  -->
+        </dwr:remote>
+        <!-- not an interface derived, cannot be proxied -->
+        <!--
+        <aop:scoped-proxy proxy-target-class="false" />
+        -->
+    </bean>
 
-	<bean id="server" class="com.bawi.mywebapp.dwr.ServerImpl">
-		<dwr:remote javascript="Admin" />
-		<aop:scoped-proxy proxy-target-class="false" />
-	</bean>
+    <bean id="server" class="com.bawi.mywebapp.dwr.ServerImpl">
+        <dwr:remote javascript="Admin" />
+        <aop:scoped-proxy proxy-target-class="false" />
+    </bean>
 
-	<!-- already included in application context -->
-	<!-- <import resource="aop-context.xml" /> -->
+    <!-- already included in application context -->
+    <!-- <import resource="aop-context.xml" /> -->
 
 </beans>

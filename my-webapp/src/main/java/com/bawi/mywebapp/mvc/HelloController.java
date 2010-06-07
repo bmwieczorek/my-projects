@@ -36,8 +36,8 @@ public class HelloController implements Controller {
         this.value = value;
     }
 
-    public ModelAndView handleRequest(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         Map<String, Object> model = new HashMap<String, Object>();
         String now = (new Date()).toString();

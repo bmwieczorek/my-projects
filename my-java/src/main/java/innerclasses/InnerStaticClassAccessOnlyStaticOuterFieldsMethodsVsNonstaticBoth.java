@@ -27,9 +27,8 @@ public class InnerStaticClassAccessOnlyStaticOuterFieldsMethodsVsNonstaticBoth {
             // only access to static
             outerStaticNop();
             InnerStaticClassAccessOnlyStaticOuterFieldsMethodsVsNonstaticBoth.outerStaticNop(); // alternative
-            
-            
-            //attention - static inner class can access non static methods/fields via an instance of the outer class
+
+            // attention - static inner class can access non static methods/fields via an instance of the outer class
             new InnerStaticClassAccessOnlyStaticOuterFieldsMethodsVsNonstaticBoth().outerNop();
         }
     }

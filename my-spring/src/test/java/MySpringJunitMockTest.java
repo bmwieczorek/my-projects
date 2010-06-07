@@ -8,11 +8,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "/my-test-context-impl.xml" })
 public class MySpringJunitMockTest {
 
-	@Autowired
-	private MyDataSource myDataSource;
-	
-	@Test
-	public void test(){
-		myDataSource.print();
-	}
+    @Autowired
+    private MyDataSource myDataSource;
+
+    @Test
+    public void test() {
+        myDataSource.print();
+    }
 }

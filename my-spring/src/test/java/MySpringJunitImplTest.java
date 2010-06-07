@@ -7,13 +7,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/my-test-context-impl.xml" })
 public class MySpringJunitImplTest {
-	
-	@Autowired
-	private MyDataSource myDataSource;
-	
-	@Test
-	public void test(){
-		myDataSource.print();
-	}
+
+    @Autowired
+    private MyDataSource myDataSource;
+
+    @Test
+    public void test() {
+        myDataSource.print();
+    }
 
 }

@@ -8,21 +8,24 @@ public class MySet<E> {
     private static class Entry {
         String key;
         int value;
+
         Entry(String key, int value) {
             this.key = key;
             this.value = value;
         }
-        public int getValue(){
+
+        public int getValue() {
             return value;
         }
-        public String getKey(){
+
+        public String getKey() {
             return key;
         }
     }
 
     final private E[] myarray;
 
-    final private Entry[] entries = new Entry[]{new Entry("ania", 26), new Entry("bartek", 27)};
+    final private Entry[] entries = new Entry[] { new Entry("ania", 26), new Entry("bartek", 27) };
 
     public MySet(E[] array) {
         // myarray = (E[])new Object[10];
@@ -46,7 +49,7 @@ public class MySet<E> {
         }
 
         public void remove() {
-			throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
     }
@@ -57,7 +60,7 @@ public class MySet<E> {
                 return entry.getValue();
         }
         return -1;
-        
+
     }
 
     public Iterator<E> iterator() {

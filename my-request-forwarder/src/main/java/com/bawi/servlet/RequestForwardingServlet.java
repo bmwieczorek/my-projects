@@ -17,18 +17,19 @@ public class RequestForwardingServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(RequestForwardingServlet.class);
     private final static String targetContext = "/service";
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
+            IOException {
         forwardRequestToContext(req, resp, targetContext);
     }
 
-    private void forwardRequestToContext(HttpServletRequest req, HttpServletResponse resp, String targetContext)
-            throws ServletException, IOException {
+    private void forwardRequestToContext(HttpServletRequest req, HttpServletResponse resp,
+            String targetContext) throws ServletException, IOException {
         ServletContext context = getServletContext().getContext(targetContext);
         validate(context);
         String originContext = req.getContextPath();
         String requestPathWithoutContext = req.getPathInfo();
-        logger.debug("Forwarding request from " + originContext + requestPathWithoutContext + " to " + targetContext
-                + requestPathWithoutContext);
+        logger.debug("Forwarding request from " + originContext + requestPathWithoutContext + " to "
+                + targetContext + requestPathWithoutContext);
         context.getRequestDispatcher("/" + requestPathWithoutContext).forward(req, resp);
     }
 

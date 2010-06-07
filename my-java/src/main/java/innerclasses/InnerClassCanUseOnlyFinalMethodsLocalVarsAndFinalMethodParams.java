@@ -16,6 +16,7 @@ abstract class B {
     B(String s) {
         System.out.println("s=" + s);
     }
+
     abstract void myf();
 }
 
@@ -33,8 +34,7 @@ public class InnerClassCanUseOnlyFinalMethodsLocalVarsAndFinalMethodParams {
         return new A(memberVariable1) { // A(int) base class constructor
             @Override
             int value() {
-                return memberVariable1 * super.value() * parameter
-                        * localVariable;
+                return memberVariable1 * super.value() * parameter * localVariable;
             }
         };
     }

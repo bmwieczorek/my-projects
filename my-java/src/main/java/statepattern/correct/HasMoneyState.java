@@ -17,6 +17,6 @@ public class HasMoneyState implements State {
         System.err.println(this + ":" + gumMachine.getCurrentState());
         System.out.println("Here is your gum!");
         gumMachine.setCurrentState(gumMachine.getNoMoneyState());
-        System.err.println(this +":" +gumMachine.getCurrentState());
+        System.err.println(this + ":" + gumMachine.getCurrentState());
     }
 }

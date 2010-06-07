@@ -26,10 +26,10 @@ class MyClassProxy implements MyInterface {
 
 public class SimpleProxy {
 
-    static void execute(MyInterface myInterface){ 
+    static void execute(MyInterface myInterface) {
         myInterface.myMethod("ania");
     }
-       
+
     public static void main(String[] args) {
         MyInterface real = new MyClass();
         execute(real);

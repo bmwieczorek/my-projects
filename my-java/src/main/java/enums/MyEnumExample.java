@@ -5,8 +5,8 @@ import java.util.Map;
 
 enum City {
     Amsterdam("NL"), Krakow("PL");
-    
-    private static Map<String,City> countryCodeToCity = new HashMap<String, City>();
+
+    private static Map<String, City> countryCodeToCity = new HashMap<String, City>();
     static {
         City[] values = City.values();
         for (City city : values) {
@@ -18,13 +18,15 @@ enum City {
     City(String countryCode) {
         this.countryCode = countryCode;
     }
-    public String getCountryCode(){
+
+    public String getCountryCode() {
         return countryCode;
     }
-    public static City getByCountryCode(String countryCode){
+
+    public static City getByCountryCode(String countryCode) {
         return countryCodeToCity.get(countryCode);
     }
-    
+
 }
 
 public class MyEnumExample {

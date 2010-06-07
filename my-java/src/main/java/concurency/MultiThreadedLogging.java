@@ -30,11 +30,10 @@ public class MultiThreadedLogging implements Runnable {
             fileOutputStream = new FileOutputStream(file2, false);
             while (true)
                 fileOutputStream.write((i++ + "\n").getBytes());
-            
+
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             System.out.println(Thread.currentThread() + ": cleaning resources");
             if (fileOutputStream != null)
                 try {

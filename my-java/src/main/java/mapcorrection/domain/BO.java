@@ -1,21 +1,23 @@
 package mapcorrection.domain;
 
-public class BO{
+public class BO {
     DO mcdo;
     DAO dao;
-    public BO(DO mcdo,DAO dao) {
+
+    public BO(DO mcdo, DAO dao) {
         this.dao = dao;
         this.mcdo = mcdo;
     }
-    
-    public void approve(){
+
+    public void approve() {
         mcdo.approve();
     }
-    public void reject(){
+
+    public void reject() {
         mcdo.reject();
     }
 
-    public void save(){
+    public void save() {
         dao.save(mcdo);
     }
 }

@@ -1,4 +1,5 @@
 package exceptions;
+
 public class CatchingExceptionExample {
 
     public static void main(String[] args) {
@@ -8,13 +9,12 @@ public class CatchingExceptionExample {
         try {
             result = 10 / i;
 
-        //} catch (IllegalArgumentException ae) {
+            // } catch (IllegalArgumentException ae) {
         } catch (ArithmeticException ae) {
-            //ae.printStackTrace();
-            System.out.println("Catching aryth exception: " + ae.getMessage() );
-        }
-        finally {
-            System.out.println("In finally, result=" + result );
+            // ae.printStackTrace();
+            System.out.println("Catching aryth exception: " + ae.getMessage());
+        } finally {
+            System.out.println("In finally, result=" + result);
         }
         System.out.println("Out of tcf, result=" + result);
     }

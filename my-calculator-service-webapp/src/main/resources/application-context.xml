@@ -1,11 +1,9 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	     http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<import resource="classpath:cxf-context.xml"/>
-	<import resource="classpath:jmx-context.xml"/>
-	
-	<bean class="com.bawi.services.calculator.status.About" destroy-method="destroy"/>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:cxf-context.xml" />
+    <import resource="classpath:jmx-context.xml" />
+
+    <bean class="com.bawi.services.calculator.status.About" destroy-method="destroy" />
 
 </beans>

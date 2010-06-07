@@ -1,74 +1,90 @@
 import java.util.HashMap;
 import java.util.Map;
 
-enum MCType { MODIFY_STREET_NAME, SPEED_LIMIT; }
+enum MCType {
+    MODIFY_STREET_NAME, SPEED_LIMIT;
+}
+
 class MCStatusConst {
     public final static MCState PENDING = new PendingMCState();
     public final static MCState APPROVED = new ApprovedMCState();
     public final static MCState REJECTED = new RejectedMCState();
 }
 
-class MCDO{
-    MCState state;    
+class MCDO {
+    MCState state;
     private final String name;
     private final MCType type;
+
     public MCDO(String name, MCType type) {
         this.name = name;
-        this.type = type;        
+        this.type = type;
         this.state = MCStatusConst.PENDING;
     }
-    public void approve(){
+
+    public void approve() {
         state.approve(this);
     }
-    
-    public void reject(){
+
+    public void reject() {
         state.reject(this);
     }
+
     @Override
     public String toString() {
         return "MCDO [name=" + name + ", state=" + state + ", type=" + type + "]";
     }
 }
 
-interface MCDAO{
+interface MCDAO {
     public void save(MCDO mcdo);
+
     public MCDO loadById(int id);
 }
 
-interface MCState{
+interface MCState {
     void approve(MCDO mcdo);
+
     void reject(MCDO mcdo);
 }
 
-class PendingMCState implements MCState{
+class PendingMCState implements MCState {
     public void approve(MCDO mcdo) {
         System.out.println("Approving pending mc: " + mcdo);
         mcdo.state = MCStatusConst.APPROVED;
         System.out.println("Approved pending mc: " + mcdo);
     }
+
     public void reject(MCDO mcdo) {
         System.out.println("Rejecting pending mc: " + mcdo);
         mcdo.state = MCStatusConst.REJECTED;
         System.out.println("Rejected pending mc: " + mcdo);
     }
+
     @Override
-    public String toString() { return "pending"; }
+    public String toString() {
+        return "pending";
+    }
 }
 
-class RejectedMCState implements MCState{
+class RejectedMCState implements MCState {
     public void approve(MCDO mcdo) {
         System.out.println("Approving rejected mc: " + mcdo);
         mcdo.state = MCStatusConst.APPROVED;
         System.out.println("Approved rejected mc: " + mcdo);
     }
+
     public void reject(MCDO mcdo) {
         throw new UnsupportedOperationException("Cannot reject already rejected mc: " + mcdo);
     }
+
     @Override
-    public String toString() { return "rejected"; }
+    public String toString() {
+        return "rejected";
+    }
 }
 
-class ApprovedMCState implements MCState{
+class ApprovedMCState implements MCState {
     public void approve(MCDO mcdo) {
         throw new UnsupportedOperationException("Cannot approve already approved mc: " + mcdo);
     }
@@ -78,47 +94,52 @@ class ApprovedMCState implements MCState{
         mcdo.state = MCStatusConst.REJECTED;
         System.out.println("Rejected approved mc: " + mcdo);
     }
-    public String toString() { return "approved"; }
+
+    public String toString() {
+        return "approved";
+    }
 }
 
-
-class MCBO{
+class MCBO {
     MCDO mcdo;
     MCDAO mcdao;
-    public MCBO(MCDO mcdo,MCDAO mcdao) {
+
+    public MCBO(MCDO mcdo, MCDAO mcdao) {
         this.mcdao = mcdao;
         this.mcdo = mcdo;
     }
-    
-    public void approve(){
+
+    public void approve() {
         mcdo.approve();
     }
-    public void reject(){
+
+    public void reject() {
         mcdo.reject();
     }
 
-    public void save(){
+    public void save() {
         mcdao.save(mcdo);
     }
 }
 
 public class MC {
-    
-    public static void main(String[] args) {    
-        
+
+    public static void main(String[] args) {
+
         MCDAO mcdao = new MCDAO() {
-            Map<Integer,MCDO> mcdos = new HashMap<Integer, MCDO>();
+            Map<Integer, MCDO> mcdos = new HashMap<Integer, MCDO>();
             int id = 0;
+
             public void save(MCDO mcdo) {
                 mcdos.put(id++, mcdo);
                 System.out.println("saved" + mcdo);
             }
-            
+
             public MCDO loadById(int id) {
                 return mcdos.get(id);
             }
         };
-        MCDO mcdo = new MCDO("mc1",MCType.MODIFY_STREET_NAME);
+        MCDO mcdo = new MCDO("mc1", MCType.MODIFY_STREET_NAME);
         System.out.println(mcdo);
         MCBO mcbo = new MCBO(mcdo, mcdao);
         mcbo.approve();
@@ -130,6 +151,6 @@ public class MC {
         newMcbo.save();
         MCDO newMcdo2 = mcdao.loadById(1);
         System.out.println(newMcdo2);
-        
+
     }
 }

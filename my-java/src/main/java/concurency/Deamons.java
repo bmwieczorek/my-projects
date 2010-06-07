@@ -11,16 +11,16 @@ public class Deamons {
     public static void main(String[] args) throws InterruptedException {
         Thread.currentThread().setName("main bawi thread");
         System.err.println(Thread.currentThread());
-		// final B b = new B();
+        // final B b = new B();
 
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 while (true) {
                     Thread.currentThread().setName("another bawi thread");
                     System.out.println(Thread.currentThread());
-                     try {
-                        //b.m();
-                         Thread.sleep(111000);
+                    try {
+                        // b.m();
+                        Thread.sleep(111000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -33,9 +33,9 @@ public class Deamons {
         // completed
         thread.setDaemon(false);
         thread.start();
-        //b.m();
+        // b.m();
         System.err.println(Thread.currentThread());
-        //Thread.sleep(10000);
+        // Thread.sleep(10000);
     }
 
 }

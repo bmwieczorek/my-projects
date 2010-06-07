@@ -1,6 +1,6 @@
 package mapcorrection.domain;
 
-public class ApprovedState implements State{
+public class ApprovedState implements State {
     public void approve(DO mcdo) {
         throw new UnsupportedOperationException("Cannot approve already approved mc: " + mcdo);
     }
@@ -10,5 +10,8 @@ public class ApprovedState implements State{
         mcdo.state = State.REJECTED;
         System.out.println("Rejected approved mc: " + mcdo);
     }
-    public String toString() { return "approved"; }
+
+    public String toString() {
+        return "approved";
+    }
 }

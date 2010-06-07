@@ -11,43 +11,43 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PersonAnnotatedConverter {
-	
-	private static Map<Class<? extends Person>, Class<? extends ImPerson>> map = new HashMap<Class<? extends Person>, Class<? extends ImPerson>>();
 
-	static {
-		register(ImMother.class);
-	}
+    private static Map<Class<? extends Person>, Class<? extends ImPerson>> map = new HashMap<Class<? extends Person>, Class<? extends ImPerson>>();
 
-	public static ImPerson convert(Person person) {
-		ImPerson imPerson = null;
-		Class<? extends ImPerson> imPersonClass = map.get(person.getClass());
-		Constructor<?>[] imPersonConstructors = imPersonClass.getConstructors();
-		for (Constructor<?> imPersonConstructor : imPersonConstructors) {
-			Class<?>[] imPersonParameterTypes = imPersonConstructor.getParameterTypes();
-			for (Class<?> imPersonParameterType : imPersonParameterTypes) {
-				if (imPersonParameterType.isAssignableFrom(person.getClass())) {
-					try {
-						imPerson = imPersonClass.cast(imPersonConstructor.newInstance(person));
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (InstantiationException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-				}
+    static {
+        register(ImMother.class);
+    }
 
-			}
-		}
-		return imPerson;
-	}
+    public static ImPerson convert(Person person) {
+        ImPerson imPerson = null;
+        Class<? extends ImPerson> imPersonClass = map.get(person.getClass());
+        Constructor<?>[] imPersonConstructors = imPersonClass.getConstructors();
+        for (Constructor<?> imPersonConstructor : imPersonConstructors) {
+            Class<?>[] imPersonParameterTypes = imPersonConstructor.getParameterTypes();
+            for (Class<?> imPersonParameterType : imPersonParameterTypes) {
+                if (imPersonParameterType.isAssignableFrom(person.getClass())) {
+                    try {
+                        imPerson = imPersonClass.cast(imPersonConstructor.newInstance(person));
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-	public static void register(Class<? extends ImPerson> imPersonClass) {
-		Convertable annotation = imPersonClass.getAnnotation(Convertable.class);
-		Class<? extends Person> personClass = annotation.value();
-		map.put(personClass, imPersonClass);
-	}
+            }
+        }
+        return imPerson;
+    }
+
+    public static void register(Class<? extends ImPerson> imPersonClass) {
+        Convertable annotation = imPersonClass.getAnnotation(Convertable.class);
+        Class<? extends Person> personClass = annotation.value();
+        map.put(personClass, imPersonClass);
+    }
 
 }

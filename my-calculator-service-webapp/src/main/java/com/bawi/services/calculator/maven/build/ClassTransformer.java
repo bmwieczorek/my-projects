@@ -12,30 +12,28 @@ import java.io.IOException;
 
 public class ClassTransformer {
 
-	private static final String POSTFIX = "ModelBase";
+    private static final String POSTFIX = "ModelBase";
 
-	public static void main(String[] args) throws Exception {
-		for (String arg : args) {
-			File inputFile = new File(arg);
-			if (inputFile.exists())
-				renameClass(arg, POSTFIX);
-		}
-	}
+    public static void main(String[] args) throws Exception {
+        for (String arg : args) {
+            File inputFile = new File(arg);
+            if (inputFile.exists())
+                renameClass(arg, POSTFIX);
+        }
+    }
 
-	private static void renameClass(String inputFileName, String postfix)
-			throws IOException {
-		String fileBaseName = getBaseName(inputFileName);
-		String outputFileName = getFullPath(inputFileName) + fileBaseName
-				+ postfix + "." + getExtension(inputFileName);
-		File inputFile = new File(inputFileName);
-		String inputFileText = readFileToString(inputFile);
-		String outputFileText = replace(inputFileText,
-				"public class " + fileBaseName, "public class " + fileBaseName + postfix);
-		outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
-		writeStringToFile(new File(outputFileName), outputFileText);
-		inputFile.delete();
-		System.out.println("Renamed class " + inputFileName + " to "
-				+ outputFileName);
+    private static void renameClass(String inputFileName, String postfix) throws IOException {
+        String fileBaseName = getBaseName(inputFileName);
+        String outputFileName = getFullPath(inputFileName) + fileBaseName + postfix + "."
+                + getExtension(inputFileName);
+        File inputFile = new File(inputFileName);
+        String inputFileText = readFileToString(inputFile);
+        String outputFileText = replace(inputFileText, "public class " + fileBaseName, "public class "
+                + fileBaseName + postfix);
+        outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
+        writeStringToFile(new File(outputFileName), outputFileText);
+        inputFile.delete();
+        System.out.println("Renamed class " + inputFileName + " to " + outputFileName);
 
-	}
+    }
 }

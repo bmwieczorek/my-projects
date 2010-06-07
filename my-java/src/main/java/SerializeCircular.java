@@ -4,13 +4,13 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 class CC2 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	CC1 c1;
+    private static final long serialVersionUID = 1L;
+    CC1 c1;
 }
 
 class CC1 implements Serializable {
-	private static final long serialVersionUID = 1L;
-	CC2 c2;
+    private static final long serialVersionUID = 1L;
+    CC2 c2;
 }
 
 public class SerializeCircular {

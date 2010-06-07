@@ -5,8 +5,10 @@ import designpatterns.builder.Holidays.HolidayBuilder;
 class Holidays {
     private int numberOfNights;
     private boolean isBreakfast;
-    private Holidays(){}
-    
+
+    private Holidays() {
+    }
+
     @Override
     public String toString() {
         return numberOfNights + ":" + isBreakfast;
@@ -15,15 +17,17 @@ class Holidays {
     public static class HolidayBuilder {
         int builderNumberOfNights;
         boolean builderIsBreakFast;
+
         public HolidayBuilder(int numberOfNights) {
             this.builderNumberOfNights = numberOfNights;
         }
-        public HolidayBuilder addBreakfast(){
+
+        public HolidayBuilder addBreakfast() {
             builderIsBreakFast = true;
             return this;
         }
-         
-        public Holidays build(){
+
+        public Holidays build() {
             Holidays holidays = new Holidays();
             holidays.numberOfNights = builderNumberOfNights;
             holidays.isBreakfast = builderIsBreakFast;
@@ -40,6 +44,6 @@ public class Example {
         System.out.println(holidays);
         Holidays build = new HolidayBuilder(10).build();
         System.out.println(build);
-        
+
     }
 }

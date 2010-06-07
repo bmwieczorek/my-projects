@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.bawi</groupId>
     <artifactId>my-calculator-web-service</artifactId>
     <name>My Web Services Standalone Project</name>
@@ -31,7 +32,8 @@
                                         <extraarg>-nexclude</extraarg>
 
                                         <!-- for external binding file -->
-                                        <extraarg>http://services.bawi.com/calculator=com.bawi.services.calculator.model</extraarg>
+                                        <extraarg>http://services.bawi.com/calculator=com.bawi.services.calculator.model
+                                        </extraarg>
 
                                         <!-- for non-external binding file -->
                                         <!--
@@ -50,7 +52,8 @@
 
                                     <!-- binding defined in external bindings file -->
                                     <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/resources/jaxb/configuration-wsdl-bindings.xml</bindingFile>
+                                        <bindingFile>${basedir}/src/main/resources/jaxb/configuration-wsdl-bindings.xml
+                                        </bindingFile>
                                     </bindingFiles>
 
                                 </wsdlOption>
@@ -138,7 +141,8 @@
                 <configuration>
                     <mainClass>com.bawi.services.calculator.maven.build.ClassTransformer</mainClass>
                     <arguments>
-                        <argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/model/CalculatorRQ.java</argument>
+                        <argument>${basedir}/target/generated/src/main/java/com/bawi/services/calculator/model/CalculatorRQ.java
+                        </argument>
                     </arguments>
                 </configuration>
             </plugin>
@@ -168,18 +172,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net Maven 2 Repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </repository>
-        <repository>
-            <id>jboss</id>
-            <url>http://repository.jboss.com/maven2</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
         <dependency>
@@ -188,7 +180,10 @@
             <version>2.2.1</version>
         </dependency>
 
-        <!-- required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin  -->
+        <!--
+            required by generic .toString(), .hashCode(), .equals() utility methods created by
+            jaxb-commons-lang-plugin
+        -->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
@@ -264,6 +259,18 @@
             <version>3.2.1</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Maven 2 Repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.com/maven2</url>
+        </repository>
+    </repositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

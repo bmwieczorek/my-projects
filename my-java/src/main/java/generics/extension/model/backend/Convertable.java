@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Convertable {
 
-	Class<? extends Person> value();
+    Class<? extends Person> value();
 
 }

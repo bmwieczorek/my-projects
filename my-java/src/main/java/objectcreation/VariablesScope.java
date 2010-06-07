@@ -1,6 +1,8 @@
 package objectcreation;
+
 class Abcd {
     String color;
+
     @Override
     public String toString() {
         return color;
@@ -35,7 +37,7 @@ public class VariablesScope {
         a = null;
         System.out.println(b);
         System.out.println(a);
-        
+
     }
 
     // idempotent method - repeated calls with the same args give the same

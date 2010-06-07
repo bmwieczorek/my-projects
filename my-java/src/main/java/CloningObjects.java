@@ -1,4 +1,4 @@
-public class CloningObjects implements Cloneable{
+public class CloningObjects implements Cloneable {
 
     private final String foo = "Boiled Eggs";
 

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration>
-	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{ISO8601}] %-5p (%c) [%X{operation}] %m %n" />
-		</layout>
-	</appender>
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] %-5p (%c) [%X{operation}] %m %n" />
+        </layout>
+    </appender>
 
-	<logger name="com.bawi.services.calculator">
-		<level value="DEBUG" />
-	</logger>
+    <logger name="com.bawi.services.calculator">
+        <level value="DEBUG" />
+    </logger>
 
-	<!--                           -->
-	<!-- setup log4j's root logger -->
-	<!--                           -->
-	<root>
-		<level value="ERROR" />
-		<appender-ref ref="STDOUT" />
-	</root>
+    <!--                           -->
+    <!-- setup log4j's root logger -->
+    <!--                           -->
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="STDOUT" />
+    </root>
 </log4j:configuration>

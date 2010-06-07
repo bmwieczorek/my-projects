@@ -25,7 +25,7 @@ class Block2 {
         flag = false;
         notify();
         System.out.println("---after notify");
-        
+
     }
 }
 

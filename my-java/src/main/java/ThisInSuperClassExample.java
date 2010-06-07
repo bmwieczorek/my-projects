@@ -1,6 +1,5 @@
-
 class Superclass {
-    void myPrint(){
+    void myPrint() {
         System.out.println(this);
     }
 }
@@ -9,9 +8,9 @@ class Subclass extends Superclass {
 }
 
 public class ThisInSuperClassExample {
-	public static void main(String[] args) {
-		Subclass subclass = new Subclass();
-		subclass.myPrint();
-	}
+    public static void main(String[] args) {
+        Subclass subclass = new Subclass();
+        subclass.myPrint();
+    }
 
 }
