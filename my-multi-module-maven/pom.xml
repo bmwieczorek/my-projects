@@ -14,6 +14,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -22,6 +23,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
+                <version>LATEST</version>
                 <configuration>
                     <additionalProjectnatures>
                         <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
