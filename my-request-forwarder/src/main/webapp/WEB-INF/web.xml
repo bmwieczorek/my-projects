@@ -4,6 +4,7 @@
 
 <web-app>
     <display-name>Request forwarder</display-name>
+
     <servlet>
         <servlet-name>request-forwarding-servlet</servlet-name>
         <servlet-class>com.bawi.servlet.RequestForwardingServlet</servlet-class>
@@ -11,7 +12,7 @@
 
     <servlet-mapping>
         <servlet-name>request-forwarding-servlet</servlet-name>
-        <url-pattern>/hello.jsp</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
- 
+
 </web-app>
