@@ -55,7 +55,7 @@
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
-                    <wait>true</wait>
+                    <wait>false</wait>
 
                     <container>
                         <containerId>tomcat5x</containerId>
