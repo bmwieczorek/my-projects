@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Hello World (my simple calculator web service)!</h2>
+<h2>Hello World (my request forwarder)!</h2>
 <% 
 String myHeader = request.getHeader("myHeader");
 out.println("Request header myHeader=" + myHeader);

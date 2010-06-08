@@ -24,13 +24,23 @@ public class RequestForwardingServlet extends HttpServlet {
 
     private void forwardRequestToContext(HttpServletRequest req, HttpServletResponse resp,
             String targetContext) throws ServletException, IOException {
-        ServletContext context = getServletContext().getContext(targetContext);
-        validate(context);
         String originContext = req.getContextPath();
         String requestPathWithoutContext = req.getPathInfo();
-        logger.debug("Forwarding request from " + originContext + requestPathWithoutContext + " to "
-                + targetContext + requestPathWithoutContext);
-        context.getRequestDispatcher("/" + requestPathWithoutContext).forward(req, resp);
+        String myParameter = req.getParameter("myParameter");
+        req.setAttribute("myAttribute", "attribute-set-in-request-forwarder-only-for-testing");
+
+        if ("local".equals(myParameter)) {
+            String targetJsp = "/next.jsp";
+            logger.debug("Forwarding request inside context " + originContext + " from "
+                    + requestPathWithoutContext + " to " + targetJsp);
+            req.getRequestDispatcher(targetJsp).forward(req, resp);
+        } else {
+            ServletContext context = getServletContext().getContext(targetContext);
+            validate(context);
+            logger.debug("Forwarding request from " + originContext + requestPathWithoutContext + " to "
+                    + targetContext + requestPathWithoutContext);
+            context.getRequestDispatcher("/" + requestPathWithoutContext).forward(req, resp);
+        }
     }
 
     private static void validate(ServletContext context) {

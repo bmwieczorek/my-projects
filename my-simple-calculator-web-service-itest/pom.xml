@@ -30,7 +30,6 @@
             <!-- run all tests only in integration test phase -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
@@ -56,7 +55,7 @@
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
-                    <wait>false</wait>
+                    <wait>true</wait>
 
                     <container>
                         <containerId>tomcat5x</containerId>
