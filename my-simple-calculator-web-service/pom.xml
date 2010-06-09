@@ -160,10 +160,11 @@
         </dependency>
 
         <!-- cxf logging -->
+        
+        <!-- explicit version needed to run service runner -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <!-- explicit version needed to run service runner -->
             <version>1.5.8</version>
         </dependency>
 
