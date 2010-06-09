@@ -15,39 +15,56 @@ public class RequestForwardingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private final static Logger logger = Logger.getLogger(RequestForwardingServlet.class);
-    private final static String targetContext = "/service";
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-            IOException {
-        forwardRequestToContext(req, resp, targetContext);
-    }
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logRequestDetails(req);
+        setRequestAttributeForTestingPurposesNotRequiredForForwarding(req);
 
-    private void forwardRequestToContext(HttpServletRequest req, HttpServletResponse resp,
-            String targetContext) throws ServletException, IOException {
-        String originContext = req.getContextPath();
-        String requestPathWithoutContext = req.getPathInfo();
         String myParameter = req.getParameter("myParameter");
-        req.setAttribute("myAttribute", "attribute-set-in-request-forwarder-only-for-testing");
-
         if ("local".equals(myParameter)) {
-            String targetJsp = "/next.jsp";
-            logger.debug("Forwarding request inside context " + originContext + " from "
-                    + requestPathWithoutContext + " to " + targetJsp);
-            req.getRequestDispatcher(targetJsp).forward(req, resp);
+            forwardToOtherPathInTheSameContext(req, resp);
         } else {
-            ServletContext context = getServletContext().getContext(targetContext);
-            validate(context);
-            logger.debug("Forwarding request from " + originContext + requestPathWithoutContext + " to "
-                    + targetContext + requestPathWithoutContext);
-            context.getRequestDispatcher("/" + requestPathWithoutContext).forward(req, resp);
+            forwardToTheSamePathInOtherContext(req, resp);
         }
     }
 
-    private static void validate(ServletContext context) {
+    private void logRequestDetails(HttpServletRequest req) {
+        // ContextPath=/forwarder, PathInfo=/hello.jsp, RequestURI=/forwarder/do/hello.jsp, ServletPath=/do,
+        // QueryString=myParameter=local
+        logger.debug("ContextPath=" + req.getContextPath());
+        logger.debug("PathInfo=" + req.getPathInfo());
+        logger.debug("RequestURI=" + req.getRequestURI());
+        logger.debug("ServletPath=" + req.getServletPath());
+        logger.debug("QueryString=" + req.getQueryString());
+    }
+
+    private void setRequestAttributeForTestingPurposesNotRequiredForForwarding(HttpServletRequest req) {
+        req.setAttribute("myAttribute", "attribute-set-in-request-forwarder-only-for-testing");
+    }
+
+    private void forwardToOtherPathInTheSameContext(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String originContextName = req.getContextPath();
+        String requestedResource = req.getPathInfo();
+        String forwardedResource = "/next.jsp";
+        logger.debug("Forwarding request inside context " + originContextName + " from " + requestedResource + " to "
+                + forwardedResource);
+        req.getRequestDispatcher(forwardedResource).forward(req, resp);
+    }
+
+    private void forwardToTheSamePathInOtherContext(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String originContextName = req.getContextPath();
+        String requestedResource = req.getPathInfo();
+        String targetContextName = "/service";
+        ServletContext context = getServletContext().getContext(targetContextName);
         if (context == null) {
-            String message = "No deployable at target context " + targetContext;
+            String message = "No deployable at target context " + targetContextName;
             logger.error(message);
             throw new RuntimeException(message);
         }
+        logger.debug("Forwarding request from " + originContextName + requestedResource + " to " + targetContextName
+                + requestedResource);
+        context.getRequestDispatcher("/" + requestedResource).forward(req, resp);
     }
 }
