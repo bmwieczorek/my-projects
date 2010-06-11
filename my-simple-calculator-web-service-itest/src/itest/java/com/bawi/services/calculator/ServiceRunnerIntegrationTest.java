@@ -81,4 +81,18 @@ public class ServiceRunnerIntegrationTest {
         }
     }
 
+    private void startMavenJettyRun() throws IOException {
+        String s = null;
+        Process mavenProcess = Runtime.getRuntime().exec("mvn cargo:start");
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(mavenProcess.getInputStream()));
+        BufferedReader stdOut = new BufferedReader(new InputStreamReader(mavenProcess.getErrorStream()));
+        while ((s = stdIn.readLine()) != null) {
+            System.out.println(s);
+        }
+
+        while ((s = stdOut.readLine()) != null) {
+            System.err.println(s);
+        }
+    }
+
 }
