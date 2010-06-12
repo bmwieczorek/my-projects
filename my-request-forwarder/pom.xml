@@ -12,7 +12,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <containerConfigXML>src/tomcat/resources/context.xml</containerConfigXML>
                 </configuration>

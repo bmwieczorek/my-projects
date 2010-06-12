@@ -15,7 +15,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
@@ -25,7 +24,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -37,7 +35,6 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
@@ -120,7 +117,6 @@
             <!-- run *.itest.* package in integration test phase -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <excludes>
                         <exclude>**/itest/**</exclude>
@@ -148,7 +144,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>LATEST</version>
                 <configuration>
                     <!-- remove '@', part of email address, from default filtering delimiters  -->
                     <delimiters>
