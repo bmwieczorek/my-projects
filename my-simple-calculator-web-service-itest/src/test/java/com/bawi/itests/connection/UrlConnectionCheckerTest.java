@@ -1,4 +1,4 @@
-package com.bawi.services.calculator;
+package com.bawi.itests.connection;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +24,7 @@ public class UrlConnectionCheckerTest {
     public void shouldRetrunTrueWhenConnectedToServlet() throws Exception {
         // given
         UrlConnectionChecker connectionChecker = new UrlConnectionChecker();
-        TestServletRunner runner = new TestServletRunner();
+        DummyServletRunner runner = new DummyServletRunner();
         runner.start();
 
         // when
