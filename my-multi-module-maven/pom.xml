@@ -10,6 +10,7 @@
     <modules>
         <module>my-multi-module-maven-core</module>
         <module>my-multi-module-maven-war</module>
+        <module>my-multi-module-maven-integration</module>
     </modules>
     
     <build>
