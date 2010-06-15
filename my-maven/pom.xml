@@ -62,23 +62,28 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>LATEST</version>
+            <version>${junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>2.5</version>
+            <version>${commons-lang.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <maven.app.release.version>M2-2010.05</maven.app.release.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- dependencies versions -->
+        <commons-io.version>1.3.2</commons-io.version>
+        <commons-lang.version>2.5</commons-lang.version>
+        <junit.version>4.8.1</junit.version>
     </properties>
 
 </project>
