@@ -1,11 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <artifactId>my-super-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0</version>
+    </parent>
 
     <groupId>com.bawi</groupId>
     <artifactId>my-spring</artifactId>
-    <name>My Spring project</name>
     <version>0.0.1-SNAPSHOT</version>
+    <name>My Spring project</name>
     <description>Spring junit tests will reuse cached bean if they the same context file, or instantiate new
         beans in case of differently named context files. </description>
 
@@ -32,33 +38,18 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring</artifactId>
-            <version>2.5.6</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>2.5.6</version>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
-
-    <!-- add extra source for non corrupted jars -->
-    <repositories>
-        <repository>
-            <id>jboss</id>
-            <url>http://repository.jboss.com/maven2</url>
-        </repository>
-    </repositories>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- dependencies versions -->
-        <junit.version>4.8.1</junit.version>
-    </properties>
 
 </project>
