@@ -17,8 +17,14 @@ public class WarTest {
 
     public static void main(String[] args) throws IOException {
         System.out.println("*** WAR TEST ***");
+        System.out
+                .println(CoreMainPropertiesFileReader.readPropertiesFromResource("my-core-test.properties"));
 
-        new CoreMainPropertiesFileReader();
+        // need to copy properties via maven dependency:copy
+        System.out.println(CoreMainPropertiesFileReader
+                .readPropertiesFromFile("target/dependency/my-multi-module-maven-core/"
+                        + "com/bawi/my-com-bawi-core-test.properties"));
+
         new CoreTestPropertiesFileReader();
         new WarMainPropertiesFileReader();
         new WarTestPropertiesFileReader();

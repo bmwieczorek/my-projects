@@ -62,6 +62,34 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.bawi</groupId>
+                                    <artifactId>my-multi-module-maven-core</artifactId>
+                                    <version>0.0.1-SNAPSHOT</version>
+                                    <type>test-jar</type>                                    
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/dependency/my-multi-module-maven-core</outputDirectory>
+                                    <includes>**/*.properties</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -86,7 +114,7 @@
             <artifactId>my-multi-module-maven-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        
+
         <!-- Testing -->
         <dependency>
             <groupId>com.bawi</groupId>

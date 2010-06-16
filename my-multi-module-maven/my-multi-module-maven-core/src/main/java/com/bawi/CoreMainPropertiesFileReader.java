@@ -1,9 +1,11 @@
 package com.bawi;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Set;
 
 public class CoreMainPropertiesFileReader {
 
@@ -12,8 +14,9 @@ public class CoreMainPropertiesFileReader {
     }
 
     public CoreMainPropertiesFileReader() throws IOException {
-        Properties properties = readPropertiesFromResource("my-core-main.properties");
-        printSystemProperties(properties);
+        System.out.println(readPropertiesFromResource("my-core-main.properties"));
+        System.out
+                .println(readPropertiesFromFile("src/test/resources/com/bawi/my-com-bawi-core-test.properties"));
     }
 
     public static Properties readPropertiesFromResource(String propertiesFileName) throws IOException {
@@ -28,10 +31,17 @@ public class CoreMainPropertiesFileReader {
         return properties;
     }
 
-    private static void printSystemProperties(Properties systemProperties) {
-        Set<String> stringPropertyNames = systemProperties.stringPropertyNames();
-        for (String propertyName : stringPropertyNames) {
-            System.out.println(propertyName + "=" + systemProperties.getProperty(propertyName));
+    public static Properties readPropertiesFromFile(String filePath) throws IOException {
+        Properties properties = new Properties();
+        File file = new File(filePath);
+        FileReader fileReader;
+        try {
+            fileReader = new FileReader(file);
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException(file.getAbsolutePath() + " doesn't exist: " + e.getMessage());
         }
+        properties.load(fileReader);
+        return properties;
     }
+
 }
