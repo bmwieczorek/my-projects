@@ -2,10 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
     http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.bawi</groupId>
-    <artifactId>my-super-pom</artifactId>
-    <version>1.0</version>
+    <artifactId>my-parent-pom</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <build>
@@ -35,6 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
                 <executions>
                     <execution>
                         <id>copy-depenedecies-not-available-in-public-repo</id>
@@ -146,8 +146,8 @@
         <cxf.version>2.2.9</cxf.version>
         <jaxb-impl.version>2.2.1</jaxb-impl.version>
         <log4j.version>1.2.16</log4j.version>
-        <junit.version>4.8.1</junit.version>
         <jetty.version>6.1.24</jetty.version>
+        <junit.version>4.8.1</junit.version>
         <quartz.version>1.5.2</quartz.version>
         <servlet-api.version>2.5</servlet-api.version>
         <slf4j.version>1.5.8</slf4j.version>
