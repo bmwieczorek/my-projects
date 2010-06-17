@@ -32,11 +32,34 @@
                     <downloadSources>true</downloadSources>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-depenedecies-not-available-in-public-repo</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${settings.localRepository}</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>../../workspace/environment/maven/.m2/repository</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
-            <id>Maven Repository Switchboard</id>
+            <id>Maven Repository</id>
             <url>http://repo1.maven.org/maven2</url>
             <releases>
                 <enabled>true</enabled>
