@@ -38,7 +38,7 @@
                 <executions>
                     <execution>
                         <id>copy-depenedecies-not-available-in-public-repo</id>
-                        <phase>generate-sources</phase>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
@@ -71,7 +71,8 @@
 
         <repository>
             <id>maven2-repository.dev.java.net</id>
-            <url>maven2-repository.dev.java.net</url>
+            <url>http://download.java.net/maven/2/</url>
+            <layout>default</layout>
             <releases>
                 <enabled>true</enabled>
             </releases>
