@@ -1,18 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
+    <parent>
+        <artifactId>my-super-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0</version>
+    </parent>
+
     <groupId>com.bawi</groupId>
     <artifactId>my-multi-module-maven</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    
+
     <modules>
         <module>my-multi-module-maven-core</module>
         <module>my-multi-module-maven-war</module>
         <module>my-multi-module-maven-integration</module>
     </modules>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -39,14 +45,14 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- dependencies versions -->
         <log4j.version>1.2.16</log4j.version>
         <junit.version>4.8.1</junit.version>
-        <servlet-api.version>2.5</servlet-api.version>        
+        <servlet-api.version>2.5</servlet-api.version>
     </properties>
-    
+
 </project>

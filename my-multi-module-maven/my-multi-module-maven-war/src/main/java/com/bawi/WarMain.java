@@ -11,7 +11,11 @@ public class WarMain {
     public static void main(String[] args) throws IOException {
         System.out.println("*** WAR MAIN ***");
 
-        new CoreMainPropertiesFileReader();
+        System.out
+                .println(CoreMainPropertiesFileReader.readPropertiesFromResource("my-core-main.properties"));
+        System.out
+                .println(CoreMainPropertiesFileReader
+                        .readPropertiesFromFile("target/dependency/my-multi-module-maven-core/com/bawi/my-com-bawi-core-test.properties"));
 
         // cannot use classes from test in main
         // new CoreTestPropertiesFileReader();
