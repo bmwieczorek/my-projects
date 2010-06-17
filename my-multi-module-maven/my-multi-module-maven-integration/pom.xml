@@ -31,7 +31,7 @@
                 <executions>
                     <execution>
                         <id>unpack</id>
-                        <phase>package</phase>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
@@ -43,12 +43,10 @@
                                     <version>0.0.1-SNAPSHOT</version>
                                     <type>test-jar</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${project.build.directory}/conf</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/dependency/my-multi-module-maven-core</outputDirectory>
                                     <includes>**/*.properties</includes>
                                 </artifactItem>
                             </artifactItems>
-                            <includes>**/*.properties</includes>
-                            <outputDirectory>${project.build.directory}/wars</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -56,7 +54,6 @@
 
         </plugins>
     </build>
-
 
     <dependencies>
 
