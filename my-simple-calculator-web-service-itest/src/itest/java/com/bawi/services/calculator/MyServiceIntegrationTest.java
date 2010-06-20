@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 public class MyServiceIntegrationTest {
+
     private Logger logger = Logger.getLogger(MyServiceIntegrationTest.class);
     private String url = "http://localhost:8080/forwarder/do/hello.jsp";
 

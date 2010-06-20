@@ -1,33 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>    
-	<parent>
-		<artifactId>my-parent-pom</artifactId>
-		<groupId>com.bawi</groupId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../my-parent-pom/pom.xml</relativePath>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <artifactId>my-simple-calculator-web-service-itest</artifactId>
 
     <build>
-
-        <!-- explicitly make itest a test java and resource folder -->
-        <!--
-            <testSourceDirectory>src/itest/java</testSourceDirectory> <testResources> <testResource>
-            <directory>src/itest/resources</directory> </testResource> </testResources>
-        -->
-
         <plugins>
-            <!-- java annotations -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -62,7 +45,7 @@
                 </executions>
             </plugin>
 
-            <!-- run all tests only in integration test phase -->
+            <!-- run *Integration* tests only in integration test phase, other test in test phase -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
@@ -255,6 +238,13 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.bawi</groupId>
+            <artifactId>my-test-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
 
         <!-- apache java utilities -->
         <dependency>
