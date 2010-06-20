@@ -135,10 +135,91 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
+                <version>${jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>add-itest-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src/itest/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <excludes>
+                                <exclude>**/*Integration*</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>surefire-integration-test</id>
+                        <!-- integration test phase -->
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <includes>
+                                <include>**/*Integration*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -191,21 +272,61 @@
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>${cxf.version}</version>
             <exclusions>
+                <!-- Required exclusion for jetty:run classpath depenedency problems -->
                 <exclusion>
                     <groupId>org.apache.geronimo.specs</groupId>
                     <artifactId>geronimo-activation_1.1_spec</artifactId>
                 </exclusion>
+
+                <!--  Unsed depenedencies -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-annotation_1.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
 
+
+        <!--  cxf extension for soap -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
             <version>${cxf.version}</version>
             <exclusions>
+                <!-- Required exclusion for jetty:run classpath depenedency problems -->
                 <exclusion>
                     <groupId>org.apache.geronimo.specs</groupId>
                     <artifactId>geronimo-activation_1.1_spec</artifactId>
+                </exclusion>
+
+                <!--  Unsed depenedencies -->
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-jaxws_2.1_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.geronimo.specs</groupId>
+                    <artifactId>geronimo-annotation_1.0_spec</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -215,6 +336,10 @@
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
             <version>${cxf.version}</version>
             <exclusions>
+                <!--
+                    Offending tomcat servlet, this exclusion requires explicit declaration of javax servlet
+                    api in provided scope
+                -->
                 <exclusion>
                     <groupId>org.apache.geronimo.specs</groupId>
                     <artifactId>geronimo-servlet_2.5_spec</artifactId>
@@ -238,13 +363,6 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- needed for url connection checker -->
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>${commons-httpclient.version}</version>
-        </dependency>
-
         <!--  testing and validation -->
         <dependency>
             <groupId>junit</groupId>
@@ -253,29 +371,13 @@
             <scope>test</scope>
         </dependency>
 
+
         <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-servlet-tester</artifactId>
-            <version>${jetty.version}</version>
-            <scope>test</scope>
+            <groupId>com.bawi</groupId>
+            <artifactId>my-test-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!-- apache java utilities -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>${commons-collections.version}</version>
-        </dependency>
     </dependencies>
 
 </project>
