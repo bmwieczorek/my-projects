@@ -18,7 +18,7 @@
                 <executions>
                     <execution>
                         <id>add-itest-source</id>
-                        <phase>generate-test-sources</phase>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>add-test-source</goal>
                         </goals>
@@ -30,7 +30,7 @@
                     </execution>
                     <execution>
                         <id>add-test-resource</id>
-                        <phase>generate-test-sources</phase>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>add-test-resource</goal>
                         </goals>
@@ -180,21 +180,6 @@
                         <goals>
                             <goal>stop</goal>
                         </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>integration-tests</classifier>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

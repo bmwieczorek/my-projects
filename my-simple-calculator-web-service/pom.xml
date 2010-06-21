@@ -16,6 +16,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -99,14 +100,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -170,7 +163,7 @@
                 <executions>
                     <execution>
                         <id>add-itest-source</id>
-                        <phase>generate-test-sources</phase>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>add-test-source</goal>
                         </goals>
@@ -370,7 +363,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>com.bawi</groupId>

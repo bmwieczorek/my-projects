@@ -173,12 +173,13 @@
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>${cxf.version}</version>
         </dependency>
-
+<!--  
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-local</artifactId>
             <version>${cxf.version}</version>
         </dependency>
+-->
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
