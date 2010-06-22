@@ -24,18 +24,21 @@
                             <value>myPropertyValue</value>
                         </systemProperty>
                     </systemProperties>
-                    <webApp>${project.build.directory}/${deployable.artifactId}-1.0-SNAPSHOT.war</webApp>
+                    <webApp>${project.build.directory}/${deployable.artifactId}-${deployable.version}.war</webApp>
+                    <webAppConfig>
+                        <contextPath>/${deployable.artifactId}</contextPath>
+                    </webAppConfig>
                 </configuration>
                 <executions>
                     <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
                         <goals>
-                            <goal>run-war</goal>
+                            <goal>deploy-war</goal>
                         </goals>
                         <configuration>
-                            <scanIntervalSeconds>0</scanIntervalSeconds>
                             <daemon>true</daemon>
+                            <reload>manual</reload>
                         </configuration>
                     </execution>
                     <execution>
@@ -56,10 +59,58 @@
                         <id>copy-dependencies</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${deployable.groupId}</groupId>
+                                    <artifactId>${deployable.artifactId}</artifactId>
+                                    <version>${deployable.version}</version>
+                                    <type>war</type>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- run *Integration* tests only in integration test phase, other test in test phase -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>surefire-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <excludes>
+                                <exclude>**/*Integration*</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>surefire-integration-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <argLine>-Xmx768m</argLine>
+                            <includes>
+                                <include>**/*Integration*</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -68,17 +119,10 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.bawi</groupId>
-            <artifactId>${deployable.artifactId}</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
-    </dependencies>
-
     <properties>
+        <deployable.groupId>${groupId}</deployable.groupId>
         <deployable.artifactId>my-simple-webapp</deployable.artifactId>
+        <deployable.version>${version}</deployable.version>
     </properties>
 
 </project>
