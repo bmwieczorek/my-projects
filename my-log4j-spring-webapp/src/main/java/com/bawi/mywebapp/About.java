@@ -20,9 +20,8 @@ public class About {
         return "Throwing my exception !!!";
     }
 
-    @SuppressWarnings("unchecked")
     private void displaySystemProperties() {
-        TreeMap treeMap = new TreeMap(System.getProperties());
+        TreeMap<?, ?> treeMap = new TreeMap<Object, Object>(System.getProperties());
         logger.debug(treeMap);
         // for (Object key : treeMap.keySet()) {
         // logger.debug(key + "=" + treeMap.get(key));

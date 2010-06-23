@@ -30,7 +30,7 @@ public class HelloFormController extends SimpleFormController {
         String inputValue = ((HelloFormParams) command).getInputValue();
         String selectValue = ((HelloFormParams) command).getSelectValue();
 
-        Map model = errors.getModel();
+        Map<String, String> model = errors.getModel();
         model.put("inputValue", inputValue);
         model.put("selectValue", selectValue);
 
@@ -45,8 +45,7 @@ public class HelloFormController extends SimpleFormController {
         return helloFormParams;
     }
 
-    @SuppressWarnings("unchecked")
-    protected Map referenceData(HttpServletRequest request) throws Exception {
+    protected Map<String, Object> referenceData(HttpServletRequest request) throws Exception {
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("inputValue", "World");

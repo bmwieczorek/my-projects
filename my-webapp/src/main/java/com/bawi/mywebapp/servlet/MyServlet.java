@@ -48,7 +48,6 @@ public class MyServlet extends HttpServlet {
         log.info(this.getServletContext().getInitParameter("contextConfigLocation"));
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
@@ -57,7 +56,7 @@ public class MyServlet extends HttpServlet {
         out.println("hello world!\n");
         HttpSession session = req.getSession();
         out.println("Id=" + session.getId());
-        Enumeration attributeNames = session.getAttributeNames();
+        Enumeration<?> attributeNames = session.getAttributeNames();
         while (attributeNames.hasMoreElements()) {
             String name = (String) attributeNames.nextElement();
             String value = session.getAttribute(name).toString();
@@ -66,7 +65,7 @@ public class MyServlet extends HttpServlet {
         out.println("ServletContext=" + session.getServletContext());
         out.println("CreationTime=" + new Date(session.getCreationTime()));
         out.println("MaxInactiveInterval=" + session.getMaxInactiveInterval());
-        Enumeration parameterNames = req.getParameterNames();
+        Enumeration<?> parameterNames = req.getParameterNames();
         while (parameterNames.hasMoreElements()) {
             String name = (String) parameterNames.nextElement();
             String value = req.getParameter(name);

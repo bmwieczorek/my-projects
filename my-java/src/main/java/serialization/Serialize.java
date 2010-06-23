@@ -1,7 +1,11 @@
 package serialization;
 
-import java.io.*;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 
 public class Serialize {
 
@@ -39,13 +43,13 @@ public class Serialize {
          * the same file.
          */
 
-        Vector v;
+        Vector<String> v;
         try {
-            v = (Vector) load("friends.ser");
+            v = (Vector<String>) load("friends.ser");
             System.out.println("Read: " + v);
         } catch (Exception e) {
             System.out.println("File not found. Creating it.");
-            v = new Vector();
+            v = new Vector<String>();
             v.addElement("Peter");
             v.addElement("John");
             v.addElement("Bryan");

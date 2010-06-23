@@ -11,9 +11,8 @@ public class About {
         displaySystemProperties();
     }
 
-    @SuppressWarnings("unchecked")
     private void displaySystemProperties() {
-        TreeMap treeMap = new TreeMap(System.getProperties());
+        TreeMap<?, ?> treeMap = new TreeMap<Object, Object>(System.getProperties());
         logger.debug(treeMap);
     }
 

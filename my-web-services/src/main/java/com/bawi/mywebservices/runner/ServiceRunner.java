@@ -27,7 +27,6 @@ public class ServiceRunner {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private void loadProperties() {
         InputStream stream = ClassLoader.getSystemResourceAsStream("service-runner.properties");
         Properties properties = new Properties();
@@ -37,7 +36,7 @@ public class ServiceRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        TreeMap treeMap = new TreeMap(System.getProperties());
+        TreeMap<?, ?> treeMap = new TreeMap<Object, Object>(System.getProperties());
         for (Object key : treeMap.keySet()) {
             System.out.println(key + "=" + treeMap.get(key));
         }
