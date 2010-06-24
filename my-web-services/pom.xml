@@ -16,6 +16,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -54,6 +55,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>${jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -114,6 +116,7 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
+                <version>${jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                 </configuration>

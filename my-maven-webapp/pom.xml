@@ -95,7 +95,7 @@
             <!--
                 <plugin> <groupId>org.codehaus.cargo</groupId> <artifactId>cargo-maven2-plugin</artifactId>
                 <configuration> <wait>false</wait> <container> <containerId>tomcat5x</containerId>
-                <zipUrlInstaller> <url>http://localhost/apache-tomcat-5.5.29.zip</url>
+                <zipUrlInstaller> <url>http://localhost/apache-tomcat-${tomcat.version}.zip</url>
                 <installDir>${installDir}</installDir> </zipUrlInstaller> </container> <deployables>
                 <deployable> <groupId>com.bawi</groupId> <artifactId>my-maven-webapp</artifactId>
                 <type>war</type> </deployable> </deployables> <configuration>
@@ -199,7 +199,7 @@
     </dependencies>
 
     <properties>
-        <tomcat.home>${basedir}/../apache-tomcat-5.5.28</tomcat.home>
+        <tomcat.home>${basedir}/../apache-tomcat-${tomcat.version}</tomcat.home>
         <myapp.build.release.version>RC1-2010.06</myapp.build.release.version>
     </properties>
 

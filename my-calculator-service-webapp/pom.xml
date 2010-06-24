@@ -16,6 +16,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -68,6 +69,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>${jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -127,6 +129,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>rename java class files</id>
@@ -148,6 +151,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -172,6 +176,7 @@
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
+                <version>${jetty.version}</version>
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <!-- jmx enabled -->
@@ -250,7 +255,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.5.8</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- spring -->

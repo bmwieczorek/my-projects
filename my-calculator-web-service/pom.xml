@@ -15,6 +15,7 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -67,6 +68,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>${jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -127,6 +129,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>rename java class files</id>
@@ -149,6 +152,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -188,6 +192,7 @@
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -224,7 +229,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.5.8</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- spring -->
@@ -247,11 +252,7 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
+        
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
