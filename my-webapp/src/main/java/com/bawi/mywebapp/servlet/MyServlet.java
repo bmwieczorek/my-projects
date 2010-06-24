@@ -16,37 +16,38 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 class MyClass {
-    String name = "ania";
+	String name = "ania";
 
-    @Override
-    public String toString() {
-        return getClass().getName() + "name=" + name;
-    }
+	@Override
+	public String toString() {
+		return getClass().getName() + "name=" + name;
+	}
 
-    public MyClass(String name) {
-        this.name = name;
-    }
+	public MyClass(String name) {
+		this.name = name;
+	}
 }
 
 public class MyServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private static final Logger log = Logger.getLogger(MyServlet.class);
+	private static final Logger log = Logger.getLogger(MyServlet.class);
 
-    public void init() throws ServletException {
-        Properties properties = System.getProperties();
-        Set<Object> keySet = properties.keySet();
-        StringBuilder builder = new StringBuilder("\n");
-        for (Object key : keySet) {
-            // builder.append(key + "=" + properties.get(key)+ "\n");
-            if (((String) key).startsWith("jboss")) {
-                builder.append(key + "=" + properties.get(key) + "\n");
-            }
-        }
-        log.info(builder);
-        log.info(this.getServletContext().getInitParameter("contextConfigLocation"));
-    }
+	public void init() throws ServletException {
+		Properties properties = System.getProperties();
+		Set<Object> keySet = properties.keySet();
+		StringBuilder builder = new StringBuilder("\n");
+		for (Object key : keySet) {
+			// builder.append(key + "=" + properties.get(key)+ "\n");
+			if (((String) key).startsWith("jboss")) {
+				builder.append(key + "=" + properties.get(key) + "\n");
+			}
+		}
+		log.info(builder);
+		log.info(this.getServletContext().getInitParameter(
+				"contextConfigLocation"));
+	}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
@@ -74,14 +75,14 @@ public class MyServlet extends HttpServlet {
         session.setAttribute("bawi", new MyClass("basia"));
         // session.putValue("bawi2", new MyClass("basia2"));
 
-    }
+	}
 
-    // private void sendPost() throws HttpException, IOException{
-    // HttpClient httpClient = new HttpClient();
-    // PostMethod postMethod = new
-    // PostMethod("http://localhost:8080/my-servlet/my-servlet-url2");
-    // postMethod.setRequestEntity(requestEntity);
-    // int executeMethod = httpClient.executeMethod(postMethod);
-    // }
+	// private void sendPost() throws HttpException, IOException{
+	// HttpClient httpClient = new HttpClient();
+	// PostMethod postMethod = new
+	// PostMethod("http://localhost:8080/my-servlet/my-servlet-url2");
+	// postMethod.setRequestEntity(requestEntity);
+	// int executeMethod = httpClient.executeMethod(postMethod);
+	// }
 
 }
