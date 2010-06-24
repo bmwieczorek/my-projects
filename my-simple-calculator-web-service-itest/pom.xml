@@ -95,7 +95,7 @@
 					<wait>false</wait>
 
 					<container>
-						<containerId>tomcat5x</containerId>
+						<containerId>tomcat6x</containerId>
 
 						<!-- 'installed' = present on local file system, default (as opposed 
 							to 'embedded' = supported only by jetty ) -->
@@ -126,7 +126,7 @@
 						<!-- for 'standalone' configuration specify target dir where to deploy 
 							webapp (different from tomcat home location), for 'existing' configuration 
 							use tomcat home location as used in container -->
-						<home>${project.build.directory}/tomcat5x</home>
+						<home>${project.build.directory}/tomcat6x</home>
 						<!-- <home>${tomcat.home}</home> -->
 
 						<deployables>

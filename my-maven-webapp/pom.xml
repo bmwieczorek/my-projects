@@ -18,6 +18,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
@@ -27,13 +28,14 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
 
                     <!-- waiter after cargo start; default true -->
                     <wait>false</wait>
 
                     <container>
-                        <containerId>tomcat5x</containerId>
+                        <containerId>tomcat6x</containerId>
 
                         <!--
                             'installed' = present on local file system, default (as opposed to 'embedded' =
@@ -62,7 +64,7 @@
                             (different from tomcat home location), for 'existing' configuration use tomcat
                             home location as used in container
                         -->
-                        <home>${project.build.directory}/tomcat5x</home>
+                        <home>${project.build.directory}/tomcat6x</home>
 
                         <properties>
                             <cargo.logging>high</cargo.logging>
@@ -94,12 +96,12 @@
 
             <!--
                 <plugin> <groupId>org.codehaus.cargo</groupId> <artifactId>cargo-maven2-plugin</artifactId>
-                <configuration> <wait>false</wait> <container> <containerId>tomcat5x</containerId>
+                <configuration> <wait>false</wait> <container> <containerId>tomcat6x</containerId>
                 <zipUrlInstaller> <url>http://localhost/apache-tomcat-${tomcat.version}.zip</url>
                 <installDir>${installDir}</installDir> </zipUrlInstaller> </container> <deployables>
                 <deployable> <groupId>com.bawi</groupId> <artifactId>my-maven-webapp</artifactId>
                 <type>war</type> </deployable> </deployables> <configuration>
-                <home>${project.build.directory}/tomcat5x/container</home> </configuration> </configuration>
+                <home>${project.build.directory}/tomcat6x/container</home> </configuration> </configuration>
                 <executions> <execution> <id>start-container</id> <phase>pre-integration-test</phase> <goals>
                 <goal>start</goal> </goals> </execution> <execution> <id>stop-container</id>
                 <phase>post-integration-test</phase> <goals> <goal>stop</goal> </goals> </execution>
