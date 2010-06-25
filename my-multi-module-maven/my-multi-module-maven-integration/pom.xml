@@ -23,9 +23,9 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>com.bawi</groupId>
+                                    <groupId>${project.groupId}</groupId>
                                     <artifactId>my-multi-module-maven-core</artifactId>
-                                    <version>1.0-SNAPSHOT</version>
+                                    <version>${project.version}</version>
                                     <type>test-jar</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${project.build.directory}/dependency/my-multi-module-maven-core</outputDirectory>
@@ -46,32 +46,31 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <!-- ITest uses  -->
 
         <dependency>
-            <groupId>com.bawi</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>my-multi-module-maven-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.bawi</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>my-multi-module-maven-war</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.bawi</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>my-multi-module-maven-war</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <classifier>integration</classifier>
             <scope>test</scope>
         </dependency>
@@ -79,7 +78,6 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

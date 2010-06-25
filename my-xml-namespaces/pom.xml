@@ -80,14 +80,12 @@
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
         </dependency>
 
         <!-- required by maven plugin in eclipse for autobuild -->
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
-            <version>${xercesImpl.version}</version>
         </dependency>
     </dependencies>
    
