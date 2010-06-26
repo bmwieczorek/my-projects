@@ -35,7 +35,10 @@
 									<extraargs>
 										<extraarg>-nexclude</extraarg>
 										<extraarg>http://services.bawi.com/calculator</extraarg>
-										<!-- override package of the generated classes defined in the namespace -->
+										<!--
+											override package of the generated classes defined in the
+											namespace
+										-->
 										<extraarg>-p</extraarg>
 										<extraarg>com.bawi.services.calculator.model</extraarg>
 									</extraargs>
@@ -81,8 +84,10 @@
 						<version>2.1.8</version>
 					</dependency>
 
-					<!-- .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin 
-						-Xcommons-lang -->
+					<!--
+						.toString(), .hashCode(), .equals() utility methods
+						jaxb-commons-lang-plugin -Xcommons-lang
+					-->
 					<dependency>
 						<groupId>org.jvnet.jaxb2_commons_extra</groupId>
 						<artifactId>jaxb-commons-lang-plugin</artifactId>
@@ -92,8 +97,8 @@
 					<!-- required by jaxb-commons-lang-plugin -->
 					<dependency>
 						<groupId>commons-lang</groupId>
-                                                <artifactId>commons-lang</artifactId>
-                                                <version>${commons-lang.version}</version>
+						<artifactId>commons-lang</artifactId>
+						<version>${commons-lang.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -223,14 +228,19 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
+		<!--
+			jaxb unmarshaller impl of setProperty; build in java6 throws
+			exception
+		-->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 		</dependency>
 
-		<!-- required by generic .toString(), .hashCode(), .equals() utility methods 
-			created by jaxb-commons-lang-plugin -->
+		<!--
+			required by generic .toString(), .hashCode(), .equals() utility
+			methods created by jaxb-commons-lang-plugin
+		-->
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
@@ -277,10 +287,10 @@
 			<artifactId>slf4j-simple</artifactId>
 		</dependency>
 
-		<!-- spring -->
+		<!-- spring ClassPathXmlApplicationContext -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring</artifactId>
+			<artifactId>spring-context</artifactId>
 		</dependency>
 
 		<!-- testing and validation -->
