@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="myManagerService" class="com.bawi.myspringbeans.service.MyManagerService">
+        <constructor-arg ref="personDao" />
+    </bean>
+
+    <bean id="myWorkerService" class="com.bawi.myspringbeans.service.MyWorkerService">
+        <constructor-arg ref="personDao" />
+    </bean>
+
+    <bean id="personDao" class="com.bawi.myspringbeans.dao.impl.PersonDaoImpl" scope="singleton" />
+
+</beans>
+
