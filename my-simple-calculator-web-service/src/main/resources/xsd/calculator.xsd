@@ -15,7 +15,6 @@
 	<xsd:element name="CalculatorRQ" type="CalculatorRQ" />
 	<xsd:element name="CalculatorRS" type="CalculatorRS" />
 
-
 	<!-- Xml types -->
 	<xsd:simpleType name="operation">
 		<xsd:restriction base="xsd:string">
@@ -29,7 +28,7 @@
 	<xsd:complexType name="CalculatorRQ">
 		<xsd:sequence>
 			<xsd:element name="parameters" type="xsd:int" minOccurs="1"
-				maxOccurs="unbounded" />
+	maxOccurs="unbounded" />
 			<xsd:element name="operation" type="operation" />
 		</xsd:sequence>
 	</xsd:complexType>

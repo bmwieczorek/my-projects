@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>    
-	<parent>
-		<artifactId>my-parent-pom</artifactId>
-		<groupId>com.bawi</groupId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../my-parent-pom/pom.xml</relativePath>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <artifactId>my-web-services</artifactId>
     <packaging>war</packaging>
     <name>My Web Services Project</name>
@@ -26,12 +26,9 @@
                         </goals>
                         <configuration>
                             <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-                            <!-- or  -->
-                            <!--
-                                <wsdlOptions> <wsdlOption> <wsdlRoot> <wsdl>
-                                <wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl> </wsdl>
-                                </wsdlRoot> </wsdlOption> </wsdlOptions>
-                            -->
+                            <!-- or -->
+                            <!-- <wsdlOptions> <wsdlOption> <wsdlRoot> <wsdl> <wsdl>${basedir}/src/main/resources/wsdl/myService.wsdl</wsdl> 
+                                </wsdl> </wsdlRoot> </wsdlOption> </wsdlOptions> -->
                             <wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
                             <includes>
                                 <include>*Service.wsdl</include>
@@ -71,15 +68,11 @@
                     <schemaFiles>myXMLSchema.xsd</schemaFiles>
                     <clearOutputDir>false</clearOutputDir>
                     <extension>true</extension>
-                    <!-- 
-                    <bindingFiles>jaxb-bindings.xsd</bindingFiles>
-                    -->
+                    <!-- <bindingFiles>jaxb-bindings.xsd</bindingFiles> -->
 
 
                     <!-- override defaults -->
-                    <!--
-                    <packageName>com.bawi.myservice.jaxb</packageName>
-                    -->
+                    <!-- <packageName>com.bawi.myservice.jaxb</packageName> -->
                     <arguments>-Xfluent-api -Xcommons-lang</arguments>
                 </configuration>
                 <!-- required for jaxb2-maven-plugin -->
@@ -92,10 +85,7 @@
                         <version>2.1.8</version>
                     </dependency>
 
-                    <!--
-                        .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin
-                        -Xcommons-lang
-                    -->
+                    <!-- .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons_extra</groupId>
                         <artifactId>jaxb-commons-lang-plugin</artifactId>
@@ -112,7 +102,7 @@
                 </dependencies>
             </plugin>
 
-            <!-- run with mvn jetty:run, remember to enable autobuild in eclipse  -->
+            <!-- run with mvn jetty:run, remember to enable autobuild in eclipse -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
@@ -132,39 +122,18 @@
     </build>
 
     <dependencies>
-        <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception  -->
+        <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb-impl.version}</version>
         </dependency>
 
-        <!--
-            required by generic .toString(), .hashCode(), .equals() utility methods created by
-            jaxb-commons-lang-plugin
-        -->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-        </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
 
-        <!-- required by maven plugin in eclipse for autobuild -->
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-        </dependency>
-
-
         <!-- cxf -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -176,10 +145,6 @@
         </dependency>
 
         <!-- spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>

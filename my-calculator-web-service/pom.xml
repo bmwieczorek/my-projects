@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<artifactId>my-parent-pom</artifactId>
-		<groupId>com.bawi</groupId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../my-parent-pom/pom.xml</relativePath>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <artifactId>my-calculator-web-service</artifactId>
     <name>My Web Services Standalone Project</name>
 
@@ -25,10 +25,8 @@
                         </goals>
                         <configuration>
                             <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
-                            <!--
-                                <wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot> <includes>
-                                <include>*Service.wsdl</include> </includes>
-                            -->
+                            <!-- <wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot> <includes> <include>*Service.wsdl</include> 
+                                </includes> -->
                             <wsdlOptions>
                                 <wsdlOption>
                                     <extraargs>
@@ -39,17 +37,12 @@
                                         </extraarg>
 
                                         <!-- for non-external binding file -->
-                                        <!--
-                                            <extraarg>http://services.bawi.com/calculator</extraarg>
-                                        -->
+                                        <!-- <extraarg>http://services.bawi.com/calculator</extraarg> -->
 
                                         <!-- override all packages of the generated classes defined in the namespace -->
 
                                         <!-- for non-external binding file -->
-                                        <!--
-                                            <extraarg>-p</extraarg>
-                                            <extraarg>com.bawi.services.calculator.model</extraarg>
-                                        -->
+                                        <!-- <extraarg>-p</extraarg> <extraarg>com.bawi.services.calculator.model</extraarg> -->
                                     </extraargs>
                                     <wsdl>${basedir}/src/main/resources/wsdl/calculatorService.wsdl</wsdl>
 
@@ -84,18 +77,14 @@
                     <!-- external binding files (xjb) -->
                     <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
 
-                    <!--
-                    <packageName>com.bawi.services.calculator.model</packageName>
-                    -->
+                    <!-- <packageName>com.bawi.services.calculator.model</packageName> -->
 
                     <schemaFiles>calculator.xsd</schemaFiles>
                     <clearOutputDir>false</clearOutputDir>
                     <extension>true</extension>
 
                     <!-- override defaults -->
-                    <!--
-                    <packageName>com.bawi.myservice.jaxb</packageName>
-                    -->
+                    <!-- <packageName>com.bawi.myservice.jaxb</packageName> -->
                     <arguments>-Xfluent-api -Xcommons-lang</arguments>
                 </configuration>
 
@@ -117,6 +106,7 @@
                     </dependency>
 
                     <!-- required by jaxb-commons-lang-plugin -->
+                    <!-- required by generic .toString(), .hashCode(), .equals() utility methods created by jaxb-commons-lang-plugin -->
                     <dependency>
                         <groupId>commons-lang</groupId>
                         <artifactId>commons-lang</artifactId>
@@ -176,38 +166,13 @@
     </build>
 
     <dependencies>
-        <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-        </dependency>
-
-        <!--
-            required by generic .toString(), .hashCode(), .equals() utility methods created by
-            jaxb-commons-lang-plugin
-        -->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-        </dependency>
-        
+    
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
 
-        <!-- required by maven plugin in eclipse for autobuild -->
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-        </dependency>
-
         <!-- cxf -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -222,18 +187,20 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
+            <artifactId>spring-context</artifactId>
         </dependency>
 
-        <!--  testing and validation -->
+        <!-- testing and validation -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- apache java utilities -->
@@ -241,7 +208,7 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
