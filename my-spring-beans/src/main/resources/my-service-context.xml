@@ -10,7 +10,5 @@
         <constructor-arg ref="personDao" />
     </bean>
 
-    <bean id="personDao" class="com.bawi.myspringbeans.dao.impl.PersonDaoImpl" scope="singleton" />
-
 </beans>
 
