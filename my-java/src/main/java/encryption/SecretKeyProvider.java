@@ -1,5 +1,9 @@
 package encryption;
 
+import static encryption.Algorithm.DES;
+import static encryption.Base64EncodingUtils.decodeBase64;
+import static encryption.Base64EncodingUtils.encodeBase64;
+
 import java.io.File;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -10,68 +14,70 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.io.FileUtils;
 
-import encryption.encoding.Base64Decoder;
-import encryption.encoding.Base64Encoder;
-import encryption.encoding.BytesToStringEncoder;
-import encryption.encoding.StringToBytesDecoder;
-
 public class SecretKeyProvider {
 
-    private final static String DEFAULT_ALGORITHM = "DES";
-
-    private StringToBytesDecoder decoder = new Base64Decoder();
-    private BytesToStringEncoder encoder = new Base64Encoder();
-
-    private final String algorithm;
+    private final Algorithm algorithm;
 
     public SecretKeyProvider() {
-        this(DEFAULT_ALGORITHM);
+        this(DES);
     }
 
-    public SecretKeyProvider(String algorithm) {
+    public SecretKeyProvider(Algorithm algorithm) {
         this.algorithm = algorithm;
-    }
-
-    public SecretKey readKeyFile(String keyFilePath) {
-        return new SecretKeySpec(readFile(keyFilePath), algorithm);
-    }
-
-    public void writeKeyToFile(SecretKey key, String keyFilePath) {
-        byte[] keyBytes = key.getEncoded();
-        try {
-            FileUtils.writeStringToFile(new File(keyFilePath), encoder.encodeToString(keyBytes));
-        } catch (IOException e) {
-            throw new RuntimeException("Problem writing key to file " + keyFilePath + ".");
-        }
     }
 
     public SecretKey createRandomKey() {
         try {
-            return KeyGenerator.getInstance(algorithm).generateKey();
+            return KeyGenerator.getInstance(algorithm.toString()).generateKey();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Could not create key for algorithm " + algorithm + ": "
+            throw new RuntimeException("Failed to create key for algorithm " + algorithm + ": "
                     + e.getMessage());
         }
     }
 
-    private byte[] readFile(String keyFilePath) {
+    public SecretKey readRawKeyFromFile(String keyFilePath) {
+        validateFileExists(keyFilePath);
+        try {
+            byte[] rawKey = FileUtils.readFileToByteArray(new File(keyFilePath));
+            return new SecretKeySpec(rawKey, algorithm.toString());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read key in raw format from file " + keyFilePath + ": "
+                    + e.getMessage());
+        }
+    }
+
+    public SecretKey readBase64EncodedKeyFromFile(String keyFilePath) {
+        validateFileExists(keyFilePath);
+        try {
+            String base64EncodedKey = FileUtils.readFileToString(new File(keyFilePath));
+            return new SecretKeySpec(decodeBase64(base64EncodedKey), algorithm.toString());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read key in base64Encoded format from file " + keyFilePath
+                    + ":" + e.getMessage());
+        }
+    }
+
+    public void writeRawKeyToFile(SecretKey key, String keyFilePath) {
+        try {
+            FileUtils.writeByteArrayToFile(new File(keyFilePath), key.getEncoded());
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to write key in raw format to file " + keyFilePath + ".");
+        }
+    }
+
+    public void writeBase64EncodedKeyToFile(SecretKey key, String keyFilePath) {
+        try {
+            FileUtils.writeStringToFile(new File(keyFilePath), encodeBase64(key.getEncoded()));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to write key in base64Encoded format to file " + keyFilePath
+                    + ".");
+        }
+    }
+
+    private static void validateFileExists(String keyFilePath) {
         File keyFile = new File(keyFilePath);
         if (!keyFile.exists()) {
             throw new RuntimeException("File " + keyFilePath + "  doesn't exist.");
         }
-        try {
-            return decoder.decodeToBytes(FileUtils.readFileToString(keyFile));
-        } catch (IOException e) {
-            throw new RuntimeException("Problem reading file " + keyFilePath + ".");
-        }
     }
-
-    public void setBytesToStringEncoder(BytesToStringEncoder encoder) {
-        this.encoder = encoder;
-    }
-
-    public void setStringToBytesDecoder(StringToBytesDecoder decoder) {
-        this.decoder = decoder;
-    }
-
 }

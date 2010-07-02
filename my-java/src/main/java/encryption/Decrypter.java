@@ -1,41 +1,35 @@
 package encryption;
 
+import static encryption.Algorithm.DES;
+import static encryption.Base64EncodingUtils.decodeBase64;
+import static javax.crypto.Cipher.DECRYPT_MODE;
+
+import java.security.GeneralSecurityException;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
-import encryption.encoding.Base64Decoder;
-import encryption.encoding.StringToBytesDecoder;
-
 public class Decrypter {
-
-    private final static String DEFAULT_ALGORITHM = "DES";
-
-    private StringToBytesDecoder decoder = new Base64Decoder();
 
     private final Cipher decriptCipher;
 
     public Decrypter(SecretKey key) {
-        this(key, DEFAULT_ALGORITHM);
+        this(key, DES);
     }
 
-    public Decrypter(SecretKey key, String algorithm) {
-        decriptCipher = new CipherFactory(key, algorithm).create(Cipher.DECRYPT_MODE);
+    public Decrypter(SecretKey key, Algorithm algorithm) {
+        decriptCipher = new CipherFactory(key, algorithm).create(DECRYPT_MODE);
     }
 
-    public String decryptFromString(String text) {
-        return decrypt(decoder.decodeToBytes(text));
+    public String decryptBase64Encoded(String base64EndodedData) {
+        return decrypt(decodeBase64(base64EndodedData));
     }
 
-    public String decrypt(byte[] bytes) {
+    public String decrypt(byte[] data) {
         try {
-            byte[] decodedBytes = decriptCipher.doFinal(bytes);
-            return new String(decodedBytes, "UTF-8");
-        } catch (Exception e) {
+            return new String(decriptCipher.doFinal(data));
+        } catch (GeneralSecurityException e) {
             throw new RuntimeException("Decryption failed: " + e.getMessage());
         }
-    }
-
-    public void setStringToBytesDecoder(StringToBytesDecoder decoder) {
-        this.decoder = decoder;
     }
 }

@@ -1,50 +1,45 @@
 package encryption;
 
+import static encryption.Algorithm.DES;
+import static encryption.Base64EncodingUtils.encodeBase64;
+import static javax.crypto.Cipher.ENCRYPT_MODE;
+
+import java.security.GeneralSecurityException;
+
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
-import encryption.encoding.Base64Encoder;
-import encryption.encoding.BytesToStringEncoder;
-
 public class Encrypter {
-
-    private final static String DEFAULT_ALGORITHM = "DES";
 
     private final Cipher encriptCipher;
 
-    private BytesToStringEncoder converter = new Base64Encoder();
-
     public Encrypter(SecretKey key) {
-        this(key, DEFAULT_ALGORITHM);
+        this(key, DES);
     }
 
-    public Encrypter(SecretKey key, String algorithm) {
-        encriptCipher = new CipherFactory(key, algorithm).create(Cipher.ENCRYPT_MODE);
+    public Encrypter(SecretKey key, Algorithm algorithm) {
+        encriptCipher = new CipherFactory(key, algorithm).create(ENCRYPT_MODE);
     }
 
     public Encrypter(String keyFilePath) {
-        this(keyFilePath, DEFAULT_ALGORITHM);
+        this(keyFilePath, DES);
     }
 
-    public Encrypter(String keyFilePath, String algorithm) {
-        SecretKey key = new SecretKeyProvider(algorithm).readKeyFile(keyFilePath);
-        encriptCipher = new CipherFactory(key, algorithm).create(Cipher.ENCRYPT_MODE);
+    public Encrypter(String keyFilePath, Algorithm algorithm) {
+        SecretKey key = new SecretKeyProvider(algorithm).readRawKeyFromFile(keyFilePath);
+        encriptCipher = new CipherFactory(key, algorithm).create(ENCRYPT_MODE);
     }
 
-    public String encryptToString(String text) {
-        return converter.encodeToString(encrypt(text));
+    public String encryptToBase64Encoded(String text) {
+        return encodeBase64(encrypt(text));
     }
 
     public byte[] encrypt(String dataToEncrypt) {
         try {
-            return encriptCipher.doFinal(dataToEncrypt.getBytes("UTF-8"));
-        } catch (Exception e) {
+            return encriptCipher.doFinal(dataToEncrypt.getBytes());
+        } catch (GeneralSecurityException e) {
             throw new RuntimeException("Encription failed: " + e.getMessage());
         }
-    }
-
-    public void setBytesStringConverter(BytesToStringEncoder converter) {
-        this.converter = converter;
     }
 
 }

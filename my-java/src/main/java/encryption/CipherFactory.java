@@ -1,5 +1,7 @@
 package encryption;
 
+import static encryption.Algorithm.DES;
+
 import java.security.GeneralSecurityException;
 
 import javax.crypto.Cipher;
@@ -7,24 +9,22 @@ import javax.crypto.SecretKey;
 
 public class CipherFactory {
 
-    private final static String DEFAULT_ALGORITHM = "DES";
-
     private final SecretKey key;
 
     public CipherFactory(SecretKey key) {
-        this(key, DEFAULT_ALGORITHM);
+        this(key, DES);
     }
 
-    private final String algorithm;
+    private final Algorithm algorithm;
 
-    public CipherFactory(SecretKey key, String algorithm) {
+    public CipherFactory(SecretKey key, Algorithm algorithm) {
         this.key = key;
         this.algorithm = algorithm;
     }
 
     public Cipher create(int mode) {
         try {
-            Cipher encriptCipher = Cipher.getInstance(algorithm);
+            Cipher encriptCipher = Cipher.getInstance(algorithm.toString());
             encriptCipher.init(mode, key);
             return encriptCipher;
         } catch (GeneralSecurityException e) {
