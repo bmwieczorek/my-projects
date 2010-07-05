@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+    <!-- async appenders -->
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="FileOut" />
+    </appender>
+    <!-- console appenders -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+    <!-- file appenders -->
+    <appender name="FileOut" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="file.log" />
+        <param name="MaxFileSize" value="100MB" />
+        <param name="MaxBackupIndex" value="0" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+    <appender name="RootFileOut" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="root-file.log" />
+        <param name="MaxFileSize" value="100MB" />
+        <param name="MaxBackupIndex" value="0" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+    <!-- loggers -->
+    <logger name="com.bawi.LogMe" additivity="true">
+        <level value="DEBUG" />
+        <!-- 
+        <appender-ref ref="FileOut" />
+         -->
+    </logger>
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="RootFileOut" />
+        <appender-ref ref="stdout" />
+    </root>
+</log4j:configuration>
