@@ -5,12 +5,21 @@
         <artifactId>my-parent-pom</artifactId>
         <groupId>com.bawi</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
     </parent>
     <artifactId>my-log4j</artifactId>
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>commons-io</artifactId>
+            <groupId>commons-io</groupId>
         </dependency>
     </dependencies>
 </project>
