@@ -5,7 +5,6 @@ import java.io.IOException;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-@SuppressWarnings("restriction")
 public class Base64EncodingUtils {
 
     public static String encodeBase64(byte[] encodedBytes) {
