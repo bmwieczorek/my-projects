@@ -2,14 +2,13 @@ package refactoring;
 
 public class Clazz implements Interface {
 
-    @Override
-    public void method1() {
-        System.out.println("m1");
-    }
+    Clazz2 clazz2;
+
+    private String name;
 
     @Override
-    public void method2() {
-        System.out.println("m2");
+    public void method1() {
+        System.out.println("m1:" + name);
     }
 
 }
