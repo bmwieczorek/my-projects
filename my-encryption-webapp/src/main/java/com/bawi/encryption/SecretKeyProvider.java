@@ -1,8 +1,8 @@
 package com.bawi.encryption;
 
 import static com.bawi.encryption.Algorithm.DES;
-import static com.bawi.encryption.Base64EncodingUtils.decodeBase64;
-import static com.bawi.encryption.Base64EncodingUtils.encodeBase64;
+import static org.apache.commons.codec.binary.Base64.decodeBase64;
+import static org.apache.commons.codec.binary.Base64.encodeBase64String;
 
 import java.io.File;
 import java.io.IOException;
@@ -96,7 +96,7 @@ public class SecretKeyProvider {
 
     public void writeBase64EncodedKeyToFile(SecretKey key, String keyFilePath) {
         try {
-            FileUtils.writeStringToFile(new File(keyFilePath), encodeBase64(key.getEncoded()));
+            FileUtils.writeStringToFile(new File(keyFilePath), encodeBase64String(key.getEncoded()));
         } catch (IOException e) {
             throw new RuntimeException("Failed to write key in base64Encoded format to file " + keyFilePath
                     + ".");

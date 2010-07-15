@@ -1,8 +1,8 @@
 package com.bawi.encryption;
 
 import static com.bawi.encryption.Algorithm.DES;
-import static com.bawi.encryption.Base64EncodingUtils.decodeBase64;
 import static javax.crypto.Cipher.DECRYPT_MODE;
+import static org.apache.commons.codec.binary.Base64.decodeBase64;
 
 import java.security.GeneralSecurityException;
 

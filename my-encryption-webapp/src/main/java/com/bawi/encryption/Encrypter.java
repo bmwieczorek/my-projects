@@ -1,8 +1,8 @@
 package com.bawi.encryption;
 
 import static com.bawi.encryption.Algorithm.DES;
-import static com.bawi.encryption.Base64EncodingUtils.encodeBase64;
 import static javax.crypto.Cipher.ENCRYPT_MODE;
+import static org.apache.commons.codec.binary.Base64.encodeBase64String;
 
 import java.security.GeneralSecurityException;
 
@@ -31,7 +31,7 @@ public class Encrypter {
     }
 
     public String encryptToBase64Encoded(String text) {
-        return encodeBase64(encrypt(text));
+        return encodeBase64String(encrypt(text));
     }
 
     public byte[] encrypt(String dataToEncrypt) {
