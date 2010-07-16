@@ -5,9 +5,9 @@ import static com.bawi.Log4jConfigurationLocationFinder.getLog4jConfigurationLoc
 import org.apache.log4j.Logger;
 
 public class LogMe {
-    private static final Logger logger = Logger.getLogger(LogMe.class);
+    private static final Logger LOGGER = Logger.getLogger(LogMe.class);
 
     public void doIt() {
-        logger.info("Path=" + getLog4jConfigurationLocation());
+        LOGGER.info("Path=" + getLog4jConfigurationLocation());
     }
 }
