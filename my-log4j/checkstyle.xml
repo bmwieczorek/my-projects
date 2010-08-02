@@ -83,13 +83,22 @@ Slightly modified version of Sun Checks that better matches the default code for
     </module>
     <module name="SimplifyBooleanExpression"/>
     <module name="SimplifyBooleanReturn"/>
-    <module name="DesignForExtension"/>
+    <module name="DesignForExtension">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="FinalClass"/>
-    <module name="HideUtilityClassConstructor"/>
+    <module name="HideUtilityClassConstructor">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="InterfaceIsType"/>
     <module name="VisibilityModifier"/>
     <module name="ArrayTypeStyle"/>
-    <module name="FinalParameters"/>
+    <module name="FinalParameters">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
     <module name="TodoComment">
       <property name="severity" value="ignore"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
@@ -100,10 +109,7 @@ Slightly modified version of Sun Checks that better matches the default code for
     <property name="severity" value="ignore"/>
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
-  <module name="NewlineAtEndOfFile">
-    <property name="severity" value="ignore"/>
-    <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-  </module>
+  <module name="NewlineAtEndOfFile"/>
   <module name="Translation"/>
   <module name="FileLength"/>
   <module name="FileTabCharacter">
