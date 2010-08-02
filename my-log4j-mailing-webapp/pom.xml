@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
+    <artifactId>my-log4j-mailing-webapp</artifactId>
+    <packaging>war</packaging>
+
+    <build>
+        <plugins>
+
+            <!-- itests starting and stoping tomcat -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
+                <configuration>
+
+                    <!-- waiter after cargo start; default true -->
+                    <wait>false</wait>
+
+                    <container>
+                        <containerId>tomcat6x</containerId>
+
+                        <!-- 'installed' = present on local file system, default (as opposed to 'embedded' = supported 
+                            only by jetty ) -->
+                        <!-- <type>installed</type> <home>${tomcat.home}</home> -->
+
+                        <zipUrlInstaller>
+                            <!-- <url>http://www.apache.org/dist/tomcat/tomcat-5/v5.5.29/bin/apache-tomcat-5.5.29.zip</url> 
+                                <url>http://www.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.zip</url> <installDir>${java.io.tmpdir}</installDir> -->
+                            <url>file:${basedir}/../apache-tomcat-${tomcat.version}.zip</url>
+                            <installDir>${project.build.directory}</installDir>
+
+                            <!-- <proxy> <host>www-ad-proxy.bawi.com</host> <port>80</port> <user>my-login</user> 
+                                <password>my-pass</password> </proxy> -->
+                        </zipUrlInstaller>
+
+
+                        <!-- logging to file, instead console (default) -->
+                        <!-- <log>${project.build.directory}/cargo.log</log> <output>${project.build.directory}/catalina.out</output> -->
+
+                    </container>
+                    <configuration>
+
+                        <!-- 'standalone' = recreated for every build (unlike 'existing' = shared across builds) 
+                            <type>existing</type> -->
+                        <type>standalone</type>
+
+                        <!-- for 'standalone' configuration specify target dir where to deploy webapp (different 
+                            from tomcat home location), for 'existing' configuration use tomcat home location as used in container -->
+                        <home>${project.build.directory}/tomcat6x</home>
+                        <!-- <home>${tomcat.home}</home> -->
+
+                        <properties>
+                            <cargo.logging>high</cargo.logging>
+                            <!-- <cargo.jvmargs>${jvmargs}</cargo.jvmargs> -->
+                        </properties>
+                    </configuration>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-container</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-container</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.1</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+</project>
