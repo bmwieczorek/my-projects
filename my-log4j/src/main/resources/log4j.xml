@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
-    
+
     <!-- async appenders -->
     <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
         <appender-ref ref="FileOut" />
     </appender>
-    
+
+    <!-- email appender -->
+    <appender name="EMAIL" class="org.apache.log4j.net.SMTPAppender">
+        <param name="BufferSize" value="512" />
+        <param name="SMTPHost" value="localhost" />
+        <param name="From" value="sg0920709@localhost" />
+        <param name="To" value="root@localhost" />
+        <param name="Subject" value="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" />
+        <param name="Threshold" value="ERROR" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+
     <!-- console appenders -->
     <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
         <param name="Target" value="System.out" />
@@ -14,7 +27,7 @@
             <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
         </layout>
     </appender>
-    
+
     <!-- file appenders -->
     <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="target/file.log" />
@@ -32,16 +45,24 @@
             <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
         </layout>
     </appender>
-    
+
     <!-- loggers -->
-    <logger name="com.bawi.LogMe" >
+    <logger name="com.bawi.LogMe">
         <level value="DEBUG" />
         <appender-ref ref="FILE" />
+        <appender-ref ref="EMAIL" />
+        <!--
+        <appender-ref ref="STDOUT" />
+        -->
     </logger>
-    
+
     <!-- root logger -->
     <root>
         <level value="ERROR" />
         <appender-ref ref="ROOT_FILE" />
+        <!-- 
+        <appender-ref ref="EMAIL" />
+        <appender-ref ref="STDOUT" />
+         -->
     </root>
 </log4j:configuration>
