@@ -12,6 +12,7 @@
 
     <modules>
         <module>my-maven-dependency-management-core</module>
+        <module>my-maven-dependency-management-reference</module>
         <module>my-maven-dependency-management-service</module>
         <module>my-maven-dependency-management-itest</module>        
     </modules>
