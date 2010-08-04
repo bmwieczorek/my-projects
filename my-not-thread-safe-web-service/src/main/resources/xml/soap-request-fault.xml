@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+    </soap:Header>
+    <soap:Body>
+        <p:CalculatorRQ xmlns:p="http://services.bawi.com/calculator" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://services.bawi.com/calculator calculator.xsd ">
+            <parameters>2</parameters>
+            <parameters>2</parameters>
+            <operation>AAA</operation>
+        </p:CalculatorRQ>
+    </soap:Body>
+</soap:Envelope>
