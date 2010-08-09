@@ -6,7 +6,7 @@ import java.util.Map;
 enum City {
     Amsterdam("NL"), Krakow("PL");
 
-    private static Map<String, City> countryCodeToCity = new HashMap<String, City>();
+    private static final Map<String, City> countryCodeToCity = new HashMap<String, City>();
     static {
         City[] values = City.values();
         for (City city : values) {
