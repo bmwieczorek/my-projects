@@ -2,13 +2,11 @@ package deadlock;
 
 public class DeadlockingObject {
 
-    private static final Log log = new Log();
+    private static final Logger logger = Logger.getInstance();
 
     public static synchronized void getInstance() {
-        System.out.println("Ruller:" + Thread.currentThread().getName());
+        System.out.println("INSTANCE:" + Thread.currentThread().getName());
         Utils.sleep(50);
-        log.info();
-
+        logger.info();
     }
-
 }
