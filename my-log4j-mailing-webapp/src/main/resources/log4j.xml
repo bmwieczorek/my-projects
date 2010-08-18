@@ -4,7 +4,13 @@
 
     <!-- async appenders -->
     <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
-        <appender-ref ref="FileOut" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="EMAIL" />
+    </appender>
+    
+    <appender name="ROOT_ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ROOT_FILE" />
+        <appender-ref ref="EMAIL" />
     </appender>
 
     <!-- email appender -->
@@ -49,20 +55,18 @@
     <!-- loggers -->
     <logger name="com.bawi">
         <level value="DEBUG" />
-        <appender-ref ref="FILE" />
-        <appender-ref ref="EMAIL" />
-        <!--
-        <appender-ref ref="STDOUT" />
-        -->
+        <appender-ref ref="ASYNC" />
+        <!-- <appender-ref ref="EMAIL" /> <appender-ref ref="FILE" /> <appender-ref ref="STDOUT" /> -->
     </logger>
 
     <!-- root logger -->
     <root>
         <level value="ERROR" />
-        <appender-ref ref="ROOT_FILE" />
+        <appender-ref ref="ROOT_ASYNC" />
         <!-- 
-        <appender-ref ref="EMAIL" />
-        <appender-ref ref="STDOUT" />
-         -->
+        <appender-ref ref="ROOT_FILE" />
+        <appender-ref ref="EMAIL" /> 
+        <appender-ref ref="STDOUT" /> 
+        -->
     </root>
 </log4j:configuration>

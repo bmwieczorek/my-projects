@@ -5,6 +5,16 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/service-context.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- 
     <servlet>
         <servlet-name>log4j-servlet</servlet-name>
         <servlet-class>com.bawi.servlet.MyLog4jServlet</servlet-class>
@@ -15,5 +25,6 @@
         <servlet-name>log4j-servlet</servlet-name>
         <url-pattern>/log4j</url-pattern>
     </servlet-mapping>
+     -->
 
 </web-app>
