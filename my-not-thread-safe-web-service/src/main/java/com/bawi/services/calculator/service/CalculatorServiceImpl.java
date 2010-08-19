@@ -30,14 +30,17 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         counter++;
         counter++;
         // }
-        String requestXml = transformFromJavaToXml(request);
+        // String requestXml =
+        transformFromJavaToXml(request);
         logger.debug(threadId + ": Processing ...");
         // if (logger.isDebugEnabled()) {
         // logger.debug("Request valid:" + requestXml);
         // }
-        int result = calculator.calculate(request.getOperation(), request.getParameters());
+        // int result =
+        calculator.calculate(request.getOperation(), request.getParameters());
         CalculatorRS response = new CalculatorRS().withResult(counter);
-        String responseXml = transformFromJavaToXml(response);
+        // String responseXml =
+        transformFromJavaToXml(response);
         // if (logger.isDebugEnabled()) {
         // logger.debug("Response valid:" + responseXml);
         // }
