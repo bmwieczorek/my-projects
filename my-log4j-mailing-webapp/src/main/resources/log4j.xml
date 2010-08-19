@@ -4,10 +4,11 @@
 
     <!-- async appenders -->
     <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="ROLLED_COMRESSED_FILE" />
         <appender-ref ref="FILE" />
         <appender-ref ref="EMAIL" />
     </appender>
-    
+
     <appender name="ROOT_ASYNC" class="org.apache.log4j.AsyncAppender">
         <appender-ref ref="ROOT_FILE" />
         <appender-ref ref="EMAIL" />
@@ -35,6 +36,17 @@
     </appender>
 
     <!-- file appenders -->
+
+    <appender name="ROLLED_COMRESSED_FILE" class="org.apache.log4j.rolling.RollingFileAppender">
+        <param name="file" value="target/app.log" />
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern" value="target/app.log.%d{yyyy-MM-dd-HH-mm}.gz" />
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
+        </layout>
+    </appender>
+
     <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="target/file.log" />
         <param name="MaxFileSize" value="100MB" />
@@ -43,6 +55,7 @@
             <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
         </layout>
     </appender>
+
     <appender name="ROOT_FILE" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="target/root-file.log" />
         <param name="MaxFileSize" value="100MB" />
@@ -63,10 +76,6 @@
     <root>
         <level value="ERROR" />
         <appender-ref ref="ROOT_ASYNC" />
-        <!-- 
-        <appender-ref ref="ROOT_FILE" />
-        <appender-ref ref="EMAIL" /> 
-        <appender-ref ref="STDOUT" /> 
-        -->
+        <!-- <appender-ref ref="ROOT_FILE" /> <appender-ref ref="EMAIL" /> <appender-ref ref="STDOUT" /> -->
     </root>
 </log4j:configuration>
