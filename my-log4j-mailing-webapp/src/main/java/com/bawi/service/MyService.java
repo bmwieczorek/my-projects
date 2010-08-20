@@ -7,7 +7,7 @@ public class MyService {
     private static final Logger logger = Logger.getLogger(MyService.class);
 
     public MyService() {
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 200; i++) {
             error();
             sleep(500);
         }
