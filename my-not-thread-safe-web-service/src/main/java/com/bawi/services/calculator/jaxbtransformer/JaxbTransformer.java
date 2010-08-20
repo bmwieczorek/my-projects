@@ -45,8 +45,7 @@ public class JaxbTransformer {
             // new ObjectFactoryEx());
             return unmarshaller.unmarshal(new StringReader(xml));
         } catch (JAXBException e) {
-            e.printStackTrace();
-            return null;
+            throw new RuntimeException(e);
         }
     }
 }

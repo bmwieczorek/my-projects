@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.bawi.services.calculator.model.CalculatorRQ;
 import com.bawi.services.calculator.model.CalculatorRS;
+import com.bawi.services.calculator.model.CalculatorThreadSafeRQ;
 
 public class JaxbTransformerTest {
 
@@ -44,7 +45,7 @@ public class JaxbTransformerTest {
     }
 
     private static CalculatorRQ createRequest() {
-        return new CalculatorRQ().withParameters(1, 2).withOperation(ADD);
+        return new CalculatorThreadSafeRQ().withParameters(1, 2).withOperation(ADD);
     }
 
     private static CalculatorRS createResponse() {

@@ -5,9 +5,11 @@ import org.apache.log4j.Logger;
 import com.bawi.services.calculator.engine.Calculator;
 import com.bawi.services.calculator.jaxbtransformer.JaxbTransformer;
 import com.bawi.services.calculator.model.CalculatorFault;
+import com.bawi.services.calculator.model.CalculatorNotThreadSafeRQ;
 import com.bawi.services.calculator.model.CalculatorRQ;
 import com.bawi.services.calculator.model.CalculatorRS;
 import com.bawi.services.calculator.model.CalculatorServiceInterface;
+import com.bawi.services.calculator.model.CalculatorThreadSafeRQ;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
@@ -18,35 +20,58 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
     private int counter = 0;
 
     @Override
-    public CalculatorRS calculate(CalculatorRQ request) throws CalculatorFault {
+    public CalculatorRS calculateThreadSafe(CalculatorThreadSafeRQ request) throws CalculatorFault {
         long threadId = Thread.currentThread().getId();
-        if (getCounter() % 2 != 0) {
-            logger.error(threadId + ": Counter is not even: " + counter);
-            System.exit(0);
-        }
+        exitWhenCounterIsNotEven(threadId);
         CalculatorRS response;
         synchronized (this) {
             counter++;
             counter++;
-            // }
-            // String requestXml =
-            JaxbTransformer.fromJavaToXml(request);
-            logger.debug(threadId + ": Processing ...");
-            // if (logger.isDebugEnabled()) {
-            // logger.debug("Request valid:" + requestXml);
-            // }
-            // int result =
-            calculator.calculate(request.getOperation(), request.getParameters());
-            response = new CalculatorRS().withResult(counter);
-            // String responseXml =
-            JaxbTransformer.fromJavaToXml(response);
-            // if (logger.isDebugEnabled()) {
-            // logger.debug("Response valid:" + responseXml);
+            response = calculateResponse(request, threadId);
         }
         return response;
+    }
+
+    @Override
+    public CalculatorRS calculateNotThreadSafe(CalculatorNotThreadSafeRQ request) throws CalculatorFault {
+        long threadId = Thread.currentThread().getId();
+        exitWhenCounterIsNotEven(threadId);
+        CalculatorRS response;
+        counter++;
+        counter++;
+        response = calculateResponse(request, threadId);
+        return response;
+    }
+
+    private CalculatorRS calculateResponse(CalculatorRQ request, long threadId) {
+        CalculatorRS response;
+        // }
+        // String requestXml =
+        JaxbTransformer.fromJavaToXml(request);
+        logger.debug(threadId + ": Processing ...");
+        // if (logger.isDebugEnabled()) {
+        // logger.debug("Request valid:" + requestXml);
+        // }
+        // int result =
+        calculator.calculate(request.getOperation(), request.getParameters());
+        response = new CalculatorRS().withResult(counter);
+        // String responseXml =
+        JaxbTransformer.fromJavaToXml(response);
+        // if (logger.isDebugEnabled()) {
+        // logger.debug("Response valid:" + responseXml);
+        return response;
+    }
+
+    private void exitWhenCounterIsNotEven(long threadId) throws CalculatorFault {
+        if (getCounter() % 2 != 0) {
+            String message = threadId + ": Counter is not even: " + counter;
+            logger.error(message);
+            throw new CalculatorFault("Thread safety violation: " + message);
+        }
     }
 
     public int getCounter() {
         return counter;
     }
+
 }

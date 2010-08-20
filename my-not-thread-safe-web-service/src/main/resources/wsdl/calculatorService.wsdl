@@ -7,8 +7,11 @@
             <xsd:import namespace="http://services.bawi.com/calculator" schemaLocation="../xsd/calculator.xsd" />
         </xsd:schema>
     </wsdl:types>
-    <wsdl:message name="CalculatorRQ">
-        <wsdl:part element="tns:CalculatorRQ" name="request" />
+    <wsdl:message name="CalculatorThreadSafeRQ">
+        <wsdl:part element="tns:CalculatorThreadSafeRQ" name="request" />
+    </wsdl:message>
+    <wsdl:message name="CalculatorNotThreadSafeRQ">
+        <wsdl:part element="tns:CalculatorNotThreadSafeRQ" name="request" />
     </wsdl:message>
     <wsdl:message name="CalculatorRS">
         <wsdl:part element="tns:CalculatorRS" name="response" />
@@ -18,15 +21,28 @@
     </wsdl:message>
 
     <wsdl:portType name="calculatorServiceInterface">
-        <wsdl:operation name="calculate">
-            <wsdl:input name="calculatorRequest" message="tns:CalculatorRQ" />
+        <wsdl:operation name="calculateThreadSafe">
+            <wsdl:input name="calculatorRequest" message="tns:CalculatorThreadSafeRQ" />
+            <wsdl:output name="calculatorResponse" message="tns:CalculatorRS" />
+            <wsdl:fault name="calculatorError" message="tns:CalculatorFault" />
+        </wsdl:operation>
+        <wsdl:operation name="calculateNotThreadSafe">
+            <wsdl:input name="calculatorRequest" message="tns:CalculatorNotThreadSafeRQ" />
             <wsdl:output name="calculatorResponse" message="tns:CalculatorRS" />
             <wsdl:fault name="calculatorError" message="tns:CalculatorFault" />
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="calculatorSOAP" type="tns:calculatorServiceInterface">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-        <wsdl:operation name="calculate">
+        <wsdl:operation name="calculateThreadSafe">
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="calculateNotThreadSafe">
             <wsdl:input>
                 <soap:body use="literal" />
             </wsdl:input>

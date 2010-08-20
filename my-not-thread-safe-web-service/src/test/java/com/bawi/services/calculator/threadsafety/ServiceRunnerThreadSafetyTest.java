@@ -1,8 +1,10 @@
-package com.bawi.services.calculator;
+package com.bawi.services.calculator.threadsafety;
 
 import org.junit.Before;
 
-public class ServiceRunnerCalculatorServiceTest extends AbstractThreadSafetyCalculatorServiceTest {
+import com.bawi.services.calculator.ServiceRunner;
+
+public class ServiceRunnerThreadSafetyTest extends AbstractThreadSafetyCalculatorServiceTest {
 
     @Before
     public void startSeviceRunner() {

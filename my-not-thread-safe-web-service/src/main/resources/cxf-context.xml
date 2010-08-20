@@ -16,7 +16,4 @@
         </jaxws:properties>
     </jaxws:endpoint>
 
-    <bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
-    <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
-
 </beans>
