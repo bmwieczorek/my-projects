@@ -19,10 +19,4 @@
     <bean id="logInbound" class="org.apache.cxf.interceptor.LoggingInInterceptor" />
     <bean id="logOutbound" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
 
-    <!--
-        <cxf:bus> <cxf:inInterceptors> <ref bean="logInbound" /> </cxf:inInterceptors>
-        <cxf:inFaultInterceptors> <ref bean="logInbound" /> </cxf:inFaultInterceptors> <cxf:outInterceptors>
-        <ref bean="logOutbound" /> </cxf:outInterceptors> <cxf:outFaultInterceptors> <ref bean="logOutbound"
-        /> </cxf:outFaultInterceptors> </cxf:bus>
-    -->
 </beans>

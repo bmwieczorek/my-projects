@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-        <ns2:CalculatorRS xmlns:ns2="http://services.bawi.com/calculator">
-            <result>4</result>
-        </ns2:CalculatorRS>
-    </soap:Body>
-</soap:Envelope>

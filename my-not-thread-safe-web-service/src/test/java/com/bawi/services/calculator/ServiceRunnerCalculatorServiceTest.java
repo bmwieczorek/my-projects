@@ -2,7 +2,7 @@ package com.bawi.services.calculator;
 
 import org.junit.Before;
 
-public class ServiceRunnerCalculatorServiceTest extends AbstractCalculatorServiceTest {
+public class ServiceRunnerCalculatorServiceTest extends AbstractThreadSafetyCalculatorServiceTest {
 
     @Before
     public void startSeviceRunner() {

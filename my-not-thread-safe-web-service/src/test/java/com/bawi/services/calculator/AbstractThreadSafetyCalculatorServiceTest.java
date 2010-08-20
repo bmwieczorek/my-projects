@@ -3,17 +3,15 @@ package com.bawi.services.calculator;
 import junit.framework.Assert;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.bawi.services.calculator.model.CalculatorFault;
 import com.bawi.services.calculator.model.CalculatorRQ;
-import com.bawi.services.calculator.model.CalculatorRS;
 import com.bawi.services.calculator.model.CalculatorServiceInterface;
 import com.bawi.services.calculator.model.Operation;
 import com.bawi.test.connection.UrlConnectionChecker;
 
-public abstract class AbstractCalculatorServiceTest {
+public abstract class AbstractThreadSafetyCalculatorServiceTest {
 
     private static final String serviceUrl = "http://localhost:7890/calculator";
 
@@ -45,20 +43,6 @@ public abstract class AbstractCalculatorServiceTest {
         }
         Thread.sleep(50000);
 
-    }
-
-    @Ignore
-    @Test
-    public void shouldCalculateAddition() throws Exception {
-        // given
-        CalculatorRQ request = new CalculatorRQ().withOperation(Operation.ADD).withParameters(1, 2);
-        Assert.assertTrue(connectionChecker.isUp(serviceUrl + "?wsdl"));
-
-        // when
-        CalculatorRS response = calculatorService.calculate(request);
-
-        // then
-        Assert.assertEquals(3, response.getResult());
     }
 
     @SuppressWarnings("unchecked")
