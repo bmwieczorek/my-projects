@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration debug="false">
+
     <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
         <param name="Target" value="System.out" />
         <layout class="org.apache.log4j.PatternLayout">
@@ -8,13 +9,27 @@
         </layout>
     </appender>
 
-    <logger name="com.bawi.services.calculator">
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm" />
+        <param name="File" value="target/file.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) [%X{requestId}] - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="500000" />
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <logger name="com.bawi.services.calculator" additivity="false">
         <level value="DEBUG" />
+        <appender-ref ref="ASYNC" />
     </logger>
 
-    <!--                           -->
+    <!-- -->
     <!-- setup log4j's root logger -->
-    <!--                           -->
+    <!-- -->
     <root>
         <level value="ERROR" />
         <appender-ref ref="STDOUT" />

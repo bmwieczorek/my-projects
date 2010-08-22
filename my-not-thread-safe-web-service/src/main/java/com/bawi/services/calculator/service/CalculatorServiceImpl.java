@@ -1,5 +1,7 @@
 package com.bawi.services.calculator.service;
 
+import java.util.Arrays;
+
 import org.apache.log4j.Logger;
 
 import com.bawi.services.calculator.engine.Calculator;
@@ -13,6 +15,7 @@ import com.bawi.services.calculator.model.CalculatorThreadSafeRQ;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
+    private static final String LONG_STRING = createString(10000);
     private static final Logger logger = Logger.getLogger(CalculatorServiceImpl.class);
     private Calculator calculator = new Calculator();
 
@@ -24,11 +27,11 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         long threadId = Thread.currentThread().getId();
         exitWhenCounterIsNotEven(threadId);
         CalculatorRS response;
-        synchronized (this) {
-            counter++;
-            counter++;
-            response = calculateResponse(request, threadId);
-        }
+        // synchronized (this) {
+        // counter++;
+        // counter++;
+        // }
+        response = calculateResponse(request, threadId);
         return response;
     }
 
@@ -48,7 +51,9 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         // }
         // String requestXml =
         JaxbTransformer.fromJavaToXml(request);
-        logger.debug(threadId + ": Processing ...");
+
+        // logger.debug(threadId + ": Processing ... " + createString(10000));
+        logger.debug(LONG_STRING);
         // if (logger.isDebugEnabled()) {
         // logger.debug("Request valid:" + requestXml);
         // }
@@ -60,6 +65,12 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         // if (logger.isDebugEnabled()) {
         // logger.debug("Response valid:" + responseXml);
         return response;
+    }
+
+    private static String createString(int n) {
+        char[] arr = new char[n];
+        Arrays.fill(arr, 0, n - 1, 'x');
+        return new String(arr);
     }
 
     private void exitWhenCounterIsNotEven(long threadId) throws CalculatorFault {

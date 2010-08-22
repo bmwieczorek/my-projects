@@ -11,6 +11,7 @@ import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.hamcrest.Description;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.matchers.TypeSafeMatcher;
 
@@ -25,7 +26,7 @@ import com.bawi.test.connection.UrlConnectionChecker;
 
 public abstract class AbstractThreadSafetyCalculatorServiceTest {
 
-    private static final int TEST_DURATION_IN_SECONDS = 3;
+    private static final int TEST_DURATION_IN_SECONDS = 300;
 
     private static final int THREADS_COUNT = 10;
 
@@ -75,6 +76,7 @@ public abstract class AbstractThreadSafetyCalculatorServiceTest {
     }
 
     @Test
+    @Ignore
     public void shouldNotBeThreadSafe() throws Exception {
         // given
         waitUntilServiceIsStarted();
