@@ -13,7 +13,7 @@
         <param name="DatePattern" value="'.'yyyy-MM-dd-HH-mm" />
         <param name="File" value="target/file.log" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) [%X{requestId}] - %m%n" />
+            <param name="ConversionPattern" value="%-15d{ISO8601} %-5p [[%t]] (%c) - %m%n" />
         </layout>
     </appender>
 
@@ -32,6 +32,9 @@
     <!-- -->
     <root>
         <level value="ERROR" />
+        <!-- 
         <appender-ref ref="STDOUT" />
+         -->
+        <appender-ref ref="FILE" />
     </root>
 </log4j:configuration>
