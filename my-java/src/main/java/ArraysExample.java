@@ -5,6 +5,6 @@ public class ArraysExample {
         char[] arr = new char[10];
         Arrays.fill(arr, 0, 9, 'x');
         String string = new String(arr);
-        System.out.println(x);
+        System.out.println(string);
     }
 }
