@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="applicationBeanProvider" class="com.bawi.myspringapp.context.ApplicationBeanProvider" />
+
+    <bean id="cacheProvider" class="com.bawi.myspringapp.CacheProvider">
+        <constructor-arg ref="cache" />
+    </bean>
+
+    <bean id="cache" class="com.bawi.myspringapp.Cache" />
+
+</beans>
