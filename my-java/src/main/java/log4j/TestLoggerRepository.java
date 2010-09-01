@@ -3,12 +3,25 @@ package log4j;
 import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 public class TestLoggerRepository {
+
+    @Test
+    public void should() {
+        // given
+        String name = "NonExistingLoggerName";
+
+        // when
+        Logger exists = LogManager.exists(name);
+
+        // then
+        assertNull(exists);
+    }
 
     @Test
     public void shouldCreateLoggerInRepository() {
