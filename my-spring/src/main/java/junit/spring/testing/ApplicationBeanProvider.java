@@ -1,4 +1,4 @@
-package com.bawi.single.instantiation;
+package junit.spring.testing;
 
 import java.util.Map;
 
@@ -26,7 +26,7 @@ public class ApplicationBeanProvider implements ApplicationContextAware {
     }
 
     public static void startContext() {
-        new ClassPathXmlApplicationContext("/com/bawi/single/instantiation/my-bean-context.xml");
+        new ClassPathXmlApplicationContext("/junit/spring/testing/my-bean-context.xml");
     }
 
 }

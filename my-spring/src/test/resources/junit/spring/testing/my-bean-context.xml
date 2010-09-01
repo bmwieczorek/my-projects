@@ -3,9 +3,9 @@
     xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="applicationBeanProvider" class="com.bawi.single.instantiation.ApplicationBeanProvider" />
+    <bean id="applicationBeanProvider" class="junit.spring.testing.ApplicationBeanProvider" />
 
-    <bean id="myBean" class="com.bawi.single.instantiation.MyBean" />
+    <bean id="myBean" class="junit.spring.testing.MyBean" />
 
 </beans>
 

@@ -1,4 +1,4 @@
-package com.bawi.single.instantiation;
+package junit.spring.testing;
 
 public class MyBean {
 
