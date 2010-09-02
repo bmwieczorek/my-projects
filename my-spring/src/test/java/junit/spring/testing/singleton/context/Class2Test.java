@@ -1,4 +1,4 @@
-package junit.spring.testing.annotation.before;
+package junit.spring.testing.singleton.context;
 
 import static org.junit.Assert.assertEquals;
 import junit.spring.testing.ApplicationBeanProvider;
@@ -7,14 +7,13 @@ import junit.spring.testing.MyBean;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class Class2Test {
 
-    // initializes context and creates beans for every test case
-    // here twice in this class, 4 times for two classes with 2 test cases each
+    // initializes context only once globally
+    // here once in this class, once for all test cases for all classes
     @Before
     public void init() {
-        ApplicationBeanProvider.startNewContext();
+        ApplicationBeanProvider.startContext();
     }
 
     @Test

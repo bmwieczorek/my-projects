@@ -14,7 +14,7 @@ public class Class2Test {
     // here only once in this class, for two classes - twice
     @BeforeClass
     public static void init() {
-        ApplicationBeanProvider.startContext();
+        ApplicationBeanProvider.startNewContext();
     }
 
     @Test

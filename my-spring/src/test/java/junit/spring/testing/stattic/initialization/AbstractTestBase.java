@@ -9,7 +9,7 @@ public abstract class AbstractTestBase {
     // initialized only once for all the classes and test cases (totally once)
     static {
         // getBean(MyBean.class).sayGoodbye();
-        ApplicationBeanProvider.startContext();
+        ApplicationBeanProvider.startNewContext();
     }
 
 }

@@ -25,8 +25,13 @@ public class ApplicationBeanProvider implements ApplicationContextAware {
         throw new RuntimeException("Bean of type " + type + " not found");
     }
 
-    public static void startContext() {
+    public static void startNewContext() {
         new ClassPathXmlApplicationContext("/junit/spring/testing/my-bean-context.xml");
+        ContextSingleton.getInstance();
+    }
+
+    public static void startContext() {
+        ContextSingleton.getInstance();
     }
 
 }

@@ -10,7 +10,7 @@ public abstract class AbstractTestBase {
     // for two derived classes - initializes twice in total
     @BeforeClass
     public static void init() {
-        ApplicationBeanProvider.startContext();
+        ApplicationBeanProvider.startNewContext();
     }
 
 }
