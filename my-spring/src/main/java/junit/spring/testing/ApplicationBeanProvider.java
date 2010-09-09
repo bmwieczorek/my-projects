@@ -27,7 +27,6 @@ public class ApplicationBeanProvider implements ApplicationContextAware {
 
     public static void startNewContext() {
         new ClassPathXmlApplicationContext("/junit/spring/testing/my-bean-context.xml");
-        ContextSingleton.getInstance();
     }
 
     public static void startContext() {
