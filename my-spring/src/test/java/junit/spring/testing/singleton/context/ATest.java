@@ -4,17 +4,12 @@ import static org.junit.Assert.assertEquals;
 import junit.spring.testing.ApplicationBeanProvider;
 import junit.spring.testing.MyBean;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class Class2Test {
+public class ATest {
 
     // initializes context only once globally
     // here once in this class, once for all test cases for all classes
-    @Before
-    public void init() {
-        ApplicationBeanProvider.startContext();
-    }
 
     @Test
     public void shouldSayHello() {

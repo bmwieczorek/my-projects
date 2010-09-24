@@ -2,7 +2,6 @@ package concurency.locks;
 
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.out;
-import static java.lang.Thread.currentThread;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -12,13 +11,11 @@ public class ReentrLockEx {
     final Lock lock = new ReentrantLock();
 
     void keepLock(int limit) {
-        String thread = currentThread().getName();
         lock.lock();
-        out.println(thread + ",acquired and keeping lock+ ");
+        out.println(threadName() + "acquired and keeping lock+ ");
         try {
             for (int i = limit; i > 0; i--) {
-
-                out.println(thread + ",keep lock, left " + i + " " + sec());
+                out.println(threadName() + "keep lock," + i + sec());
                 sleepSeconds(1);
             }
         } finally {
@@ -28,14 +25,13 @@ public class ReentrLockEx {
     }
 
     void tryToAcquireLock() {
-        String thread = currentThread().getName();
-        out.println(thread + ",trying to aquire lock ");
+        out.println(threadName() + "trying to aquire lock ");
         boolean result = lock.tryLock();
         try {
             if (result)
-                out.println(thread + ",aquired lock ");
+                out.println(threadName() + "aquired lock ");
             else
-                out.println(thread + ",failed to aquire");
+                out.println(threadName() + "failed to aquire");
         } finally {
             if (result)
                 lock.unlock();
@@ -44,11 +40,10 @@ public class ReentrLockEx {
     }
 
     void acquireLock() {
-        String thread = currentThread().getName();
-        out.println(thread + " aquire lock ");
+        out.println(threadName() + "aquire lock ");
         lock.lock();
         try {
-            System.out.println(thread + " aquired ");
+            out.println(threadName() + "aquired ");
         } finally {
             lock.unlock();
         }
@@ -57,6 +52,8 @@ public class ReentrLockEx {
     public static void main(String[] args) {
         ReentrLockEx rlEx = new ReentrLockEx();
         rlEx.createKeeping(rlEx, 5).start();
+        sleepSeconds(1);
+        rlEx.createTryToAcquire(rlEx).start();
         sleepSeconds(1);
         rlEx.createAquiring(rlEx).start();
     }
@@ -81,14 +78,18 @@ public class ReentrLockEx {
         });
     }
 
-    Thread createTryToAcquire(final ReentrLockEx rlEx, final int limit) {
+    Thread createTryToAcquire(final ReentrLockEx rlEx) {
         return new Thread(new Runnable() {
 
             @Override
             public void run() {
-                rlEx.keepLock(limit);
+                rlEx.tryToAcquireLock();
             }
         });
+    }
+
+    static String threadName() {
+        return Thread.currentThread().getName() + ",";
     }
 
     static void sleepSeconds(int n) {
@@ -102,7 +103,7 @@ public class ReentrLockEx {
     static String sec() {
         long currentTimeMillis = currentTimeMillis();
         long value = currentTimeMillis / 1000;
-        return ", second " + (value - (value / 100 * 100));
+        return ",second " + (value - (value / 100 * 100));
     }
 
 }
