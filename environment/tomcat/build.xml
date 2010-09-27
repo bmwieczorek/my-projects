@@ -2,13 +2,30 @@
     <description>Build base catalina from scratch</description>
     <!-- set global properties for this build -->
     <property name="tomcat.version" value="6.0.26"/>
-    <property name="catalina.home" location="apache-tomcat-${tomcat.version}"/>
+    <property name="tomcat.name" value="apache-tomcat-${tomcat.version}" />
+    <property name="tomcat.archive" value="apache-tomcat-${tomcat.version}.zip" />
+    <property name="tomcat.archive.localpath" location="${basedir}/../../${tomcat.archive}" />
+    <property name="catalina.home" location="${tomcat.name}"/>
     <property name="catalina.base" location="DEV-catalina-base"/>
     <property name="catalina.pid" location="${catalina.base}/catalina.pid"/>
-    <property name="tomcat.archive" location="${basedir}/../../apache-tomcat-${tomcat.version}.zip"/>
 
-    <target name="build" description="build catalina base" >
-        <unzip src="${tomcat.archive}" dest="${basedir}" />
+    <target name="clean" description="clean up" >
+        <delete dir="${catalina.home}"/>
+        <delete dir="${catalina.base}"/>
+    </target>
+
+    <target name="download">
+        <get dest="${basedir}" usetimestamp="true" >
+            <url url="http://archive.apache.org/dist/tomcat/tomcat-6/v${tomcat.version}/bin/${tomcat.name}.zip"/>
+        </get>
+    </target>
+
+    <target name="unpack" depends="download">
+        <unzip src="${tomcat.archive}" dest="${basedir}"/>
+    </target>
+
+    <target name="build-catalina-base" depends="unpack" description="build catalina base" >
+
         <mkdir dir="${catalina.base}" />
         <mkdir dir="${catalina.base}/bin" />
         <mkdir dir="${catalina.base}/conf" />
@@ -18,38 +35,39 @@
         <mkdir dir="${catalina.base}/work" />
         <copy file="${catalina.home}/conf/server.xml" todir="${catalina.base}/conf"/>
         <copy file="${catalina.home}/conf/web.xml" todir="${catalina.base}/conf"/>
-        <copy todir="${catalina.base}/webapps/ROOT">
-            <fileset dir="${catalina.home}/webapps/ROOT"/>
-        </copy>
-        <echo file="${catalina.base}/conf/tomcat-users.xml" ><![CDATA[<?xml version='1.0' encoding='utf-8'?>
-<tomcat-users>
-    <role rolename="manager"/>
-    <user username="admin" password="" roles="manager"/>
-</tomcat-users>]]>
-        </echo>
-        <echo file="${catalina.base}/conf/Catalina/localhost/manager.xml" ><![CDATA[<?xml version='1.0' encoding='utf-8'?>
-<Context docBase="$${catalina.home}/webapps/manager" privileged="true" antiResourceLocking="false" />]]>
-        </echo>
         <echo file="${catalina.base}/bin/startup.sh" >#!/bin/bash
-export CATALINA_HOME="${catalina.home}"
-export CATALINA_BASE="${catalina.base}"
-export CATALINA_PID="${catalina.pid}"
-"${CATALINA_HOME}"/bin/startup.sh
+            export CATALINA_HOME="${catalina.home}"
+            export CATALINA_BASE="${catalina.base}"
+            export CATALINA_PID="${catalina.pid}"
+            "${CATALINA_HOME}"/bin/startup.sh
         </echo>
         <echo file="${catalina.base}/bin/shutdown.sh" >#!/bin/bash
-export CATALINA_HOME="${catalina.home}"
-export CATALINA_BASE="${catalina.base}"
-export CATALINA_PID="${catalina.pid}"
-"${CATALINA_HOME}"/bin/shutdown.sh
+            export CATALINA_HOME="${catalina.home}"
+            export CATALINA_BASE="${catalina.base}"
+            export CATALINA_PID="${catalina.pid}"
+            "${CATALINA_HOME}"/bin/shutdown.sh
         </echo>
         <chmod dir="${catalina.base}/bin" perm="ugo+rx" includes="**/*.sh"/>
         <chmod dir="${catalina.home}/bin" perm="ugo+rx" includes="**/*.sh"/>
     </target>
 
-    <target name="clean" description="clean up" >
-        <delete dir="${catalina.home}"/>
-        <delete dir="${catalina.base}"/>
+    <target name="build-tomcat-manager" depends="build-catalina-base" description="Build catalina base with tomcat manager">
+        <copy todir="${catalina.base}/webapps/ROOT">
+            <fileset dir="${catalina.home}/webapps/ROOT"/>
+        </copy>
+        <echo file="${catalina.base}/conf/tomcat-users.xml" ><![CDATA[<?xml version='1.0' encoding='utf-8'?>
+            <tomcat-users>
+                <role rolename="manager"/>
+                <user username="admin" password="" roles="manager"/>
+            </tomcat-users>]]>
+        </echo>
+        <echo file="${catalina.base}/conf/Catalina/localhost/manager.xml" ><![CDATA[<?xml version='1.0' encoding='utf-8'?>
+            <Context docBase="$${catalina.home}/webapps/manager" privileged="true" antiResourceLocking="false" />]]>
+        </echo>
     </target>
+
+    <target name="build" depends="build-catalina-base,build-tomcat-manager" />
+
 </project>
 
 
