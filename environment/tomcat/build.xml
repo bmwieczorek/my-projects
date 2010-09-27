@@ -5,10 +5,10 @@
     <property name="catalina.home" location="apache-tomcat-${tomcat.version}"/>
     <property name="catalina.base" location="DEV-catalina-base"/>
     <property name="catalina.pid" location="${catalina.base}/catalina.pid"/>
-    <property name="tomcat.archive" location="${catalina.home}.tar.gz"/>
+    <property name="tomcat.archive" location="${basedir}/../../apache-tomcat-${tomcat.version}.zip"/>
 
     <target name="build" description="build catalina base" >
-        <gunzip src="${tomcat.archive}"/>
+        <unzip src="${tomcat.archive}" dest="${basedir}" />
         <mkdir dir="${catalina.base}" />
         <mkdir dir="${catalina.base}/bin" />
         <mkdir dir="${catalina.base}/conf" />
@@ -43,6 +43,7 @@ export CATALINA_PID="${catalina.pid}"
 "${CATALINA_HOME}"/bin/shutdown.sh
         </echo>
         <chmod dir="${catalina.base}/bin" perm="ugo+rx" includes="**/*.sh"/>
+        <chmod dir="${catalina.home}/bin" perm="ugo+rx" includes="**/*.sh"/>
     </target>
 
     <target name="clean" description="clean up" >
