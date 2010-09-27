@@ -3,8 +3,7 @@
     <!-- set global properties for this build -->
     <property name="tomcat.version" value="6.0.26"/>
     <property name="tomcat.name" value="apache-tomcat-${tomcat.version}" />
-    <property name="tomcat.archive" value="apache-tomcat-${tomcat.version}.zip" />
-    <property name="tomcat.archive.localpath" location="${basedir}/../../${tomcat.archive}" />
+    <property name="tomcat.archive" value="${tomcat.name}.zip" />
     <property name="catalina.home" location="${tomcat.name}"/>
     <property name="catalina.base" location="DEV-catalina-base"/>
     <property name="catalina.pid" location="${catalina.base}/catalina.pid"/>
