@@ -7,25 +7,9 @@ class Block {
 
     boolean flag = false;
 
-    synchronized void m1(String s) {
-        // System.out.println("[" + s + "] starting m1");
-        System.out.println("[" + s + "] m1");
-        flag = true;
-        notify();
-        try {
-            while (true)
-                wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // System.out.println("[" + s + "] stopping m1");
-    }
-
     synchronized void a1(String s) throws InterruptedException {
         System.out.println("***");
-        // flag = true;
         notify();
-        // while (flag)
         wait();
     }
 
@@ -35,21 +19,6 @@ class Block {
         notify();
         // while (!flag)
         wait();
-    }
-
-    synchronized void m2(String s) {
-        // System.err.println("[" + s + "] starting m2");
-        System.out.println("[" + s + "] m2");
-        flag = false;
-        notify();
-        try {
-            while (true)
-                wait();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        notify();
-        // System.err.println("[" + s + "] stopping m2");
     }
 }
 

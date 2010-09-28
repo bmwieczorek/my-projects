@@ -19,7 +19,7 @@ public class CD implements Item {
         return price;
     }
 
-    public void visit(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 

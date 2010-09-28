@@ -16,7 +16,7 @@ public class Book implements Item {
         return "Book: \"" + name + "\", price: " + price + "\"$";
     }
 
-    public void visit(Visitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 

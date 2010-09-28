@@ -12,9 +12,6 @@ import designpatterns.visitorpattern.visitor.Visitor;
 
 public class Shopping {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
 
         List<Item> items = new ArrayList<Item>(2);
@@ -26,9 +23,9 @@ public class Shopping {
         Visitor promotionVisitor = new PromotionVisitorImpl();
         Visitor urlCreatorVisitor = new UrlCreatorVisitor();
         for (Item item : items) {
-            item.visit(promotionVisitor);
+            item.accept(promotionVisitor);
             System.out.print(" See: ");
-            item.visit(urlCreatorVisitor);
+            item.accept(urlCreatorVisitor);
             System.out.println("");
         }
 

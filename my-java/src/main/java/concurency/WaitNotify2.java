@@ -7,21 +7,27 @@ class Block2 {
 
     boolean flag = true;
 
-    synchronized void a1(String s) throws InterruptedException {
-        System.out.println("***before wait");
-        while (flag)
+    synchronized void a() throws InterruptedException {
+        System.out.println("***before while");
+        while (flag) {
+            System.out.println("***in while before wait");
             wait();
-        System.out.println("***after wait and before notify");
+            System.out.println("***in while after wait");
+        }
+        System.out.println("***after while before notify");
         flag = true;
         notify();
         System.out.println("***after notify");
     }
 
-    synchronized void b1(String s) throws InterruptedException {
-        System.out.println("---before wait");
-        while (!flag)
+    synchronized void b() throws InterruptedException {
+        System.out.println("---before while");
+        while (!flag) {
+            System.out.println("---in while before wait");
             wait();
-        System.out.println("---after wait and before notify");
+            System.out.println("---in while after wait");
+        }
+        System.out.println("---after while and before notify");
         flag = false;
         notify();
         System.out.println("---after notify");
@@ -32,38 +38,34 @@ class Block2 {
 public class WaitNotify2 {
 
     public static void main(String[] args) throws InterruptedException {
-        final Thread t1;
-        final Thread t2;
         final Block2 block = new Block2();
+        createThreadA(block).start();
+        Thread.sleep(3000);
+        createThreadB(block).start();
+    }
 
-        t1 = new Thread(new Runnable() {
+    private static Thread createThreadB(final Block2 block) {
+        return new Thread(new Runnable() {
             public void run() {
-                while (true)
-                    try {
-                        block.a1("t1");
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-            };
-        });
-
-        t2 = new Thread(new Runnable() {
-            public void run() {
-                while (true) {
-                    try {
-                        block.b1("t2");
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    block.b();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             };
         });
+    }
 
-        t1.start();
-        Thread.sleep(3000);
-        t2.start();
+    private static Thread createThreadA(final Block2 block) {
+        return new Thread(new Runnable() {
+            public void run() {
+                try {
+                    block.a();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            };
+        });
     }
 
 }

@@ -10,7 +10,7 @@ public class Deamons {
             public void run() {
                 try {
                     while (true) {
-                        Thread.currentThread().setName("another bawi thread");
+                        Thread.currentThread().setName("non-deamon thread is still alive");
                         System.out.println(Thread.currentThread());
                         try {
                             Thread.sleep(1000);

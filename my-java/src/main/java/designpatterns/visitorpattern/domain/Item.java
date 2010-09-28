@@ -7,5 +7,5 @@ public interface Item {
 
     String getDescription();
 
-    void visit(Visitor visitor);
+    void accept(Visitor visitor);
 }
