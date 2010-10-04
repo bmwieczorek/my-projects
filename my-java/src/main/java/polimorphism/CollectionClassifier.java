@@ -28,7 +28,7 @@ public class CollectionClassifier {
         for (Collection<?> c : collections)
             System.out.println(classify(c));
 
-        System.err.println(classify((Collection) new HashSet<String>()));
-        System.err.println(classify((Collection) new ArrayList<BigInteger>()));
+        System.err.println(classify((Collection<?>) new HashSet<String>()));
+        System.err.println(classify((Collection<?>) new ArrayList<BigInteger>()));
     }
 }
