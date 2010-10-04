@@ -20,6 +20,7 @@ public class Person {
         return birthDate;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -31,6 +32,7 @@ public class Person {
         return result;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
