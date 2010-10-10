@@ -14,7 +14,7 @@ public class FlyweightFactory {
             return codesToCharacters.get(c);
         }
 
-        Character newCharacter = new Character(c);
+        Character newCharacter = new Character(c).withVisitor(new HtmlVisitor());
         codesToCharacters.put((int) c, newCharacter);
         return newCharacter;
     }
