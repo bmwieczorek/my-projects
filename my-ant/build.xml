@@ -1,0 +1,28 @@
+<project name="My Ant Project" default="" basedir="."
+    xmlns:artifact="urn:maven-artifact-ant">
+    <description>Call maven from Ant</description>
+
+    <path id="maven-ant-tasks.classpath" path="${basedir}/lib/maven-ant-tasks-2.1.1.jar" />
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant"
+        classpathref="maven-ant-tasks.classpath" />  
+
+    <target name="maven">
+        <artifact:pom file="${basedir}/pom.xml" id="maven.project"/>
+        <artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
+            <pom refid="maven.project"/>
+        </artifact:dependencies>
+    </target>
+
+    <target name="hello"  >
+        <artifact:dependencies pathId="runtime.fileset">
+            <dependency groupId="log4j"
+                artifactId="log4j"
+                version="1.2.14" />
+        </artifact:dependencies>
+
+        <copy todir="target/aaa" verbose="true">
+            <fileset refid="runtime.fileset"/>
+        </copy>
+    </target>
+
+</project>
