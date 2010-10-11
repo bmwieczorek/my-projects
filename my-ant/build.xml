@@ -25,4 +25,16 @@
         </copy>
     </target>
 
+    <target name="hello2" >
+        <artifact:dependencies pathId="dependency.classpath">
+            <dependency groupId="log4j"
+                artifactId="log4j"
+                version="1.2.14" />
+        </artifact:dependencies>
+
+        <property name="classpath" refid="dependency.classpath" />
+
+        <echo message="Classpath is ${classpath}" />
+    </target>
+
 </project>
