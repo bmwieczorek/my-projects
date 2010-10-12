@@ -1,40 +1,48 @@
 <project name="My Ant Project" default="" basedir="."
-    xmlns:artifact="urn:maven-artifact-ant">
+    xmlns:artifact="urn:maven-artifact-ant" xmlns:ac="antlib:net.sf.antcontrib">
     <description>Call maven from Ant</description>
 
     <path id="maven-ant-tasks.classpath" path="${basedir}/lib/maven-ant-tasks-2.1.1.jar" />
+	<path id="ant-contrib.classpath" path="${basedir}/lib/ant-contrib-1.0b3.jar" />
     <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant"
         classpathref="maven-ant-tasks.classpath" />  
+		
+	<typedef resource="net/sf/antcontrib/antcontrib.properties" uri="antlib:net.sf.antcontrib"
+classpathref="ant-contrib.classpath" />  
 
     <target name="maven">
         <artifact:pom file="${basedir}/pom.xml" id="maven.project"/>
         <artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
             <pom refid="maven.project"/>
         </artifact:dependencies>
-    </target>
-
-    <target name="hello"  >
-        <artifact:dependencies pathId="runtime.fileset">
-            <dependency groupId="log4j"
-                artifactId="log4j"
-                version="1.2.14" />
-        </artifact:dependencies>
-
-        <copy todir="target/aaa" verbose="true">
-            <fileset refid="runtime.fileset"/>
+		<copy todir="target/dependencies" verbose="true" flatten="true" >
+            <fileset refid="maven-ant-tasks.dependency.fileset"/>
         </copy>
     </target>
 
-    <target name="hello2" >
-        <artifact:dependencies pathId="dependency.classpath">
-            <dependency groupId="log4j"
-                artifactId="log4j"
-                version="1.2.14" />
-        </artifact:dependencies>
+    <target name="download"  >
+		<artifact:pom file="${basedir}/pom.xml" id="maven.project"/>
+        <artifact:dependencies fileSetId="maven-ant-tasks.dependency.fileset">
+			<dependency groupId="com.sabre.apd.css.ssi.service" 
+			artifactId="ssi-service" 
+			version="${version}-SNAPSHOT"
+			type="war" />
+         </artifact:dependencies>
 
-        <property name="classpath" refid="dependency.classpath" />
+		 <copy todir="target/dependencies" verbose="true" flatten="true" >		 
+            <fileset refid="maven-ant-tasks.dependency.fileset"/>
+        </copy>
+        <move file="target/dependencies/ssi-service-${version}-SNAPSHOT.war" toFile="target/dependencies/ssi-service-${version}.war" />
+    </target>	
 
-        <echo message="Classpath is ${classpath}" />
-    </target>
-
+	 <target name="do.echo">
+		<echo message="${param}" />  
+		
+	</target>  
+	
+	<target name="run">
+		<ac:foreach list="${versions}" target="download" param="version" /> 
+	</target> 
+	
+	
 </project>
