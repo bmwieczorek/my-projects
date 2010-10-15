@@ -1,8 +1,9 @@
 <project name="My Ant Project" default="" basedir="."
     xmlns:artifact="urn:maven-artifact-ant" xmlns:ac="antlib:net.sf.antcontrib">
     <description>Call maven from Ant</description>
+    
+    <path id="maven-ant-tasks.classpath" path="${basedir}/lib/maven-ant-tasks-2.0.10.jar" />
 
-    <path id="maven-ant-tasks.classpath" path="${basedir}/lib/maven-ant-tasks-2.1.1.jar" />
     <path id="ant-contrib.classpath" path="${basedir}/lib/ant-contrib-1.0b3.jar" />
 
     <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant"
@@ -10,12 +11,12 @@
 
     <typedef resource="net/sf/antcontrib/antlib.xml" uri="antlib:net.sf.antcontrib"
         classpathref="ant-contrib.classpath" />   
-		
-	<property name="ssi.release.name" value="trunk" />
-	
-	<target name="echo" >
-		<echo>1</echo>
-	</target>
+
+    <property name="ssi.release.name" value="trunk" />
+
+    <target name="echo" >
+        <echo>1</echo>
+    </target>
 
     <target name="maven">
         <echo>Hello</echo>
@@ -25,12 +26,12 @@
 
     <target name="choose" >
         <ac:if>
-		    <equals arg1="${versions}" arg2="$${versions}" />
+            <equals arg1="${versions}" arg2="$${versions}" />
             <then>
                 <echo message="Prop versions either not set or default" />
-				<antcall target="download">
-					 <param name="version" value="${ssi.release.name}" />
-				</antcall>
+                <antcall target="download">
+                    <param name="version" value="${ssi.release.name}" />
+                </antcall>
             </then>
             <else>
                 <echo message="Prop versions set to ${versions}" />
@@ -40,30 +41,30 @@
     </target>
 
     <target name="download">
-		<artifact:pom file="${basedir}/pom.xml" id="maven.project"/>
+        <artifact:pom file="${basedir}/pom.xml" id="maven.project"/>
         <echo>${version}</echo>		
-		<ac:if>
-			<equals arg1="${version}" arg2="${ssi.release.name}" />
-			<then>
-				<echo>DEFAULT Downloading ${maven.project.version}, saving as trunk</echo>
-			</then>
-			<else>
-				<echo>Downloading ${version}-SNAPSHOT, saving as ${version}</echo>
-			</else>			
-		</ac:if>
+        <ac:if>
+            <equals arg1="${version}" arg2="${ssi.release.name}" />
+            <then>
+                <echo>DEFAULT Downloading ${maven.project.version}, saving as trunk</echo>
+            </then>
+            <else>
+                <echo>Downloading ${version}-SNAPSHOT, saving as ${version}</echo>
+            </else>			
+        </ac:if>
     </target>
-	
-	<target name="download2">
-		<echo>${version}</echo>		
-		<ac:if>
-			<equals arg1="${version}" arg2="${ssi.release.name}" />
-			<then>
-				<echo>DEFAULT Downloading ${version}, saving as trunk</echo>
-			</then>
-			<else>
-				<echo>Downloading ${version}-SNAPSHOT, saving as ${version}</echo>
-			</else>			
-		</ac:if>
+
+    <target name="download2">
+        <echo>${version}</echo>		
+        <ac:if>
+            <equals arg1="${version}" arg2="${ssi.release.name}" />
+            <then>
+                <echo>DEFAULT Downloading ${version}, saving as trunk</echo>
+            </then>
+            <else>
+                <echo>Downloading ${version}-SNAPSHOT, saving as ${version}</echo>
+            </else>			
+        </ac:if>
     </target>
 
 </project>
