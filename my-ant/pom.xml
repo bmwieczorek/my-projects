@@ -22,9 +22,10 @@
                         <phase>compile</phase>                        
                         <configuration>
                             <tasks>
-                                <property name="versions" value="${versions}" />
                                 <ant antfile="build.xml" >
+                                    <!--
                                     <target name="${target}" />
+                                    -->
                                 </ant>
                             </tasks>
                         </configuration>

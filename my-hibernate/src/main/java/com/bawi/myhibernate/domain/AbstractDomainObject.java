@@ -10,10 +10,8 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-@SuppressWarnings("serial")
 @MappedSuperclass
 public class AbstractDomainObject implements Serializable {
-
 
     /**
      * Unique identifier
@@ -25,11 +23,6 @@ public class AbstractDomainObject implements Serializable {
      */
     private transient int version = -1;
 
-    /**
-     * Getter for id.
-     * 
-     * @return Returns the id.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -37,20 +30,6 @@ public class AbstractDomainObject implements Serializable {
         return id;
     }
 
-    /**
-     * Setter for id.
-     * 
-     * @param id The id to set.
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * Getter for version.
-     * 
-     * @return Returns the version.
-     */
     @Version
     @Column(name = "VERSION", nullable = false)
     public int getVersion() {
@@ -58,9 +37,20 @@ public class AbstractDomainObject implements Serializable {
     }
 
     /**
+     * Setter for id.
+     * 
+     * @param id
+     *            The id to set.
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
      * Setter for version.
      * 
-     * @param version The version to set.
+     * @param version
+     *            The version to set.
      */
     public void setVersion(int version) {
         this.version = version;

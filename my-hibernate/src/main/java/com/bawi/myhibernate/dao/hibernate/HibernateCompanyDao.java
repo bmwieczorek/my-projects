@@ -72,7 +72,8 @@ public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyD
     }
 
     public List<Company> getCompanies() {
-        Query query = getSession().createQuery("from Company com");
+        // Query query = getSession().createQuery("from Company com");
+        Query query = getSession().createQuery("from Company com join fetch com.employees emp");
         return query.list();
     }
 

@@ -10,11 +10,12 @@ import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name = "EMPLOYEE")
-@SuppressWarnings("serial")
 public class Employee extends AbstractDomainObject {
 
     private String name;
+    private Company company;
 
+    // Hibernate required
     Employee() {
     }
 
@@ -27,22 +28,20 @@ public class Employee extends AbstractDomainObject {
         return name;
     }
 
+    // @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
+    @JoinColumn(name = "COMPANY_ID", nullable = true)
+    @ForeignKey(name = "FK_EMPLOYEE_COMPANY")
+    public Company getCompany() {
+        return company;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    private Company company;
-
     public void setCompany(Company company) {
         this.company = company;
-    }
-
-    // @ManyToOne(fetch = FetchType.LAZY)
-    @ManyToOne()
-    @JoinColumn(name = "COMPANY_ID", nullable = true)
-    @ForeignKey(name = "FK_COMPANY_TO_EMPLOYEE")
-    public Company getCompany() {
-        return company;
     }
 
     @Override

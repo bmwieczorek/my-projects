@@ -10,24 +10,14 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "COMPANY")
 public class Company extends AbstractDomainObject {
 
     private String name;
-
-    @Column(name = "NAME")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     private List<Employee> employees = new ArrayList<Employee>();
 
+    // hibernate required
     Company() {
     }
 
@@ -40,9 +30,18 @@ public class Company extends AbstractDomainObject {
         }
     }
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Column(name = "NAME")
+    public String getName() {
+        return name;
+    }
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Employee> getEmployees() {
         return employees;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setEmployees(List<Employee> employees) {

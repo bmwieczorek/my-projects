@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bawi.myhibernate.dao.CompanyDao;
@@ -20,7 +19,7 @@ import com.bawi.myhibernate.domain.Employee;
 @ContextConfiguration(locations = { "classpath:test-resources.xml", "classpath:infrastructure-context.xml",
         "classpath:datasources.xml", "classpath:dao-context.xml", "classpath:transaction-context.xml",
         "classpath:hibernate-annotated-classes-context.xml" })
-public class HibernatePersonDaoTest extends AbstractJUnit4SpringContextTests {
+public class HibernatePersonDaoTest {
 
     @Autowired
     private CompanyDao companyDao;
@@ -30,15 +29,15 @@ public class HibernatePersonDaoTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void testSaveIntoDB() {
-        Employee e1 = new Employee("bartek");
-        Employee e2 = new Employee("kasia");
-        Employee e3 = new Employee("ania");
-        companyDao.saveOrUpdate(new Company("myCompany", asList(e1, e2, e3)));
+        Employee a = new Employee("aaa");
+        Employee b = new Employee("bbb");
+        Employee c = new Employee("ccc");
+        companyDao.saveOrUpdate(new Company("K", asList(a, b, c)));
 
-        Employee ee1 = new Employee("ebartek");
-        Employee ee2 = new Employee("ekasia");
-        Employee ee3 = new Employee("eania");
-        companyDao.saveOrUpdate(new Company("myCompany2", asList(ee1, ee2, ee3)));
+        Employee x = new Employee("xxx");
+        Employee y = new Employee("yyy");
+        Employee z = new Employee("zzz");
+        companyDao.saveOrUpdate(new Company("L", asList(x, y, z)));
 
         // System.err.println("++++++++++++");
         // for (Employee employee : employeeDao.getEmployees()) {
@@ -49,7 +48,7 @@ public class HibernatePersonDaoTest extends AbstractJUnit4SpringContextTests {
         List<Company> companies = companyDao.getCompanies();
         for (Company company : companies) {
             System.err.println(company.getName());
-            // System.out.println(company.getEmployees());
+            System.out.println(company.getEmployees());
         }
 
     }
