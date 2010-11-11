@@ -71,6 +71,7 @@ public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyD
         getSession().delete(company);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Company> getCompanies() {
         // Query query = getSession().createQuery("from Company com");
         Query query = getSession().createQuery("from Company com join fetch com.employees emp");

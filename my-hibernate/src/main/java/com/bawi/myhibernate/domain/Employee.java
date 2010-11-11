@@ -12,6 +12,7 @@ import org.hibernate.annotations.ForeignKey;
 @Table(name = "EMPLOYEE")
 public class Employee extends AbstractDomainObject {
 
+    private static final long serialVersionUID = 1L;
     private String name;
     private Company company;
 

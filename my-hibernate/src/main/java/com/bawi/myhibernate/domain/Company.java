@@ -14,6 +14,8 @@ import javax.persistence.Table;
 @Table(name = "COMPANY")
 public class Company extends AbstractDomainObject {
 
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private List<Employee> employees = new ArrayList<Employee>();
 

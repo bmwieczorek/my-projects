@@ -11,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bawi.myhibernate.dao.CompanyDao;
-import com.bawi.myhibernate.dao.EmployeeDao;
 import com.bawi.myhibernate.domain.Company;
 import com.bawi.myhibernate.domain.Employee;
 
@@ -24,8 +23,8 @@ public class HibernatePersonDaoTest {
     @Autowired
     private CompanyDao companyDao;
 
-    @Autowired
-    private EmployeeDao employeeDao;
+    // @Autowired
+    // private EmployeeDao employeeDao;
 
     @Test
     public void testSaveIntoDB() {
