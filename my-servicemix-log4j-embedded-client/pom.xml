@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bawi</groupId>
-    <artifactId>my-servicemix-log4j-embedded</artifactId>
+    <artifactId>my-servicemix-log4j-embedded-client</artifactId>
     <packaging>bundle</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Simple Hello World Bundle Log4j Embedded</name>
+    <name>Logging Component Client Bundle</name>
 
     <build>
         <plugins>
@@ -19,48 +19,22 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-
-                        <Embed-Dependency>log4j</Embed-Dependency>
-
-                        <!-- exclude log4j dependencies and do not use pax logging -->
-                        <Import-Package>
-                            !javax.*,
-                            !org.xml.sax.*,
-                            !org.w3c.dom,
-                            !com.sun.jdmk.comm,
-                            !com.ibm.uvm.tools              
-                        </Import-Package>
-                        <Export-Package>
-                            com.bawi.servicemix.logging
-                        </Export-Package>
-                        <Private-Package>
-                            org.apache.log4j                            
-                        </Private-Package>
                     </instructions>
-                </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <Import-Package>
+                        com.bawi.servicemix.logging
+                    </Import-Package>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
-
     <dependencies>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <groupId>com.bawi</groupId>
+            <artifactId>my-servicemix-log4j-embedded</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-
 
     <repositories>
         <repository>
