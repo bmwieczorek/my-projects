@@ -1,0 +1,15 @@
+1) building in mvn:
+my-servicemix$ mvn clean install
+
+2) deploying/installing in osgi container
+karaf@root> osgi:install -s mvn:com.bawi/my-servicemix
+
+3) redeploying/reinstalling
+karaf@root> list
+
+...
+
+[ 185] [Active     ] [            ] [Started] [   60] Simple Hello World Bundle (0.0.1.SNAPSHOT)
+
+karaf@root> update 185 
+
