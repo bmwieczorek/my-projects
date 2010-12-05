@@ -3,6 +3,17 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
-    <bean id="client" class="com.bawi.servicemix.Client" />
+    <bean id="client" class="com.bawi.servicemix.client.Client" >
+        <constructor-arg ref="carShopService" />
+    </bean>
+    
+    <bean id="carShopService" class="com.bawi.servicemix.service.CarShopServiceImpl" >
+        <constructor-arg ref="carAvailabilityService" />
+        <constructor-arg ref="carPricingService" />
+    </bean>
+    
+    <bean id="carAvailabilityService" class="com.bawi.servicemix.service.availability.CarAvailabilityServiceImpl" />
+
+    <bean id="carPricingService" class="com.bawi.servicemix.service.pricing.CarPricingServiceImpl" />
 
 </beans>
