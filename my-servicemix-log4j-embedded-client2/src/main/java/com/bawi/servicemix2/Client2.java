@@ -1,7 +1,6 @@
 package com.bawi.servicemix2;
 
 import com.bawi.servicemix.logging.MyLogger;
-import com.bawi.servicemix.logging.MyLoggerImpl;
 import com.bawi.servicemix.logging.MyLoggerRepository;
 
 public class Client2 {
