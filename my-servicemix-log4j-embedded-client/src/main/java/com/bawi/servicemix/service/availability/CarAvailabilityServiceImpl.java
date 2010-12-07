@@ -4,11 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.bawi.servicemix.logging.MyLogger;
+import com.bawi.servicemix.logging.MyLoggerRepository;
 
 public class CarAvailabilityServiceImpl implements CarAvailabilityService {
 
-    private final List<String> cars = Arrays.asList("toyota");
-    private final MyLogger logger = new MyLogger(CarAvailabilityServiceImpl.class);
+    private final List<String> cars = Arrays.asList("toyota", "bmw");
+    private final MyLogger logger = MyLoggerRepository.getLogger(CarAvailabilityServiceImpl.class);
 
     public boolean isCarAvailable(String car) {
         logger.debug("Searching availability for " + car);

@@ -8,7 +8,7 @@
     <artifactId>my-servicemix-log4j-embedded</artifactId>
     <packaging>bundle</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Simple Hello World Bundle Log4j Embedded</name>
+    <name>Logging Component</name>
 
     <build>
         <plugins>
@@ -32,10 +32,10 @@
                             !com.ibm.uvm.tools              
                         </Import-Package>
                         <Export-Package>
-                            com.bawi.servicemix.logging.*
+                           com.bawi.servicemix.logging.*
                         </Export-Package>
                         <Private-Package>
-                            org.apache.log4j                            
+                            org.apache.log4j                                                       
                         </Private-Package>
                     </instructions>
                 </configuration>
@@ -60,8 +60,6 @@
             <version>1.2.16</version>
         </dependency>
     </dependencies>
-
-
 
     <repositories>
         <repository>

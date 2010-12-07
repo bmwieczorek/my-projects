@@ -1,10 +1,12 @@
 package com.bawi.servicemix2;
 
 import com.bawi.servicemix.logging.MyLogger;
+import com.bawi.servicemix.logging.MyLoggerImpl;
+import com.bawi.servicemix.logging.MyLoggerRepository;
 
 public class Client2 {
 
-    private MyLogger logger = new MyLogger(Client2.class);
+    private MyLogger logger = MyLoggerRepository.getLogger(Client2.class);
 
     public Client2() throws InterruptedException {
         for (int i = 0; i < 300; i++) {

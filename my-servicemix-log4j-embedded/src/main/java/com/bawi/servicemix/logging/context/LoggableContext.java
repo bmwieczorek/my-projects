@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface LoggableContext {
 
-    void addLoggableEvent(String event);
+    void addMessage(String message);
 
-    List<String> getAllEvents();
+    List<String> getAllMessages();
 
-    String getAllEventsAsLogString();
+    String getAllMessagesAsString();
 
     void clear();
 

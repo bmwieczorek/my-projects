@@ -1,28 +1,32 @@
 package com.bawi.servicemix.logging.context;
 
+import static java.lang.System.currentTimeMillis;
+import static java.lang.Thread.currentThread;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class StringLoggableContext implements LoggableContext {
+public abstract class LoggableContextImpl implements LoggableContext {
 
     private static String HOST = "localhost";
-    private String id = " [" + System.currentTimeMillis() + "-" + HOST + "] ";
+    private String id = " [" + currentThread().getName() + "-" + currentTimeMillis() + "-" + HOST + "] ";
 
     private List<String> events = new ArrayList<String>();
 
-    public void addLoggableEvent(String event) {
+    public void addMessage(String event) {
         events.add(event);
     }
 
-    public List<String> getAllEvents() {
+    public List<String> getAllMessages() {
         return events;
     }
 
-    public String getAllEventsAsLogString() {
+    public String getAllMessagesAsString() {
         StringBuilder logs = new StringBuilder();
         for (String event : events) {
             logs.append(id);
             logs.append(event.toString());
+            logs.append("\n");
         }
         return logs.toString();
     }

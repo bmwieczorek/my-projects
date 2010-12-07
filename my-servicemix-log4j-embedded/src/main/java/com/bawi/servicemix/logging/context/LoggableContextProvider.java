@@ -5,7 +5,7 @@ public class LoggableContextProvider {
     static private ThreadLocal<LoggableContext> loggableContextThreadLocal = new ThreadLocal<LoggableContext>() {
         @Override
         protected LoggableContext initialValue() {
-            return new StringLoggableContext() {
+            return new LoggableContextImpl() {
             };
         }
     };

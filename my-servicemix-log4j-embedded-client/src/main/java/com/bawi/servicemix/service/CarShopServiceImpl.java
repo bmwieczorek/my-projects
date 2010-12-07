@@ -1,12 +1,13 @@
 package com.bawi.servicemix.service;
 
 import com.bawi.servicemix.logging.MyLogger;
+import com.bawi.servicemix.logging.MyLoggerRepository;
 import com.bawi.servicemix.service.availability.CarAvailabilityService;
 import com.bawi.servicemix.service.pricing.CarPricingService;
 
 public class CarShopServiceImpl implements CarShopService {
 
-    private final MyLogger logger = new MyLogger(CarShopServiceImpl.class);
+    private final MyLogger logger = MyLoggerRepository.getLogger(CarShopServiceImpl.class);
 
     private final CarAvailabilityService availabilityService;
     private final CarPricingService pricingService;
@@ -16,13 +17,15 @@ public class CarShopServiceImpl implements CarShopService {
         this.pricingService = pricingService;
     }
 
-    public boolean orderCar(String brand, int payment) {
-        logger.debug("Ordering car " + brand + " for amount" + payment);
+    public boolean orderCar(String car, int payment) {
+        logger.info("Ordering car " + car + " for amount " + payment);
         try {
-            return availabilityService.isCarAvailable(brand)
-                    && pricingService.isPaymentSufficientForBrand(brand, payment);
+            boolean isCarSold = availabilityService.isCarAvailable(car)
+                    && pricingService.isPaymentSufficientForBrand(car, payment);
+            logger.info("Car " + car + (isCarSold ? " sold" : " not sold") + " for " + payment);
+            return isCarSold;
         } catch (Exception e) {
-            logger.error("Problem with ordering a car " + e.getCause());
+            logger.error("Problem with ordering a car " + e.getMessage());
             return false;
         }
     }

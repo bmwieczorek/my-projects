@@ -8,7 +8,7 @@
     <artifactId>my-servicemix-log4j-embedded-client</artifactId>
     <packaging>bundle</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Logging Component Client Bundle</name>
+    <name>Logging Component Client</name>
 
     <build>
         <plugins>
