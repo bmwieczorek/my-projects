@@ -14,7 +14,7 @@ public class TestSyslog {
     private static final Logger logger = Logger.getLogger("syslog.monitoring");
 
     @Test
-    public void shouldLogToSyslog() throws Exception {
+    public void shouldLogToSyslogForLinux() throws Exception {
         // given
         String message = "My message!!!";
 
@@ -26,7 +26,6 @@ public class TestSyslog {
             assertTrue(fileContainsMessage("/var/log/syslog", message));
             assertTrue(fileContainsMessage("/var/log/user.log", message));
         }
-
     }
 
     private boolean isLinux() {

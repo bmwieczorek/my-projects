@@ -14,7 +14,6 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>add-itest-source</id>
@@ -49,7 +48,6 @@
 				in test phase -->
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
@@ -88,7 +86,6 @@
 			<plugin>
 				<groupId>org.codehaus.cargo</groupId>
 				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>${cargo-maven2-plugin.version}</version>
 				<configuration>
 
 					<!-- waiter after cargo start; default true -->

@@ -79,7 +79,7 @@
         <level value="DEBUG" />
     </logger>
 
-    <logger name="syslog.monitoring">
+    <logger name="syslog.monitoring" additivity="false">
         <level value="INFO" />
         <appender-ref ref="SYSLOG" />
     </logger>
