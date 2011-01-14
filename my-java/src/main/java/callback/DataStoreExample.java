@@ -7,6 +7,7 @@ public class DataStoreExample extends DataStoreTemplate {
         DataStoreExample dataStoreAccess = new DataStoreExample();
         Person person = dataStoreAccess.queryForObject(new CallbackMapper<Person>() {
 
+            @Override
             public Person map(MySet<Person> src) {
                 Person person = new Person();
                 person.name = src.getString("name");
@@ -18,6 +19,7 @@ public class DataStoreExample extends DataStoreTemplate {
 
         Collection<Person> people = dataStoreAccess.query(new CallbackMapper<Person>() {
 
+            @Override
             public Person map(MySet<Person> src) {
                 Person person = new Person();
                 person.name = src.getString("name");

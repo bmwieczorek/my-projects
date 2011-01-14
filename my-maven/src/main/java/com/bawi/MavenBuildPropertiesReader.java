@@ -8,9 +8,12 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
 
-public class MavenBuildPropertiesReader {
-    private final static String propertiesFileName = "maven.build.properties";
-    private final static String propertiesFilePath = "target/classes/" + propertiesFileName;
+public final class MavenBuildPropertiesReader {
+    private static final String PROPERTIES_FILE_NAME = "maven.build.properties";
+    private static final String PROPERTIES_FILE_PATH = "target/classes/" + PROPERTIES_FILE_NAME;
+
+    private MavenBuildPropertiesReader() {
+    }
 
     public static void main(String[] args) throws IOException {
         putToSystemProperties();
@@ -22,18 +25,17 @@ public class MavenBuildPropertiesReader {
         printSystemProperties(loadSystemPropertiesFromResource());
     }
 
-    private static Properties loadSystemPropertiesFromFile() throws FileNotFoundException, IOException {
+    private static Properties loadSystemPropertiesFromFile() throws IOException {
         Properties systemProperties = new Properties();
-        File file = new File(propertiesFilePath);
+        File file = new File(PROPERTIES_FILE_PATH);
         String fileAbsolutePath = file.getAbsolutePath();
-        String projectBasedir = fileAbsolutePath.replaceAll(propertiesFilePath, "");
+        String projectBasedir = fileAbsolutePath.replaceAll(PROPERTIES_FILE_PATH, "");
         FileInputStream inStream;
         try {
             inStream = new FileInputStream(file);
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("File '" + fileAbsolutePath
-                    + "' is generated during maven build process. Run maven build in '" + projectBasedir
-                    + "'.");
+                    + "' is generated during maven build process. Run maven build in '" + projectBasedir + "'.");
         }
         systemProperties.load(inStream);
         return systemProperties;
@@ -43,9 +45,9 @@ public class MavenBuildPropertiesReader {
         Properties systemProperties = new Properties();
         Class<MavenBuildPropertiesReader> clazz = MavenBuildPropertiesReader.class;
         ClassLoader classLoader = clazz.getClassLoader();
-        InputStream resourceAsStream = classLoader.getResourceAsStream(propertiesFileName);
+        InputStream resourceAsStream = classLoader.getResourceAsStream(PROPERTIES_FILE_NAME);
         if (resourceAsStream == null) {
-            throw new RuntimeException("Could not load properties file: '" + propertiesFileName + "'");
+            throw new RuntimeException("Could not load properties file: '" + PROPERTIES_FILE_NAME + "'");
         }
         systemProperties.load(resourceAsStream);
         return systemProperties;

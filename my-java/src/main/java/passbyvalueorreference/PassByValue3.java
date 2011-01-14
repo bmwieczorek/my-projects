@@ -7,6 +7,7 @@ class AAA {
         this.x = x;
     }
 
+    @Override
     public String toString() {
         return Integer.toString(x);
     }

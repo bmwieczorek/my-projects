@@ -6,6 +6,7 @@ import generics.Toyota;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Example {
     static <T> List<T> merge(List<T> list1, List<T> list2) {
         return list2; // impl omitted
@@ -20,7 +21,6 @@ public class Example {
         return (List<T>) list2; // impl omitted
     }
 
-    @SuppressWarnings("unused")
     public static void main(String[] args) {
         List<Car> cars = Arrays.asList(new Car(), new Toyota());
         List<Toyota> toyotas = Arrays.asList(new Toyota(), new Toyota());

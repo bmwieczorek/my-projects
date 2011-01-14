@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class EncryptionTest {
 
-    SecretKeyProvider keyProvider = new SecretKeyProvider();
+    private final SecretKeyProvider keyProvider = new SecretKeyProvider();
 
     @Test
     public void shouldEncryptAndDecryptPassword() {

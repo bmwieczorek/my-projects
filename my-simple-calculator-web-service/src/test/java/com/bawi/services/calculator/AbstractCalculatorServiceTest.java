@@ -13,9 +13,9 @@ import com.bawi.test.connection.UrlConnectionChecker;
 
 public abstract class AbstractCalculatorServiceTest {
 
-    private static final String serviceUrl = "http://localhost:7890/calculator";
+    private static final String SERVICE_URL = "http://localhost:7890/calculator";
 
-    private CalculatorServiceInterface calculatorService = createServiceClient(serviceUrl,
+    private CalculatorServiceInterface calculatorService = createServiceClient(SERVICE_URL,
             CalculatorServiceInterface.class);
 
     private UrlConnectionChecker connectionChecker = UrlConnectionChecker.createWithTimeOut(5);
@@ -24,7 +24,7 @@ public abstract class AbstractCalculatorServiceTest {
     public void shouldCalculateAddition() throws Exception {
         // given
         CalculatorRQ request = new CalculatorRQ().withOperation(Operation.ADD).withParameters(1, 2);
-        Assert.assertTrue(connectionChecker.isUp(serviceUrl + "?wsdl"));
+        Assert.assertTrue(connectionChecker.isUp(SERVICE_URL + "?wsdl"));
 
         // when
         CalculatorRS response = calculatorService.calculate(request);

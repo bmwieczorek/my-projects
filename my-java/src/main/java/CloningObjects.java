@@ -8,6 +8,7 @@ public class CloningObjects implements Cloneable {
         System.out.println(anotherClone.toString());
     }
 
+    @Override
     public String toString() {
         return foo;
     }

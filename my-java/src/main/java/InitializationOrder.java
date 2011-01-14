@@ -5,14 +5,15 @@ public class InitializationOrder {
     class A {
         int i = 0;
 
-        void reset() {
-            i = -1;
-        }
-
         public A() {
             i = 0;
             System.out.print("In A const");
         }
+
+        void reset() {
+            i = -1;
+        }
+
     }
 
     class B {

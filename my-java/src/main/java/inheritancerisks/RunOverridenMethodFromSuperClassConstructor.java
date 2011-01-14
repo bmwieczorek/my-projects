@@ -22,6 +22,7 @@ class Sub extends Super {
         name = "bawi";
     }
 
+    @Override
     void myPrint() {
         System.out.println("subclass my print:" + name);
     }

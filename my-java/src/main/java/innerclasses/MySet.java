@@ -37,17 +37,19 @@ public class MySet<E> {
     private class MyIterator implements Iterator<E> {
         int index;
 
+        @Override
         public boolean hasNext() {
             if (index >= myarray.length)
                 return false;
-            else
-                return true;
+            return true;
         }
 
+        @Override
         public E next() {
             return myarray[index++];
         }
 
+        @Override
         public void remove() {
             throw new NotImplementedException();
         }

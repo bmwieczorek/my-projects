@@ -13,17 +13,19 @@ public class MyLog4jServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Logger logger = Logger.getLogger(MyLog4jServlet.class);
+    private static final Logger LOGGER = Logger.getLogger(MyLog4jServlet.class);
 
+    @Override
     public void init() throws ServletException {
         logMe();
     }
 
+    @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logMe();
     }
 
     private void logMe() {
-        logger.error("Log me!");
+        LOGGER.error("Log me!");
     }
 }

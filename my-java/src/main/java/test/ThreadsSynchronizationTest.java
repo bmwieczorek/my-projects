@@ -26,12 +26,14 @@ public class ThreadsSynchronizationTest {
         // final MyClass m2 = new MyClass();
 
         Thread t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true)
                     m1.printerr();
             }
         });
         Thread t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true)
                     m1.printout();

@@ -1,14 +1,17 @@
 package com.bawi.servicemix.logging.context;
 
-public class LoggableContextProvider {
+public final class LoggableContextProvider {
 
-    static private ThreadLocal<LoggableContext> loggableContextThreadLocal = new ThreadLocal<LoggableContext>() {
+    private static ThreadLocal<LoggableContext> loggableContextThreadLocal = new ThreadLocal<LoggableContext>() {
         @Override
         protected LoggableContext initialValue() {
             return new LoggableContextImpl() {
             };
         }
     };
+
+    private LoggableContextProvider() {
+    }
 
     public static LoggableContext getContext() {
         return loggableContextThreadLocal.get();

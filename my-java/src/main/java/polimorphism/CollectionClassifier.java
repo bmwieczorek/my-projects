@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 //Broken! - What does this program print?
+@SuppressWarnings("unused")
 public class CollectionClassifier {
     public static String classify(Set<?> s) {
         return "Set";

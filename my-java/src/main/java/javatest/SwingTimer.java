@@ -11,6 +11,7 @@ public class SwingTimer implements ActionListener {
 
     }
 
+    @Override
     public void actionPerformed(ActionEvent ev) {
         System.out.println("Timer ticked.");
     }

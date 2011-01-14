@@ -19,16 +19,17 @@ public class UrlRedirectServlet extends HttpServlet {
     /**
      * The init method of the servlet.
      */
+    @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
     }
 
     /**
-     * This method processes the HttpServletRequest. Here the method of using sendRedirect() method is shown for the
-     * purpose of URL redirection.
+     * This method processes the HttpServletRequest. Here the method of using
+     * sendRedirect() method is shown for the purpose of URL redirection.
      */
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException {
+    @Override
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.sendRedirect("/patch-distribution/patches");
 

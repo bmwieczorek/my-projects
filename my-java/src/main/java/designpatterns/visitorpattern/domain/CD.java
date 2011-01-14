@@ -11,14 +11,17 @@ public class CD implements Item {
         this.price = price;
     }
 
+    @Override
     public String getDescription() {
         return "CD: \"" + name + "\", price: " + price + "\"$";
     }
 
+    @Override
     public int getPrice() {
         return price;
     }
 
+    @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }

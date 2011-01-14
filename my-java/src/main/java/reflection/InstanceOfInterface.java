@@ -13,6 +13,7 @@ class AA extends A {
 
 public class InstanceOfInterface {
 
+    @SuppressWarnings("cast")
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
         Class<?>[] interfaces = A.class.getInterfaces();
         for (Class<?> class1 : interfaces) {

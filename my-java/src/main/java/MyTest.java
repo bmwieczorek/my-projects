@@ -8,8 +8,6 @@
  * creation date: Aug 26, 2010
  */
 
-
-
 import org.junit.Test;
 
 /**
@@ -18,21 +16,21 @@ import org.junit.Test;
  */
 public class MyTest {
 
-   private int counter = 0;
+    private int counter = 0;
 
-   @Test
-   public void a() {
-      System.out.println(counter++);
-   }
+    @Test
+    public void a() {
+        System.out.println(counter++);
+    }
 
-   @Test
-   public void b() {
-      System.out.println(counter++);
-   }
+    @Test
+    public void b() {
+        System.out.println(counter++);
+    }
 
-   @Test
-   public void c() {
-      System.out.println(counter++);
-   }
+    @Test
+    public void c() {
+        System.out.println(counter++);
+    }
 
 }

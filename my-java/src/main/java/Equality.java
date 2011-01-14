@@ -3,6 +3,11 @@ class Abcde {
     public boolean equals(Object obj) {
         return (obj instanceof Abcde) ? true : false;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
 
 public class Equality {

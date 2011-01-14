@@ -11,8 +11,8 @@ public class TeaFlavor extends TeaOrder {
         return this.teaFlavor;
     }
 
+    @Override
     public void serveTea(TeaOrderContext teaOrderContext) {
-        System.out.println("Serving tea flavor " + teaFlavor + " to table number "
-                + teaOrderContext.getTable());
+        System.out.println("Serving tea flavor " + teaFlavor + " to table number " + teaOrderContext.getTable());
     }
 }

@@ -4,6 +4,6 @@ public class MyJunit2Test {
 
     @Test
     public void test() {
-        System.out.println(MySingleton.INSTANCE.i);
+        System.out.println(MySingleton.INSTANCE.getI());
     }
 }

@@ -12,14 +12,17 @@ public class Book implements Item {
         this.price = price;
     }
 
+    @Override
     public String getDescription() {
         return "Book: \"" + name + "\", price: " + price + "\"$";
     }
 
+    @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
+    @Override
     public int getPrice() {
         return price;
     }

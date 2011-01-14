@@ -20,6 +20,7 @@ public class BreakingAtomicity {
         final BreakingAtomicity ba = new BreakingAtomicity();
 
         new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     if ((ba.value % 2) != 0) {

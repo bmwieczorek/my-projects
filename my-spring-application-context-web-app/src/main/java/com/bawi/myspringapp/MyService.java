@@ -6,7 +6,7 @@ import com.bawi.myspringapp.context.ApplicationBeanProvider;
 
 public class MyService {
 
-    private static final Logger logger = Logger.getLogger(MyService.class);
+    private static final Logger LOGGER = Logger.getLogger(MyService.class);
 
     private final CacheProvider cacheProvider;
 
@@ -21,7 +21,7 @@ public class MyService {
 
     private void useCache() {
         Cache cache = cacheProvider.getCache();
-        logger.debug("Created cache " + cache);
+        LOGGER.debug("Created cache " + cache);
     }
 
     private CacheProvider getCacheProviderFromApplicationContext() {

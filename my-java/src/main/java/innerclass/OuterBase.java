@@ -2,7 +2,7 @@ package innerclass;
 
 class Outer {
     private void a() {
-    };
+    }
 
     class Inner {
         void b() {

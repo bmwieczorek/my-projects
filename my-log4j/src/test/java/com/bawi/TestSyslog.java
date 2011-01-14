@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class TestSyslog {
 
-    private static final Logger logger = Logger.getLogger("syslog.monitoring");
+    private static final Logger LOGGER = Logger.getLogger("syslog.monitoring");
 
     @Test
     public void shouldLogToSyslogForLinux() throws Exception {
@@ -19,7 +19,7 @@ public class TestSyslog {
         String message = "My message!!!";
 
         // when
-        logger.error(message);
+        LOGGER.error(message);
 
         // then
         if (isLinux()) {

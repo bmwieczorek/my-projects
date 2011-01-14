@@ -9,6 +9,7 @@ class Wine extends Drink {
 class Tea extends Drink {
 }
 
+@SuppressWarnings("unused")
 public class StaticMethodsWithPolymorphicParameters {
     static void print(Drink drink) {
         System.out.println("drink");

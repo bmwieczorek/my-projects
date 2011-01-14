@@ -42,23 +42,25 @@ public class OISynchrBlockingSleepInterruption {
         final Thread t2;
 
         t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t2]:starting");
                 // t1.interrupt();
                 car1.m1("t2");
                 car1.m("t2");
                 System.out.println("[t2]:stopping");
-            };
+            }
         });
 
         t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t1]:starting");
                 //
                 t2.interrupt();
                 car1.m2("t1");
                 System.out.println("[t1]:stopping");
-            };
+            }
         });
 
         // t1.start();

@@ -13,17 +13,18 @@ import com.bawi.services.calculator.processor.Calculator;
 
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
-    private static final Logger logger = Logger.getLogger(CalculatorServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(CalculatorServiceImpl.class);
     private Calculator calculator = new Calculator();
 
+    @Override
     public CalculatorRS calculate(CalculatorRQ request) throws CalculatorFault {
         request.validate();
         String requestXml = transformFromJavaToXml(request);
-        logger.debug("Request valid:" + requestXml);
+        LOGGER.debug("Request valid:" + requestXml);
         int result = calculator.calculate(request.getOperation(), request.getParameters());
         CalculatorRS response = new CalculatorRS().withResult(result);
         String responseXml = transformFromJavaToXml(response);
-        logger.debug("Response valid:" + responseXml);
+        LOGGER.debug("Response valid:" + responseXml);
         return response;
     }
 

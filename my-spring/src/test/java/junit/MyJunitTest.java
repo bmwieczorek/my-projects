@@ -2,10 +2,11 @@ package junit;
 
 import org.junit.Test;
 
+@SuppressWarnings("unused")
 public class MyJunitTest {
 
-    String text = staticSay("field");
-    static String staticText = staticSay("static field");
+    private static String staticText = staticSay("static field");
+    private String text = staticSay("field");
 
     public MyJunitTest() {
         System.out.println("constructor");

@@ -20,7 +20,7 @@ public class CalculatorRQ extends CalculatorRQModelBase {
 
     private static Logger logger = Logger.getLogger(CalculatorRQ.class);
 
-    public void validate() throws InvalidRequestException {
+    public void validate() {
         if (operation == null) {
             String message = "Invalid request: operation cannot be null";
             logger.error(message);

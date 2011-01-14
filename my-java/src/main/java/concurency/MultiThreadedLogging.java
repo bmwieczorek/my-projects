@@ -8,9 +8,10 @@ public class MultiThreadedLogging implements Runnable {
     private static int i = 0;
 
     private static ThreadLocal<File> file = new ThreadLocal<File>() {
+        @Override
         protected File initialValue() {
             return new File(Thread.currentThread().getName());
-        };
+        }
     };
 
     public static void main(String[] args) throws InterruptedException {
@@ -23,6 +24,7 @@ public class MultiThreadedLogging implements Runnable {
         Thread.sleep(10);
     }
 
+    @Override
     public void run() {
         File file2 = file.get();
         FileOutputStream fileOutputStream = null;

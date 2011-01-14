@@ -19,6 +19,7 @@ public class MyMojo extends AbstractMojo {
      */
     private String text;
 
+    @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         getLog().info("Hello world " + System.getProperty("text") + text);
     }

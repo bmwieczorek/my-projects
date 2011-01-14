@@ -10,26 +10,29 @@ import static org.apache.commons.lang.StringUtils.replace;
 import java.io.File;
 import java.io.IOException;
 
-public class ClassTransformer {
+public final class ClassTransformer {
 
     private static final String POSTFIX = "ModelBase";
+
+    private ClassTransformer() {
+    }
 
     public static void main(String[] args) throws Exception {
         for (String arg : args) {
             File inputFile = new File(arg);
-            if (inputFile.exists())
+            if (inputFile.exists()) {
                 renameClass(arg, POSTFIX);
+            }
         }
     }
 
     private static void renameClass(String inputFileName, String postfix) throws IOException {
         String fileBaseName = getBaseName(inputFileName);
-        String outputFileName = getFullPath(inputFileName) + fileBaseName + postfix + "."
-                + getExtension(inputFileName);
+        String outputFileName = getFullPath(inputFileName) + fileBaseName + postfix + "." + getExtension(inputFileName);
         File inputFile = new File(inputFileName);
         String inputFileText = readFileToString(inputFile);
-        String outputFileText = replace(inputFileText, "public class " + fileBaseName, "public class "
-                + fileBaseName + postfix);
+        String outputFileText = replace(inputFileText, "public class " + fileBaseName, "public class " + fileBaseName
+                + postfix);
         outputFileText = replace(outputFileText, "return this", "return ((" + fileBaseName + ")this)");
         writeStringToFile(new File(outputFileName), outputFileText);
         inputFile.delete();

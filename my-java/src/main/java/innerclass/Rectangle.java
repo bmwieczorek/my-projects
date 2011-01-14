@@ -10,10 +10,12 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
+    @Override
     public int area() {
         return height * width;
     }
 
+    @Override
     public int perimeter() {
         return 2 * (height + width);
     }

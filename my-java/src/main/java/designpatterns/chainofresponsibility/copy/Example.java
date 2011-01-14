@@ -21,6 +21,7 @@ abstract class AbstractHander {
 }
 
 class CatchAllHandler extends AbstractHander {
+    @Override
     public void handle(Mail mail) {
         System.out.println(getClass().getName() + " received non-handleable " + mail.mailType);
     }
@@ -28,6 +29,7 @@ class CatchAllHandler extends AbstractHander {
 
 class HappyHandler extends AbstractHander {
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.HAPPY == mail.mailType)
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to ceo");
@@ -40,6 +42,7 @@ class HappyHandler extends AbstractHander {
 
 class SadHandler extends AbstractHander {
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.SAD == mail.mailType)
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to legal dept");
@@ -52,6 +55,7 @@ class SadHandler extends AbstractHander {
 
 class SpamHandler extends AbstractHander {
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.SPAM == mail.mailType) {
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to trash");

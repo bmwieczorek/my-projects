@@ -7,6 +7,7 @@ public class TestApplet extends JApplet {
 
     private static final long serialVersionUID = 1L;
 
+    @Override
     public void init() {
         JButton b1 = new JButton("one");
         JButton b2 = new JButton("two");

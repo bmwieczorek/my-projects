@@ -17,6 +17,7 @@ interface Handler {
 }
 
 class CatchAllHandler implements Handler {
+    @Override
     public void handle(Mail mail) {
         System.out.println(getClass().getName() + " received non-handleable " + mail.mailType);
     }
@@ -29,6 +30,7 @@ class HappyHandler implements Handler {
         this.successorHandler = handler;
     }
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.HAPPY == mail.mailType)
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to ceo");
@@ -46,6 +48,7 @@ class SadHandler implements Handler {
         this.successorHandler = handler;
     }
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.SAD == mail.mailType)
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to legal dept");
@@ -63,6 +66,7 @@ class SpamHandler implements Handler {
         this.successorHandler = handler;
     }
 
+    @Override
     public void handle(Mail mail) {
         if (MailType.SPAM == mail.mailType) {
             System.out.println(getClass().getName() + " handling " + mail.mailType + " to trash");

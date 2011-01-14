@@ -3,12 +3,12 @@ package designpatterns.adapterpattern.classadapter;
 public class Client {
     private Target target;
 
-    void performRequest() {
-        target.request();
-    }
-
     public Client(Target target) {
         this.target = target;
+    }
+
+    void performRequest() {
+        target.request();
     }
 
     public static void main(String[] args) {

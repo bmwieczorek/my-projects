@@ -10,12 +10,11 @@ import javax.crypto.SecretKey;
 public class CipherFactory {
 
     private final SecretKey key;
+    private final Algorithm algorithm;
 
     public CipherFactory(SecretKey key) {
         this(key, DES);
     }
-
-    private final Algorithm algorithm;
 
     public CipherFactory(SecretKey key, Algorithm algorithm) {
         this.key = key;

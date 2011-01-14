@@ -6,10 +6,10 @@ import com.bawi.myhibernate.domain.Company;
 
 public interface CompanyDao {
 
-	Company saveOrUpdate(Company company);
-	
-	void delete(Company company);
-	
-	List<Company> getCompanies();
-	
+    Company saveOrUpdate(Company company);
+
+    void delete(Company company);
+
+    List<Company> getCompanies();
+
 }

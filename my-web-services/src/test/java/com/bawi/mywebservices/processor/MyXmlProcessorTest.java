@@ -1,6 +1,5 @@
 package com.bawi.mywebservices.processor;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -19,23 +18,23 @@ public class MyXmlProcessorTest {
     private static final String XML_PATH = "src/test/resources/xml/";
 
     @Test
-    public void testToXml() throws FileNotFoundException, IOException, JAXBException {
+    public void testToXml() throws IOException, JAXBException {
 
         String requestXml = IOUtils.toString(new FileReader(XML_PATH + "request.xml"));
         System.out.println(requestXml);
         // or
-        // String text2 = IOUtils.toString(new FileInputStream(XML_PATH + "request.xml"));
+        // String text2 = IOUtils.toString(new FileInputStream(XML_PATH +
+        // "request.xml"));
         // System.out.println(text2);
 
         MyXmlProcessor myXmlProcessor = new MyXmlProcessor();
-        NewOperationRequest unmarshalledRequest = myXmlProcessor.fromXml(requestXml,
-                NewOperationRequest.class);
+        NewOperationRequest unmarshalledRequest = myXmlProcessor.fromXml(requestXml, NewOperationRequest.class);
         System.out.println(unmarshalledRequest);
 
         NewOperationRequest expectedRequest = new NewOperationRequest().withMyAtt("A").withStringIn("ss")
-                .withBooleanIn(true).withIntIn(1).withPatternIn("Z").withMyEnum(MyEnum.AA)
-                .withMyList(1, 2, 3).withMyComplex(new MyComplex().withRequiredParam(false))
-                .withUnboundedStrings("x").withUnboundedStrings("y");
+                .withBooleanIn(true).withIntIn(1).withPatternIn("Z").withMyEnum(MyEnum.AA).withMyList(1, 2, 3)
+                .withMyComplex(new MyComplex().withRequiredParam(false)).withUnboundedStrings("x")
+                .withUnboundedStrings("y");
 
         Assert.assertEquals(expectedRequest, unmarshalledRequest);
     }

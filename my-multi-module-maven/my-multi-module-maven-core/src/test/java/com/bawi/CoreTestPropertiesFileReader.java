@@ -5,13 +5,16 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
 
-public class CoreTestPropertiesFileReader {
+public final class CoreTestPropertiesFileReader {
 
-    public static void main(String[] args) throws IOException {
-        new CoreTestPropertiesFileReader();
+    private CoreTestPropertiesFileReader() {
     }
 
-    public CoreTestPropertiesFileReader() throws IOException {
+    public static void main(String[] args) throws IOException {
+        readAndPrintProperties();
+    }
+
+    public static void readAndPrintProperties() throws IOException {
         Properties properties = readPropertiesFromResource("my-core-test.properties");
         printSystemProperties(properties);
     }

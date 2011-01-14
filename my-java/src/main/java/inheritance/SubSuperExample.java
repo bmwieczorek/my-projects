@@ -4,8 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 class SuperClass {
-    void init() throws SecurityException, NoSuchFieldException, IllegalArgumentException,
-            IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    void init() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
 
         // this.getClass() invoked in super class returns reference to the
         // subclass class instance
@@ -28,8 +27,8 @@ class Subclass extends SuperClass {
 }
 
 public class SubSuperExample {
-    public static void main(String[] args) throws SecurityException, IllegalArgumentException,
-            NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException,
+            InvocationTargetException {
         Subclass s = new Subclass();
         s.init();
 

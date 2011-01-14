@@ -14,6 +14,7 @@ interface Factory {
 }
 
 class CarFactory implements Factory {
+    @Override
     public Product create() {
         return new Car();
     }

@@ -42,12 +42,12 @@ public class MyObject {
         arrayList.remove(new MyObject("b"));
         System.out.println("aa");
         System.out.println(new MyObject("a").equals(new MyObject("b")));
-        //        
+        //
         // Set<MyObject> set = new HashSet<MyObject>();
         // set.add(myObject);
         // set.add(new MyObject());
         // set.remove(myObject);
-        //        
+        //
         // Map<String,MyObject> map = new HashMap<String, MyObject>();
         // map.put("1", myObject);
         // Map<MyObject,String> map2 = new HashMap<MyObject, String>();

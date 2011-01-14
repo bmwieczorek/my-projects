@@ -7,9 +7,9 @@ import java.util.TreeMap;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ServiceRunner {
+public final class ServiceRunner {
 
-    public ServiceRunner() {
+    private ServiceRunner() {
         String[] configLocations = new String[] { "cxf-context.xml", "services-context.xml" };
         new ClassPathXmlApplicationContext(configLocations);
         loadProperties();

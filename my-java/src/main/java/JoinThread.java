@@ -15,6 +15,7 @@ public class JoinThread implements Runnable {
         System.out.println(currentThread.getName() + "XXX");
     }
 
+    @Override
     public void run() {
         try {
             System.out.println(Thread.currentThread().getName());

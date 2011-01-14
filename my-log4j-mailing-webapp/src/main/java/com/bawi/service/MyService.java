@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class MyService {
 
-    private static final Logger logger = Logger.getLogger(MyService.class);
+    private static final Logger LOGGER = Logger.getLogger(MyService.class);
 
     public MyService() {
         for (int i = 0; i < 200; i++) {
@@ -22,7 +22,7 @@ public class MyService {
     }
 
     private void error() {
-        logger.debug("Hi");
+        LOGGER.debug("Hi");
         // throw new RuntimeException("My service exception");
     }
 

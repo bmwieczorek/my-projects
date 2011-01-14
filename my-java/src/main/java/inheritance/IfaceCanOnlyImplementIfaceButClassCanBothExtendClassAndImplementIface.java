@@ -32,15 +32,18 @@ abstract class ACl implements ThreeOfOneAndTwo {
     }
 }
 
+@SuppressWarnings("unused")
 class Cl extends ACl implements One {
     @Override
     protected void myTemplateMethod() {
         // TODO Auto-generated method stub
     }
 
+    @Override
     public void myOne() {
     }
 
+    @Override
     public void myTwo() {
     }
 

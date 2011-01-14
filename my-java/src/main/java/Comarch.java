@@ -1,7 +1,7 @@
 public class Comarch {
     enum MY_ENUM {
         AE, BE
-    };
+    }
 
     void myMethod() {
         class Ania {
@@ -18,7 +18,7 @@ public class Comarch {
         }
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({ "unused", "cast" })
     public static void main(String[] args) {
         System.out.println((new RuntimeException()) instanceof Exception);
         // Integer i = Integer.valueOf(1);

@@ -1,4 +1,5 @@
 package rolling.deque;
+
 import java.util.Deque;
 import java.util.concurrent.LinkedBlockingDeque;
 

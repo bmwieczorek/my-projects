@@ -53,7 +53,7 @@ public class TestLog4j {
         int numberOfRollingFileAppenders = 0;
         int numberOfOtherAppenders = 0;
         while (allAppenders.hasMoreElements()) {
-            Object object = (Object) allAppenders.nextElement();
+            Object object = allAppenders.nextElement();
             if (object instanceof RollingFileAppender) {
                 RollingFileAppender rollingFileAppender = (RollingFileAppender) object;
                 Assert.assertEquals(logFilePath, rollingFileAppender.getFile());

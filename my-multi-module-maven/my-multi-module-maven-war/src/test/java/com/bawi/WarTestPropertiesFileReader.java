@@ -5,13 +5,16 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.Set;
 
-public class WarTestPropertiesFileReader {
+public final class WarTestPropertiesFileReader {
 
-    public static void main(String[] args) throws IOException {
-        new WarTestPropertiesFileReader();
+    private WarTestPropertiesFileReader() {
     }
 
-    public WarTestPropertiesFileReader() throws IOException {
+    public static void main(String[] args) throws IOException {
+        readAndPrintProperties();
+    }
+
+    public static void readAndPrintProperties() throws IOException {
         Properties properties = readPropertiesFromResource("my-war-test.properties");
         printSystemProperties(properties);
     }

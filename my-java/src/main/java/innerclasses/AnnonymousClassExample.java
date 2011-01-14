@@ -5,14 +5,16 @@ interface MyIface {
 }
 
 public class AnnonymousClassExample {
-    static int static_i;
-    int j;
+    private static int static_i;
+    private int j;
     MyIface myIface = new MyIface() {
         // cannot use static member variables in any anonymous class
         // static int b = 0; //will not compile
 
+        @Override
         public void doSth() {
-            // not used in static context, can use both static and non-static member variables
+            // not used in static context, can use both static and non-static
+            // member variables
             static_i++;
             j++;
         }
@@ -21,6 +23,7 @@ public class AnnonymousClassExample {
     static MyIface myIface2 = new MyIface() {
         // cannot use static member variables in any anonymous class
         // static int b = 0; //will not compile
+        @Override
         public void doSth() {
             // since anonymous class is used in the static context - it
             // cannot access non-static member variables
@@ -33,6 +36,7 @@ public class AnnonymousClassExample {
         new MyIface() {
             // cannot use static member variables in any anonymous class
             // static int b = 0; //will not compile
+            @Override
             public void doSth() {
                 // since anonymous class is used in the static context - it
                 // cannot access non-static member variables
@@ -47,8 +51,10 @@ public class AnnonymousClassExample {
         new MyIface() {
             // cannot use static member variables in any anonymous class
             // static int b = 0; //will not compile
+            @Override
             public void doSth() {
-                // not used in static context, can use both static and non-static member variables
+                // not used in static context, can use both static and
+                // non-static member variables
                 static_i++;
                 j++;
             }

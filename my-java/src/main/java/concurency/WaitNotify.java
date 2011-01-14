@@ -7,13 +7,13 @@ class Block {
 
     boolean flag = false;
 
-    synchronized void a1(String s) throws InterruptedException {
+    synchronized void a1() throws InterruptedException {
         System.out.println("***");
         notify();
         wait();
     }
 
-    synchronized void b1(String s) throws InterruptedException {
+    synchronized void b1() throws InterruptedException {
         System.out.println("---");
         // flag = false;
         notify();
@@ -30,34 +30,36 @@ public class WaitNotify {
         final Block block = new Block();
 
         t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 // System.out.println("[t1]:starting");
                 while (true) {
                     // block.m1("t1");
                     try {
-                        block.a1("t1");
+                        block.a1();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
                 // System.out.println("[t1]:stopping");
-            };
+            }
         });
 
         t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     // System.out.println("[t2]:starting");
                     // block.m2("t2");
                     try {
-                        block.b1("t2");
+                        block.b1();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
                     // System.out.println("[t2]:stopping");
                 }
-            };
+            }
         });
 
         t1.start();

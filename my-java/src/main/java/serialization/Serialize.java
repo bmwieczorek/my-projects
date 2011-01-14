@@ -39,8 +39,8 @@ public class Serialize {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         /**
-         * Trying to use serializing to save a Vector in a file. Afterward the Vector is increased and then owerwriting
-         * the same file.
+         * Trying to use serializing to save a Vector in a file. Afterward the
+         * Vector is increased and then owerwriting the same file.
          */
 
         Vector<String> v;

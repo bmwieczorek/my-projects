@@ -6,6 +6,7 @@ public class FindDeadLock {
 
     public static void main(String[] args) {
         new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("1:" + Thread.currentThread().getName());
                 Logger.getLogger(getClass()).info(new FindDeadLock());
@@ -17,6 +18,7 @@ public class FindDeadLock {
         System.out.println("4:" + Thread.currentThread().getName());
     }
 
+    @Override
     public String toString() {
         /* now we are inside log4j, try to create a DeadLockingObject */
         DeadLockingObject.getInstance();

@@ -1,10 +1,6 @@
 package com.bawi.services.calculator.jaxbtransformer;
 
 import static com.bawi.services.calculator.model.Operation.ADD;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.transform.TransformerException;
-
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -16,7 +12,7 @@ import com.bawi.services.calculator.model.CalculatorThreadSafeRQ;
 public class JaxbTransformerTest {
 
     @Test
-    public void marshallAndUnMarshall() throws JAXBException {
+    public void marshallAndUnMarshall() {
 
         // given
         CalculatorRQ original = createRequest();
@@ -33,11 +29,11 @@ public class JaxbTransformerTest {
 
     }
 
-    public static void main(String[] args) throws JAXBException, TransformerException {
+    public static void main(String[] args) {
         marshallAndUnMarshall(createResponse());
     }
 
-    private static void marshallAndUnMarshall(Object o) throws JAXBException {
+    private static void marshallAndUnMarshall(Object o) {
         String xml = JaxbTransformer.fromJavaToXml(o);
         System.out.println(xml);
         Object fromXml = JaxbTransformer.fromXmlToJava(xml);

@@ -3,7 +3,6 @@ package com.bawi.services.calculator.cxf.interceptor;
 import java.util.List;
 
 import org.apache.cxf.binding.soap.SoapMessage;
-import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
 import org.apache.log4j.Logger;
@@ -21,7 +20,7 @@ public class RequestParamInterceptor extends AbstractPhaseInterceptor<SoapMessag
     }
 
     @Override
-    public void handleMessage(SoapMessage message) throws Fault {
+    public void handleMessage(SoapMessage message) {
         List<?> contentElements = message.getContent(List.class);
         for (Object element : contentElements) {
             if (element instanceof CalculatorRQ) {

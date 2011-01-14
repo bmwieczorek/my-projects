@@ -10,12 +10,11 @@ public class DoubleIntFloatConversionTest {
     static public double SquareRoot(double value) throws ArithmeticException {
         if (value >= 0)
             return Math.sqrt(value);
-        else
-            throw new ArithmeticException();
+        throw new ArithmeticException();
     }
 
     static public double func(int x) {
-        double y = (double) x;
+        double y = x;
         try {
             y = SquareRoot(y);
         } catch (ArithmeticException e) {

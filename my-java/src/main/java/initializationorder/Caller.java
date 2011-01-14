@@ -16,7 +16,8 @@ class StaticClass {
     }
 }
 
-// variables are initialized before any method can be called, even before constructor
+// variables are initialized before any method can be called, even before
+// constructor
 // first variable initialization, the main method execution
 
 public class Caller {
@@ -25,7 +26,8 @@ public class Caller {
     }
 
     // second executed static main method
-    // To execute main( ) the Caller class must be loaded, and its static fields are then initialized
+    // To execute main( ) the Caller class must be loaded, and its static fields
+    // are then initialized
     // which causes those classes to be loaded
 
     public static void main(String[] args) {
@@ -37,10 +39,13 @@ public class Caller {
     // static Callee callee; // = new Callee();
     Callee callee = new Callee();
 
-    // initialization: first static fields or/and static block in the definition order
-    // There’s only a single piece of storage for a static, regardless of how many objects are created.
-    // You can’t apply the static keyword to local variables, so it only applies to fields.
-    static StaticClass staticClass = new StaticClass();;
+    // initialization: first static fields or/and static block in the definition
+    // order
+    // There’s only a single piece of storage for a static, regardless of how
+    // many objects are created.
+    // You can’t apply the static keyword to local variables, so it only
+    // applies to fields.
+    static StaticClass staticClass = new StaticClass();
     static {
         System.out.println("Static initialize");
     }

@@ -5,14 +5,14 @@ import java.util.TreeMap;
 import org.apache.log4j.Logger;
 
 public class About {
-    private static final Logger logger = Logger.getLogger(About.class);
+    private static final Logger LOGGER = Logger.getLogger(About.class);
 
     public About() {
         displaySystemProperties();
         try {
             throw new AboutException("My exception!!!");
         } catch (AboutException e) {
-            logger.error(createText());
+            LOGGER.error(createText());
         }
     }
 
@@ -22,13 +22,13 @@ public class About {
 
     private void displaySystemProperties() {
         TreeMap<?, ?> treeMap = new TreeMap<Object, Object>(System.getProperties());
-        logger.debug(treeMap);
+        LOGGER.debug(treeMap);
         // for (Object key : treeMap.keySet()) {
         // logger.debug(key + "=" + treeMap.get(key));
         // }
     }
 
     public void destroy() {
-        logger.error("Destroying ...");
+        LOGGER.error("Destroying ...");
     }
 }

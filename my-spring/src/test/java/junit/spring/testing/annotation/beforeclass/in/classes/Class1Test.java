@@ -7,10 +7,10 @@ import junit.spring.testing.MyBean;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 public class Class1Test {
 
-    // initializes context and creates beans only once for a class, common for test cases in a class
+    // initializes context and creates beans only once for a class, common for
+    // test cases in a class
     // here only once in this class, for two classes - twice
     @BeforeClass
     public static void init() {

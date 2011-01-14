@@ -46,25 +46,27 @@ public class WaitNotify2 {
 
     private static Thread createThreadB(final Block2 block) {
         return new Thread(new Runnable() {
+            @Override
             public void run() {
                 try {
                     block.b();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            };
+            }
         });
     }
 
     private static Thread createThreadA(final Block2 block) {
         return new Thread(new Runnable() {
+            @Override
             public void run() {
                 try {
                     block.a();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            };
+            }
         });
     }
 

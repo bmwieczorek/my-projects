@@ -16,7 +16,7 @@ import com.bawi.services.calculator.model.CalculatorThreadSafeRQ;
 public class CalculatorServiceImpl implements CalculatorServiceInterface {
 
     private static final String LONG_STRING = createString(10000);
-    private static final Logger logger = Logger.getLogger(CalculatorServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(CalculatorServiceImpl.class);
     private Calculator calculator = new Calculator();
 
     // no thread safe
@@ -31,7 +31,7 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         // counter++;
         // counter++;
         // }
-        response = calculateResponse(request, threadId);
+        response = calculateResponse(request);
         return response;
     }
 
@@ -42,18 +42,18 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
         CalculatorRS response;
         counter++;
         counter++;
-        response = calculateResponse(request, threadId);
+        response = calculateResponse(request);
         return response;
     }
 
-    private CalculatorRS calculateResponse(CalculatorRQ request, long threadId) {
+    private CalculatorRS calculateResponse(CalculatorRQ request) {
         CalculatorRS response;
         // }
         // String requestXml =
         JaxbTransformer.fromJavaToXml(request);
 
         // logger.debug(threadId + ": Processing ... " + createString(10000));
-        logger.debug(LONG_STRING);
+        LOGGER.debug(LONG_STRING);
         // if (logger.isDebugEnabled()) {
         // logger.debug("Request valid:" + requestXml);
         // }
@@ -76,7 +76,7 @@ public class CalculatorServiceImpl implements CalculatorServiceInterface {
     private void exitWhenCounterIsNotEven(long threadId) throws CalculatorFault {
         if (getCounter() % 2 != 0) {
             String message = threadId + ": Counter is not even: " + counter;
-            logger.error(message);
+            LOGGER.error(message);
             throw new CalculatorFault("Thread safety violation: " + message);
         }
     }

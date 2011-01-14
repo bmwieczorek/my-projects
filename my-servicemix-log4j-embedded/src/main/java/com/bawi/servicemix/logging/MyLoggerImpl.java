@@ -10,14 +10,17 @@ public class MyLoggerImpl implements MyLogger {
         this.clazz = clazz;
     }
 
+    @Override
     public void debug(String message) {
         getLog4jLogger().debug(message);
     }
 
+    @Override
     public void info(String message) {
         getLog4jLogger().info(message);
     }
 
+    @Override
     public void error(String message) {
         getLog4jLogger().error(message);
     }

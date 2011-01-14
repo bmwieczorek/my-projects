@@ -7,12 +7,14 @@ class AA {
         this.x = x;
     }
 
+    @Override
     public String toString() {
         return Integer.toString(x);
     }
 }
 
 public class PassByValue2 {
+    @SuppressWarnings("unused")
     static void f(AA arg1) {
         arg1 = null;
     }

@@ -5,13 +5,13 @@ public class Deadlock {
     private final static Log log = new Log();
 
     static class Log {
-        public synchronized void info(Object object) {
+        public synchronized void info() {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        };
+        }
     }
 
     static class Dlo {
@@ -23,7 +23,7 @@ public class Deadlock {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            log.info("BBB");
+            log.info();
             return DLO;
         }
     }
@@ -33,7 +33,7 @@ public class Deadlock {
 
             @Override
             public void run() {
-                log.info(new Deadlock());
+                log.info();
             }
         }).start();
 
@@ -43,7 +43,7 @@ public class Deadlock {
 
     @Override
     public String toString() {
-        log.info("AAA");
+        log.info();
         return "AAA";
     }
 }

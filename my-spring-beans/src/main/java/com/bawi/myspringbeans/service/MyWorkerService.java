@@ -6,13 +6,13 @@ import com.bawi.myspringbeans.dao.PersonDao;
 
 public class MyWorkerService {
 
-    private static final Logger logger = Logger.getLogger(MyWorkerService.class);
+    private static final Logger LOGGER = Logger.getLogger(MyWorkerService.class);
 
     private final PersonDao personDao;
 
     public MyWorkerService(PersonDao personDao) {
         this.personDao = personDao;
-        logger.debug(getClass().getName() + ":" + personDao + ":" + personDao.getCounter());
+        LOGGER.debug(getClass().getName() + ":" + personDao + ":" + personDao.getCounter());
     }
 
     public PersonDao getPersonDao() {

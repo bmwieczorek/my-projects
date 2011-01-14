@@ -1,6 +1,9 @@
 package com.bawi.servicemix.logging;
 
-public class MyLoggerRepository {
+public final class MyLoggerRepository {
+
+    private MyLoggerRepository() {
+    }
 
     public static MyLogger getLogger(Class<?> clazz) {
         // return new MyLoggerImpl(clazz);

@@ -21,7 +21,8 @@ public class RequestContentInterceptor extends AbstractPhaseInterceptor<Message>
         super(Phase.RECEIVE);
     }
 
-    public void handleMessage(Message message) throws Fault {
+    @Override
+    public void handleMessage(Message message) {
         String content = null;
         InputStream is = message.getContent(InputStream.class);
         if (is != null) {

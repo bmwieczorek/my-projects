@@ -21,7 +21,8 @@ class Item2 {
     }
 }
 
-// interface to implement by concrete listener instances in order to be notified on sold item
+// interface to implement by concrete listener instances in order to be notified
+// on sold item
 interface Listener2 {
     void onSoldItem(Item2 item2);
 }
@@ -32,9 +33,10 @@ abstract class AbstractListener2 implements Listener2 {
         shop2.addListener(this);
     }
 
+    @Override
     public void onSoldItem(Item2 item2) {
-        System.out.println("[" + this.getClass().getName() + "] Received notification for " + "Item="
-                + item2.getName() + ",price=" + item2.getPrice());
+        System.out.println("[" + this.getClass().getName() + "] Received notification for " + "Item=" + item2.getName()
+                + ",price=" + item2.getPrice());
     }
 }
 

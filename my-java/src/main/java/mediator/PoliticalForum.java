@@ -6,6 +6,7 @@ import java.util.Iterator;
 public class PoliticalForum implements Forum {
     private HashMap<String, Colleague> colleagues = new HashMap<String, Colleague>();
 
+    @Override
     public void add(Colleague c) {
         this.colleagues.put(c.getName(), c);
         c.setForum(this);
@@ -13,6 +14,7 @@ public class PoliticalForum implements Forum {
         System.out.println("Added a colleague to the political forum: " + c.getName());
     }
 
+    @Override
     public void send(String from, String message) {
         Colleague c;
 
@@ -24,6 +26,7 @@ public class PoliticalForum implements Forum {
         System.out.println();
     }
 
+    @Override
     public void send(String from, String to, String message) {
         Colleague c = colleagues.get(to);
 

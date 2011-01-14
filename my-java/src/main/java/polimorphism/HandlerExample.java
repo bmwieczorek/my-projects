@@ -7,6 +7,7 @@ class Base {
 }
 
 class Derived extends Base {
+    @Override
     String info() {
         return "Derived class";
     }

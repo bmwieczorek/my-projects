@@ -17,6 +17,7 @@ public class CarShopServiceImpl implements CarShopService {
         this.pricingService = pricingService;
     }
 
+    @Override
     public boolean orderCar(String car, int payment) {
         logger.info("Ordering car " + car + " for amount " + payment);
         try {

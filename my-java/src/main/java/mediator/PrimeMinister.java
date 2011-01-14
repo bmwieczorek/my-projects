@@ -8,7 +8,6 @@ public class PrimeMinister extends MemberOfParliament {
 
     @Override
     public void receive(String from, String message) {
-        System.out.println("Prime Minister '" + getName() + "' received a message from '" + from + "': "
-                + message);
+        System.out.println("Prime Minister '" + getName() + "' received a message from '" + from + "': " + message);
     }
 }

@@ -29,7 +29,7 @@ public class Cloner1 implements Cloneable {
         // }
         // System.out.println(b);
         // divide(1, 0);
-        System.out.println(stringSize(null));
+        System.out.println(stringSize());
         throw new ArithmeticException();
     }
 
@@ -39,7 +39,7 @@ public class Cloner1 implements Cloneable {
         return i % j;
     }
 
-    static public int stringSize(Object s) {
+    static public int stringSize() {
         try {
             // return s.toString().length();
             return 2;
@@ -50,6 +50,7 @@ public class Cloner1 implements Cloneable {
         }
     }
 
+    @Override
     public String toString() {
         return foo;
     }
@@ -57,7 +58,7 @@ public class Cloner1 implements Cloneable {
     public Object[] mixup(Object[] array) {
         int numElements = array.length;
 
-        Object[] result = (Object[]) array.clone();
+        Object[] result = array.clone();
         Arrays.fill(result, null);
         Random random = new Random();
 

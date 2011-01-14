@@ -18,10 +18,12 @@ public class RunExample {
             p = (a + b + c) / 2;
         }
 
+        @Override
         public int area() {
             return (int) Math.sqrt(p * (p - a) * (p - b) * (p - c));
         }
 
+        @Override
         public int perimeter() {
             return a + b + c;
         }
@@ -39,10 +41,12 @@ public class RunExample {
         Shape sqare = new Shape() {
             int a = 5;
 
+            @Override
             public int area() {
                 return a * a;
             }
 
+            @Override
             public int perimeter() {
                 return 4 * a;
             }

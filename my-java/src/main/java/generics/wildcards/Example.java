@@ -3,6 +3,7 @@ package generics.wildcards;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Example {
     static void pushAll(List<? extends Number> list) {
     }
@@ -10,7 +11,6 @@ public class Example {
     static void popAll(List<? super Number> list) {
     }
 
-    @SuppressWarnings("unused")
     public static void main(String[] args) {
 
         // List<Number> list = new ArrayList<Integer>(); // doesn't compile

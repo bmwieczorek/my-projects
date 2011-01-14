@@ -4,8 +4,8 @@ import java.util.Properties;
 
 public class CommaSeparatedPropertiesReader {
     public static void main(String[] args) throws IOException {
-        InputStream resourceAsStream = CommaSeparatedPropertiesReader.class.getClassLoader()
-                .getResourceAsStream("my.properties");
+        InputStream resourceAsStream = CommaSeparatedPropertiesReader.class.getClassLoader().getResourceAsStream(
+                "my.properties");
         Properties properties = new Properties();
         properties.load(resourceAsStream);
         String property = properties.getProperty("letters");

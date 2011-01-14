@@ -5,7 +5,7 @@ import static java.lang.System.out;
 
 public class ThreadJoinEx {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ThreadJoinEx tjEx = new ThreadJoinEx();
         out.println(threadName() + "starting" + sec());
         Thread sleepingThread = tjEx.createSleepingThread(5);

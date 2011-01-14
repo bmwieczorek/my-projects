@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 class Sup {
 
-    public Sup() throws IllegalArgumentException, SecurityException {
+    public Sup() throws SecurityException {
         Class<? extends Sup> clazz = this.getClass();
         System.out.println("[Superclass] " + clazz);
         Field[] fields = clazz.getFields();

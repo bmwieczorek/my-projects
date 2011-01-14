@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.ByteArrayRequestEntity;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
@@ -28,8 +27,8 @@ public class MyGetController {
     private static final String CONTENT_TYPE = "text/plain; charset=UTF-8";
 
     @RequestMapping(method = RequestMethod.GET)
-    public void handleRequest(@RequestParam("version") int version, HttpServletRequest request,
-            HttpServletResponse response) throws IOException {
+    public void handleRequest(@RequestParam("version") int version,
+            @SuppressWarnings("unused") HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String output = "Version=" + version;
         sendPost();
@@ -39,7 +38,7 @@ public class MyGetController {
         response.getOutputStream().write(output.getBytes());
     }
 
-    private void sendPost() throws HttpException, IOException {
+    private void sendPost() throws IOException {
         HttpClient httpClient = new HttpClient();
         httpClient.getParams().setConnectionManagerTimeout(5000);
         PostMethod postMethod = new PostMethod("http://dev-newyork-1:8080/map-corrections/submission");
@@ -50,7 +49,4 @@ public class MyGetController {
         httpClient.executeMethod(postMethod);
     }
 
-    byte[] readFile(String fileName) {
-        return null;
-    }
 }

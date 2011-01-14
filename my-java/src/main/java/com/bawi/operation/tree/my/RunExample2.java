@@ -24,8 +24,7 @@ class MultiOpNode extends Node {
 
 public class RunExample2 {
     public static void main(String[] args) {
-        PlusOpNode node = new PlusOpNode(new ValueNode(1),
-                new MultiOpNode(new ValueNode(2), new ValueNode(3)));
+        PlusOpNode node = new PlusOpNode(new ValueNode(1), new MultiOpNode(new ValueNode(2), new ValueNode(3)));
         System.out.println(node.value);
     }
 }

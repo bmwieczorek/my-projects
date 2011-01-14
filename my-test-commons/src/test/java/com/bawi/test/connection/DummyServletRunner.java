@@ -12,57 +12,55 @@ import org.mortbay.jetty.testing.ServletTester;
 
 public class DummyServletRunner {
 
-	public static class DummyServlet extends HttpServlet {
+    public static class DummyServlet extends HttpServlet {
 
-		private static final long serialVersionUID = 1L;
+        private static final long serialVersionUID = 1L;
 
-		@Override
-		protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-				throws ServletException, IOException {
-			printOk(resp);
-		}
+        @Override
+        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            printOk(resp);
+        }
 
-		@Override
-		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-				throws ServletException, IOException {
-			printOk(resp);
-		}
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            printOk(resp);
+        }
 
-		private void printOk(HttpServletResponse resp) throws IOException {
-			PrintWriter writer = resp.getWriter();
-			writer.println("Ok");
-			writer.flush();
-		}
+        private void printOk(HttpServletResponse resp) throws IOException {
+            PrintWriter writer = resp.getWriter();
+            writer.println("Ok");
+            writer.flush();
+        }
 
-	}
+    }
 
-	private final static String defaultContextPath = "/test";
+    private static final String DEFAULT_CONTEXT_PATH = "/test";
 
-	private final String url;
-	private final ServletTester servletTester;
-	private final String contextPath;
+    private final String url;
+    private final ServletTester servletTester;
+    private final String contextPath;
 
-	public DummyServletRunner() throws Exception {
-		this(defaultContextPath);
-	}
+    public DummyServletRunner() throws Exception {
+        this(DEFAULT_CONTEXT_PATH);
+    }
 
-	public DummyServletRunner(String contextPath) throws Exception {
-		this.contextPath = contextPath;
-		servletTester = new ServletTester();
-		servletTester.setContextPath("/");
-		servletTester.addServlet(DummyServlet.class, contextPath);
-		url = servletTester.createSocketConnector(true);
-	}
+    public DummyServletRunner(String contextPath) throws Exception {
+        this.contextPath = contextPath;
+        servletTester = new ServletTester();
+        servletTester.setContextPath("/");
+        servletTester.addServlet(DummyServlet.class, contextPath);
+        url = servletTester.createSocketConnector(true);
+    }
 
-	public void start() throws Exception {
-		servletTester.start();
-	}
+    public void start() throws Exception {
+        servletTester.start();
+    }
 
-	public void stop() throws Exception {
-		servletTester.stop();
-	}
+    public void stop() throws Exception {
+        servletTester.stop();
+    }
 
-	public String getUrl() {
-		return url + contextPath;
-	}
+    public String getUrl() {
+        return url + contextPath;
+    }
 }

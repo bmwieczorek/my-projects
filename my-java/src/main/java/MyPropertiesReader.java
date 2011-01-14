@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MyPropertiesReader {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         // File file = new File("classpath:my.properties");
         // System.out.println(file.getAbsolutePath());

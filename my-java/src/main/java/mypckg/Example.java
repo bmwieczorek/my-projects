@@ -7,6 +7,7 @@ class B extends A {
 }
 
 class C extends A implements Runnable {
+    @Override
     public void run() {
     }
 }
@@ -30,11 +31,12 @@ class V extends T implements S, W {
 }
 
 public class Example {
+    @SuppressWarnings("unused")
     static void m(T w) {
 
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({ "unused", "cast" })
     public static void main(String[] args) {
 
         E e = new E();

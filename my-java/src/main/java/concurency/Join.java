@@ -7,6 +7,7 @@ public class Join {
         final Thread t2;
 
         t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t1]:starting");
                 for (int i = 0; i < 3; i++) {
@@ -18,10 +19,11 @@ public class Join {
                     }
                 }
                 System.out.println("[t1]:stopping");
-            };
+            }
         });
 
         t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t2]:starting");
                 for (int i = 0; i < 5; i++) {
@@ -33,7 +35,7 @@ public class Join {
                     }
                 }
                 System.out.println("[t2]:stopping");
-            };
+            }
         });
 
         t1.start();

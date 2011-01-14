@@ -7,6 +7,7 @@ public class StopThread {
 
     public static void main(String[] args) throws InterruptedException {
         Thread backgroundThread = new Thread(new Runnable() {
+            @Override
             public void run() {
                 int i = 0;
                 System.out.println("started other thread");

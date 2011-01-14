@@ -10,12 +10,13 @@ import java.util.Arrays;
 class Factory {
 
     /**
-     * Get class name from the file, call Class.forName and return Class instance, call clazz.constructor.newInstance(),
-     * call clazz.getDeclaredMethods, method.invoke
+     * Get class name from the file, call Class.forName and return Class
+     * instance, call clazz.constructor.newInstance(), call
+     * clazz.getDeclaredMethods, method.invoke
      */
-    Object getBean(String beanName) throws ClassNotFoundException, IllegalArgumentException,
-            SecurityException, InstantiationException, IllegalAccessException, IOException,
-            InvocationTargetException, NoSuchMethodException {
+    Object getBean() throws ClassNotFoundException, IllegalArgumentException, SecurityException,
+            InstantiationException, IllegalAccessException, IOException, InvocationTargetException,
+            NoSuchMethodException {
 
         String dataFromFile = fileContentAsString("spring/context.xml");
         String implClassName = dataFromFile.substring(0, dataFromFile.indexOf(','));
@@ -53,7 +54,7 @@ class Factory {
         return newInstance;
     }
 
-    private String fileContentAsString(String fileName) throws IOException, ClassNotFoundException {
+    private String fileContentAsString(String fileName) throws IOException {
         InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
         byte[] buf = new byte[is.available()];
         is.read(buf);
@@ -63,11 +64,11 @@ class Factory {
 
 public class Example {
 
-    public static void main(String[] args) throws IllegalArgumentException, SecurityException,
-            ClassNotFoundException, InstantiationException, IllegalAccessException,
-            InvocationTargetException, NoSuchMethodException, IOException, NoSuchFieldException {
+    public static void main(String[] args) throws IllegalArgumentException, SecurityException, ClassNotFoundException,
+            InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException,
+            IOException {
         Factory f = new Factory();
-        Performer p = (Performer) f.getBean("Singer");
+        Performer p = (Performer) f.getBean();
         p.perform();
     }
 

@@ -1,6 +1,5 @@
 package com.bawi.services.calculator.cxf.interceptor;
 
-import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
@@ -16,7 +15,7 @@ public class RequestLoggingInterceptor extends AbstractPhaseInterceptor<Message>
     }
 
     @Override
-    public void handleMessage(Message message) throws Fault {
+    public void handleMessage(Message message) {
         log.info(MDC.get("request"));
     }
 

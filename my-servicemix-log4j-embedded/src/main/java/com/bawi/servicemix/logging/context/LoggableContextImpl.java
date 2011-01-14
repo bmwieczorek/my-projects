@@ -8,19 +8,22 @@ import java.util.List;
 
 public abstract class LoggableContextImpl implements LoggableContext {
 
-    private static String HOST = "localhost";
+    private static final String HOST = "localhost";
     private String id = " [" + currentThread().getName() + "-" + currentTimeMillis() + "-" + HOST + "] ";
 
     private List<String> events = new ArrayList<String>();
 
+    @Override
     public void addMessage(String event) {
         events.add(event);
     }
 
+    @Override
     public List<String> getAllMessages() {
         return events;
     }
 
+    @Override
     public String getAllMessagesAsString() {
         StringBuilder logs = new StringBuilder();
         for (String event : events) {
@@ -31,6 +34,7 @@ public abstract class LoggableContextImpl implements LoggableContext {
         return logs.toString();
     }
 
+    @Override
     public void clear() {
         events = new ArrayList<String>();
     }

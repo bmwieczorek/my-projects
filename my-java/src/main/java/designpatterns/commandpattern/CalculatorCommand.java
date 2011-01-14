@@ -12,6 +12,7 @@ public class CalculatorCommand implements Command {
         this.calculatorReceiver = calculatorReceiver;
     }
 
+    @Override
     public int execute() {
         switch (operationType) {
         case add:
@@ -23,6 +24,7 @@ public class CalculatorCommand implements Command {
         }
     }
 
+    @Override
     public int unexecute() {
         revertOperation();
         return execute();

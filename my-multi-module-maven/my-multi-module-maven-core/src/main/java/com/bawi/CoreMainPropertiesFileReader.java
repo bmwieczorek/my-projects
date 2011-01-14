@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class CoreMainPropertiesFileReader {
+public final class CoreMainPropertiesFileReader {
+
+    private CoreMainPropertiesFileReader() {
+    }
 
     public static void main(String[] args) throws IOException {
         System.out.println(readPropertiesFromResource("my-core-main.properties"));
-        System.out
-                .println(readPropertiesFromFile("src/test/resources/com/bawi/my-com-bawi-core-test.properties"));
+        System.out.println(readPropertiesFromFile("src/test/resources/com/bawi/my-com-bawi-core-test.properties"));
     }
 
     public static Properties readPropertiesFromResource(String propertiesFileName) throws IOException {

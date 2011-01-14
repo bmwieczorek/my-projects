@@ -49,12 +49,14 @@ interface MCState {
 }
 
 class PendingMCState implements MCState {
+    @Override
     public void approve(MCDO mcdo) {
         System.out.println("Approving pending mc: " + mcdo);
         mcdo.state = MCStatusConst.APPROVED;
         System.out.println("Approved pending mc: " + mcdo);
     }
 
+    @Override
     public void reject(MCDO mcdo) {
         System.out.println("Rejecting pending mc: " + mcdo);
         mcdo.state = MCStatusConst.REJECTED;
@@ -68,12 +70,14 @@ class PendingMCState implements MCState {
 }
 
 class RejectedMCState implements MCState {
+    @Override
     public void approve(MCDO mcdo) {
         System.out.println("Approving rejected mc: " + mcdo);
         mcdo.state = MCStatusConst.APPROVED;
         System.out.println("Approved rejected mc: " + mcdo);
     }
 
+    @Override
     public void reject(MCDO mcdo) {
         throw new UnsupportedOperationException("Cannot reject already rejected mc: " + mcdo);
     }
@@ -85,16 +89,19 @@ class RejectedMCState implements MCState {
 }
 
 class ApprovedMCState implements MCState {
+    @Override
     public void approve(MCDO mcdo) {
         throw new UnsupportedOperationException("Cannot approve already approved mc: " + mcdo);
     }
 
+    @Override
     public void reject(MCDO mcdo) {
         System.out.println("Rejecting approved mc: " + mcdo);
         mcdo.state = MCStatusConst.REJECTED;
         System.out.println("Rejected approved mc: " + mcdo);
     }
 
+    @Override
     public String toString() {
         return "approved";
     }
@@ -130,11 +137,13 @@ public class MC {
             Map<Integer, MCDO> mcdos = new HashMap<Integer, MCDO>();
             int id = 0;
 
+            @Override
             public void save(MCDO mcdo) {
                 mcdos.put(id++, mcdo);
                 System.out.println("saved" + mcdo);
             }
 
+            @Override
             public MCDO loadById(int id) {
                 return mcdos.get(id);
             }

@@ -52,19 +52,21 @@ public class BlockVsMethodLock {
         final BlockLevel bl = new BlockLevel();
 
         Thread t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t1]:starting");
                 bl.m2("t1");
                 System.out.println("[t1]:stopping");
-            };
+            }
         });
 
         Thread t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 System.out.println("[t2]:starting");
                 bl.m1("t2");
                 System.out.println("[t2]:stopping");
-            };
+            }
         });
 
         t1.start();

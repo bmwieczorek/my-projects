@@ -34,7 +34,8 @@ public class GumMachine {
         currentState.releaseGum();
     }
 
-    // should not be exposed to the client but only to the state objects if they need to modify the state
+    // should not be exposed to the client but only to the state objects if they
+    // need to modify the state
     void setCurrentState(State currentState) {
         this.currentState = currentState;
     }

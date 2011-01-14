@@ -14,7 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class Class2Test {
 
     // when two classes are run - initialized only once globally
-    // when this class is run alone - initialized only once - common for all test cases
+    // when this class is run alone - initialized only once - common for all
+    // test cases
 
     @Test
     public void shouldSayHello() {

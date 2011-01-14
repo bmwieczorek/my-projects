@@ -7,12 +7,15 @@ public class HasMoneyState implements State {
         this.gumMachine = gumMachine;
     }
 
+    @Override
     public void insertMoney() {
     }
 
+    @Override
     public void reclaimMoney() {
     }
 
+    @Override
     public void releaseGum() {
         System.err.println(this + ":" + gumMachine.getCurrentState());
         System.out.println("Here is your gum!");

@@ -3,17 +3,17 @@ package com.bawi.services.calculator;
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ServiceRunner {
+public final class ServiceRunner {
 
-    private static final Logger logger = Logger.getLogger(ServiceRunner.class);
+    private static final Logger LOGGER = Logger.getLogger(ServiceRunner.class);
 
-    public ServiceRunner() {
+    private ServiceRunner() {
         String[] configLocations = new String[] { "cxf-context.xml", "services-context.xml" };
         new ClassPathXmlApplicationContext(configLocations);
     }
 
     public static void main(String[] args) {
-        logger.debug("Starting service runner");
+        LOGGER.debug("Starting service runner");
         new ServiceRunner();
         while (true) {
             try {

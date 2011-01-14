@@ -8,10 +8,11 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class Logging {
+
+    private static final Log LOGGER = LogFactory.getLog(Logging.class);
+
     public Logging() {
     }
-
-    protected final Log logger = LogFactory.getLog(getClass());
 
     @Pointcut("execution(* *.welcomeUser(..))")
     // @Pointcut("execution(* *.greetPerson(..))")
@@ -21,7 +22,7 @@ public class Logging {
     // @Before("welcome()") //or
     @Before("execution(* *.welcomeUser(..))")
     public void logUserVisit() {
-        logger.info("Audit logging: before execution method welcomeUser");
+        LOGGER.info("Audit logging: before execution method welcomeUser");
     }
 
 }

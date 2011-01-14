@@ -16,6 +16,7 @@ public class CalcCmd implements Cmd {
         this.value = value;
     }
 
+    @Override
     public void execute() {
         switch (operation) {
         case plus: {
@@ -31,6 +32,7 @@ public class CalcCmd implements Cmd {
         }
     }
 
+    @Override
     public void unexecute() {
         switch (operation) {
         case plus: {

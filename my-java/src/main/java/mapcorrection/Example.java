@@ -16,11 +16,13 @@ public class Example {
             Map<Integer, DO> mcdos = new HashMap<Integer, DO>();
             int id = 0;
 
+            @Override
             public void save(DO mcdo) {
                 mcdos.put(id++, mcdo);
                 System.out.println("saved" + mcdo);
             }
 
+            @Override
             public DO loadById(int id) {
                 return mcdos.get(id);
             }

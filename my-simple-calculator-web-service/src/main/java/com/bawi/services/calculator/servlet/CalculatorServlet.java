@@ -7,13 +7,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class CalculatorServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	public void init() throws ServletException {
+    @Override
+    public void init() throws ServletException {
 
-		String[] configLocations = new String[] { "cxf-context.xml",
-				"services-context.xml" };
-		new ClassPathXmlApplicationContext(configLocations);
-	}
+        String[] configLocations = new String[] { "cxf-context.xml", "services-context.xml" };
+        new ClassPathXmlApplicationContext(configLocations);
+    }
 }

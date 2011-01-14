@@ -1,6 +1,5 @@
 package com.bawi.servicemix;
 
-
 public class Client {
 
     public Client() {

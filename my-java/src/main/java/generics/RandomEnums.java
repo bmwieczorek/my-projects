@@ -18,8 +18,7 @@ class Aaa extends Aa {
 
 public class RandomEnums {
 
-    private static <T extends Aa> T instantiate(Class<T> clazz) throws InstantiationException,
-            IllegalAccessException {
+    private static <T extends Aa> T instantiate(Class<T> clazz) throws InstantiationException, IllegalAccessException {
         return clazz.newInstance();
     }
 

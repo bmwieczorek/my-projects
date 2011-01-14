@@ -36,8 +36,7 @@ public class SecretKeyProvider {
         try {
             return KeyGenerator.getInstance(algorithm.toString()).generateKey();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Failed to create key for algorithm " + algorithm + ": "
-                    + e.getMessage());
+            throw new RuntimeException("Failed to create key for algorithm " + algorithm + ": " + e.getMessage());
         }
     }
 
@@ -58,8 +57,8 @@ public class SecretKeyProvider {
             String base64EncodedKey = FileUtils.readFileToString(new File(keyFilePath));
             return new SecretKeySpec(decodeBase64(base64EncodedKey), algorithm.toString());
         } catch (IOException e) {
-            throw new RuntimeException("Failed to read key in base64Encoded format from file " + keyFilePath
-                    + ":" + e.getMessage());
+            throw new RuntimeException("Failed to read key in base64Encoded format from file " + keyFilePath + ":"
+                    + e.getMessage());
         }
     }
 
@@ -81,8 +80,8 @@ public class SecretKeyProvider {
             String base64EncodedKey = IOUtils.toString(rawKey);
             return new SecretKeySpec(decodeBase64(base64EncodedKey), algorithm.toString());
         } catch (IOException e) {
-            throw new RuntimeException("Failed to read key in base64Encoded format from file " + keyResource
-                    + ":" + e.getMessage());
+            throw new RuntimeException("Failed to read key in base64Encoded format from file " + keyResource + ":"
+                    + e.getMessage());
         }
     }
 
@@ -98,8 +97,7 @@ public class SecretKeyProvider {
         try {
             FileUtils.writeStringToFile(new File(keyFilePath), encodeBase64String(key.getEncoded()));
         } catch (IOException e) {
-            throw new RuntimeException("Failed to write key in base64Encoded format to file " + keyFilePath
-                    + ".");
+            throw new RuntimeException("Failed to write key in base64Encoded format to file " + keyFilePath + ".");
         }
     }
 

@@ -9,6 +9,7 @@ class Child extends Parent {
 
 public class InstanceOf {
 
+    @SuppressWarnings("cast")
     public static void main(String[] args) {
         Person parent = new Parent();
         Person child = new Child();

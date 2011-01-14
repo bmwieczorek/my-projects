@@ -27,7 +27,7 @@ class Pen {
             e.printStackTrace();
         }
         Ruller.getInstance().ruller();
-    };
+    }
 }
 
 public class Deadlock3 {

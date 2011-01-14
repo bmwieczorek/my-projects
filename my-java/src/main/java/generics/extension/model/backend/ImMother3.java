@@ -9,10 +9,12 @@ public class ImMother3 extends ImPerson {
 
     private String imName;
 
+    @Override
     public void setImName(String imName) {
         this.imName = imName;
     }
 
+    @Override
     public String getImName() {
         return imName;
     }

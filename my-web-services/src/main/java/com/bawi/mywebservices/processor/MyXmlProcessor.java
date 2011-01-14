@@ -7,7 +7,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.TransformerException;
 
 import com.bawi.myservice.MyComplex;
 import com.bawi.myservice.MyEnum;
@@ -46,11 +45,11 @@ public class MyXmlProcessor {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T fromXml(String xml, Class<T> clazz) throws JAXBException {
+    public <T> T fromXml(String xml, @SuppressWarnings("unused") Class<T> clazz) throws JAXBException {
         return (T) fromXml(xml);
     }
 
-    public static void main(String[] args) throws JAXBException, TransformerException {
+    public static void main(String[] args) throws JAXBException {
         MyXmlProcessor myTransformer = new MyXmlProcessor();
         String xml = myTransformer.toXml(createRequest());
         System.out.println(xml);
@@ -71,8 +70,8 @@ public class MyXmlProcessor {
     }
 
     private static NewOperationRequest createRequest() {
-        return new NewOperationRequest().withBooleanIn(true).withIntIn(1).withMyAtt("A").withMyComplex(
-                new MyComplex().withRequiredParam(false)).withMyEnum(MyEnum.AA).withPatternIn("pp")
+        return new NewOperationRequest().withBooleanIn(true).withIntIn(1).withMyAtt("A")
+                .withMyComplex(new MyComplex().withRequiredParam(false)).withMyEnum(MyEnum.AA).withPatternIn("pp")
                 .withStringIn("ss").withUnboundedStrings("x", "y");
     }
 

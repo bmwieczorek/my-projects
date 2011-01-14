@@ -6,11 +6,13 @@ import java.lang.reflect.Method;
 
 import org.junit.Test;
 
-public class InitializeClass {
+public final class InitializeClass {
 
-    public static void main(String[] args) throws ClassNotFoundException, SecurityException,
-            NoSuchMethodException, IllegalArgumentException, InstantiationException, IllegalAccessException,
-            InvocationTargetException {
+    private InitializeClass() {
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException,
+            InstantiationException, IllegalAccessException, InvocationTargetException {
 
         Class<?> cl = Class.forName(MyJunitTest.class.getName());
         Constructor<?> defConstr = cl.getConstructor();

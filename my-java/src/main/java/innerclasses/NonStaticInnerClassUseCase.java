@@ -15,6 +15,7 @@ public class NonStaticInnerClassUseCase {
     // private static class ServiceImpl implements Service {
     // or
     private static class ServiceImpl implements Service {
+        @Override
         public void doSth() {
             System.out.println("Do the stuff");
         }

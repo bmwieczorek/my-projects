@@ -5,6 +5,7 @@ class Ccc {
 }
 
 class Dddd extends Ccc {
+    @Override
     void myM() throws RuntimeException {
         System.out.println(1);
     }

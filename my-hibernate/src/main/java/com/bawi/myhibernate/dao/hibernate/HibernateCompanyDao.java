@@ -19,7 +19,7 @@ import com.bawi.myhibernate.domain.Employee;
 public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyDao {
 
     // needed for transaction template
-    PlatformTransactionManager transactionManager;
+    private PlatformTransactionManager transactionManager;
 
     public void setTransactionManager(PlatformTransactionManager transactionManager) {
         this.transactionManager = transactionManager;
@@ -28,6 +28,7 @@ public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyD
     public Company saveOrUpdateTransaction(final Company company) {
         TransactionTemplate template = new TransactionTemplate(transactionManager);
         template.execute(new TransactionCallback() {
+            @Override
             public Object doInTransaction(TransactionStatus status) {
                 getHibernateTemplate().saveOrUpdate(company);
                 sou();
@@ -37,6 +38,7 @@ public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyD
         return null;
     }
 
+    @Override
     @Transactional()
     public Company saveOrUpdate(final Company company) {
         // getHibernateTemplate().getSessionFactory().getCurrentSession();
@@ -67,10 +69,12 @@ public class HibernateCompanyDao extends HibernateDaoSupport implements CompanyD
         // session.saveOrUpdate(company2);
     }
 
+    @Override
     public void delete(Company company) {
         getSession().delete(company);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Company> getCompanies() {
         // Query query = getSession().createQuery("from Company com");

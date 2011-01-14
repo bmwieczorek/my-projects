@@ -16,8 +16,8 @@ public class AboutServlet extends HttpServlet {
 
     private static Logger logger = Logger.getLogger(AboutServlet.class);
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-            IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
         String webAppRootKeyServletContext = "ServletContext init parameter: webAppRootKey="
                 + getServletContext().getInitParameter("webAppRootKey");
@@ -29,8 +29,7 @@ public class AboutServlet extends HttpServlet {
         logger.debug(webAppRootKeyServletConfig);
         writer.println(webAppRootKeyServletConfig);
 
-        String webAppRootKeySystemProperty = "System property: webAppRootKey="
-                + System.getProperty("webAppRootKey");
+        String webAppRootKeySystemProperty = "System property: webAppRootKey=" + System.getProperty("webAppRootKey");
         logger.debug(webAppRootKeySystemProperty);
         writer.println(webAppRootKeySystemProperty);
         writer.flush();

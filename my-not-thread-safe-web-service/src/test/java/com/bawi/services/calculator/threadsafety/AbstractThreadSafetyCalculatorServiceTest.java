@@ -29,9 +29,9 @@ public abstract class AbstractThreadSafetyCalculatorServiceTest {
 
     private static final int THREADS_COUNT = 10;
 
-    private static final String serviceUrl = "http://localhost:7890/calculator";
+    private static final String SERVICE_URL = "http://localhost:7890/calculator";
 
-    private final CalculatorServiceInterface calculatorService = createServiceClient(serviceUrl,
+    private final CalculatorServiceInterface calculatorService = createServiceClient(SERVICE_URL,
             CalculatorServiceInterface.class);
 
     private UrlConnectionChecker connectionChecker = UrlConnectionChecker.createWithTimeOut(5);
@@ -55,8 +55,8 @@ public abstract class AbstractThreadSafetyCalculatorServiceTest {
     private class NotThreadSafeCalculatorCallback implements CalculatorCalback {
         @Override
         public CalculatorRS calculate(CalculatorRQ rq) throws CalculatorFault {
-            CalculatorNotThreadSafeRQ calculatorNotThreadSafeRQ = new CalculatorNotThreadSafeRQ()
-                    .withOperation(rq.getOperation()).withParameters(rq.getParameters());
+            CalculatorNotThreadSafeRQ calculatorNotThreadSafeRQ = new CalculatorNotThreadSafeRQ().withOperation(
+                    rq.getOperation()).withParameters(rq.getParameters());
             return calculatorService.calculateNotThreadSafe(calculatorNotThreadSafeRQ);
         }
     }
@@ -88,7 +88,7 @@ public abstract class AbstractThreadSafetyCalculatorServiceTest {
     }
 
     private void waitUntilServiceIsStarted() throws Exception {
-        assertTrue(connectionChecker.isUp(serviceUrl + "?wsdl"));
+        assertTrue(connectionChecker.isUp(SERVICE_URL + "?wsdl"));
     }
 
     private void sendRequestsToThreadSafeService() throws InterruptedException {

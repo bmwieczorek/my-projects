@@ -11,7 +11,8 @@ public class Example {
         mother.setName("Ania");
         mother.setHusbandName("Bartek");
 
-        // no annotation needed, return type and conversion class explicitly specified
+        // no annotation needed, return type and conversion class explicitly
+        // specified
         ImMother imMother = PersonConverter.convert(mother, ImMother.class);
         System.out.println(imMother.describe());
 
@@ -34,7 +35,8 @@ public class Example {
         System.out.println(imMother3333.describe());
 
         // Converter3.convert(mother);
-        // Describeable backendInstance = Converter3.convert(mother, Describeable.class);
+        // Describeable backendInstance = Converter3.convert(mother,
+        // Describeable.class);
         // System.out.println(backendInstance.describe());
     }
 }

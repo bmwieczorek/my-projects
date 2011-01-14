@@ -18,6 +18,7 @@ public class DataStoreTemplate {
         public MyHashSet() {
         }
 
+        @Override
         public int getInt(String name) {
             T result = iterator().next();
             Class<? extends Object> class1 = result.getClass();
@@ -37,6 +38,7 @@ public class DataStoreTemplate {
             return 0;
         }
 
+        @Override
         public String getString(String name) {
             T result = iterator().next();
             Class<? extends Object> class1 = result.getClass();

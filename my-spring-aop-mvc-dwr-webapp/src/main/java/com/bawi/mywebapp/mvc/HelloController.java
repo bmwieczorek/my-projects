@@ -1,18 +1,5 @@
 package com.bawi.mywebapp.mvc;
 
-import org.springframework.web.servlet.mvc.Controller;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.bawi.mywebapp.domain.Product;
-import com.bawi.mywebapp.dwr.Server;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,28 +7,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import com.bawi.mywebapp.domain.Product;
+import com.bawi.mywebapp.dwr.Server;
+
 public class HelloController implements Controller {
 
-    protected final Log logger = LogFactory.getLog(getClass());
+    private static final Log LOGGER = LogFactory.getLog(HelloController.class);
 
-    Server server;
+    private Server server;
+    private int value;
 
     public void setServer(Server server) {
         this.server = server;
     }
 
-    int value;
-
     public void setValue(int value) {
         this.value = value;
     }
 
+    @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         Map<String, Object> model = new HashMap<String, Object>();
         String now = (new Date()).toString();
-        logger.info("Returning hello view with " + now);
+        LOGGER.info("Returning hello view with " + now);
         server.welcomeUser("ania");
         model.put("now", now);
 

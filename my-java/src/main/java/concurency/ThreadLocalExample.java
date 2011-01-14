@@ -10,11 +10,12 @@ public class ThreadLocalExample {
         }
     };
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         final Thread t1;
         final Thread t2;
 
         t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     i = i + 0.1f;
@@ -27,10 +28,11 @@ public class ThreadLocalExample {
                         e.printStackTrace();
                     }
                 }
-            };
+            }
         });
 
         t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     i = i + 1;
@@ -44,7 +46,7 @@ public class ThreadLocalExample {
                         e.printStackTrace();
                     }
                 }
-            };
+            }
         });
 
         t1.start();

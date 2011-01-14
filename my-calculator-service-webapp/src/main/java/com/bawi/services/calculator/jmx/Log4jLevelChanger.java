@@ -9,14 +9,14 @@ import org.springframework.jmx.export.annotation.ManagedResource;
 @ManagedResource(objectName = "com.bawi.services.calculator:name=Log4jLevelChanger", description = "Change log level")
 public class Log4jLevelChanger {
 
-    Logger log = Logger.getLogger(Log4jLevelChanger.class);
+    private static final Logger LOGGER = Logger.getLogger(Log4jLevelChanger.class);
 
     @ManagedOperation(description = "display log level for logger")
     public String getLogLevelForLogger(String loggerName) {
         validateNotBlank(loggerName, "logger name");
         Logger logger = Logger.getLogger(loggerName);
         String logLevel = "" + logger.getLevel();
-        log.debug(logLevel);
+        LOGGER.debug(logLevel);
         return logLevel;
     }
 
@@ -28,22 +28,30 @@ public class Log4jLevelChanger {
         Logger logger = Logger.getLogger(loggerName);
         String s = loglevel.toUpperCase();
 
-        if (s.equals("ALL"))
+        if ("ALL".equals(s)) {
             logger.setLevel(Level.ALL);
-        if (s.equals("DEBUG"))
+        }
+        if ("DEBUG".equals(s)) {
             logger.setLevel(Level.DEBUG);
-        if (s.equals("INFO"))
+        }
+        if ("INFO".equals(s)) {
             logger.setLevel(Level.INFO);
-        if (s.equals("WARN"))
+        }
+        if ("WARN".equals(s)) {
             logger.setLevel(Level.WARN);
-        if (s.equals("ERROR"))
+        }
+        if ("ERROR".equals(s)) {
             logger.setLevel(Level.ERROR);
-        if (s.equals("FATAL"))
+        }
+        if ("FATAL".equals(s)) {
             logger.setLevel(Level.FATAL);
-        if (s.equals("OFF"))
+        }
+        if ("OFF".equals(s)) {
             logger.setLevel(Level.OFF);
-        if (s.equals("TRACE"))
+        }
+        if ("TRACE".equals(s)) {
             logger.setLevel(Level.TRACE);
+        }
 
         return "Level set to " + s + " for logger " + loggerName;
     }

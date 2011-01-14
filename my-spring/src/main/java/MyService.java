@@ -2,14 +2,13 @@ import org.apache.log4j.Logger;
 
 public class MyService {
 
+    private static final Logger LOGGER = Logger.getLogger(MyService.class);
     private static int i = 0;
 
     private MyDataSource myDataSource;
 
-    private static Logger logger = Logger.getLogger(MyService.class);
-
     public MyService() {
-        logger.debug("Created MyService !!!! " + i++);
+        LOGGER.debug("Created MyService !!!! " + i++);
     }
 
     public void print() {

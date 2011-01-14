@@ -20,11 +20,10 @@ public class AboutServlet extends HttpServlet {
 
     private static Logger logger = Logger.getLogger(AboutServlet.class);
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-            IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        Properties properties = WarMainPropertiesFileReader
-                .readPropertiesFromResource("my-war-main.properties");
+        Properties properties = WarMainPropertiesFileReader.readPropertiesFromResource("my-war-main.properties");
         Set<String> stringPropertyNames = properties.stringPropertyNames();
         for (String propertyName : stringPropertyNames) {
             String message = propertyName + "=" + properties.getProperty(propertyName);

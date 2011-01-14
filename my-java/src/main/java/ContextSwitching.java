@@ -3,6 +3,7 @@ public class ContextSwitching {
 
     public static void main(String[] args) {
         Thread t1 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     if (i > 0)
@@ -13,6 +14,7 @@ public class ContextSwitching {
             }
         });
         Thread t2 = new Thread(new Runnable() {
+            @Override
             public void run() {
                 while (true) {
                     i++;

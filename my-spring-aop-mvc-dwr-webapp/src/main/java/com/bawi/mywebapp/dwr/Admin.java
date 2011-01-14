@@ -9,11 +9,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Admin {
 
-    protected final Log logger = LogFactory.getLog(getClass());
+    private static final Log LOGGER = LogFactory.getLog(Admin.class);
 
     /**
-     * I defined a method welcomeUser, I make a dwr call to invoke that method, I want to advice (AOP) thiss method,
-     * thiss method cannot me defined in the classs that dwr uses b
+     * I defined a method welcomeUser, I make a dwr call to invoke that method,
+     * I want to advice (AOP) thiss method, thiss method cannot me defined in
+     * the classs that dwr uses b
      */
 
     public String greatAdmin(String username) {
@@ -24,7 +25,7 @@ public class Admin {
 
     public String greetPerson(String person) {
         Date date = new Date();
-        logger.info("ServerImpl: I am in the method greetPerson");
+        LOGGER.info("ServerImpl: I am in the method greetPerson");
         return "Greeted " + person + " " + date.toString();
 
     }

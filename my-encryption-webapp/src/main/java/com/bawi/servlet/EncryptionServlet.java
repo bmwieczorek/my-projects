@@ -17,9 +17,9 @@ public class EncryptionServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String keyResource = "encryption.key";
+    private static final String KEY_RESOURCE = "encryption.key";
 
-    private final SecretKey key = new SecretKeyProvider().readBase64EncodedKeyFromResource(keyResource);
+    private final SecretKey key = new SecretKeyProvider().readBase64EncodedKeyFromResource(KEY_RESOURCE);
     private final Encrypter encrypter = new Encrypter(key);
     private final Decrypter decrypter = new Decrypter(key);
 
@@ -28,8 +28,7 @@ public class EncryptionServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
-            IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter out = resp.getWriter();
         String url = req.getRequestURL().toString();
@@ -49,6 +48,8 @@ public class EncryptionServlet extends HttpServlet {
         case decrypt:
             out.println(decrypter.decryptBase64Encoded(data));
             return;
+        default:
+            throw new UnsupportedOperationException(action);
         }
 
     }
@@ -72,7 +73,7 @@ public class EncryptionServlet extends HttpServlet {
         htmlBR(out);
     }
 
-    private void printUsage(PrintWriter w, String url) throws IOException {
+    private void printUsage(PrintWriter w, String url) {
         String plain = "HelloWorld!";
         String encrypted = "rfbznJqIiss07e9whQCQEA==";
         w.println("Usage: " + url + "?action=[" + Action.decrypt + "|" + Action.encrypt + "]&data=[data]");

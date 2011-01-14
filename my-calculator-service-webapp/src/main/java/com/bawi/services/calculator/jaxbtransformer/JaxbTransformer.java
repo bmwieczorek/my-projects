@@ -9,12 +9,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.TransformerException;
 
 import com.bawi.services.calculator.model.CalculatorRQ;
 import com.bawi.services.calculator.model.CalculatorRS;
 
-public class JaxbTransformer {
+public final class JaxbTransformer {
     private static final String JAXB_PACKAGE = "com.bawi.services.calculator.model";
 
     private static JAXBContext jaxbContext;
@@ -25,6 +24,9 @@ public class JaxbTransformer {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+    }
+
+    private JaxbTransformer() {
     }
 
     public static String fromJavaToXml(Object o) throws JAXBException {
@@ -43,7 +45,7 @@ public class JaxbTransformer {
         return unmarshaller.unmarshal(new StringReader(xml));
     }
 
-    public static void main(String[] args) throws JAXBException, TransformerException {
+    public static void main(String[] args) throws JAXBException {
         marshallAndUnMarshall(createRequest());
         marshallAndUnMarshall(createResponse());
     }

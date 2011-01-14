@@ -8,8 +8,10 @@ import org.junit.Test;
 
 public class DerivedClass2Test extends AbstractTestBase {
 
-    // by annotating base class with spring junit runner and specifying configuration context files
-    // initialize context only once for two classes, each containing 2 test cases (total 4 test cases)
+    // by annotating base class with spring junit runner and specifying
+    // configuration context files
+    // initialize context only once for two classes, each containing 2 test
+    // cases (total 4 test cases)
 
     @Test
     public void shouldSayHello() {

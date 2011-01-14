@@ -2,7 +2,7 @@ package junit.spring.testing;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ContextSingleton {
+public final class ContextSingleton {
 
     private static final ClassPathXmlApplicationContext CTX = new ClassPathXmlApplicationContext(
             "/junit/spring/testing/my-bean-context.xml");

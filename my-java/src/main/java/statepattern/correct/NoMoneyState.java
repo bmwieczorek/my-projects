@@ -7,6 +7,7 @@ public class NoMoneyState implements State {
         this.gumMachine = gumMachine;
     }
 
+    @Override
     public void insertMoney() {
         System.err.println(this + ":" + gumMachine.getCurrentState());
         System.out.println(this + ":" + "Money received");
@@ -14,9 +15,11 @@ public class NoMoneyState implements State {
         System.err.println(this + ":" + gumMachine.getCurrentState());
     }
 
+    @Override
     public void reclaimMoney() {
     }
 
+    @Override
     public void releaseGum() {
     }
 }

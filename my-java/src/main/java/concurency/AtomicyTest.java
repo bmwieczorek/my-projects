@@ -10,21 +10,18 @@ public class AtomicyTest implements Runnable {
         return i;
     }
 
-    private synchronized void evenIncrement() throws InterruptedException {
+    private synchronized void evenIncrement() {
         i++;
         i++;
     }
 
+    @Override
     public void run() {
         while (true)
-            try {
-                evenIncrement();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            evenIncrement();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ExecutorService exec = Executors.newCachedThreadPool();
         AtomicyTest at = new AtomicyTest();
         exec.execute(at);

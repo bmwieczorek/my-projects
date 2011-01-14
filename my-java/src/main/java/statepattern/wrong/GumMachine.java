@@ -30,6 +30,7 @@ public class GumMachine {
             break;
         case SoldOut:
             System.out.println("Sorry, no gums available");
+            break;
         default:
             break;
         }

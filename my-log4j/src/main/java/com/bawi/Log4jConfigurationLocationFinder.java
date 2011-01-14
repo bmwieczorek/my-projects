@@ -2,7 +2,10 @@ package com.bawi;
 
 import java.net.URL;
 
-public class Log4jConfigurationLocationFinder {
+public final class Log4jConfigurationLocationFinder {
+
+    private Log4jConfigurationLocationFinder() {
+    }
 
     public static String getLog4jConfigurationLocation() {
         String log4jConfigurationProperty = System.getProperty("log4j.configuration");

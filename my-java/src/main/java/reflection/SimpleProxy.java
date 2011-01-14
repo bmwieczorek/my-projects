@@ -5,6 +5,7 @@ interface MyInterface {
 }
 
 class MyClass implements MyInterface {
+    @Override
     public void myMethod(String s) {
         System.out.println("AA " + s + " BB");
     }
@@ -17,6 +18,7 @@ class MyClassProxy implements MyInterface {
         this.classToProxy = classToProxy;
     }
 
+    @Override
     public void myMethod(String s) {
         System.out.println("xxxBeforexxx");
         classToProxy.myMethod(s + "xxxInsidexxx");

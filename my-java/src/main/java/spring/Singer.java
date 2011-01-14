@@ -12,6 +12,7 @@ public class Singer implements Performer {
      * public Singer(String song) { this.song = song; }
      */
 
+    @Override
     public void perform() {
         System.out.println("Singer singing " + song + " song!");
     }

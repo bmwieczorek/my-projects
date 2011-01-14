@@ -21,16 +21,19 @@ class Item {
     }
 }
 
-// interface to implement by concrete listener instances in order to be notified on sold item
+// interface to implement by concrete listener instances in order to be notified
+// on sold item
 interface Listener {
     void onSoldItem(Item item);
 }
 
-// abstract class on providing only default implementation of on sold item method
+// abstract class on providing only default implementation of on sold item
+// method
 abstract class AbstractListener implements Listener {
+    @Override
     public void onSoldItem(Item item) {
-        System.out.println("[" + this.getClass().getName() + "] Received notification for " + "Item="
-                + item.getName() + ",price=" + item.getPrice());
+        System.out.println("[" + this.getClass().getName() + "] Received notification for " + "Item=" + item.getName()
+                + ",price=" + item.getPrice());
     }
 }
 
@@ -56,8 +59,8 @@ public class Shop {
     }
 
     private void sell(Item item) {
-        System.out.println("[" + this.getClass().getName() + "] Selling " + item.getName() + " for "
-                + item.getPrice() + " ...");
+        System.out.println("[" + this.getClass().getName() + "] Selling " + item.getName() + " for " + item.getPrice()
+                + " ...");
         notifyListeners(item);
     }
 

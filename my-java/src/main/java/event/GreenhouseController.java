@@ -11,6 +11,7 @@ public class GreenhouseController extends Controller {
             // do some stuff
         }
 
+        @Override
         public String toString() {
             return "The light is on";
         }
@@ -26,6 +27,7 @@ public class GreenhouseController extends Controller {
             addEvent(new Bell(delayTime));
         }
 
+        @Override
         public String toString() {
             return "Bing!";
         }
@@ -52,6 +54,7 @@ public class GreenhouseController extends Controller {
             addEvent(this);
         }
 
+        @Override
         public String toString() {
             return "Restarting system";
         }
@@ -67,6 +70,7 @@ public class GreenhouseController extends Controller {
             System.exit(0);
         }
 
+        @Override
         public String toString() {
             return "Terminating";
         }

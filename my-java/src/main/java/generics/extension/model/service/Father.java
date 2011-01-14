@@ -5,10 +5,12 @@ public class Father extends Person {
     private String name;
     private String wifeName;
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getName() {
         return name;
     }

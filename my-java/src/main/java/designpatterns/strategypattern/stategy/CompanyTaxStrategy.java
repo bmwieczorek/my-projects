@@ -7,12 +7,12 @@ public class CompanyTaxStrategy implements TaxStrategy<Company> {
     private static double SMALL_COMPANY_TAX_RATE = 0.20;
     private static double BIG_COMPANY_TAX_RATE = 0.30;
 
+    @Override
     public double calculate(Company company) {
         if (company.getNoEmployees() < 100) {
             return SMALL_COMPANY_TAX_RATE * company.getIncome();
-        } else {
-            return BIG_COMPANY_TAX_RATE * company.getIncome();
         }
+        return BIG_COMPANY_TAX_RATE * company.getIncome();
     }
 
 }

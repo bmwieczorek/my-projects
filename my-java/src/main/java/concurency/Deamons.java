@@ -7,6 +7,7 @@ public class Deamons {
         System.err.println(Thread.currentThread() + " starting");
 
         Thread thread = new Thread(new Runnable() {
+            @Override
             public void run() {
                 try {
                     while (true) {

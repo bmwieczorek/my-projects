@@ -13,6 +13,7 @@ class ValueNode extends Node {
         this.value = value;
     }
 
+    @Override
     int evaluate() {
         return value;
     }
@@ -46,6 +47,7 @@ class PlusOpNode extends OpNode {
         operation = '+';
     }
 
+    @Override
     int evaluate() {
         return right.evaluate() + left.evaluate();
     }
@@ -57,6 +59,7 @@ class MultiOpNode extends OpNode {
         operation = '*';
     }
 
+    @Override
     int evaluate() {
         return right.evaluate() * left.evaluate();
     }
@@ -64,8 +67,7 @@ class MultiOpNode extends OpNode {
 
 public class RunExample {
     public static void main(String[] args) {
-        PlusOpNode node = new PlusOpNode(new ValueNode(1),
-                new MultiOpNode(new ValueNode(2), new ValueNode(3)));
+        PlusOpNode node = new PlusOpNode(new ValueNode(1), new MultiOpNode(new ValueNode(2), new ValueNode(3)));
         System.out.println(node);
         System.out.println(node.evaluate());
     }

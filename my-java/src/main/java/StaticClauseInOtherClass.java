@@ -7,7 +7,7 @@ class St {
         // j++; //cannot make static ref to non static field
         new St().j++; // this is allowed
         i++;
-    };
+    }
 
     private int j;
 

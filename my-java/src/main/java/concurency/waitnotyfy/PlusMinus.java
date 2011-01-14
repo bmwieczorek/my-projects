@@ -34,7 +34,7 @@ public class PlusMinus {
         System.out.println("-after notify");
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         final PlusMinus pm = new PlusMinus();
         createPlusThread(pm).start();
         createMinusThread(pm).start();

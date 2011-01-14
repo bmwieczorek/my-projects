@@ -52,10 +52,12 @@ class ImMother extends ImPersonBase<Mother> {
         this.imName = mother.getName();
     }
 
+    @Override
     public String introduce() {
         return getClass().getName() + ":" + imName;
     }
 
+    @Override
     public Mother convert() {
         return new Mother(imName);
     }
@@ -126,9 +128,8 @@ public class GenericAnnotatedConverter {
                 }
             }
         }
-        throw new ConversionException("Could not find backend constructor for class " + backendClass
-                + " of type " + backendInterface.getName() + " with an argument of type: "
-                + serviceClass.getName());
+        throw new ConversionException("Could not find backend constructor for class " + backendClass + " of type "
+                + backendInterface.getName() + " with an argument of type: " + serviceClass.getName());
     }
 
     private static void registerAnnotated(Class<?> backendClass) {

@@ -7,7 +7,7 @@ public class Logger {
     private static final Logger LOG = new Logger();
 
     private Logger() {
-    };
+    }
 
     public static Logger getInstance() {
         return LOG;

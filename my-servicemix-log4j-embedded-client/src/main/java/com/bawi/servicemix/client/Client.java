@@ -8,7 +8,7 @@ public class Client {
 
     private MyLogger logger = MyLoggerRepository.getLogger(Client.class);
 
-    public Client(final CarShopService carShopService) throws InterruptedException {
+    public Client(final CarShopService carShopService) {
         logger.debug("Client started");
         buyCarWhenEnoughMoney(carShopService);
         buyCarWhenNotEnoughMoney(carShopService);

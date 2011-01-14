@@ -14,12 +14,13 @@ public class SyncVsAsyncLogger {
 
     static Map<String, Logger> carrierLoggers = new HashMap<String, Logger>();
 
-    // private static final Logger logger = Logger.getLogger(SyncVsAsyncLogger.class);
+    // private static final Logger logger =
+    // Logger.getLogger(SyncVsAsyncLogger.class);
 
     private static final String DATE_PATTERN = "'.'yyyy-MM-dd";
     private static final String PATTERN_LAYOUT = "%5p (%d{DATE}) [%t] - %m%n";
 
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) {
         // Logger exists = LogManager.exists("SS.com.bawi");
 
         long start = System.currentTimeMillis();
@@ -35,13 +36,13 @@ public class SyncVsAsyncLogger {
         System.out.println("time: " + (end - start));
     }
 
-    private static String createMessage() throws InterruptedException {
+    private static String createMessage() {
         char[] bigstring = new char[30 * 1024];
         Arrays.fill(bigstring, 'a');
         return new String(bigstring);
     }
 
-    private static void logFromLog4jXml(String carrier) throws IOException, InterruptedException {
+    private static void logFromLog4jXml(String carrier) {
         Logger logger = Logger.getLogger(carrier + ".com.bawi.static");
         logger.error(createMessage());
     }

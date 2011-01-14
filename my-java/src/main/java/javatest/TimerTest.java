@@ -9,6 +9,7 @@ public class TimerTest implements ActionListener {
         new javax.swing.Timer(100, test);
     }
 
+    @Override
     public void actionPerformed(ActionEvent ev) {
         System.out.println("Timer ticked.");
     }

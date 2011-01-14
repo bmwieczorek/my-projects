@@ -11,20 +11,24 @@ public class HelloWorldApplet extends Applet {
 
     StringBuffer buffer;
 
+    @Override
     public void init() {
         buffer = new StringBuffer();
         addItem("initializing... ");
         System.out.println("ania");
     }
 
+    @Override
     public void start() {
         addItem("starting... ");
     }
 
+    @Override
     public void stop() {
         addItem("stopping... ");
     }
 
+    @Override
     public void destroy() {
         addItem("preparing for unloading...");
     }
@@ -35,6 +39,7 @@ public class HelloWorldApplet extends Applet {
         repaint();
     }
 
+    @Override
     public void paint(Graphics g) {
         // Draw a Rectangle around the applet's display area.
         g.drawRect(0, 0, getWidth() - 1, getHeight() - 1);

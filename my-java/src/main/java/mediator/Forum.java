@@ -3,7 +3,8 @@ package mediator;
 public interface Forum {
 
     /**
-     * Add a new colleague to the forum, allowing them to send and receive messages with other colleagues.
+     * Add a new colleague to the forum, allowing them to send and receive
+     * messages with other colleagues.
      */
     public void add(Colleague c);
 

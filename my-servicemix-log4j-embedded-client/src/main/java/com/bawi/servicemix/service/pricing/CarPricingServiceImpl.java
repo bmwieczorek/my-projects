@@ -15,6 +15,7 @@ public class CarPricingServiceImpl implements CarPricingService {
         carPrices.put("bmw", 20);
     }
 
+    @Override
     public boolean isPaymentSufficientForBrand(String car, int payment) {
         validate(payment);
         return isPaymentEnough(car, payment);

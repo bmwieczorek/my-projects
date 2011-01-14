@@ -1,12 +1,13 @@
 import java.util.Arrays;
 
 public class SortSample {
-    public void printSorted(int arrayToSort[]) {
+    public void printSorted(int[] arrayToSort) {
 
         Arrays.sort(arrayToSort);
         System.out.print("Sorted array is ");
-        for (int j = 0; j < arrayToSort.length; j++)
+        for (int j = 0; j < arrayToSort.length; j++) {
             System.out.print(arrayToSort[j] + " ");
+        }
         System.out.println();
     }
 

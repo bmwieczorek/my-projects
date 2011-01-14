@@ -2,7 +2,6 @@ package com.bawi.myspringapp.context;
 
 import java.util.Map;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -11,7 +10,7 @@ public class ApplicationBeanProvider implements ApplicationContextAware {
     private static ApplicationContext applicationContext;
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext) {
         ApplicationBeanProvider.applicationContext = applicationContext;
     }
 

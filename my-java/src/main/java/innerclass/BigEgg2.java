@@ -33,6 +33,7 @@ public class BigEgg2 extends Egg2 {
             System.out.println("BigEgg2.Yolk()");
         }
 
+        @Override
         public void f() {
             System.out.println("BigEgg2.Yolk.f()");
         }

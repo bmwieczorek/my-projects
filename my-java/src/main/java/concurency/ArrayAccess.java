@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ArrayAccess {
-    final static List<Integer> ints = new CopyOnWriteArrayList<Integer>();
+    private static final List<Integer> ints = new CopyOnWriteArrayList<Integer>();
     static {
         ints.add(1);
         ints.add(2);
