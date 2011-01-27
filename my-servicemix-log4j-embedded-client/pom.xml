@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,6 +9,7 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../my-parent-pom/pom.xml</relativePath>
     </parent>
+
     <groupId>com.bawi</groupId>
     <artifactId>my-servicemix-log4j-embedded-client</artifactId>
     <packaging>bundle</packaging>
@@ -21,7 +21,6 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.1.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -30,16 +29,6 @@
                     <Import-Package>
                         com.bawi.servicemix.logging
                     </Import-Package>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -101,9 +90,5 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
 </project>
