@@ -12,8 +12,8 @@
 
     <groupId>com.bawi</groupId>
     <artifactId>my-servicemix-log4j-embedded</artifactId>
-    <packaging>bundle</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>bundle</packaging>
     <name>Logging Component</name>
 
     <build>
