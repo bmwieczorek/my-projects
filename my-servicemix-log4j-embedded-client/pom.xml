@@ -4,6 +4,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <groupId>com.bawi</groupId>
     <artifactId>my-servicemix-log4j-embedded-client</artifactId>
     <packaging>bundle</packaging>
