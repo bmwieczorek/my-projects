@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
+
+    <!-- Configuration Admin entry -->
+    <osgix:cm-properties id="cmProps" persistent-id="com.bawi.servicemix">
+        <prop key="name">UNKNOWN</prop>
+    </osgix:cm-properties>
+
+    <bean id="client" class="com.bawi.servicemix.Client" init-method="init">
+        <property name="provider" ref="provider" />
+    </bean>
+
+    <bean id="provider" class="com.bawi.servicemix.Provider">
+        <osgix:managed-properties persistent-id="com.bawi.servicemix" update-strategy="container-managed" />
+        <property name="name" value="${name}" />
+    </bean>
+
+    <!-- placeholder configurer -->
+    <context:property-placeholder properties-ref="cmProps" />
+
+</beans>
