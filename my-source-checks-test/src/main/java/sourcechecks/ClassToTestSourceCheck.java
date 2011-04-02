@@ -9,15 +9,15 @@ package sourcechecks;
  */
 public class ClassToTestSourceCheck {
 
-	 int b() {
-	 if (a > 0)
-	 try {
-	 return 10;
-	 } catch (Exception e) {
-	 }
-	 new RuntimeException();
-	 return 100;
-	 }
-	
-	 int a;
+	// int b() {
+	// if (a > 0)
+	// try {
+	// return 10;
+	// } catch (Exception e) {
+	// }
+	// new RuntimeException();
+	// return 100;
+	// }
+	//
+	// int a;
 }

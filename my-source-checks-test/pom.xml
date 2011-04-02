@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
-        <eclipse.checkstyle.file>common-eclipse-checkstyle.xml</eclipse.checkstyle.file>
+        <eclipse.checkstyle.file>/common-eclipse-checkstyle.xml</eclipse.checkstyle.file>
         <eclipse.pmd.file>/common-eclipse-pmd.xml</eclipse.pmd.file>
         <eclipse.prefs.file>/common-org.eclipse.jdt.core.prefs</eclipse.prefs.file>
 
@@ -18,7 +18,7 @@
 
         <pmd.ruleset.file>/common-pmd-ruleset.xml</pmd.ruleset.file>
 
-        <findbugs.exclude.filter.file>/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.file>
+        <findbugs.exclude.filter.file>${project.build.directory}/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.file>
     </properties>
 
     <profiles>
@@ -256,7 +256,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
+                    <version>2.3.1</version>
                     <configuration>
                         <source>1.6</source>
                         <target>1.6</target>
@@ -269,4 +269,56 @@
             </plugins>
         </pluginManagement>
     </build>
+
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <configLocation>${checkstyle.checker.file}</configLocation>
+                    <suppressionsLocation>${chestyle.suppressions.file}</suppressionsLocation>
+                    <propertyExpansion>suppressions.file=${basedir}/target/checkstyle-suppressions.xml</propertyExpansion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <!-- Note: pmd defines exclusions is the same pmd-ruleset.xml file -->
+                    <rulesets>
+                        <ruleset>${pmd.ruleset.file}</ruleset>
+                    </rulesets>
+                    <targetJdk>1.6</targetJdk>
+                    <linkXRef>false</linkXRef>
+                    <includeTests>true</includeTests>
+                    <failOnViolation>false</failOnViolation>
+                    <verbose>true</verbose>
+
+                    <!-- exclude generated code -->
+                    <excludeRoots>
+                        <excludeRoot>${basedir}/src/main/generated-sources</excludeRoot>
+                        <excludeRoot>${project.build.directory}/src/main/java</excludeRoot>
+                    </excludeRoots>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <includeTests>true</includeTests>
+                    <effort>Max</effort>
+                    <threshold>Default</threshold>
+                    <xmlOutput>true</xmlOutput>
+                    <failOnError>false</failOnError>
+                    <excludeFilterFile>${findbugs.exclude.filter.file}</excludeFilterFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
