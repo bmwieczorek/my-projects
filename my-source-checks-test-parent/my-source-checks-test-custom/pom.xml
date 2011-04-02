@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>my-source-checks-test-parent</artifactId>
+		<groupId>com.bawi</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>com.bawi</groupId>
+    <artifactId>my-source-checks-test-custom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <eclipse.checkstyle.file>${basedir}/custom-eclipse-checkstyle.xml</eclipse.checkstyle.file>
+        <eclipse.pmd.file>${basedir}/custom-eclipse-pmd.xml</eclipse.pmd.file>
+        <eclipse.findbugs.prefs.file>/custom-eclipse-findbugs.prefs</eclipse.findbugs.prefs.file>
+        <eclipse.prefs.file>${basedir}/custom-org.eclipse.jdt.core.prefs</eclipse.prefs.file>
+
+        <checkstyle.checker.file>${basedir}/custom-checkstyle.xml</checkstyle.checker.file>
+        <chestyle.suppressions.file>${basedir}/custom-checkstyle-suppressions.xml</chestyle.suppressions.file>
+
+        <pmd.ruleset.file>${basedir}/custom-pmd-ruleset.xml</pmd.ruleset.file>
+
+        <findbugs.exclude.filter.file>${basedir}/custom-findbugs-exclude-filter.xml</findbugs.exclude.filter.file>
+    </properties>
+
+</project>

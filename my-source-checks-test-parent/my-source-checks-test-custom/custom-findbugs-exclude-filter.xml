@@ -1,0 +1,16 @@
+<FindBugsFilter>
+
+    <!-- CUSTOM -->
+
+    <!-- Common findbugs exclude filter configuration -->
+    
+    <!-- Just an example -->
+    <!-- 
+    <Match>
+        <Class name="com.bawi.MyClass" />
+        <Bug pattern="SE_BAD_FIELD,MS_CANNOT_BE_FINAL" />
+    </Match>
+     -->
+
+</FindBugsFilter>
+

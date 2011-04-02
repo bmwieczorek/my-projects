@@ -1,0 +1,10 @@
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
+
+    <!-- CUSTOM -->
+    <local-check-config name="Ticketing Common Checkstyle" location=".checkstyle-checker.xml" type="project" description="">
+        <additional-data name="protect-config-file" value="false"/>
+    </local-check-config>
+    <fileset name="all" enabled="true" check-config-name="Ticketing Common Checkstyle" local="true">
+        <file-match-pattern match-pattern="^src[/\\]." include-pattern="true"/>
+    </fileset>
+</fileset-config>
