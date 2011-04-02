@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MyPostController {
 
     @RequestMapping(method = RequestMethod.POST)
-    public void handleRequest(HttpServletRequest request, @SuppressWarnings("unused") HttpServletResponse response)
+    public void handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
         ByteArrayOutputStream result = new ByteArrayOutputStream();
