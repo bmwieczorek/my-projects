@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
-        <eclipse.checkstyle.file>/common-eclipse-checkstyle.xml</eclipse.checkstyle.file>
+        <eclipse.checkstyle.file>common-eclipse-checkstyle.xml</eclipse.checkstyle.file>
         <eclipse.pmd.file>/common-eclipse-pmd.xml</eclipse.pmd.file>
         <eclipse.prefs.file>/common-org.eclipse.jdt.core.prefs</eclipse.prefs.file>
 
@@ -27,6 +27,10 @@
             <build>
                 <pluginManagement>
                     <plugins>
+                        <plugin>
+                            <artifactId>maven-dependency-plugin</artifactId>
+                            <version>2.2</version>
+                        </plugin>
                         <plugin>
                             <artifactId>maven-eclipse-plugin</artifactId>
                             <configuration>
@@ -131,6 +135,30 @@
                 </pluginManagement>
                 <plugins>
                     <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack source checks to target directory</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.bawi</groupId>
+                                            <artifactId>my-source-checks</artifactId>
+                                            <version>${my-source-checks.version}</version>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
                         <artifactId>maven-checkstyle-plugin</artifactId>
                         <executions>
                             <execution>
@@ -200,6 +228,19 @@
                                     <target>
                                         <copy file="${project.build.directory}/${pmd.ruleset.file}" tofile="${basedir}/.pmd-ruleset.xml"
                                             failonerror="false" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy findbugs exclude filter to basedir</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <copy file="${project.build.directory}/${findbugs.exclude.filter.file}"
+                                            tofile="${basedir}/.findbugs-exclude-filter.xml" failonerror="false" />
                                     </target>
                                 </configuration>
                             </execution>

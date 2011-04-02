@@ -7,7 +7,7 @@ package sourcechecks;
  *         This class is intentionally created to test Findbugs, PMS and
  *         Checkstyle
  */
-public class ClassToTestSourceCheck {
+public class ClassToTestSourceCheckTest {
 
 	 int b() {
 	 if (a > 0)
