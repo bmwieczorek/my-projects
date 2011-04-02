@@ -7,18 +7,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <findbugs-maven-plugin.version>2.3.1</findbugs-maven-plugin.version>
-        
-        
+
         <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
         <eclipse.checkstyle.file>/common-eclipse-checkstyle.xml</eclipse.checkstyle.file>
         <eclipse.pmd.file>/common-eclipse-pmd.xml</eclipse.pmd.file>
         <eclipse.prefs.file>/common-org.eclipse.jdt.core.prefs</eclipse.prefs.file>
-        
+
         <checkstyle.checker.file>/common-checkstyle.xml</checkstyle.checker.file>
         <chestyle.suppressions.file>/common-checkstyle-suppressions.xml</chestyle.suppressions.file>
-        
+
         <pmd.ruleset.file>/common-pmd-ruleset.xml</pmd.ruleset.file>
+
+        <findbugs.exclude.filter.file>/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.file>
     </properties>
 
     <profiles>
@@ -112,13 +112,14 @@
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
                             <artifactId>findbugs-maven-plugin</artifactId>
-                            <version>2.5</version>
+                            <version>2.3.2</version>
                             <configuration>
                                 <includeTests>true</includeTests>
                                 <effort>Max</effort>
                                 <threshold>Default</threshold>
                                 <xmlOutput>true</xmlOutput>
                                 <failOnError>false</failOnError>
+                                <excludeFilterFile>${findbugs.exclude.filter.file}</excludeFilterFile>
                             </configuration>
                         </plugin>
 
@@ -150,6 +151,19 @@
                                 <goals>
                                     <goal>check</goal>
                                     <goal>cpd</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check</goal>
                                 </goals>
                             </execution>
                         </executions>
