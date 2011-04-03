@@ -13,14 +13,14 @@
     <properties>
     
         <!-- source checks -->
-        <eclipse.checkstyle.file>${basedir}/custom-eclipse-checkstyle.xml</eclipse.checkstyle.file>
-        <eclipse.pmd.file>${basedir}/custom-eclipse-pmd.xml</eclipse.pmd.file>
-        <eclipse.findbugs.prefs.file>/custom-eclipse-findbugs.prefs</eclipse.findbugs.prefs.file>
-        <eclipse.prefs.file>${basedir}/custom-org.eclipse.jdt.core.prefs</eclipse.prefs.file>
-        <checkstyle.checker.file>${basedir}/custom-checkstyle.xml</checkstyle.checker.file>
-        <chestyle.suppressions.file>${basedir}/custom-checkstyle-suppressions.xml</chestyle.suppressions.file>
-        <pmd.ruleset.file>${basedir}/custom-pmd-ruleset.xml</pmd.ruleset.file>
-        <findbugs.exclude.filter.file>${basedir}/custom-findbugs-exclude-filter.xml</findbugs.exclude.filter.file>
+        <eclipse.checkstyle.location>${basedir}/custom-eclipse-checkstyle.xml</eclipse.checkstyle.location>
+        <eclipse.pmd.location>${basedir}/custom-eclipse-pmd.xml</eclipse.pmd.location>
+        <eclipse.findbugs.prefs.location>/custom-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
+        <eclipse.prefs.location>${basedir}/custom-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
+        <checkstyle.checker.location>${basedir}/custom-checkstyle.xml</checkstyle.checker.location>
+        <chestyle.suppressions.location>${basedir}/custom-checkstyle-suppressions.xml</chestyle.suppressions.location>
+        <pmd.ruleset.location>${basedir}/custom-pmd-ruleset.xml</pmd.ruleset.location>
+        <findbugs.exclude.filter.location>${basedir}/custom-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
     </properties>
 
 </project>
