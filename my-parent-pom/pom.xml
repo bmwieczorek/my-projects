@@ -7,112 +7,118 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+
+        <!-- versions of dependencies groups -->
+        <cxf.version>2.2.9</cxf.version>
+        <jetty.version>6.1.26</jetty.version>
+        <spring.version>2.5.6</spring.version>
+        <slf4j.version>1.6.1</slf4j.version>
+
+        <!-- source-checks -->
+        <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
+        <my-source-checks.unpacked.location>${project.build.directory}/my-source-checks</my-source-checks.unpacked.location>
+
+        <eclipse.checkstyle.location>/common-eclipse-checkstyle.xml</eclipse.checkstyle.location>
+        <eclipse.pmd.location>/common-eclipse-pmd.xml</eclipse.pmd.location>
+        <eclipse.findbugs.prefs.location>/common-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
+        <eclipse.prefs.location>/common-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
+        <checkstyle.checker.location>/common-checkstyle.xml</checkstyle.checker.location>
+        <chestyle.suppressions.location>/common-checkstyle-suppressions.xml</chestyle.suppressions.location>
+        <pmd.ruleset.location>${my-source-checks.unpacked.location}/common-pmd-ruleset.xml</pmd.ruleset.location>
+        <findbugs.exclude.filter.location>${my-source-checks.unpacked.location}/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
+
+        <!-- other -->
+        <tomcat.version>6.0.26</tomcat.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>${maven-eclipse-plugin.version}</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
-                    </additionalProjectnatures>
-                    <buildcommands>
-                        <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-                        <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
-                    </buildcommands>
-                    <downloadSources>true</downloadSources>
-                </configuration>
-            </plugin>
-        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>2.8</version>
+                    <configuration>
+                        <additionalProjectnatures>
+                            <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+                        </additionalProjectnatures>
+                        <buildcommands>
+                            <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+                        </buildcommands>
+                        <downloadSources>true</downloadSources>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.mortbay.jetty</groupId>
                     <artifactId>maven-jetty-plugin</artifactId>
-                    <version>${maven-jetty-plugin.version}</version>
+                    <version>${jetty.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven2-plugin</artifactId>
-                    <version>${cargo-maven2-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-eclipse-plugin</artifactId>
-                    <version>${maven-eclipse-plugin.version}</version>
+                    <version>1.0.1-sr-1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>${maven-antrun-plugin.version}</version>
+                    <version>1.6</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>tomcat-maven-plugin</artifactId>
-                    <version>${maven-tomcat-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>${maven-pmd-plugin.version}</version>
-                    <configuration>
-                        <targetJdk>1.6</targetJdk>
-                    </configuration>
+                    <version>1.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>${cobertura-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven-checkstyle-plugin.version}</version>
+                    <version>2.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.cxf</groupId>
                     <artifactId>cxf-codegen-plugin</artifactId>
-                    <version>${cxf-codegen-plugin.version}</version>
+                    <version>${cxf.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>jaxb2-maven-plugin</artifactId>
-                    <version>${jaxb2-maven-plugin.version}</version>
+                    <version>1.3</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>${exec-maven-plugin.version}</version>
+                    <version>1.1.1</version>
                 </plugin>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven-war-plugin.version}</version>
+                    <version>2.1-beta-1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven-jar-plugin.version}</version>
+                    <version>2.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>${build-helper-maven-plugin.version}</version>
+                    <version>1.5</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
+                    <version>2.5</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven-dependency-plugin.version}</version>
+                    <version>2.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -123,16 +129,14 @@
             <id>first-build</id>
             <activation>
                 <file>
-                    <missing>${user.home}/.m2/repository/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar
-                    </missing>
+                    <missing>${user.home}/.m2/repository/com/sun/jdmk/jmxtools/1.2.1/jmxtools-1.2.1.jar</missing>
                 </file>
             </activation>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.6</version>
+                        <inherited>false</inherited>
                         <executions>
                             <execution>
                                 <id>copy-depenedecies-not-available-in-public-repo</id>
@@ -140,13 +144,240 @@
                                 <configuration>
                                     <target>
                                         <copy todir="${settings.localRepository}" failonerror="false">
-                                            <fileset dir="../../workspace/environment/maven/.m2/repository" />
+                                            <fileset dir="${basedir}/../environment/maven/.m2/repository" />
                                         </copy>
                                     </target>
                                 </configuration>
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>source-checks</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-eclipse-plugin</artifactId>
+                            <configuration>
+                                <additionalBuildcommands>
+                                    <buildcommand>net.sf.eclipsecs.core.CheckstyleBuilder</buildcommand>
+                                    <buildcommand>net.sourceforge.pmd.eclipse.plugin.pmdBuilder</buildcommand>
+                                    <buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
+                                    <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+                                </additionalBuildcommands>
+                                <additionalProjectnatures>
+                                    <projectnature>net.sf.eclipsecs.core.CheckstyleNature</projectnature>
+                                    <projectnature>net.sourceforge.pmd.eclipse.plugin.pmdNature</projectnature>
+                                    <projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
+                                    <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+                                </additionalProjectnatures>
+                                <downloadSources>true</downloadSources>
+                                <additionalConfig>
+                                    <file>
+                                        <name>.checkstyle</name>
+                                        <location>${eclipse.checkstyle.location}</location>
+                                    </file>
+                                    <file>
+                                        <name>.pmd</name>
+                                        <location>${eclipse.pmd.location}</location>
+                                    </file>
+                                    <file>
+                                        <name>.fbprefs</name>
+                                        <location>${eclipse.findbugs.prefs.location}</location>
+                                    </file>
+                                    <file>
+                                        <name>.settings/org.eclipse.jdt.core.prefs</name>
+                                        <location>${eclipse.prefs.location}</location>
+                                    </file>
+                                </additionalConfig>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.bawi</groupId>
+                                    <artifactId>my-source-checks</artifactId>
+                                    <version>${my-source-checks.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-checkstyle-plugin</artifactId>
+                            <version>2.6</version>
+                            <configuration>
+                                <linkXRef>false</linkXRef>
+                                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                                <consoleOutput>true</consoleOutput>
+                                <configLocation>${checkstyle.checker.location}</configLocation>
+                                <suppressionsLocation>${chestyle.suppressions.location}</suppressionsLocation>
+                                <propertyExpansion>suppressions.file=${basedir}/target/checkstyle-suppressions.xml</propertyExpansion>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.bawi</groupId>
+                                    <artifactId>my-source-checks</artifactId>
+                                    <version>${my-source-checks.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>2.5</version>
+                            <configuration>
+                                <!-- Note: pmd defines exclusions is the same pmd-ruleset.xml file -->
+                                <rulesets>
+                                    <ruleset>${pmd.ruleset.location}</ruleset>
+                                </rulesets>
+                                <targetJdk>1.6</targetJdk>
+                                <linkXRef>false</linkXRef>
+                                <includeTests>true</includeTests>
+                                <failOnViolation>false</failOnViolation>
+                                <verbose>true</verbose>
+
+                                <!-- exclude generated code -->
+                                <excludeRoots>
+                                    <excludeRoot>${basedir}/src/main/generated-sources</excludeRoot>
+                                    <excludeRoot>${project.build.directory}/src/main/java</excludeRoot>
+                                </excludeRoots>
+                            </configuration>
+                            <dependencies>
+                                <dependency>
+                                    <groupId>com.bawi</groupId>
+                                    <artifactId>my-source-checks</artifactId>
+                                    <version>${my-source-checks.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                            <version>2.3.2</version>
+                            <configuration>
+                                <includeTests>true</includeTests>
+                                <effort>Max</effort>
+                                <threshold>Default</threshold>
+                                <xmlOutput>true</xmlOutput>
+                                <failOnError>false</failOnError>
+                                <excludeFilterFile>${findbugs.exclude.filter.location}</excludeFilterFile>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack source checks to target directory</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>com.bawi</groupId>
+                                            <artifactId>my-source-checks</artifactId>
+                                            <version>${my-source-checks.version}</version>
+                                            <outputDirectory>${my-source-checks.unpacked.location}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>checkstyle</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                    <goal>cpd</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>validate</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy checkstyle checker and suppressions generated by mvn checkstyle:checkstyle to basedir</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <copy file="${project.build.directory}/checkstyle-checker.xml" tofile="${basedir}/.checkstyle-checker.xml"
+                                            filtering="true" failonerror="false">
+                                            <filterset begintoken="${" endtoken="}">
+                                                <filter token="suppressions.file" value="${basedir}/.checkstyle-suppressions.xml" />
+                                            </filterset>
+                                        </copy>
+                                        <copy file="${project.build.directory}/checkstyle-suppressions.xml" tofile="${basedir}/.checkstyle-suppressions.xml"
+                                            failonerror="false" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy pmd ruleset to basedir</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <copy file="${pmd.ruleset.location}" tofile="${basedir}/.pmd-ruleset.xml"
+                                            failonerror="false" />
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy findbugs exclude filter to basedir</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <copy file="${findbugs.exclude.filter.location}" tofile="${basedir}/.findbugs-exclude-filter.xml"
+                                            failonerror="false" />
+                                    </target>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -166,9 +397,8 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-
         <repository>
-            <id>maven2-repository.dev.java.net</id>
+            <id>dev.java.net</id>
             <url>http://download.java.net/maven/2/</url>
             <layout>default</layout>
             <releases>
@@ -179,7 +409,7 @@
             </snapshots>
         </repository>
         <repository>
-            <id>http://repository.jboss.com/maven2</id>
+            <id>jboss.com</id>
             <url>http://repository.jboss.com/maven2</url>
             <releases>
                 <enabled>true</enabled>
@@ -189,7 +419,7 @@
             </snapshots>
         </repository>
         <repository>
-            <id>http://repository.apache.org</id>
+            <id>apache.org</id>
             <url>http://repository.apache.org</url>
             <releases>
                 <enabled>true</enabled>
@@ -240,7 +470,7 @@
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
+                <version>1.2.16</version>
             </dependency>
             <dependency>
                 <groupId>log4j</groupId>
@@ -341,7 +571,7 @@
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>${commons-lang.version}</version>
+                <version>2.5</version>
             </dependency>
 
             <dependency>
@@ -354,7 +584,7 @@
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
                 <artifactId>jaxb-impl</artifactId>
-                <version>${jaxb-impl.version}</version>
+                <version>2.2.1</version>
                 <exclusions>
                     <exclusion>
                         <groupId>javax.activation</groupId>
@@ -455,7 +685,7 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.5.8</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <!-- required by maven plugin in eclipse for autobuild -->
@@ -467,41 +697,5 @@
 
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- dependencies versions -->
-        <commons-lang.version>2.5</commons-lang.version>
-        <cxf.version>2.2.9</cxf.version>
-        <jaxb-impl.version>2.2.1</jaxb-impl.version>
-        <log4j.version>1.2.16</log4j.version>
-        <jetty.version>6.1.26</jetty.version>
-        <quartz.version>1.5.2</quartz.version>
-        <spring.version>2.5.6</spring.version>
-        <slf4j.version>1.6.1</slf4j.version>
-
-        <!-- plugins -->
-        <build-helper-maven-plugin.version>1.5</build-helper-maven-plugin.version>
-        <cargo-maven2-plugin.version>1.0.1-sr-1</cargo-maven2-plugin.version>
-        <jaxb2-maven-plugin.version>1.3</jaxb2-maven-plugin.version>
-        <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
-        <maven-eclipse-plugin.version>2.8</maven-eclipse-plugin.version>
-        <maven-jar-plugin.version>2.3.1</maven-jar-plugin.version>
-        <maven-surefire-plugin.version>2.5</maven-surefire-plugin.version>
-        <maven-war-plugin.version>2.1-beta-1</maven-war-plugin.version>
-        <maven-jetty-plugin.version>${jetty.version}</maven-jetty-plugin.version>
-        <exec-maven-plugin.version>1.1.1</exec-maven-plugin.version>
-        <maven-antrun-plugin.version>1.6</maven-antrun-plugin.version>
-        <maven-tomcat-plugin.version>1.1</maven-tomcat-plugin.version>
-        <maven-pmd-plugin.version>2.5</maven-pmd-plugin.version>
-        <cobertura-maven-plugin.version>2.4</cobertura-maven-plugin.version>
-        <maven-checkstyle-plugin.version>2.6</maven-checkstyle-plugin.version>
-        <cxf-codegen-plugin.version>${cxf.version}</cxf-codegen-plugin.version>
-
-        <tomcat.version>6.0.26</tomcat.version>
-
-    </properties>
 
 </project>
