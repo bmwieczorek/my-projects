@@ -11,7 +11,6 @@ class DemoClass {
     DemoClass() {
     }
 
-    @SuppressWarnings("unused")
     public DemoClass(long l) {
     }
 

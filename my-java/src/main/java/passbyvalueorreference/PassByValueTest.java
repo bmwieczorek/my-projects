@@ -11,7 +11,7 @@ public class PassByValueTest {
         tp.value = tp.value - b;
     }
 
-    public void setup(@SuppressWarnings("unused") int value) {
+    public void setup(int value) {
         this.value = 5;
     }
 

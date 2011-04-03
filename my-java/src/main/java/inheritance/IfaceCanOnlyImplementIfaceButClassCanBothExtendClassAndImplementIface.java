@@ -32,7 +32,6 @@ abstract class ACl implements ThreeOfOneAndTwo {
     }
 }
 
-@SuppressWarnings("unused")
 class Cl extends ACl implements One {
     @Override
     protected void myTemplateMethod() {

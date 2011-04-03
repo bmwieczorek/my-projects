@@ -1,6 +1,5 @@
 package javatest;
 
-@SuppressWarnings("unused")
 public class TestOverloadNumbers {
     public static void print(Float a, double b) {
         System.out.println("1");

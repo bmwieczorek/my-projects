@@ -1,6 +1,5 @@
 package passbyvalueorreference;
 
-@SuppressWarnings("unused")
 public class PassByValueExample {
 
     void changeString(String s) {

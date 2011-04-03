@@ -2,7 +2,7 @@ package statepattern.correct;
 
 public class SoldState implements State {
 
-    public SoldState(@SuppressWarnings("unused") GumMachine gumMachine) {
+    public SoldState(GumMachine gumMachine) {
     }
 
     @Override
