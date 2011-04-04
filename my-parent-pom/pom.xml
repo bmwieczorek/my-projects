@@ -14,6 +14,8 @@
         <jetty.version>6.1.26</jetty.version>
         <spring.version>2.5.6</spring.version>
         <slf4j.version>1.6.1</slf4j.version>
+        <commons-lang.version>2.5</commons-lang.version>
+        <log4j.version>1.2.16</log4j.version>
 
         <!-- source-checks -->
         <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
@@ -408,7 +410,7 @@
             </snapshots>
         </repository>
         <repository>
-            <id>http://repository.codehaus.org</id>
+            <id>codehaus.org</id>
             <url>http://repository.codehaus.org</url>
             <releases>
                 <enabled>true</enabled>
@@ -418,7 +420,7 @@
             </snapshots>
         </repository>
         <repository>
-            <id>http://mvnrepository.com</id>
+            <id>mvnrepository.com</id>
             <url>http://mvnrepository.com</url>
             <releases>
                 <enabled>true</enabled>
@@ -449,7 +451,7 @@
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
-                <version>1.2.16</version>
+                <version>${log4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>log4j</groupId>
@@ -550,7 +552,7 @@
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>2.5</version>
+                <version>${commons-lang.version}</version>
             </dependency>
 
             <dependency>
