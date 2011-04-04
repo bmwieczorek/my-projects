@@ -28,7 +28,7 @@ public class MyGetController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public void handleRequest(@RequestParam("version") int version,
-			HttpServletRequest request, HttpServletResponse response)
+			@SuppressWarnings("unused") HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
 		String output = "Version=" + version;
