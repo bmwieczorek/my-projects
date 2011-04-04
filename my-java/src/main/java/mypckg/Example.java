@@ -31,7 +31,7 @@ class V extends T implements S, W {
 }
 
 public class Example {
-    static void m(T w) {
+    static void m(@SuppressWarnings("unused") T w) {
 
     }
 

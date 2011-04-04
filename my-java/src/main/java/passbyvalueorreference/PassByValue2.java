@@ -14,7 +14,7 @@ class AA {
 }
 
 public class PassByValue2 {
-    static void f(AA arg1) {
+    static void f(@SuppressWarnings("unused") AA arg1) {
         arg1 = null;
     }
 

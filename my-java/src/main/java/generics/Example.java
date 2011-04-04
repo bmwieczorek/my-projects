@@ -22,7 +22,7 @@ public class Example<T> {
     // public static void compare(List<? extends Comparable<?>> list) {
     // }
 
-    public static <E extends Comparable<E>> E compare(List<? extends E> list) {
+    public static <E extends Comparable<E>> E compare(@SuppressWarnings("unused") List<? extends E> list) {
         return null;
     }
 

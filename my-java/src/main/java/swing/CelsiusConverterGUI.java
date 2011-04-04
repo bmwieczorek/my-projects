@@ -80,7 +80,7 @@ public class CelsiusConverterGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void convertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_convertButtonActionPerformed
+    private void convertButtonActionPerformed(@SuppressWarnings("unused") java.awt.event.ActionEvent evt) {// GEN-FIRST:event_convertButtonActionPerformed
         // Parse degrees Celsius as a double and convert to Fahrenheit
         int tempFahr = (int) ((Double.parseDouble(tempTextField.getText())) * 1.8 + 32);
         fahrenheitLabel.setText(tempFahr + " Fahrenheit");

@@ -24,7 +24,7 @@ public class MyMock<V> {
         return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class<?>[] { clazz }, new MyInvocationHandler());
     }
 
-    public static <V> MyMock<V> verify(V v) {
+    public static <V> MyMock<V> verify(@SuppressWarnings("unused") V v) {
         return new MyMock<V>();
     }
 
