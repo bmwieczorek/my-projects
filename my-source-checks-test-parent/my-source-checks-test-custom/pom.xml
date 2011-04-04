@@ -18,7 +18,7 @@
         <eclipse.findbugs.prefs.location>/custom-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
         <eclipse.prefs.location>${basedir}/custom-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
         <checkstyle.checker.location>${basedir}/custom-checkstyle.xml</checkstyle.checker.location>
-        <chestyle.suppressions.location>${basedir}/custom-checkstyle-suppressions.xml</chestyle.suppressions.location>
+        <checkstyle.suppressions.location>${basedir}/custom-checkstyle-suppressions.xml</checkstyle.suppressions.location>
         <pmd.ruleset.location>${basedir}/custom-pmd-ruleset.xml</pmd.ruleset.location>
         <findbugs.exclude.filter.location>${basedir}/custom-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
     </properties>
