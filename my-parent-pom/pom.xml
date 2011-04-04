@@ -17,16 +17,16 @@
 
         <!-- source-checks -->
         <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
-        <my-source-checks.unpacked.location>${project.build.directory}/my-source-checks</my-source-checks.unpacked.location>
+        <my-source-checks.location>${project.build.directory}/my-source-checks</my-source-checks.location>
 
-        <eclipse.checkstyle.location>/common-eclipse-checkstyle.xml</eclipse.checkstyle.location>
-        <eclipse.pmd.location>/common-eclipse-pmd.xml</eclipse.pmd.location>
-        <eclipse.findbugs.prefs.location>/common-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
-        <eclipse.prefs.location>/common-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
-        <checkstyle.checker.location>/common-checkstyle.xml</checkstyle.checker.location>
-        <chestyle.suppressions.location>/common-checkstyle-suppressions.xml</chestyle.suppressions.location>
-        <pmd.ruleset.location>${my-source-checks.unpacked.location}/common-pmd-ruleset.xml</pmd.ruleset.location>
-        <findbugs.exclude.filter.location>${my-source-checks.unpacked.location}/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
+        <eclipse.checkstyle.location>${my-source-checks.location}/common-eclipse-checkstyle.xml</eclipse.checkstyle.location>
+        <eclipse.pmd.location>${my-source-checks.location}/common-eclipse-pmd.xml</eclipse.pmd.location>
+        <eclipse.findbugs.prefs.location>${my-source-checks.location}/common-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
+        <eclipse.prefs.location>${my-source-checks.location}/common-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
+        <checkstyle.checker.location>${my-source-checks.location}/common-checkstyle.xml</checkstyle.checker.location>
+        <checkstyle.suppressions.location>${my-source-checks.location}/common-checkstyle-suppressions.xml</checkstyle.suppressions.location>
+        <pmd.ruleset.location>${my-source-checks.location}/common-pmd-ruleset.xml</pmd.ruleset.location>
+        <findbugs.exclude.filter.location>${my-source-checks.location}/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
 
         <!-- other -->
         <tomcat.version>6.0.26</tomcat.version>
@@ -198,13 +198,6 @@
                                     </file>
                                 </additionalConfig>
                             </configuration>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>com.bawi</groupId>
-                                    <artifactId>my-source-checks</artifactId>
-                                    <version>${my-source-checks.version}</version>
-                                </dependency>
-                            </dependencies>
                         </plugin>
                         <plugin>
                             <artifactId>maven-checkstyle-plugin</artifactId>
@@ -214,16 +207,9 @@
                                 <includeTestSourceDirectory>true</includeTestSourceDirectory>
                                 <consoleOutput>true</consoleOutput>
                                 <configLocation>${checkstyle.checker.location}</configLocation>
-                                <suppressionsLocation>${chestyle.suppressions.location}</suppressionsLocation>
+                                <suppressionsLocation>${checkstyle.suppressions.location}</suppressionsLocation>
                                 <propertyExpansion>suppressions.file=${basedir}/target/checkstyle-suppressions.xml</propertyExpansion>
                             </configuration>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>com.bawi</groupId>
-                                    <artifactId>my-source-checks</artifactId>
-                                    <version>${my-source-checks.version}</version>
-                                </dependency>
-                            </dependencies>
                         </plugin>
                         <plugin>
                             <artifactId>maven-pmd-plugin</artifactId>
@@ -245,13 +231,6 @@
                                     <excludeRoot>${project.build.directory}/src/main/java</excludeRoot>
                                 </excludeRoots>
                             </configuration>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>com.bawi</groupId>
-                                    <artifactId>my-source-checks</artifactId>
-                                    <version>${my-source-checks.version}</version>
-                                </dependency>
-                            </dependencies>
                         </plugin>
                         <plugin>
                             <groupId>org.codehaus.mojo</groupId>
@@ -285,7 +264,7 @@
                                             <groupId>com.bawi</groupId>
                                             <artifactId>my-source-checks</artifactId>
                                             <version>${my-source-checks.version}</version>
-                                            <outputDirectory>${my-source-checks.unpacked.location}</outputDirectory>
+                                            <outputDirectory>${my-source-checks.location}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
                                 </configuration>
