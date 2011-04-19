@@ -3,7 +3,7 @@
   <parent>
     <artifactId>my-release-maven-parent</artifactId>
     <groupId>com.bawi</groupId>
-    <version>1.2.2</version>
+    <version>1.2.3-SNAPSHOT</version>
   </parent>
   <groupId>com.bawi</groupId>
   <artifactId>my-release-maven-core</artifactId>
