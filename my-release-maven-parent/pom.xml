@@ -23,6 +23,6 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://bawi.googlecode.com/svn</connection>
+        <connection>scm:svn:https://bawi.googlecode.com/svn/trunk/my-release-maven-parent</connection>
     </scm>
 </project>
