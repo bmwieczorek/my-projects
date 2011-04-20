@@ -32,6 +32,6 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://bawi.googlecode.com/svn/releases/my-smx2</connection>
+        <connection>scm:svn:https://bawi.googlecode.com/svn/branches/my-branch</connection>
     </scm>
 </project>
