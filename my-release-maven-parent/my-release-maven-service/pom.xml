@@ -19,6 +19,6 @@
     	<artifactId>my-release-maven-other</artifactId>
     	<version>3.0.0-SNAPSHOT</version>
     	<scope>compile</scope>
-    </dependency>
+    </dependency>    
   </dependencies>
 </project>
