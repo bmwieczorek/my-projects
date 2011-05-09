@@ -4,7 +4,11 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public void myMethod() {
-        System.out.println("Executed");
+        System.out.println("My intefaced method");
+    }
+
+    public void myNonInterfacedMethod() {
+        System.out.println("My non intefaced method");
     }
 
 }
