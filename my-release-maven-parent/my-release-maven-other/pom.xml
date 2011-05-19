@@ -3,9 +3,9 @@
   <parent>
     <artifactId>my-release-maven-parent</artifactId>
     <groupId>com.bawi</groupId>
-    <version>4.2.7-SNAPSHOT</version>
+    <version>4.2.7</version>
   </parent>
   <groupId>com.bawi</groupId>
   <artifactId>my-release-maven-other</artifactId>
-  <version>2.2.13-SNAPSHOT</version>
+  <version>2.2.13</version>
 </project>

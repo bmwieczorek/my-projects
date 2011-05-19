@@ -3,7 +3,7 @@
 
     <groupId>com.bawi</groupId>
     <artifactId>my-release-maven-parent</artifactId>
-    <version>4.2.7-SNAPSHOT</version>
+    <version>4.2.7</version>
     <packaging>pom</packaging>
     
     <properties>
@@ -32,6 +32,6 @@
     </modules>
 
     <scm>
-        <connection>scm:svn:https://bawi.googlecode.com/svn/trunk/my-release-maven-parent</connection>
+        <connection>scm:svn:https://bawi.googlecode.com/svn/tags/my-release-maven-parent-4.2.7</connection>
     </scm>
 </project>
