@@ -20,6 +20,7 @@
                     <version>2.1</version>
                     <configuration>
                         <goals>install</goals>
+						<preparationGoals>clean verify install</preparationGoals>
                     </configuration>
                 </plugin>
             </plugins>
