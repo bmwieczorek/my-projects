@@ -6,6 +6,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>my-source-checks-pom</module>
+        <module>my-source-checks-settings</module>
+    </modules>
+
     <properties>
 
         <!-- Common Source Checks Configuration -->
@@ -127,8 +132,8 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>com.sabre.ticketing</groupId>
-                                            <artifactId>common-source-checks</artifactId>
+                                            <groupId>com.bawi</groupId>
+                                            <artifactId>my-source-checks-settings</artifactId>
                                             <version>${common.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
@@ -210,8 +215,8 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>com.sabre.ticketing</groupId>
-                                            <artifactId>common-source-checks</artifactId>
+                                            <groupId>com.bawi</groupId>
+                                            <artifactId>my-source-checks-settings</artifactId>
                                             <version>${common.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
@@ -278,8 +283,8 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>com.sabre.ticketing</groupId>
-                                            <artifactId>common-source-checks</artifactId>
+                                            <groupId>com.bawi</groupId>
+                                            <artifactId>my-source-checks-settings</artifactId>
                                             <version>${common.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
@@ -449,8 +454,8 @@
                     </configuration>
                     <dependencies>
                         <dependency>
-                            <groupId>com.sabre.ticketing</groupId>
-                            <artifactId>common-source-checks</artifactId>
+                            <groupId>com.bawi</groupId>
+                            <artifactId>my-source-checks-settings</artifactId>
                             <version>${common.source.checks.version}</version>
                         </dependency>
                     </dependencies>
@@ -519,8 +524,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    <modules>
-        <module>my-source-checks-pom</module>
-        <module>my-source-checks-settings</module>
-    </modules>
 </project>
