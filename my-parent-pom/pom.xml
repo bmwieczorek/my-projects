@@ -2,9 +2,14 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
     http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bawi</groupId>
+
+    <parent>
+        <groupId>com.bawi</groupId>
+        <artifactId>my-source-checks-pom</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>my-parent-pom</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -17,19 +22,6 @@
         <commons-lang.version>2.5</commons-lang.version>
         <log4j.version>1.2.16</log4j.version>
 
-        <!-- source-checks -->
-        <my-source-checks.version>0.0.1-SNAPSHOT</my-source-checks.version>
-        <my-source-checks.location>${project.build.directory}/my-source-checks</my-source-checks.location>
-
-        <eclipse.checkstyle.location>${my-source-checks.location}/common-eclipse-checkstyle.xml</eclipse.checkstyle.location>
-        <eclipse.pmd.location>${my-source-checks.location}/common-eclipse-pmd.xml</eclipse.pmd.location>
-        <eclipse.findbugs.prefs.location>${my-source-checks.location}/common-eclipse-findbugs.prefs</eclipse.findbugs.prefs.location>
-        <eclipse.prefs.location>${my-source-checks.location}/common-org.eclipse.jdt.core.prefs</eclipse.prefs.location>
-        <checkstyle.checker.location>${my-source-checks.location}/common-checkstyle.xml</checkstyle.checker.location>
-        <checkstyle.suppressions.location>${my-source-checks.location}/common-checkstyle-suppressions.xml</checkstyle.suppressions.location>
-        <pmd.ruleset.location>${my-source-checks.location}/common-pmd-ruleset.xml</pmd.ruleset.location>
-        <findbugs.exclude.filter.location>${my-source-checks.location}/common-findbugs-exclude-filter.xml</findbugs.exclude.filter.location>
-
         <!-- other -->
         <tomcat.version>6.0.26</tomcat.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,18 +32,10 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-eclipse-plugin</artifactId>
-                    <version>2.8</version>
-                    <configuration>
-                        <additionalProjectnatures>
-                            <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
-                        </additionalProjectnatures>
-                        <buildcommands>
-                            <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
-                        </buildcommands>
-                        <downloadSources>true</downloadSources>
-                    </configuration>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.3.7</version>
+                    <extensions>true</extensions>
                 </plugin>
                 <plugin>
                     <groupId>org.mortbay.jetty</groupId>
@@ -64,18 +48,9 @@
                     <version>1.0.1-sr-1</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.6</version>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>tomcat-maven-plugin</artifactId>
                     <version>1.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.4</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.cxf</groupId>
@@ -93,15 +68,6 @@
                     <version>1.1.1</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.1-beta-1</version>
                 </plugin>
@@ -117,10 +83,6 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.5</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.2</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -153,212 +115,6 @@
                                 <goals>
                                     <goal>run</goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>source-checks</id>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-eclipse-plugin</artifactId>
-                            <configuration>
-                                <additionalBuildcommands>
-                                    <buildcommand>net.sf.eclipsecs.core.CheckstyleBuilder</buildcommand>
-                                    <buildcommand>net.sourceforge.pmd.eclipse.plugin.pmdBuilder</buildcommand>
-                                    <buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
-                                    <buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
-                                </additionalBuildcommands>
-                                <additionalProjectnatures>
-                                    <projectnature>net.sf.eclipsecs.core.CheckstyleNature</projectnature>
-                                    <projectnature>net.sourceforge.pmd.eclipse.plugin.pmdNature</projectnature>
-                                    <projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
-                                    <projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
-                                </additionalProjectnatures>
-                                <downloadSources>true</downloadSources>
-                                <additionalConfig>
-                                    <file>
-                                        <name>.checkstyle</name>
-                                        <location>${eclipse.checkstyle.location}</location>
-                                    </file>
-                                    <file>
-                                        <name>.pmd</name>
-                                        <location>${eclipse.pmd.location}</location>
-                                    </file>
-                                    <file>
-                                        <name>.fbprefs</name>
-                                        <location>${eclipse.findbugs.prefs.location}</location>
-                                    </file>
-                                    <file>
-                                        <name>.settings/org.eclipse.jdt.core.prefs</name>
-                                        <location>${eclipse.prefs.location}</location>
-                                    </file>
-                                </additionalConfig>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <version>2.6</version>
-                            <configuration>
-                                <linkXRef>false</linkXRef>
-                                <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                                <consoleOutput>true</consoleOutput>
-                                <configLocation>${checkstyle.checker.location}</configLocation>
-                                <suppressionsLocation>${checkstyle.suppressions.location}</suppressionsLocation>
-                                <propertyExpansion>suppressions.file=${basedir}/target/checkstyle-suppressions.xml</propertyExpansion>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <artifactId>maven-pmd-plugin</artifactId>
-                            <version>2.5</version>
-                            <configuration>
-                                <!-- Note: pmd defines exclusions is the same pmd-ruleset.xml file -->
-                                <rulesets>
-                                    <ruleset>${pmd.ruleset.location}</ruleset>
-                                </rulesets>
-                                <targetJdk>1.6</targetJdk>
-                                <linkXRef>false</linkXRef>
-                                <includeTests>true</includeTests>
-                                <failOnViolation>false</failOnViolation>
-                                <verbose>true</verbose>
-
-                                <!-- exclude generated code -->
-                                <excludeRoots>
-                                    <excludeRoot>${basedir}/src/main/generated-sources</excludeRoot>
-                                    <excludeRoot>${project.build.directory}/src/main/java</excludeRoot>
-                                </excludeRoots>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>findbugs-maven-plugin</artifactId>
-                            <version>2.3.2</version>
-                            <configuration>
-                                <includeTests>true</includeTests>
-                                <effort>Max</effort>
-                                <threshold>Default</threshold>
-                                <xmlOutput>true</xmlOutput>
-                                <failOnError>false</failOnError>
-                                <excludeFilterFile>${findbugs.exclude.filter.location}</excludeFilterFile>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack source checks to target directory</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>com.bawi</groupId>
-                                            <artifactId>my-source-checks</artifactId>
-                                            <version>${my-source-checks.version}</version>
-                                            <outputDirectory>${my-source-checks.location}</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
-                        <artifactId>maven-checkstyle-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>validate</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>checkstyle</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-pmd-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>validate</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                    <goal>cpd</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>findbugs-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>validate</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>copy checkstyle checker and suppressions generated by mvn checkstyle:checkstyle to basedir</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <copy file="${project.build.directory}/checkstyle-checker.xml" tofile="${basedir}/.checkstyle-checker.xml"
-                                            filtering="true" failonerror="false">
-                                            <filterset begintoken="${" endtoken="}">
-                                                <filter token="suppressions.file" value="${basedir}/.checkstyle-suppressions.xml" />
-                                            </filterset>
-                                        </copy>
-                                        <copy file="${project.build.directory}/checkstyle-suppressions.xml" tofile="${basedir}/.checkstyle-suppressions.xml"
-                                            failonerror="false" />
-                                    </target>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy pmd ruleset to basedir</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <copy file="${pmd.ruleset.location}" tofile="${basedir}/.pmd-ruleset.xml"
-                                            failonerror="false" />
-                                    </target>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy findbugs exclude filter to basedir</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <copy file="${findbugs.exclude.filter.location}" tofile="${basedir}/.findbugs-exclude-filter.xml"
-                                            failonerror="false" />
-                                    </target>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -511,7 +267,7 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
@@ -680,6 +436,30 @@
                 <groupId>xerces</groupId>
                 <artifactId>xercesImpl</artifactId>
                 <version>2.9.1</version>
+            </dependency>
+
+
+            <!-- testing dependencies -->
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>1.9.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-all</artifactId>
+                <version>1.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.easytesting</groupId>
+                <artifactId>fest-assert</artifactId>
+                <version>1.2</version>
+                <scope>test</scope>
             </dependency>
 
         </dependencies>
