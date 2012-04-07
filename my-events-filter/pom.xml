@@ -4,14 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.sabre.ticketing</groupId>
-        <artifactId>ws-commons</artifactId>
-        <version>2.0.1-SNAPSHOT</version>
+        <groupId>com.bawi</groupId>
+        <artifactId>my-parent-pom</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ws-common-events-filter</artifactId>
+    <artifactId>my-events-filter</artifactId>
     <packaging>bundle</packaging>
-    <name>TKT :: WebServices :: Common :: Events :: Filter</name>
+    <name>My :: Events :: Filter</name>
 
     <build>
         <plugins>
@@ -25,7 +25,7 @@
                         <Private-Package>
                         </Private-Package>
                         <Import-Package>
-                            org.slf4j 
+                            org.slf4j
                         </Import-Package>
                     </instructions>
                 </configuration>
@@ -34,13 +34,6 @@
     </build>
 
     <dependencies>
-
-
-        <dependency>
-            <groupId>com.sabre.ticketing</groupId>
-            <artifactId>common-metrics-api</artifactId>
-            <type>bundle</type>
-        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
