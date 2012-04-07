@@ -1,6 +1,8 @@
 #FindBugs User Preferences
 #Thu Feb 10 09:59:21 CET 2011
+cloud_id=edu.umd.cs.findbugs.cloud.doNothingCloud
 detectorAppendingToAnObjectOutputStream=AppendingToAnObjectOutputStream|true
+detectorAtomicityProblem=AtomicityProblem|true
 detectorBCPMethodReturnCheck=BCPMethodReturnCheck|false
 detectorBadAppletConstructor=BadAppletConstructor|false
 detectorBadResultSetAccess=BadResultSetAccess|true
@@ -21,6 +23,7 @@ detectorComparatorIdiom=ComparatorIdiom|true
 detectorConfusedInheritance=ConfusedInheritance|true
 detectorConfusionBetweenInheritedAndOuterMethod=ConfusionBetweenInheritedAndOuterMethod|true
 detectorCrossSiteScripting=CrossSiteScripting|true
+detectorDefaultEncodingDetector=DefaultEncodingDetector|true
 detectorDoInsideDoPrivileged=DoInsideDoPrivileged|true
 detectorDontCatchIllegalMonitorStateException=DontCatchIllegalMonitorStateException|true
 detectorDontIgnoreResultOfPutIfAbsent=DontIgnoreResultOfPutIfAbsent|true
@@ -32,6 +35,7 @@ detectorDuplicateBranches=DuplicateBranches|true
 detectorEmptyZipFileEntry=EmptyZipFileEntry|true
 detectorEqStringTest=EqStringTest|true
 detectorEqualsOperandShouldHaveClassCompatibleWithThis=EqualsOperandShouldHaveClassCompatibleWithThis|true
+detectorExplicitSerialization=ExplicitSerialization|true
 detectorFieldItemSummary=FieldItemSummary|true
 detectorFinalizerNullsFields=FinalizerNullsFields|true
 detectorFindBadCast=FindBadCast|true
@@ -62,7 +66,10 @@ detectorFindNullDerefsInvolvingNonShortCircuitEvaluation=FindNullDerefsInvolving
 detectorFindOpenStream=FindOpenStream|true
 detectorFindPuzzlers=FindPuzzlers|true
 detectorFindRefComparison=FindRefComparison|true
-detectorFindReturnRef=FindReturnRef|true
+
+# Controversial: temporarily allow returning Date (not the defensive copy of it)
+detectorFindReturnRef=FindReturnRef|false
+
 detectorFindRunInvocations=FindRunInvocations|true
 detectorFindSelfComparison=FindSelfComparison|true
 detectorFindSelfComparison2=FindSelfComparison2|true
@@ -77,6 +84,7 @@ detectorFindUnrelatedTypesInGenericContainer=FindUnrelatedTypesInGenericContaine
 detectorFindUnreleasedLock=FindUnreleasedLock|true
 detectorFindUnsatisfiedObligation=FindUnsatisfiedObligation|true
 detectorFindUnsyncGet=FindUnsyncGet|true
+detectorFindUseOfNonSerializableValue=FindUseOfNonSerializableValue|true
 detectorFindUselessControlFlow=FindUselessControlFlow|true
 detectorFormatStringChecker=FormatStringChecker|true
 detectorHugeSharedStringConstants=HugeSharedStringConstants|true
@@ -91,6 +99,7 @@ detectorInfiniteRecursiveLoop2=InfiniteRecursiveLoop2|false
 detectorInheritanceUnsafeGetResource=InheritanceUnsafeGetResource|true
 detectorInitializationChain=InitializationChain|true
 detectorInstantiateStaticClass=InstantiateStaticClass|true
+detectorIntCast2LongAsInstant=IntCast2LongAsInstant|true
 detectorInvalidJUnitTest=InvalidJUnitTest|true
 detectorIteratorIdioms=IteratorIdioms|true
 detectorLazyInit=LazyInit|true
@@ -146,7 +155,11 @@ detectorTrainUnconditionalDerefParams=TrainUnconditionalDerefParams|true
 detectorURLProblems=URLProblems|true
 detectorUncallableMethodOfAnonymousClass=UncallableMethodOfAnonymousClass|true
 detectorUnnecessaryMath=UnnecessaryMath|true
-detectorUnreadFields=UnreadFields|true
+
+# bug in findbug: disable this check (it highlights actually used and read fields) 
+#detectorUnreadFields=UnreadFields|true
+detectorUnreadFields=UnreadFields|false
+
 detectorUseObjectEquals=UseObjectEquals|true
 detectorUselessSubclassMethod=UselessSubclassMethod|true
 detectorVarArgsProblems=VarArgsProblems|true
@@ -157,6 +170,6 @@ detectorXMLFactoryBypass=XMLFactoryBypass|true
 detector_threshold=2
 effort=max
 excludefilter0=.findbugs-exclude-filter.xml
-filter_settings=Medium|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,NOISE,PERFORMANCE,SECURITY,STYLE|false
+filter_settings=Medium|BAD_PRACTICE,CORRECTNESS,EXPERIMENTAL,I18N,MALICIOUS_CODE,MT_CORRECTNESS,NOISE,PERFORMANCE,SECURITY,STYLE|false|20
 filter_settings_neg=|
 run_at_full_build=true

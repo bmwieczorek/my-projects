@@ -2,11 +2,11 @@
 
     <!-- Common findbugs exclude filter configuration -->
     
-    <!-- Just an example -->
+    <!-- Note that EI_EXPOSE_REP check is disabled for findbugs eclipse configuration -->
     <!-- 
     <Match>
         <Class name="com.bawi.MyClass" />
-        <Bug pattern="SE_BAD_FIELD,MS_CANNOT_BE_FINAL" />
+        <Bug pattern="EI_EXPOSE_REP" />
     </Match>
      -->
 

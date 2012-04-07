@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"?>	
 <!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN" "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
@@ -9,6 +9,14 @@
     -->
     <!-- Suppress files in src/test/java -->
     <suppress checks="MagicNumberCheck" files=".*[/\\]src[/\\]test[/\\]java[/\\].*" />
+    <suppress checks="LineLength" files=".*[/\\]src[/\\]test[/\\]java[/\\].*" />
+    
+    <!-- Suppress for JUnit @Rule that has to public  -->
+    <suppress checks="VisibilityModifier" files=".*[/\\]src[/\\]test[/\\]java[/\\].*" /> 
+	
+	<!-- Suppress properties files checks -->
+	<suppress checks="Translation" files=".*\.properties" />
+	<suppress checks="LineLength" files=".*\.properties" />
     
     <!-- 
     <suppress checks=".*" files=".*[/\\]src[/\\]generated-sources[/\\].*" />

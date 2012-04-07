@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+    <template autoinsert="true" context="java" deleted="false" description="new ArrayList" 
+        enabled="true" name="newlist">${listType:newType(java.util.List)}&lt;${type}&gt;
+        ${name} = new ${arrayListType:newType(java.util.ArrayList, java.util.LinkedList)}&lt;${type}&gt;();</template>
+    <template autoinsert="true" context="java" deleted="false" description="new HashMap" 
+        enabled="true" name="newmap">${mapType:newType(java.util.Map)}&lt;${type1},
+        ${type2}&gt; ${name} = new ${hashMapType:newType(java.util.HashMap)}&lt;${type1}, ${type2}&gt;();</template>
+    <template autoinsert="true" context="java" deleted="false" description="new HashSet" 
+        enabled="true" name="newset">${setType:newType(java.util.Set)}&lt;${type}&gt;
+        ${name} = new ${hashSetType:newType(java.util.HashSet)}&lt;${type}&gt;();</template>
+    <template autoinsert="true" context="java" deleted="false" description="private final field" 
+        enabled="true" name="pf">private final ${type} ${name}</template>
+    <template autoinsert="true" context="java" deleted="false" description="private static final field"
+        enabled="true" name="psf">private static final ${type} ${name}</template>
+    <template autoinsert="false" context="java-members" deleted="false" description="Given When Then JUnit 4 Test Method"
+        enabled="true" id="org.eclipse.jdt.ui.templates.test" name="test">@${testType:newType(org.junit.Test)}
+        public void ${should}() { ${staticImport:importStatic('org.junit.Assert.*')}
+        // given
+        ${cursor}
+
+        // when
+
+        // then
+
+        }</template>
+</templates>
