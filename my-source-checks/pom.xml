@@ -521,6 +521,10 @@
                         <target>1.6</target>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven.antrun.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
