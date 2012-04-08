@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
+
 public class DefaultEventsStorage implements EventsStorage {
 
     private final List<Event> events;

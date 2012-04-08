@@ -1,5 +1,6 @@
 package com.sabre.ticketing.common.eventsfilter;
 
+
 public class EventsFilter {
 
     private ThresholdReachedHandler thresholdReachedHandler; // NOPMD

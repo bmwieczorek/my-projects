@@ -1,6 +1,7 @@
 package com.sabre.ticketing.common.eventsfilter;
 
 
+
 public class EventsCountThresholdEvaluationHandler implements ThresholdEvaluationHandler {
 
     private static final int DEFAULT_EVNETS_COUNT_THRESHOLD = 3;

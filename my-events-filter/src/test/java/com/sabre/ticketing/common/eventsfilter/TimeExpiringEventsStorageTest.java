@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.sabre.ticketing.common.eventsfilter.impl.TimeExpiringEventsStorage;
+
 public class TimeExpiringEventsStorageTest {
 
     private final Time time = new Time();

@@ -1,4 +1,8 @@
-package com.sabre.ticketing.common.eventsfilter;
+package com.sabre.ticketing.common.eventsfilter.impl;
+
+import com.sabre.ticketing.common.eventsfilter.Event;
+import com.sabre.ticketing.common.eventsfilter.EventsFactory;
+import com.sabre.ticketing.common.eventsfilter.Time;
 
 
 public class DefaultEventsFactory implements EventsFactory {
