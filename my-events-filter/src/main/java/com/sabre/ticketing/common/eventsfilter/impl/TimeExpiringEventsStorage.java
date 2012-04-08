@@ -7,12 +7,9 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sabre.ticketing.common.eventsfilter.DefaultEventsStorage;
 import com.sabre.ticketing.common.eventsfilter.Event;
 import com.sabre.ticketing.common.eventsfilter.EventsStorage;
 import com.sabre.ticketing.common.eventsfilter.Time;
-
-
 
 public class TimeExpiringEventsStorage implements EventsStorage {
 

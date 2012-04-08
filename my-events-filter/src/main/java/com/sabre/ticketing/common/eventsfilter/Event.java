@@ -1,6 +1,5 @@
 package com.sabre.ticketing.common.eventsfilter;
 
-
 public class Event {
 
     private final long id;

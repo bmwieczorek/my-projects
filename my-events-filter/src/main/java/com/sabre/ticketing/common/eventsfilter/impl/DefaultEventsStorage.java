@@ -1,9 +1,10 @@
-package com.sabre.ticketing.common.eventsfilter;
+package com.sabre.ticketing.common.eventsfilter.impl;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-
+import com.sabre.ticketing.common.eventsfilter.Event;
+import com.sabre.ticketing.common.eventsfilter.EventsStorage;
 
 public class DefaultEventsStorage implements EventsStorage {
 

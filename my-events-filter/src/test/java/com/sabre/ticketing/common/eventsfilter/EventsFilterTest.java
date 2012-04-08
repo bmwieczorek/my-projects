@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import org.junit.Test;
 
 import com.sabre.ticketing.common.eventsfilter.impl.DefaultEventsFactory;
+import com.sabre.ticketing.common.eventsfilter.impl.DefaultEventsStorage;
 import com.sabre.ticketing.common.eventsfilter.impl.TimeExpiringEventsStorage;
 
 public class EventsFilterTest {
