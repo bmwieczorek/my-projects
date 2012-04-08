@@ -16,6 +16,7 @@
         <!-- Common Source Checks Configuration -->
 
         <!-- plugins used in plugin management and reporting -->
+        <my.source.checks.version>${project.version}</my.source.checks.version>
         <findbugs.maven.plugin.version>2.4.0</findbugs.maven.plugin.version>
         <maven.pmd.plugin.version>2.7.1</maven.pmd.plugin.version>
         <maven.checkstyle.plugin.version>2.9.1</maven.checkstyle.plugin.version>
@@ -134,7 +135,7 @@
                                         <artifactItem>
                                             <groupId>com.bawi</groupId>
                                             <artifactId>my-source-checks-settings</artifactId>
-                                            <version>${common.source.checks.version}</version>
+                                            <version>${my.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
@@ -217,7 +218,7 @@
                                         <artifactItem>
                                             <groupId>com.bawi</groupId>
                                             <artifactId>my-source-checks-settings</artifactId>
-                                            <version>${common.source.checks.version}</version>
+                                            <version>${my.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
@@ -285,7 +286,7 @@
                                         <artifactItem>
                                             <groupId>com.bawi</groupId>
                                             <artifactId>my-source-checks-settings</artifactId>
-                                            <version>${common.source.checks.version}</version>
+                                            <version>${my.source.checks.version}</version>
                                             <outputDirectory>${common.source.checks.location}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
@@ -456,7 +457,7 @@
                         <dependency>
                             <groupId>com.bawi</groupId>
                             <artifactId>my-source-checks-settings</artifactId>
-                            <version>${common.source.checks.version}</version>
+                            <version>${my.source.checks.version}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
