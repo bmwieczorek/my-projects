@@ -1,10 +1,10 @@
-package com.sabre.ticketing.common.eventsfilter;
+package com.bawi.eventsfilter;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.sabre.ticketing.common.eventsfilter.impl.TimeExpiringEventsStorage;
+import com.bawi.eventsfilter.impl.TimeExpiringEventsStorage;
 
 public class TimeExpiringEventsStorageTest {
 

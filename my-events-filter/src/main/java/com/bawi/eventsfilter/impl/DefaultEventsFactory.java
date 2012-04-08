@@ -1,8 +1,8 @@
-package com.sabre.ticketing.common.eventsfilter.impl;
+package com.bawi.eventsfilter.impl;
 
-import com.sabre.ticketing.common.eventsfilter.Event;
-import com.sabre.ticketing.common.eventsfilter.EventsFactory;
-import com.sabre.ticketing.common.eventsfilter.Time;
+import com.bawi.eventsfilter.Event;
+import com.bawi.eventsfilter.EventsFactory;
+import com.bawi.eventsfilter.Time;
 
 public class DefaultEventsFactory implements EventsFactory {
 

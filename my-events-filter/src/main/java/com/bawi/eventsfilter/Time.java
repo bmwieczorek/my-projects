@@ -1,4 +1,4 @@
-package com.sabre.ticketing.common.eventsfilter;
+package com.bawi.eventsfilter;
 
 import java.util.Date;
 
