@@ -14,3 +14,20 @@ sp_cleanup.add_missing_deprecated_annotations=true
 sp_cleanup.add_missing_override_annotations=true
 sp_cleanup.add_missing_override_annotations_interface_methods=true
 
+#coloring
+semanticHighlighting.localVariableDeclaration.color=77,77,77
+semanticHighlighting.autoboxing.color=139,105,20
+semanticHighlighting.localVariable.color=127,127,127
+semanticHighlighting.parameterVariable.color=165,42,42
+semanticHighlighting.inheritedMethodInvocation.color=160,32,240
+semanticHighlighting.interface.color=255,165,0
+semanticHighlighting.abstractMethodInvocation.color=255,0,0
+
+semanticHighlighting.localVariable.enabled=true
+semanticHighlighting.autoboxing.enabled=true
+semanticHighlighting.localVariableDeclaration.enabled=true
+semanticHighlighting.parameterVariable.enabled=true
+semanticHighlighting.inheritedMethodInvocation.enabled=true
+semanticHighlighting.interface.enabled=true
+semanticHighlighting.abstractMethodInvocation.enabled=true
+
