@@ -16,6 +16,7 @@
     <description>Write a few paragraphs to say what your project is about.</description>
 
     <dependencies>
+    
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -31,11 +32,10 @@
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
-
         <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.saxon</artifactId>
-            <version>9.1.0.8_1</version>
+            <groupId>net.sourceforge.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>9.1.0.8</version>
         </dependency>
 
         <!-- testing -->
