@@ -17,9 +17,9 @@ public class XsltConverterTest {
 
     @Test
     public void shouldConvert() throws Exception {
-        // executeTest(1);
-        // executeTest(2);
-        // executeTest(3);
+        executeTest(1);
+        executeTest(2);
+        executeTest(3);
         executeTest(4);
     }
 

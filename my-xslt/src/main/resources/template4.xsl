@@ -23,6 +23,10 @@
                 <xsl:with-param name="countryParam" select="'Germany'" /> 
                 <xsl:with-param name="elementNameParam" select="'GermanCars'" />
             </xsl:call-template>
+             <xsl:call-template name="getCarsByCountry">
+                <xsl:with-param name="countryParam" select="'Japan'" /> 
+                <xsl:with-param name="elementNameParam" select="'JapanCars'" />
+            </xsl:call-template>
         </Summary>
     </xsl:template>
 
