@@ -1,6 +1,9 @@
 package com.bawi.xslt;
 
 import java.io.File;
+import java.io.IOException;
+
+import javax.xml.transform.TransformerConfigurationException;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -14,18 +17,16 @@ public class XsltConverterTest {
 
     @Test
     public void shouldConvert() throws Exception {
-        Resource resource = new ClassPathResource("template1.xsl");
-        XsltConverter converter = new XsltConverter(resource);
-        File file = new ClassPathResource("test1.xml").getFile();
-        String result = converter.convert(file);
-        LOGGER.info("Converted xml:\n{}", result);
+        // executeTest(1);
+        // executeTest(2);
+        // executeTest(3);
+        executeTest(4);
     }
 
-    @Test
-    public void shouldConvert2() throws Exception {
-        Resource resource = new ClassPathResource("template2.xsl");
+    private void executeTest(int testId) throws TransformerConfigurationException, IOException {
+        Resource resource = new ClassPathResource("template" + testId + ".xsl");
         XsltConverter converter = new XsltConverter(resource);
-        File file = new ClassPathResource("test2.xml").getFile();
+        File file = new ClassPathResource("test" + testId + ".xml").getFile();
         String result = converter.convert(file);
         LOGGER.info("Converted xml:\n{}", result);
     }
