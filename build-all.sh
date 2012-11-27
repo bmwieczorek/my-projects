@@ -5,8 +5,7 @@ for t in `ls -d my-*`;
 do 
     cd $t; 
     echo "Building $t ..."
-    #"$M2_HOME"/bin/mvn clean install eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -DskipTests;
-    "$M2_HOME"/bin/mvn clean;
+    "$M2_HOME"/bin/mvn clean install eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -DskipTests;    
     if [ $? -gt 0 ]; 
     then 
         exit 1; 
