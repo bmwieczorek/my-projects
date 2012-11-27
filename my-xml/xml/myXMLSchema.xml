@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:NewOperationRequest myAtt="" xmlns:p="http://www.bawi.com/myService/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.bawi.com/myService/ myXMLSchema.xsd ">
+    <stringIn>stringIn</stringIn>
+    <booleanIn>true</booleanIn>
+    <intIn>0</intIn>
+    <patternIn>A</patternIn>
+    <myEnum>AA</myEnum>
+    <myList>1 2 455 323</myList>
+    <!--
+    <fff></fff>
+    -->
+    <p:myComplex defaultParam="true" optionalParam="true" requiredParam="true" />
+    <unboundedString>unboundedString</unboundedString>
+</p:NewOperationRequest>
