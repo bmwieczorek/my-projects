@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring
+        http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="myRouteBuilder" />
+    </camelContext>
+
+    <bean id="myRouteBuilder" class="com.bawi.camel.MyRouteBuilder">
+        <property name="processor" ref="myLoggingProcessor" />
+    </bean>   
+    
+    <bean id="myLoggingProcessor" class="com.bawi.camel.processor.MyLoggingProcessor" />
+    
+    <bean id="myCamelEventNotifier" class="com.bawi.camel.event.MyCamelEventNotifier"/>
+
+</beans>
