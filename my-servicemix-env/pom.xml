@@ -10,9 +10,7 @@
         <relativePath>../my-parent-pom/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.bawi</groupId>
     <artifactId>my-servicemix-env</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <name>ServiceMix Environment Bundle</name>
 

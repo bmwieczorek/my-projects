@@ -4,10 +4,8 @@
     <parent>
         <artifactId>my-source-checks-test-parent</artifactId>
         <groupId>com.bawi</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>    
-    <groupId>com.bawi</groupId>
     <artifactId>my-source-checks-test-common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
 
 </project>

@@ -6,6 +6,7 @@
     <!-- async appenders -->
     <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
         <appender-ref ref="FileOut" />
+        <appender-ref ref="STDOUT" />
     </appender>
 
     <appender name="K0AsyncFileOut" class="org.apache.log4j.AsyncAppender">
@@ -50,6 +51,17 @@
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%5p (%d{DATE}) [%t] - %m%n" />
         </layout>
+    </appender>
+    
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{ISO8601}] %-5p %c %m %n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG" />
+            <param name="LevelMax" value="ERROR" />
+        </filter>
     </appender>
 
     <!-- loggers -->

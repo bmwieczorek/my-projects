@@ -9,9 +9,7 @@
         <relativePath>../my-parent-pom/pom.xml</relativePath>
     </parent>
     
-    <groupId>com.bawi</groupId>
     <artifactId>myhibernate</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <name>My Hibernate Project</name>
     <dependencies>
 
