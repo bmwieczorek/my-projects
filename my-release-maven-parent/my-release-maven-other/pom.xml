@@ -5,7 +5,6 @@
     <groupId>com.bawi</groupId>
     <version>4.2.9-SNAPSHOT</version>
   </parent>
-  <groupId>com.bawi</groupId>
   <artifactId>my-release-maven-other</artifactId>
   <version>2.2.15-SNAPSHOT</version>
 </project>

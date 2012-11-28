@@ -5,10 +5,8 @@
     <groupId>com.bawi</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.bawi</groupId>
   <artifactId>my-maven-dependency-management-service</artifactId>
-  <version>1.0-SNAPSHOT</version>
-    <dependencies>
+  <dependencies>
         <dependency>
             <groupId>com.bawi</groupId>
             <artifactId>my-maven-dependency-management-core</artifactId>

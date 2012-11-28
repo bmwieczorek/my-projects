@@ -5,7 +5,9 @@ interface MyIface {
 }
 
 public class AnnonymousClassExample {
+    @SuppressWarnings("unused")
     private static int static_i;
+    @SuppressWarnings("unused")
     private int j;
     MyIface myIface = new MyIface() {
         // cannot use static member variables in any anonymous class

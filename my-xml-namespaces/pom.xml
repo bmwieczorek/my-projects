@@ -1,16 +1,42 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>    
-	<parent>
-		<artifactId>my-parent-pom</artifactId>
-		<groupId>com.bawi</groupId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../my-parent-pom/pom.xml</relativePath>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <artifactId>my-xml-namespaces</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>jaxb2-maven-plugin</artifactId>
+                                        <versionRange>[1.0.0,)</versionRange>
+                                        <goals>
+                                            <goal>xjc</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -28,22 +54,16 @@
                     <outputDirectory>${basedir}/target/generated/src/main/java</outputDirectory>
 
                     <!-- external binding files (xjb) -->
-                    <!--
-                    <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory>
-                    -->
+                    <!-- <bindingDirectory>${basedir}/src/main/resources/jaxb</bindingDirectory> -->
 
-                    <!--
-                        <packageName>com.bawi.services.calculator.model</packageName>
-                    -->
+                    <!-- <packageName>com.bawi.services.calculator.model</packageName> -->
 
                     <schemaFiles>Company.xsd,Company2.xsd</schemaFiles>
                     <clearOutputDir>false</clearOutputDir>
                     <extension>true</extension>
 
                     <!-- override defaults -->
-                    <!--
-                    <packageName>com.bawi.myservice.jaxb</packageName>
-                    -->
+                    <!-- <packageName>com.bawi.myservice.jaxb</packageName> -->
                     <arguments>-Xfluent-api -Xcommons-lang</arguments>
                 </configuration>
                 <!-- required for jaxb2-maven-plugin -->
@@ -56,8 +76,9 @@
                         <version>2.1.8</version>
                     </dependency>
 
-                    <!-- .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang                    -->
-                    <!-- org.jvnet.jaxb2_commons_extra:jaxb-commons-lang-plugin:jar:2.1.3 not available in internet, add manually -->
+                    <!-- .toString(), .hashCode(), .equals() utility methods jaxb-commons-lang-plugin -Xcommons-lang -->
+                    <!-- org.jvnet.jaxb2_commons_extra:jaxb-commons-lang-plugin:jar:2.1.3 not available in internet, add 
+                        manually -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons_extra</groupId>
                         <artifactId>jaxb-commons-lang-plugin</artifactId>
@@ -87,5 +108,5 @@
             <artifactId>xercesImpl</artifactId>
         </dependency>
     </dependencies>
-   
+
 </project>

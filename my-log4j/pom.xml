@@ -10,9 +10,6 @@
     </parent>
      
     <artifactId>my-log4j</artifactId>
-    <groupId>com.bawi</groupId>
-    <version>1.0-SNAPSHOT</version>
-
     <name>My log4j application</name>
     <url>http://bawi.com</url>
     <description>Write a few paragraphs to say what your project is about.</description>

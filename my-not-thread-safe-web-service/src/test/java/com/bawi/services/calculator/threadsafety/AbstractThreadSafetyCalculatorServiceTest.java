@@ -11,6 +11,7 @@ import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.hamcrest.Description;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.matchers.TypeSafeMatcher;
 
@@ -74,6 +75,7 @@ public abstract class AbstractThreadSafetyCalculatorServiceTest {
         assertEquals(0, otherExceptions.size());
     }
 
+    @Ignore
     @Test
     public void shouldNotBeThreadSafe() throws Exception {
         // given

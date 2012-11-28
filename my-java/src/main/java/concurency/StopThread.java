@@ -9,6 +9,7 @@ public class StopThread {
         Thread backgroundThread = new Thread(new Runnable() {
             @Override
             public void run() {
+                @SuppressWarnings("unused")
                 int i = 0;
                 System.out.println("started other thread");
                 while (!stopRequested) {

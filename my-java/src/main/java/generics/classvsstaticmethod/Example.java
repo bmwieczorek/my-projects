@@ -22,7 +22,7 @@ class D<T extends Comparable<T>> {
 // class Z<? extends Number> {} //doesn't compile
 
 class Utils {
-    public static <T> T max(@SuppressWarnings("unused") List<T> list) {
+    public static <T> T max(List<T> list) {
         return null; // impl omitted
     }
 

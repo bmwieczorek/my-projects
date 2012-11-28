@@ -9,6 +9,7 @@ class St {
         i++;
     }
 
+    @SuppressWarnings("unused")
     private int j;
 
     static int i = 10;

@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bawi</groupId>
     <artifactId>my-release-maven-parent</artifactId>
     <version>4.2.9-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+
     <properties>
         <my-release-maven-parent.version>${project.version}</my-release-maven-parent.version>
         <my-release-maven-other.version>3.0.0-SNAPSHOT</my-release-maven-other.version>
@@ -20,7 +21,15 @@
                     <version>2.1</version>
                     <configuration>
                         <goals>install</goals>
-						<preparationGoals>clean verify install</preparationGoals>
+                        <preparationGoals>clean verify install</preparationGoals>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
             </plugins>

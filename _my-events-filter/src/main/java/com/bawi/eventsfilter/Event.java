@@ -32,7 +32,6 @@ public class Event {
         return result;
     }
 
-    @SuppressWarnings({ "PMD.IfStmtsMustUseBraces" })
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

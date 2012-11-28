@@ -15,7 +15,6 @@ import org.junit.Test;
 public class VisitorImplTest {
 
     private final ClassUtils classUtils = new ClassUtils();
-    private final ClassUtilsTest utilsTest;
 
     @Test
     public void should() {

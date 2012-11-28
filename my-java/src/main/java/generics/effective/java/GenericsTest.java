@@ -10,6 +10,7 @@ public class GenericsTest {
         list.add(new Integer(1));
         list.add(new String("aaa"));
 
+        @SuppressWarnings("unused")
         List<?> list2 = createList();
 
     }

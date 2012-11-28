@@ -19,6 +19,7 @@ public class IteratorExample {
         List<Higher> highers = new ArrayList<Higher>(Arrays.asList(Higher.values()));
         // for (Iterator<Lower> li = lowers.iterator(); li.hasNext();) {
         // Lower lower = li.next();
+        @SuppressWarnings("unused")
         int i = 0;
         for (Iterator<Higher> hi = highers.iterator(); hi.hasNext(); i++) {
             hi.next();

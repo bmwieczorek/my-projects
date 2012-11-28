@@ -11,7 +11,7 @@ class DemoClass {
     DemoClass() {
     }
 
-    public DemoClass(@SuppressWarnings("unused") long l) {
+    public DemoClass(long l) {
     }
 
     void myMethod() {

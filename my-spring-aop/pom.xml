@@ -8,7 +8,6 @@
     <relativePath>../my-parent-pom</relativePath>
   </parent>
   
-  <groupId>com.bawi</groupId>
   <artifactId>my-spring-aop</artifactId>
   
   <dependencies>

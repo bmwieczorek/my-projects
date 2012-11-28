@@ -5,7 +5,6 @@
     <groupId>com.bawi</groupId>
     <version>4.2.9-SNAPSHOT</version>
   </parent>
-  <groupId>com.bawi</groupId>
   <artifactId>my-release-maven-service</artifactId>
   <dependencies>
     <dependency>

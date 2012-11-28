@@ -96,11 +96,11 @@ public class ClassUtils {
         if (!iface.isInterface()) {
             throw new IllegalArgumentException(iface + " is not an interface");
         }
-        if (Arrays.isEmpty(clazz.getInterfaces())) {
+        if (isEmpty(clazz.getInterfaces())) {
             return null;
         }
         Method[] ifaceMethods = iface.getDeclaredMethods();
-        if (VisitorImpl.isEmpty(ifaceMethods) || ifaceMethods.length != 1) {
+        if (isEmpty(ifaceMethods) || ifaceMethods.length != 1) {
             return null;
         }
         Method ifaceMethod = ifaceMethods[0];
@@ -112,6 +112,10 @@ public class ClassUtils {
             VisitorImpl.LOGGER.error(e.getMessage());
         }
         return null;
+    }
+
+    private boolean isEmpty(Object[] interfaces) {
+        return interfaces == null || interfaces.length == 0;
     }
 
     Class<?> getClassForParametrizedType(ParameterizedType p) {

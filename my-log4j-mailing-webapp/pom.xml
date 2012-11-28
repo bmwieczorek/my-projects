@@ -25,8 +25,8 @@
                     <container>
                         <containerId>tomcat6x</containerId>
 
-                        <!-- 'installed' = present on local file system, default (as opposed to 'embedded' = supported 
-                            only by jetty ) -->
+                        <!-- 'installed' = present on local file system, default (as opposed to 'embedded' = supported only 
+                            by jetty ) -->
                         <!-- <type>installed</type> <home>${tomcat.home}</home> -->
 
                         <zipUrlInstaller>
@@ -35,8 +35,8 @@
                             <url>file:${basedir}/../apache-tomcat-${tomcat.version}.zip</url>
                             <installDir>${project.build.directory}</installDir>
 
-                            <!-- <proxy> <host>www-ad-proxy.bawi.com</host> <port>80</port> <user>my-login</user> 
-                                <password>my-pass</password> </proxy> -->
+                            <!-- <proxy> <host>www-ad-proxy.bawi.com</host> <port>80</port> <user>my-login</user> <password>my-pass</password> 
+                                </proxy> -->
                         </zipUrlInstaller>
 
 
@@ -54,12 +54,11 @@
                     </container>
                     <configuration>
 
-                        <!-- 'standalone' = recreated for every build (unlike 'existing' = shared across builds) 
-                            <type>existing</type> -->
+                        <!-- 'standalone' = recreated for every build (unlike 'existing' = shared across builds) <type>existing</type> -->
                         <type>standalone</type>
 
-                        <!-- for 'standalone' configuration specify target dir where to deploy webapp (different 
-                            from tomcat home location), for 'existing' configuration use tomcat home location as used in container -->
+                        <!-- for 'standalone' configuration specify target dir where to deploy webapp (different from tomcat 
+                            home location), for 'existing' configuration use tomcat home location as used in container -->
                         <home>${project.build.directory}/tomcat6x</home>
                         <!-- <home>${tomcat.home}</home> -->
 
@@ -103,12 +102,10 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
-            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

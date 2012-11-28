@@ -24,32 +24,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/status.an")
 public class MyGetController {
 
-	private static final String CONTENT_TYPE = "text/plain; charset=UTF-8";
+    private static final String CONTENT_TYPE = "text/plain; charset=UTF-8";
 
-	@RequestMapping(method = RequestMethod.GET)
-	public void handleRequest(@RequestParam("version") int version,
-			@SuppressWarnings("unused") HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+    @RequestMapping(method = RequestMethod.GET)
+    public void handleRequest(@RequestParam("version") int version, HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
 
-		String output = "Version=" + version;
-		sendPost();
+        String output = "Version=" + version;
+        sendPost();
 
-		response.setContentType(CONTENT_TYPE);
+        response.setContentType(CONTENT_TYPE);
 
-		response.getOutputStream().write(output.getBytes());
-	}
+        response.getOutputStream().write(output.getBytes());
+    }
 
-	private void sendPost() throws IOException {
-		HttpClient httpClient = new HttpClient();
-		httpClient.getParams().setConnectionManagerTimeout(5000);
-		PostMethod postMethod = new PostMethod(
-				"http://dev-newyork-1:8080/map-corrections/submission");
-		postMethod.setRequestHeader("rawSubmissionId", "1234");
-		String h = "HelloWorld";
-		RequestEntity requestEntity = new ByteArrayRequestEntity(
-				h.getBytes("UTF-8"));
-		postMethod.setRequestEntity(requestEntity);
-		httpClient.executeMethod(postMethod);
-	}
+    private void sendPost() throws IOException {
+        HttpClient httpClient = new HttpClient();
+        httpClient.getParams().setConnectionManagerTimeout(5000);
+        PostMethod postMethod = new PostMethod("http://dev-newyork-1:8080/map-corrections/submission");
+        postMethod.setRequestHeader("rawSubmissionId", "1234");
+        String h = "HelloWorld";
+        RequestEntity requestEntity = new ByteArrayRequestEntity(h.getBytes("UTF-8"));
+        postMethod.setRequestEntity(requestEntity);
+        httpClient.executeMethod(postMethod);
+    }
 
 }

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class VisitorImpl {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(VisitorImpl.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(VisitorImpl.class);
     public final ClassUtils classUtils;
 
     public VisitorImpl(ClassUtils classUtils) {
