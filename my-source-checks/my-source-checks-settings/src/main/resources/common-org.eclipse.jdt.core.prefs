@@ -1,8 +1,8 @@
 #Common list of eclipse checks
 
-org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
-org.eclipse.jdt.core.compiler.compliance=1.6
-org.eclipse.jdt.core.compiler.source=1.6
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.7
+org.eclipse.jdt.core.compiler.compliance=1.7
+org.eclipse.jdt.core.compiler.source=1.7
 
 #Used for PMD
 org.eclipse.jdt.core.compiler.problem.unhandledWarningToken=ignore
@@ -23,7 +23,10 @@ org.eclipse.jdt.core.compiler.problem.hiddenCatchBlock=error
 org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation=error
 org.eclipse.jdt.core.compiler.problem.potentialNullReference=error
 org.eclipse.jdt.core.compiler.problem.redundantNullCheck=error
-org.eclipse.jdt.core.compiler.problem.undocumentedEmptyBlock=error
+
+##temp ignored for simple examples
+org.eclipse.jdt.core.compiler.problem.undocumentedEmptyBlock=ignore
+
 org.eclipse.jdt.core.compiler.problem.unnecessaryTypeCheck=error
 org.eclipse.jdt.core.compiler.problem.finallyBlockNotCompletingNormally=error
 org.eclipse.jdt.core.compiler.problem.noEffectAssignment=error

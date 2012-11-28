@@ -32,7 +32,7 @@ abstract class ACl implements ThreeOfOneAndTwo {
     }
 }
 
-class Cl extends ACl implements One {
+class Cl extends ACl {
     @Override
     protected void myTemplateMethod() {
         // TODO Auto-generated method stub
