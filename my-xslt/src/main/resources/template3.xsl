@@ -3,9 +3,21 @@
 
     <xsl:output method="xml" encoding="UTF-8" indent="yes" />
 
+    <xsl:template match="*[@price and @price>10]">
+        <BigPrice>
+            <xsl:value-of select="@price" />
+        </BigPrice>
+    </xsl:template>
+    
     <xsl:template match="Car">
         <item>
             <xsl:value-of select="concat('Car ',@name,' manufactured in ',@country,' costs ',@price)" />
+        </item>
+    </xsl:template>
+
+    <xsl:template match="Bike">
+        <item>
+            <xsl:value-of select="concat(local-name(),name())" />
         </item>
     </xsl:template>
 
