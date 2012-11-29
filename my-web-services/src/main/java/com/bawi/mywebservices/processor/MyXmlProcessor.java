@@ -45,7 +45,7 @@ public class MyXmlProcessor {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T fromXml(String xml, @SuppressWarnings("unused") Class<T> clazz) throws JAXBException {
+    public <T> T fromXml(String xml, Class<T> clazz) throws JAXBException {
         return (T) fromXml(xml);
     }
 

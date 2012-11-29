@@ -4,17 +4,25 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
-    <bean id="myService" class="com.bawi.springaop.service.MyServiceImpl" />
+    <bean id="myServiceImpl" class="com.bawi.springaop.service.MyServiceImpl" />
     
     <bean id="myInterceptor" class="com.bawi.springaop.interceptor.MyInterceptor" />
+    
+    
+
 
     <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-        <property name="beanNames" value="myService" />
+        <property name="beanNames">
+            <list>
+                <value>com.bawi.springaop.service</value>
+            </list>
+        </property>
         <property name="interceptorNames">
             <list>
                 <value>myInterceptor</value>
             </list>
         </property>
+         <property name="proxyTargetClass" value="false"/>
     </bean>
 
 </beans>
