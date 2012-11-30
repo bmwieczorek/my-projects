@@ -10,6 +10,7 @@
     <artifactId>my-test-commons</artifactId>
 
     <dependencies>
+    
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -26,7 +27,7 @@
             <artifactId>commons-httpclient</artifactId>
         </dependency>
 
-        <!-- Testing -->
+        <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

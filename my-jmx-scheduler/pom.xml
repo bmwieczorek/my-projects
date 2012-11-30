@@ -1,18 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>    
-	<parent>
-		<artifactId>my-parent-pom</artifactId>
-		<groupId>com.bawi</groupId>
-		<version>1.0-SNAPSHOT</version>
-		<relativePath>../my-parent-pom/pom.xml</relativePath>
-	</parent>    
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
     <artifactId>my-jmx-scheduler</artifactId>
     <packaging>war</packaging>
 
     <build>
         <plugins>
-            <!-- mvn cargo:start  -->
+            <!-- mvn cargo:start -->
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -30,7 +30,7 @@
                 </configuration>
             </plugin>
 
-            <!-- mvn jetty:run  -->
+            <!-- mvn jetty:run -->
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
@@ -78,7 +78,6 @@
         <dependency>
             <groupId>quartz</groupId>
             <artifactId>quartz</artifactId>
-            <version>1.5.2</version>
         </dependency>
     </dependencies>
 

@@ -12,16 +12,16 @@
         <dependency>
             <groupId>com.bawi</groupId>
             <artifactId>my-maven-dependency-management-reference</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.bawi</groupId>
             <artifactId>my-maven-dependency-management-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            </dependency>
+        </dependency>
     </dependencies>
 </project>

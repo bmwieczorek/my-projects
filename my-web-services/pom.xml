@@ -193,17 +193,17 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Testing -->
+        <!-- apache io utils -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        
+        <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- Apache IO Utils -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
         </dependency>
     </dependencies>
 

@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.bawi</groupId>
             <artifactId>my-servicemix-log4j-embedded</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
