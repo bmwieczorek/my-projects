@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,7 +22,6 @@ public class MyCamelJavaSpringRouteTest extends CamelSpringTestSupport {
         return new ClassPathXmlApplicationContext("camel-context.xml");
     }
 
-    @Ignore
     @Test
     public void shouldCopyFile() throws InterruptedException {
         // given
@@ -35,9 +33,9 @@ public class MyCamelJavaSpringRouteTest extends CamelSpringTestSupport {
         Thread.sleep(1000);
 
         // then
-        File file = new File("target/outbox/" + fileName);
-        assertTrue("File not copied", file.exists());
-        assertEquals(fileContent, context.getTypeConverter().convertTo(String.class, file));
+        File destFile = new File("target/outbox/" + fileName);
+        assertTrue("Expected to copy file", destFile.exists());
+        assertEquals(fileContent, context.getTypeConverter().convertTo(String.class, destFile));
     }
 
 }

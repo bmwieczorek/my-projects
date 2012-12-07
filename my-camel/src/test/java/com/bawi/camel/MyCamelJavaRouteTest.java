@@ -5,7 +5,6 @@ import java.io.File;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class MyCamelJavaRouteTest extends CamelTestSupport {
@@ -28,7 +27,6 @@ public class MyCamelJavaRouteTest extends CamelTestSupport {
         };
     }
 
-    @Ignore
     @Test
     public void shouldCopyFile() throws InterruptedException {
         // given
@@ -40,8 +38,8 @@ public class MyCamelJavaRouteTest extends CamelTestSupport {
         Thread.sleep(1000);
 
         // then
-        File file = new File("target/outbox/" + fileName);
-        assertTrue("File not copied", file.exists());
-        assertEquals(fileContent, context.getTypeConverter().convertTo(String.class, file));
+        File destFile = new File("target/outbox/" + fileName);
+        assertTrue("Expected to copy file", destFile.exists());
+        assertEquals(fileContent, context.getTypeConverter().convertTo(String.class, destFile));
     }
 }
