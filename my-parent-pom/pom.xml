@@ -20,6 +20,7 @@
         <slf4j.version>1.6.1</slf4j.version>
         <commons-lang.version>2.5</commons-lang.version>
         <log4j.version>1.2.16</log4j.version>
+        <camel.version>2.4.0</camel.version>
 
         <!-- other -->
         <tomcat.version>6.0.26</tomcat.version>
@@ -337,6 +338,13 @@
                 <version>3.1</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+
+
             <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
             <dependency>
                 <groupId>com.sun.xml.bind</groupId>
@@ -473,6 +481,13 @@
                 <groupId>org.easytesting</groupId>
                 <artifactId>fest-assert</artifactId>
                 <version>1.2</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-test</artifactId>
+                <version>${camel.version}</version>
                 <scope>test</scope>
             </dependency>
 
