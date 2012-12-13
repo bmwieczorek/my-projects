@@ -8,16 +8,18 @@ import org.junit.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.bawi.camel.processor.MyLoggingProcessor;
+
 public class MyCamelSpringRouteTest extends CamelSpringTestSupport {
 
-    //private ExchangeInspector inspector;
+    private ExchangeInspector inspector;
 
     @Override
     public void setUp() throws Exception {
         super.setUp();
         deleteDirectory("target/inbox");
         deleteDirectory("target/outbox");
-        // inspector = new ExchangeInspector(context);
+        inspector = new ExchangeInspector(context);
     }
 
     @Override
@@ -31,18 +33,19 @@ public class MyCamelSpringRouteTest extends CamelSpringTestSupport {
         String fileContent = "Hello world";
         String fileName = "hello.txt";
         String endpointUri = "file://target/outbox";
-        // inspector.registerSentToEndpointInterceptor(endpointUri);
+        inspector.registerSentToEndpointInterceptor(endpointUri);
 
         // when
         template.sendBodyAndHeader("file://target/inbox", fileContent, Exchange.FILE_NAME, fileName);
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         // then
         File destFile = new File("target/outbox/" + fileName);
         assertTrue("Expected to copy file", destFile.exists());
         assertEquals(fileContent, context.getTypeConverter().convertTo(String.class, destFile));
-        // assertTrue(exchange.getProperty(MyLoggingProcessor.MY_PROCESSED_PROPERTY, boolean.class));
+        Exchange exchange = inspector.getExchange();
+        assertTrue(exchange.getProperty(MyLoggingProcessor.MY_PROCESSED_PROPERTY, boolean.class));
 
     }
 }

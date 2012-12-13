@@ -30,7 +30,7 @@ public class MyCamelJavaSpringRouteTest extends CamelSpringTestSupport {
 
         // when
         template.sendBodyAndHeader("file://target/inbox", fileContent, Exchange.FILE_NAME, fileName);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         // then
         File destFile = new File("target/outbox/" + fileName);
