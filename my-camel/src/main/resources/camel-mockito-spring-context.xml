@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring
+        http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="myRouteMockitoBuilder" />
+    </camelContext>
+
+    <bean id="myRouteMockitoBuilder" class="com.bawi.camel.MyRouteMockitoBuilder" />
+    
+    <bean id="a" class="com.bawi.camel.A" />
+    
+    <!-- camel 2.2.0 can only choose a method to invoke if mock is created from class, not an interface  -->
+    <bean id="b" class="org.mockito.Mockito" factory-method="mock" >
+        <constructor-arg value="com.bawi.camel.BIface" />
+    </bean>
+    <!-- 
+    <bean id="b" class="org.mockito.Mockito" factory-method="mock" >
+        <constructor-arg value="com.bawi.camel.B" />
+    </bean>
+     -->
+     
+
+</beans>
