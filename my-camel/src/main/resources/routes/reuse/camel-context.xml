@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring
+        http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <routeBuilder ref="myRoutes" />
+	</camelContext>
+	
+	<bean id="addOperation" class="com.bawi.camel.routes.reuse.AddOperation" />
+
+	<bean id="unsupportedOperation" class="com.bawi.camel.routes.reuse.UnsupportedOperation" />
+
+	<bean id="myBean" class="com.bawi.camel.routes.reuse.MyBean" />
+	
+	<bean id="myRoutes" class="com.bawi.camel.routes.reuse.MyRoutes" />
+
+</beans>
