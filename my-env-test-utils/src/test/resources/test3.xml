@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Warehouse xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <Cars>
+        <Car name="Toyota" country="Japan" price="10" />
+        <Car name="VW" country="Germany" price="20" />
+        <Car name="Audi" country="Germany" price="30" />
+    </Cars>
+    <Bikes>
+        <Bike name="x" price="1" />
+        <Bike name="y" price="2" />
+        <Bike name="z" price="5" />
+    </Bikes>
+</Warehouse>

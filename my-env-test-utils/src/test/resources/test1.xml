@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <title>My book title</title>
+    <price>12.34</price>
+    <author surname="MySurname" name="MyName" />
+</book>
