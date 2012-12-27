@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Warehouse xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <Cars>
-        <Car>a a</Car>
-        <Car>b b</Car>
-        <Car>c c</Car>
-    </Cars>
-</Warehouse>

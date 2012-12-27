@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Orders version="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <Order id="1" name="first order name" price="10">one one one</Order>
-    <Order id="2" name="second order name" price="20">two two</Order>
-    <Order id="3" name="third order name" price="30">third third</Order>
-    <Order id="3" name="third order name" price="30">third third</Order>
-</Orders>
