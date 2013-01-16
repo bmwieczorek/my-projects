@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgic="http://camel.apache.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+	<bean id="businessObjectCreatorStub"
+		class="com.bawi.camel.timeout.processor.BusinessObjectCreatorStub" />
+
+	<bean id="threadPoolTaskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="5" />
+		<property name="threadNamePrefix" value="emd-pool-" />
+	</bean>
+
+	<bean id="storeInDBWithTimeoutProcessor"
+		class="com.bawi.camel.timeout.processor.StoreInDBWithTimeoutProcessor">
+		<constructor-arg>
+			<bean factory-bean="threadPoolTaskExecutor" factory-method="getThreadPoolExecutor" />
+		</constructor-arg>
+		<constructor-arg ref="dbDao" />
+		<property name="timeout" value="3" />
+		<property name="timeoutUnit" value="SECONDS" />
+	</bean>
+
+	<bean id="dbDao" class="org.mockito.Mockito" factory-method="mock">
+		<constructor-arg value="com.bawi.camel.timeout.processor.DBDao" />
+	</bean>
+
+	<bean id="sampleRoute" class="com.bawi.camel.timeout.processor.SampleRoute" />
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<routeBuilder ref="sampleRoute" />
+	</camelContext>
+
+</beans>
