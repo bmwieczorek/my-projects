@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RQ xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <Fees>
+		<Customer firstName="LUCY" lastName="SMITH">
+			<CustomerDetails nameRefNumber="1.1" pnrLocator="ZTHINF"/>
+		</Customer>
+		<Fee>
+			<FeeDetails code="820" quantity="1">
+				<Base currencyCode="USD">5.00</Base>
+				<Total currencyCode="USD">5.00</Total>
+			</FeeDetails>
+			<OptionalService RFIC="G" group="ML" name="CAFE PLUS - SNACK" segmentIndicator="S" subCode="0AT" taxable="true">
+				<EmdType>Associated</EmdType>
+				<AirExtraItemNumber>22</AirExtraItemNumber>
+				<OwningCarrierCode>K0</OwningCarrierCode>
+				<IATAParameters refundable="R" taxExempt="false"/>
+			</OptionalService>
+			<AssociatedFlight segmentNumber="01">
+				<CarrierCode>K0</CarrierCode>
+				<FlightNumber>0292</FlightNumber>
+				<ClassOfService>Y</ClassOfService>
+				<DepartureCity>SFO</DepartureCity>
+				<ArrivalCity>LAS</ArrivalCity>
+				<DepartureDate>2013-02-25</DepartureDate>
+				<AssociatedTicketNumber couponNumber="1">9982161204777</AssociatedTicketNumber>
+			</AssociatedFlight>
+		</Fee>
+		<Fee>
+			<FeeDetails code="820" quantity="1">
+				<Base currencyCode="USD">5.00</Base>
+				<Total currencyCode="USD">5.00</Total>
+			</FeeDetails>
+			<OptionalService RFIC="G" group="ML" name="CAFE PLUS - SNACK" segmentIndicator="S" subCode="0AT" taxable="true">
+				<EmdType>Associated</EmdType>
+				<AirExtraItemNumber>24</AirExtraItemNumber>
+				<OwningCarrierCode>K0</OwningCarrierCode>
+				<IATAParameters refundable="R" taxExempt="false"/>
+			</OptionalService>
+			<AssociatedFlight segmentNumber="02">
+				<CarrierCode>K0</CarrierCode>
+				<FlightNumber>0294</FlightNumber>
+				<ClassOfService>Y</ClassOfService>
+				<DepartureCity>LAS</DepartureCity>
+				<ArrivalCity>SFO</ArrivalCity>
+				<DepartureDate>2013-03-04</DepartureDate>
+				<AssociatedTicketNumber couponNumber="2">9982161204777</AssociatedTicketNumber>
+			</AssociatedFlight>
+		</Fee>
+	</Fees>
+	<TT:ElectronicMiscDocument accountingCode="998" checkDigit="0" formNumber="820" number="9988200000352" serialNumber="0000352" type="EMD">
+			<TT:Miscellaneous>
+				<TT:Fee coupon="1" description="LOUNGE ACCESS" quantity="1">
+					<TT:Base>
+						<TT:Amount currencyCode="USD" decimalPlace="2">14.50</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:Base>
+					<TT:TotalTax>
+						<TT:Amount currencyCode="USD" decimalPlace="2">0.00</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:TotalTax>
+					<TT:Total>
+						<TT:Amount currencyCode="USD" decimalPlace="2">14.50</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:Total>
+				</TT:Fee>
+				<TT:OptionalService group="LG" journeyType="S" reason="0BX">
+					<TT:FeeProvider>K0</TT:FeeProvider>
+					<TT:Indicators consumed=" " feeOverride="false" taxExempt="false"/>
+				</TT:OptionalService>
+				<ns2:AssociatedFlight xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC" coupon="1" entitlement="1">
+					<ns2:CarrierCode>K0</ns2:CarrierCode>
+					<ns2:FlightNumber>292</ns2:FlightNumber>
+					<ns2:ClassOfService>Y</ns2:ClassOfService>
+					<ns2:DepartureCity>SFO</ns2:DepartureCity>
+					<ns2:ArrivalCity>LAS</ns2:ArrivalCity>
+					<ns2:DepartureDate>2013-02-23-06:00</ns2:DepartureDate>
+					<ns2:CurrentStatus>OK</ns2:CurrentStatus>
+				</ns2:AssociatedFlight>
+				<TT:AssociatedTicketNumber associationType="D" checkDigit="5" couponNumber="1">9982161204776</TT:AssociatedTicketNumber>
+			</TT:Miscellaneous>
+			<TT:Miscellaneous>
+				<TT:Fee coupon="2" description="LOUNGE ACCESS" quantity="1">
+					<TT:Base>
+						<TT:Amount currencyCode="USD" decimalPlace="2">14.50</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:Base>
+					<TT:TotalTax>
+						<TT:Amount currencyCode="USD" decimalPlace="2">0.00</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:TotalTax>
+					<TT:Total>
+						<TT:Amount currencyCode="USD" decimalPlace="2">14.50</TT:Amount>
+						<ns2:ApplyCreditInd xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">false</ns2:ApplyCreditInd>
+					</TT:Total>
+				</TT:Fee>
+				<TT:OptionalService group="LG" journeyType="S" reason="0BX">
+					<TT:FeeProvider>K0</TT:FeeProvider>
+					<TT:Indicators consumed=" " feeOverride="false" taxExempt="false"/>
+				</TT:OptionalService>
+				<ns2:AssociatedFlight xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC" coupon="2" entitlement="2">
+					<ns2:CarrierCode>K0</ns2:CarrierCode>
+					<ns2:FlightNumber>294</ns2:FlightNumber>
+					<ns2:ClassOfService>Y</ns2:ClassOfService>
+					<ns2:DepartureCity>LAS</ns2:DepartureCity>
+					<ns2:ArrivalCity>SFO</ns2:ArrivalCity>
+					<ns2:DepartureDate>2013-03-04-06:00</ns2:DepartureDate>
+					<ns2:CurrentStatus>OK</ns2:CurrentStatus>
+				</ns2:AssociatedFlight>
+				<TT:AssociatedTicketNumber associationType="D" checkDigit="5" couponNumber="2">9982161204776</TT:AssociatedTicketNumber>
+			</TT:Miscellaneous>
+			<TT:Amounts>
+				<ns2:New xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC">
+					<ns2:Base>
+						<ns2:Amount currencyCode="USD" decimalPlace="2">29.00</ns2:Amount>
+						<ns2:Text>29.00</ns2:Text>
+						<ns2:ApplyCreditInd>false</ns2:ApplyCreditInd>
+					</ns2:Base>
+					<ns2:Total>
+						<ns2:Amount currencyCode="USD" decimalPlace="2">29.00</ns2:Amount>
+						<ns2:Text>29.00</ns2:Text>
+						<ns2:ApplyCreditInd>false</ns2:ApplyCreditInd>
+					</ns2:Total>
+				</ns2:New>
+			</TT:Amounts>
+			<TT:Remark>
+				<ns2:Endorsements xmlns="http://services.sabre.com/STL/v01" xmlns:ns2="http://www.sabre.com/ns/Ticketing/DC" sequence="1">TEST</ns2:Endorsements>
+			</TT:Remark>
+			<TT:ValueCalculation/>
+		</TT:ElectronicMiscDocument>
+</RQ>
