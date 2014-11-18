@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:ticketing="http://www.sabre.com/schema/spring-ticketing-extensions"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.sabre.com/schema/spring-ticketing-extensions http://www.sabre.com/schema/spring-ticketing-extensions-1.0.xsd">
+
+    
+    <bean id="mySedaRouteBuilder" class="com.bawi.camel.MySedaRouteBuilder">
+        <property name="maximumRequestCount" value="10" />
+    </bean>
+
+    <camel:camelContext xmlns="http://camel.apache.org/schema/spring" id="mySedaCamelContext">
+        <camel:routeBuilder ref="mySedaRouteBuilder"/>
+    </camel:camelContext>
+    
+    <bean id="registry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+        <property name="port" value="4889" />
+    </bean>
+
+    <bean id="serverConnector" class="org.springframework.jmx.support.ConnectorServerFactoryBean" depends-on="registry">
+        <property name="objectName" value="connector:name=rmi" />
+        <property name="serviceUrl" value="#{'service:jmx:rmi:///jndi/rmi://localhost:' + 4889 + '/jmxrmi'}" />
+    </bean>
+    
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+        <property name="beans">
+            <map>
+                 <entry key="bean:name=mySedaRouteBuilder" value-ref="mySedaRouteBuilder"/>
+            </map>
+        </property>
+        <property name="assembler">
+            <bean class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler">
+                <property name="managedMethods">
+                    <value>setMaximumRequestCount,getMaximumRequestCount</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
