@@ -1,0 +1,5 @@
+SHOW_TEXT_ON_PERSPECTIVE_BAR=false
+TerminalPrefInvertColors=true
+eclipse.preferences.version=1
+overriddenByCSS=,TerminalPrefInvertColors,
+showIntro=false
