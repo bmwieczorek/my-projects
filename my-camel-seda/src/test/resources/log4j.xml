@@ -14,6 +14,11 @@
         <appender-ref ref="consoleAppender" />
     </logger>
 
+    <logger name="com.bawi.camel.intercept" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="consoleAppender" />
+    </logger>
+
     <root>
         <level value="WARN" />
         <appender-ref ref="consoleAppender" />
