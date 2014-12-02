@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myTask" class="com.bawi.quartz.scheduler.MySpringQuartzTest.MyTask" />
+
+    <bean id="myJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetBeanName" value="myTask"/>
+        <property name="targetMethod" value="logExecution"/>
+    </bean>
+
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean" >
+        <property name="jobDetail" ref="myJob"/>
+        <property name="repeatCount" value="5" />
+        <property name="startDelay" value="1000" />
+        <property name="repeatInterval" value="1000" />
+    </bean>
+
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="myJob"/>
+        <property name="cronExpression" value="*/1 * * * * ?"/>
+    </bean>
+
+    <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="myJob"/>
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <!-- 
+                <ref bean="simpleTrigger"/>
+                 -->
+                <ref bean="cronTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
