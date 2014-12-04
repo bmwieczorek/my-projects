@@ -2,8 +2,8 @@ package com.bawi.java8.sequential.vs.parallel.calculator;
 
 import java.util.List;
 
+import com.bawi.java8.sequential.vs.parallel.SleepStatsCollector;
 import com.bawi.java8.stats.Stats;
-import com.bawi.java8.stats.StatsCollector;
 
 public class StatsParallelStreamCalculator extends Calculator {
 
@@ -11,7 +11,7 @@ public class StatsParallelStreamCalculator extends Calculator {
     public void calculate(List<Double> doubles) {
         Stats stats = doubles.
             parallelStream().
-            collect(new StatsCollector());
+            collect(new SleepStatsCollector());
         System.out.println(stats);
     }
 

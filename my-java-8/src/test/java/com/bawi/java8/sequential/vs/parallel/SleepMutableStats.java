@@ -1,10 +1,10 @@
 package com.bawi.java8.sequential.vs.parallel;
 
-import com.bawi.java8.sequential.vs.parallel.Sleeper;
+import com.bawi.java8.stats.Stats;
 
 
 
-public class MutableStats {
+public class SleepMutableStats {
     public double min = Double.MAX_VALUE, max = Double.MIN_VALUE, sum;
     public int count;
     public void add(double d) {
@@ -14,7 +14,7 @@ public class MutableStats {
         count += 1;
         Sleeper.sleep();
     }
-    public void combine(MutableStats ms) {
+    public void combine(SleepMutableStats ms) {
         min = min <= ms.min ? min : ms.min; 
         max = max >= ms.max ? max : ms.max;
         sum += ms.sum;

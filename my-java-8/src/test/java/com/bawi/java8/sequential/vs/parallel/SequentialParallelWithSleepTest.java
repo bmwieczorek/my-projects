@@ -20,7 +20,7 @@ public class SequentialParallelWithSleepTest {
 
         Random r = new Random();
         DoubleStream doubleStream = r.doubles(0d, 9999999d).
-        limit(1000);
+        limit(5000);
         List<Double> doubles = doubleStream.boxed().collect(Collectors.toList());
 
         List<Double> sequentialCalculatorDuration = new ArrayList<>();

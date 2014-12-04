@@ -8,25 +8,27 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-public class StatsCollector implements Collector<Double, MutableStats, Stats> {
+import com.bawi.java8.stats.Stats;
+
+public class SleepStatsCollector implements Collector<Double, SleepMutableStats, Stats> {
 
     @Override
-    public Supplier<MutableStats> supplier() {
-        return MutableStats::new;
+    public Supplier<SleepMutableStats> supplier() {
+        return SleepMutableStats::new;
     }
 
     @Override
-    public BiConsumer<MutableStats, Double> accumulator() {
+    public BiConsumer<SleepMutableStats, Double> accumulator() {
         return (ms, i) -> ms.add(i);
     }
 
     @Override
-    public BinaryOperator<MutableStats> combiner() {
+    public BinaryOperator<SleepMutableStats> combiner() {
         return (ms1, ms2) -> { ms1.combine(ms2); return ms1; };
     }
 
     @Override
-    public Function<MutableStats, Stats> finisher() {
+    public Function<SleepMutableStats, Stats> finisher() {
         return (ms) -> ms.createStats();
     }
 
