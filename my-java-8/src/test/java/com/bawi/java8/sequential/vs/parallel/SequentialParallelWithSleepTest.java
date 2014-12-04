@@ -8,6 +8,8 @@ import java.util.stream.DoubleStream;
 
 import org.junit.Test;
 
+import com.bawi.java8.sequential.vs.parallel.calculator.SequentialCalculator;
+import com.bawi.java8.sequential.vs.parallel.calculator.StatsParallelStreamCalculator;
 import com.bawi.java8.stats.StatsCollector;
 
 public class SequentialParallelWithSleepTest {

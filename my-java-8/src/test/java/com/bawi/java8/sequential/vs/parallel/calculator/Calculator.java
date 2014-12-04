@@ -1,10 +1,10 @@
-package com.bawi.java8.sequential.vs.parallel;
+package com.bawi.java8.sequential.vs.parallel.calculator;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Calculator {
-    double calculateAndGetDuration(List<Double> doubles) throws InterruptedException {
+    public double calculateAndGetDuration(List<Double> doubles) throws InterruptedException {
         System.out.println("*********" + this.getClass().getSimpleName() + "*********");
         System.gc();
         TimeUnit.SECONDS.sleep(5);
@@ -18,5 +18,5 @@ public abstract class Calculator {
         System.out.println("*********" + this.getClass().getSimpleName() + "*********");
         return duration;
     }
-    abstract void calculate(List<Double> list);
+    public abstract void calculate(List<Double> list);
 }

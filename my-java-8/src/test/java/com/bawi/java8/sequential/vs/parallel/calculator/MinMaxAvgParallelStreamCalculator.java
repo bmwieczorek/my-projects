@@ -1,23 +1,23 @@
-package com.bawi.java8.sequential.vs.parallel;
+package com.bawi.java8.sequential.vs.parallel.calculator;
 
 import java.util.List;
 
-public class MinMaxAvgSequentialStreamCalculator extends Calculator {
+public class MinMaxAvgParallelStreamCalculator extends Calculator {
 
     @Override
-    void calculate(List<Double> doubles) {
+    public void calculate(List<Double> doubles) {
         double average = doubles.
-            stream().
+            parallelStream().
             mapToDouble(t -> (double) t).
             average().
             getAsDouble();
         double min = doubles.
-            stream().
+            parallelStream().
             mapToDouble(t -> (double) t).
             min().
             getAsDouble();
         double max = doubles.
-            stream().
+            parallelStream().
             mapToDouble(t -> (double) t).
             max().
             getAsDouble();

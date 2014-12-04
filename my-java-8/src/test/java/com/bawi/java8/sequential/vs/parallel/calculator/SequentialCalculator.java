@@ -1,11 +1,13 @@
-package com.bawi.java8.sequential.vs.parallel;
+package com.bawi.java8.sequential.vs.parallel.calculator;
 
 import java.util.List;
+
+import com.bawi.java8.sequential.vs.parallel.Sleeper;
 
 public class SequentialCalculator extends Calculator {
 
     @Override
-    void calculate(List<Double> list) {
+    public void calculate(List<Double> list) {
         double min = Double.MAX_VALUE, max = Double.MIN_VALUE, sum = 0;
         int count = 0;
         for (Double d : list) {
