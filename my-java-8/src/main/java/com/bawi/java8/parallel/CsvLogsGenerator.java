@@ -10,6 +10,8 @@ public class CsvLogsGenerator {
     private static Logger LOGGER = LoggerFactory.getLogger(CsvLogsGenerator.class);
     
     public static void main(String[] args) throws InterruptedException {
+        //  analysis of parallel stream
+        //for (int j = 0; j < 649; j++) {  // <param name="MaxFileSize" value="10KB" />, no sleep, 7 file, each up to 100 log entries: feedback: fork join process - see target
         //for (int j = 0; j < 29999999; j++) { //     <param name="MaxFileSize" value="500MB" /> no sleep, creates 3GB (6 x 0.5GB): feedback: can read 3GB despite 1GB memory, duration: 127s 
         //for (int j = 0; j < 9999999; j++) { //     <param name="MaxFileSize" value="500MB" /> no sleep, creates 1GB (2 x 0.5GB), feedback: duration: 
         for (int j = 0; j < 200; j++) { //             <param name="MaxFileSize" value="1MB" /> 1 s sleep, creates , feedback: tps calculation
