@@ -6,7 +6,7 @@ public class Sleeper {
 
     public static void sleep() {
         try {
-            TimeUnit.MILLISECONDS.sleep(0);
+            TimeUnit.MILLISECONDS.sleep(1);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
