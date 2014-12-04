@@ -15,12 +15,12 @@ import com.bawi.java8.stats.StatsCollector;
 public class SequentialParallelWithSleepTest {
 
     @Test
-    public void testSequentailAndParallel() throws Exception {
-        //set Sleeper to 1ms
+    public void testSequentailAndParallelWithSleep() throws Exception {
+        Sleeper.setSleepMillis(1);//set Sleeper to 1ms
 
         Random r = new Random();
         DoubleStream doubleStream = r.doubles(0d, 9999999d).
-        limit(5000);
+        limit(1000);
         List<Double> doubles = doubleStream.boxed().collect(Collectors.toList());
 
         List<Double> sequentialCalculatorDuration = new ArrayList<>();
@@ -39,8 +39,8 @@ public class SequentialParallelWithSleepTest {
         System.out.println("sequentialCalculatorDuration: " + sequentialCalculatorDuration.stream().collect(statsCollector));
         System.out.println("statsParallelStreamCalculatorDuration: " + statsParallelStreamCalculatorDuration.stream().collect(statsCollector));
 
-//        sequentialCalculatorDuration: Stats [min=1030.0, max=1168.0, avg=1070.0]
-//        statsParallelStreamCalculatorDuration: Stats [min=0.0, max=109.0, avg=10.9]
+//        sequentialCalculatorDuration: Stats [min=1029.0, max=1137.0, avg=1052.0]
+//        statsParallelStreamCalculatorDuration: Stats [min=284.0, max=382.0, avg=295.1]
 
     }
 }

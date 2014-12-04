@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Calculator {
+
     public double calculateAndGetDuration(List<Double> doubles) throws InterruptedException {
         System.out.println("*********" + this.getClass().getSimpleName() + "*********");
         System.gc();
@@ -18,5 +19,6 @@ public abstract class Calculator {
         System.out.println("*********" + this.getClass().getSimpleName() + "*********");
         return duration;
     }
+
     public abstract void calculate(List<Double> list);
 }

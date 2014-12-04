@@ -19,7 +19,7 @@ public class SequentialParallelTest {
 
     @Test
     public void testSequentailAndParallel() throws Exception {
-        //set Sleeper to 0ms
+        Sleeper.setSleepMillis(0); //set Sleeper to 0ms
 
         Random r = new Random();
         DoubleStream doubleStream = r.doubles(0d, 9999999d).
