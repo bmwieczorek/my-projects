@@ -68,6 +68,12 @@ public class SequentialParallelTest {
 //        statsSequentialStreamCalculatorDuration: Stats [min=124.0, max=156.0, avg=132.6]
 //        statsParallelStreamCalculatorDuration: Stats [min=62.0, max=78.0, avg=65.6]
 
+// 3rd run
+//        sequentialCalculatorDuration: Stats [min=46.0, max=94.0, avg=56.2]
+//        minMaxAvgSequentialStreamCalculatorDuration: Stats [min=390.0, max=624.0, avg=447.6]
+//        minMaxAvgParallelStreamCalculatorDuration: Stats [min=234.0, max=358.0, avg=254.2]
+//        statsSequentialStreamCalculatorDuration: Stats [min=109.0, max=125.0, avg=113.8]
+//        statsParallelStreamCalculatorDuration: Stats [min=47.0, max=78.0, avg=57.9]
 
     }
 }
