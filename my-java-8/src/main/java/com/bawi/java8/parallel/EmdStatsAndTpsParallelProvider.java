@@ -34,11 +34,14 @@ public class EmdStatsAndTpsParallelProvider {
 
         LOGGER.info("Files filtered and sorted: {}", filteredSortedFiles);
 
+        Date logsStartDate = getStartDateForLogs(files);
+        LOGGER.info("First log entry date: {}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(logsStartDate));
+
         Result result = getCsvReaders(files).
             parallelStream().
             flatMap(csvReader -> csvReader.lines()).
             map(line -> new CSVLine(extractEmdNumber(line), extractDate(line))).
-            collect(new ResultCollector(new PeriodFactory(getStartDateForLogs(files)), new ResultFactory()));
+            collect(new ResultCollector(new PeriodFactory(logsStartDate), new ResultFactory()));
 
         long stop = System.currentTimeMillis();
         LOGGER.info("Finished: {} in {} ms", result, stop - start);
@@ -57,10 +60,16 @@ public class EmdStatsAndTpsParallelProvider {
             sorted(Comparator.comparing(file -> Integer.parseInt(file.getName().replaceAll("sucessful.csv\\.?","0")))).
             collect(Collectors.toList());
 
-        String firstLine = createReader(filteredSortedFiles.get(filteredSortedFiles.size() - 1)).
+        LOGGER.info("Filetered and sorted files: {}", filteredSortedFiles);
+
+        File fistLogFile = filteredSortedFiles.get(filteredSortedFiles.size() - 1);
+
+        String firstLine = createReader(fistLogFile).
              lines().
              findFirst().
              get();
+
+        LOGGER.info("First log line: {} in first log file: {}", firstLine, fistLogFile);
 
         return extractDate(firstLine);
     }

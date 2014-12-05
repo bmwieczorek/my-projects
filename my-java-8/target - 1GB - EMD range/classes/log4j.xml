@@ -45,9 +45,9 @@
 
     <logger name="com.bawi.java8.parallel.CsvLogsGenerator" additivity="false">
         <level value="DEBUG" />
-        <appender-ref ref="ASYNC_CSV_FILE" />
-        <!-- 
         <appender-ref ref="CSV_FILE" />
+        <!-- 
+        <appender-ref ref="ASYNC_CSV_FILE" />
          -->
     </logger>
 

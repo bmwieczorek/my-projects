@@ -17,7 +17,7 @@ public class MutableAccumulation {
 
     private Set<Long> emdNumbers = new HashSet<>();
     private Map<Date, Period> periods = new HashMap<>();
-    private Date lastPeriodStartDate;
+    private Date lastPeriodStartDate = new Date(0L);
     private int count;
 
     public MutableAccumulation(PeriodFactory periodFactory, ResultFactory resultFactory) {
@@ -25,10 +25,13 @@ public class MutableAccumulation {
         this.resultFactory = resultFactory;
     }
 
-    public void add(CSVLine cSVLine) {
-        emdNumbers.add(cSVLine.getEmdNumber());
+    public void add(CSVLine csvLine) {
+        if (csvLine == null) { 
+            return;
+        }
+        emdNumbers.add(csvLine.getEmdNumber());
         count += 1;
-        Date date = cSVLine.getDate();
+        Date date = csvLine.getDate();
         Date periodStartDate = periodFactory.getPeriodStartDate(date);
         lastPeriodStartDate = periodStartDate;
         if (periods.containsKey(periodStartDate)) {
@@ -43,6 +46,9 @@ public class MutableAccumulation {
 
     public MutableAccumulation accumulate(MutableAccumulation mutableAccumulation) {
         LOGGER.debug("Accumulating intermediate {} with {}", this, mutableAccumulation);
+        if (mutableAccumulation == null) {
+            return this;
+        }
         emdNumbers.addAll(mutableAccumulation.getUniqueEmdNumbers());
         count += mutableAccumulation.getCount();
         lastPeriodStartDate = lastPeriodStartDate.compareTo(mutableAccumulation.getLastPeriodStartDate()) > 0 ? lastPeriodStartDate : mutableAccumulation.getLastPeriodStartDate();

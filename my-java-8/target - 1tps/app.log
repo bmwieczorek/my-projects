@@ -1,0 +1,7 @@
+2014-12-05 12:09:54,165 | INFO  | main                              | Available cores: 4
+2014-12-05 12:09:54,165 | INFO  | main                              | Files [target\app.log, target\classes, target\generated-sources, target\maven-status, target\sucessful.csv, target\sucessful.csv.1, target\sucessful.csv.2, target\test-classes]
+2014-12-05 12:09:54,215 | INFO  | main                              | Files filtered and sorted: [target\sucessful.csv, target\sucessful.csv.1, target\sucessful.csv.2]
+2014-12-05 12:09:54,215 | INFO  | main                              | Filetered and sorted files: [target\sucessful.csv, target\sucessful.csv.1, target\sucessful.csv.2]
+2014-12-05 12:09:54,225 | INFO  | main                              | First log line: 2014-12-05 11:58:57.573,migration-edifacts-14150248704395444.txt,0,6074560000000,2014-08-15,EY,3SL2DF in first log file: target\sucessful.csv.2
+2014-12-05 12:09:54,225 | INFO  | main                              | First log entry date: 2014-12-05 11:58:57.573
+2014-12-05 12:09:54,355 | INFO  | main                              | Finished: EmdStatsResult [uniqueEmdNumbers count=125, count=250, allPeriodsTps=Tps [min=0.16666666666666666, max=1.0, avg=0.8333333333333334], withoutLastPeriodTps=Tps [min=1.0, max=1.0, avg=1.0]] in 190 ms
