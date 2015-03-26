@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+        <stop-on-errors>true</stop-on-errors>
+        <date-format>MM/dd/yyyy HH:mm</date-format>
+        <wildcard>true</wildcard>
+    </configuration>
+
+    <mapping>
+        <class-a>com.bawi.dozer.SourceData</class-a>
+        <class-b>com.bawi.dozer.DestinationData</class-b>
+        <field>
+            <a>sourceName</a>
+            <b>destinationName</b>
+        </field>
+        <field custom-converter="com.bawi.dozer.xml.ChildrenCustomConverter">
+            <a>children</a>
+            <b>children</b>
+        </field>
+        <field>
+            <!-- 
+            <a get-method="isMarried">status.married</a>
+            <a>status.married</a>
+             -->
+            <a is-accessible="true">status.married</a>
+            <b is-accessible="true">status.married</b>
+        </field>
+    </mapping>
+
+</mappings>
