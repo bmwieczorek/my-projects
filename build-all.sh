@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "M2_HOME=$M2_HOME"
 
-for t in `ls -d my-*`; 
+for t in `ls -d my-* | grep -v java-8 | grep -v eclipse`; 
 do 
     cd $t; 
     echo "Building $t ..."
