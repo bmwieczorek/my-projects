@@ -12,7 +12,7 @@ class AA {
         return Integer.toString(x);
     }
 }
-
+@SuppressWarnings("unused") 
 public class PassByValue2 {
     static void f(AA arg1) {
         arg1 = null;

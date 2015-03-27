@@ -18,6 +18,8 @@ public class SerializeCircular {
     public static void main(String[] args) throws IOException {
         FileOutputStream f = new FileOutputStream("TestSerial");
         // List alist = new ArrayList();
-        new ObjectOutputStream(f).writeObject(new CC2());
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(f);
+        objectOutputStream.writeObject(new CC2());
+        objectOutputStream.close();
     }
 }

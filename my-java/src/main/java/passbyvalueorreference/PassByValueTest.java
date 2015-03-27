@@ -1,5 +1,6 @@
 package passbyvalueorreference;
 
+@SuppressWarnings("unused") 
 public class PassByValueTest {
     private int value;
 

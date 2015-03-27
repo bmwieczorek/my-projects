@@ -30,23 +30,24 @@ abstract class T {
 class V extends T implements S, W {
 }
 
+@SuppressWarnings("unused") 
 public class Example {
     static void m(T w) {
 
     }
 
-    @SuppressWarnings({ "unused", "cast" })
+    @SuppressWarnings({ "cast" })
     public static void main(String[] args) {
 
         E e = new E();
         // D d = (D) e; // compilation failure
         C c = new C();
-        A a = (A) ((Runnable) c);
+        A a = (c);
         a.equals(null);
 
         V v = new V();
         m(v);
-        S s = (S) v;
+        S s = v;
     }
 
 }
