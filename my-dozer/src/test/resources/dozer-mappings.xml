@@ -20,13 +20,15 @@
             <a>children</a>
             <b>children</b>
         </field>
+    </mapping>
+
+    <!-- for Is... getter method need to define explicit class get-method -->
+    <mapping>
+        <class-a>com.bawi.dozer.SourceData.Status</class-a>
+        <class-b>com.bawi.dozer.DestinationData.Status</class-b>
         <field>
-            <!-- 
-            <a get-method="isMarried">status.married</a>
-            <a>status.married</a>
-             -->
-            <a is-accessible="true">status.married</a>
-            <b is-accessible="true">status.married</b>
+            <a get-method="isMarried">married</a>
+            <b get-method="isMarried">married</b>
         </field>
     </mapping>
 
