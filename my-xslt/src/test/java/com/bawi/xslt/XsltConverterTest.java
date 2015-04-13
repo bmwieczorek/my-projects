@@ -17,11 +17,11 @@ public class XsltConverterTest {
 
     @Test
     public void shouldConvert() throws Exception {
-        // executeTest(1);
-        // executeTest(2);
-        executeTest(3);
-        // executeTest(4);
-        // executeTest(5);
+         executeTest(1);
+         executeTest(2);
+         executeTest(3);
+         executeTest(4);
+         executeTest(5);
     }
 
     private void executeTest(int testId) throws TransformerConfigurationException, IOException {
