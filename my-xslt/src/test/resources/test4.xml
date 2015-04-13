@@ -3,6 +3,7 @@
     <Cars>
         <Car>a a</Car>
         <Car>b b</Car>
-        <Car>c c</Car>
+        <Car a="1" >c c</Car>
     </Cars>
 </Warehouse>
+
