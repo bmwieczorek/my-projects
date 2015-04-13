@@ -22,6 +22,7 @@ public class XsltConverterTest {
          executeTest(3);
          executeTest(4);
          executeTest(5);
+         executeTest(6);
     }
 
     private void executeTest(int testId) throws TransformerConfigurationException, IOException {
