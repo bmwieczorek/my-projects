@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>my-parent-pom</artifactId>
+        <groupId>com.bawi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../my-parent-pom/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>my-jaxb</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.1</version>
+                <executions>
+                    <execution>
+                        <id>schema-pojo-generate-my-service-rq</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <bindingDirectory>src/main/resources/xsd</bindingDirectory>
+                            <bindingIncludes>
+                                <include>binding-my-service-rq.xjb</include>
+                            </bindingIncludes>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-Xcollection-setter-injector</arg>
+                            </args>
+                            <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+                            <schemaIncludes>
+                                <include>MyServiceRQ.xsd</include>
+                            </schemaIncludes>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- Collection setters are needed to allow Dozer to map collections -->
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>collection-setter-injector</artifactId>
+                        <version>0.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+        </dependency>
+
+        <!-- testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+</project>
