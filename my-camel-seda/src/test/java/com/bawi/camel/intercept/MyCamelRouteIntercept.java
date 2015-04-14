@@ -65,7 +65,7 @@ public class MyCamelRouteIntercept extends CamelTestSupport {
             public void configure() throws Exception {
                 interceptSendToEndpoint("direct:mySubRoute").
                     skipSendToOriginalEndpoint().
-                    process(new LogginProcessor("in intercepted Route"));
+                        process(new LogginProcessor("in intercepted Route"));
                 
             }
         });

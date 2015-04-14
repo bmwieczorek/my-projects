@@ -5,9 +5,14 @@
     <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
-                value="%d{ISO8601} | %-5.5p | %-35.35t | %-20.20c{1} | %m%n" />
+                value="%d{ISO8601} | %-5.5p | %-35.35t | %-30.30c{1} | %m%n" />
         </layout>
     </appender>
+
+    <logger name="com.bawi.camel" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="consoleAppender" />
+    </logger>
 
     <logger name="com.bawi.camel.wiretap" additivity="false">
         <level value="INFO" />
@@ -20,7 +25,7 @@
     </logger>
 
     <root>
-        <level value="WARN" />
+        <level value="INFO" />
         <appender-ref ref="consoleAppender" />
     </root>
 

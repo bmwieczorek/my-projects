@@ -2,7 +2,6 @@ package com.bawi.camel;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,7 +16,6 @@ public class MySedaRouteBuilderTest extends CamelTestSupport {
         return springContext.getBean(CamelContext.class);
     }
 
-    @Ignore
     @Test
     public void testName() throws Exception {
         for (int i = 0; i < 100000; i++) {
