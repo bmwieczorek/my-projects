@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-    <xs:element name="MyElement">
-        <xs:complexType>
-            <xs:attribute ref="MyAttribute"/>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:attribute name="MyAttribute" type="xs:string"/>
+    <xs:include schemaLocation="MyServiceCommon.xsd" />
 
     <xs:element name="MyServiceRQ">
         <xs:complexType>

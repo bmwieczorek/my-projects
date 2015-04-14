@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 (x64) (http://www.altova.com) by Bert Brid (Farelogix Inc.) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.8">
+	<xsd:include schemaLocation="CommonTicketingTypes.xsd"/>
+	<xsd:include schemaLocation="CommonTypes.xsd"/>
+	<xsd:element name="EMDImageRS">
+		<xsd:annotation>
+			<xsd:documentation>EMD (Electronic Miscellaneous Document) Image Response Root element.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="InfoGroup" minOccurs="0"/>
+				<xsd:element ref="SourceStdAttributes" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="EMDImage" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="PayloadStdAttributes"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
