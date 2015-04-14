@@ -21,6 +21,7 @@
         <commons-lang.version>2.5</commons-lang.version>
         <log4j.version>1.2.16</log4j.version>
         <camel.version>2.4.0</camel.version>
+        <junit.version>4.4</junit.version>
 
         <!-- other -->
         <tomcat.version>6.0.26</tomcat.version>
@@ -260,7 +261,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.4</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -307,6 +308,18 @@
                 <version>${spring.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
             <!-- apache utils -->
             <dependency>
                 <groupId>commons-io</groupId>
@@ -344,6 +357,11 @@
                 <version>${camel.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-spring</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
 
             <!-- jaxb unmarshaller impl of setProperty; build in java6 throws exception -->
             <dependency>
@@ -458,6 +476,12 @@
                 <groupId>xerces</groupId>
                 <artifactId>xercesImpl</artifactId>
                 <version>2.9.1</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>net.sourceforge.saxon</groupId>
+                <artifactId>saxon</artifactId>
+                <version>9.1.0.8</version>
             </dependency>
 
 
