@@ -6,14 +6,8 @@
 
         <!-- Customize the package name -->
         <schemaBindings>
-            <package name="com.bawi.jaxb"/>
+            <package name="com.bawi.jaxb.normal"/>
         </schemaBindings>
 
-        <!-- rename the value element -->
-        <bindings node="//xs:element[@name='MyServiceRQ']">
-            <bindings node=".//xs:attribute[@name='MyElement']">
-                <property name="MyElementAttribute"/>
-            </bindings>
-        </bindings>
     </bindings>
 </bindings>

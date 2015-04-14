@@ -18,25 +18,70 @@
                 <version>0.12.1</version>
                 <executions>
 
-                      <execution>
-                        <id>schema-pojo-generate-MyServiceRQ</id>
+                    <execution>
+                        <id>schema-pojo-generate-MyServiceRQ-normal</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <bindingDirectory>src/main/resources/xsd</bindingDirectory>
+                            <bindingDirectory>src/main/resources/xsd/normal</bindingDirectory>
                             <bindingIncludes>
                                 <include>binding-MyServiceRQ.xjb</include>
                             </bindingIncludes>
                             <extension>true</extension>
                             <args>
                                 <arg>-Xcollection-setter-injector</arg>
-                                <arg>-XautoNameResolution</arg>
                             </args>
-                            <schemaDirectory>src/main/resources/xsd</schemaDirectory>
+                            <schemaDirectory>src/main/resources/xsd/normal</schemaDirectory>
                             <schemaIncludes>
                                 <include>MyServiceRQ.xsd</include>
                             </schemaIncludes>
+                            <generatePackage>com.bawi.jaxb.normal</generatePackage>
+                            <generateDirectory>${project.build.directory}/generated-sources/normal</generateDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>schema-pojo-generate-MyServiceRQ-sameAttributeAndElement</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <bindingDirectory>src/main/resources/xsd/sameAttributeAndElement</bindingDirectory>
+                            <bindingIncludes>
+                                <include>binding-MyServiceRQ.xjb</include>
+                            </bindingIncludes>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-Xcollection-setter-injector</arg>
+                            </args>
+                            <schemaDirectory>src/main/resources/xsd/sameAttributeAndElement</schemaDirectory>
+                            <schemaIncludes>
+                                <include>MyServiceRQ.xsd</include>
+                            </schemaIncludes>
+                            <generatePackage>com.bawi.jaxb.same.attribute.and.element</generatePackage>
+                            <generateDirectory>${project.build.directory}/generated-sources/sameAttributeAndElement</generateDirectory>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>schema-pojo-generate-MyServiceRQ-sameElementAndComplexType</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <bindingDirectory>src/main/resources/xsd/sameElementAndComplexType</bindingDirectory>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-Xcollection-setter-injector</arg>
+                                <arg>-XautoNameResolution</arg>
+                            </args>
+                            <schemaDirectory>src/main/resources/xsd/sameElementAndComplexType</schemaDirectory>
+                            <schemaIncludes>
+                                <include>MyServiceRQ.xsd</include>
+                            </schemaIncludes>
+                            <generatePackage>com.bawi.jaxb.same.element.and.complextype</generatePackage>
+                            <generateDirectory>${project.build.directory}/generated-sources/sameElementAndComplexType</generateDirectory>
                         </configuration>
                     </execution>
 
