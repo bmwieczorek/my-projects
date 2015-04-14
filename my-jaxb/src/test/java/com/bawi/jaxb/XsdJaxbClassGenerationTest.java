@@ -14,9 +14,9 @@ import org.junit.Test;
 public class XsdJaxbClassGenerationTest {
 
     @Test
-    public void shouldMarshallToXmlNormal() throws JAXBException {
-        com.bawi.jaxb.normal.MyServiceRQ myServiceRQ = new com.bawi.jaxb.normal.MyServiceRQ();
-        com.bawi.jaxb.normal.MyElement myElement = new com.bawi.jaxb.normal.MyElement();
+    public void shouldMarshallToXml() throws JAXBException {
+        com.bawi.jaxb.MyServiceRQ myServiceRQ = new com.bawi.jaxb.MyServiceRQ();
+        com.bawi.jaxb.MyElement myElement = new com.bawi.jaxb.MyElement();
         myElement.setMyAttribute("some attribute value");
         myServiceRQ.setMyElement(myElement);
         myServiceRQ.setMyAttribute(Integer.valueOf(123));
@@ -34,7 +34,7 @@ public class XsdJaxbClassGenerationTest {
     }
     
     @Test
-    public void shouldMarshallToXmlSameAttributeAndElement() throws JAXBException {
+    public void shouldMarshallToXmlWhenSameAttributeAndElement() throws JAXBException {
         // given
         com.bawi.jaxb.same.attribute.and.element.MyServiceRQ myServiceRQ = new com.bawi.jaxb.same.attribute.and.element.MyServiceRQ();
         com.bawi.jaxb.same.attribute.and.element.MyElement myElement = new com.bawi.jaxb.same.attribute.and.element.MyElement();
@@ -57,7 +57,7 @@ public class XsdJaxbClassGenerationTest {
     }
 
     @Test
-    public void shouldMarshallToXmlSameElementAndComplexType() throws JAXBException {
+    public void shouldMarshallToXmlWhenSameElementAndComplexType() throws JAXBException {
         // given
         com.bawi.jaxb.same.element.and.complextype.MyServiceRQ myServiceRQ = new com.bawi.jaxb.same.element.and.complextype.MyServiceRQ();
         com.bawi.jaxb.same.element.and.complextype.MyElement myElement = new com.bawi.jaxb.same.element.and.complextype.MyElement();
