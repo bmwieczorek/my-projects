@@ -8,7 +8,7 @@
     </xs:element>
 
     <xs:attribute name="MyAttribute" type="xs:string"/>
-    
+
     <xs:complexType name="MyElement">
         <xs:attribute ref="MyAttribute"/>
     </xs:complexType>

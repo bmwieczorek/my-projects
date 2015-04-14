@@ -15,32 +15,10 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.8.1</version>
+                <version>0.12.1</version>
                 <executions>
 
-                     <execution>
-                        <id>schema-pojo-generate-EMDIssueRS</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <bindingDirectory>src/main/resources/xsd/issue-rs</bindingDirectory>
-                            <bindingIncludes>
-                                <include>binding-EMDIssueRS.xjb</include>
-                            </bindingIncludes>
-                            <extension>true</extension>
-                            <args>
-                                <arg>-Xcollection-setter-injector</arg>
-                                <arg>-XautoNameResolution</arg>
-                            </args>
-                            <schemaDirectory>src/main/resources/xsd/issue-rs</schemaDirectory>
-                            <schemaIncludes>
-                                <include>CommonTicketingTypes.xsd</include>
-                            </schemaIncludes>
-                        </configuration>
-                    </execution>
-                    
-<!--                      <execution>
+                      <execution>
                         <id>schema-pojo-generate-MyServiceRQ</id>
                         <goals>
                             <goal>generate</goal>
@@ -60,7 +38,8 @@
                                 <include>MyServiceRQ.xsd</include>
                             </schemaIncludes>
                         </configuration>
-                    </execution> -->
+                    </execution>
+
                 </executions>
                 <dependencies>
                     <!-- Collection setters are needed to allow Dozer to map collections -->
