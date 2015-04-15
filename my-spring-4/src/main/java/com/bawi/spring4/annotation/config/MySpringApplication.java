@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
 
+import com.bawi.spring4.Greeting;
+
 @Configuration
 public class MySpringApplication {
 

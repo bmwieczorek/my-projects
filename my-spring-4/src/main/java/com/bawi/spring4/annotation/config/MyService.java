@@ -1,5 +1,7 @@
 package com.bawi.spring4.annotation.config;
 
+import com.bawi.spring4.Greeting;
+
 
 public class MyService {
     private Greeting greeting;
