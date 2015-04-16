@@ -2,19 +2,29 @@ package com.bawi.jaxb;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.filter.Filters;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.xpath.XPathExpression;
+import org.jdom2.xpath.XPathFactory;
 import org.junit.Test;
 
 public class XsdJaxbClassGenerationTest {
 
     @Test
-    public void shouldMarshallToXml() throws JAXBException {
+    public void shouldMarshallToXml() throws JAXBException, JDOMException, IOException {
         com.bawi.jaxb.MyServiceRQ myServiceRQ = new com.bawi.jaxb.MyServiceRQ();
         com.bawi.jaxb.MyElement myElement = new com.bawi.jaxb.MyElement();
         myElement.setMyAttribute("some attribute value");
@@ -30,7 +40,17 @@ public class XsdJaxbClassGenerationTest {
 
         String generatedXml = marshall(myServiceRQ);
 
-        assertEquals(expectedXml, generatedXml); 
+        assertEquals(expectedXml, generatedXml);
+        
+        SAXBuilder builder = new SAXBuilder();
+        Document document = builder.build(new StringReader(generatedXml));
+
+        XPathFactory xPathFactory = XPathFactory.instance();
+        XPathExpression<Attribute> xPathExpression = xPathFactory.compile("/MyServiceRQ/@myAttribute", Filters.attribute());
+        List<Attribute> evaluate = xPathExpression.evaluate(document.getRootElement());
+        Attribute attribute = evaluate.get(0);
+        String value = attribute.getValue();
+        System.out.println(value);
     }
     
     @Test
