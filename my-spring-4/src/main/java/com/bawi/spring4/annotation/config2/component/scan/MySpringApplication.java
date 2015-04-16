@@ -1,9 +1,11 @@
-package com.bawi.spring4.config;
+package com.bawi.spring4.annotation.config2.component.scan;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
+
+import com.bawi.spring4.annotation.config2.component.MyService;
 
 @Configuration
 @ComponentScan

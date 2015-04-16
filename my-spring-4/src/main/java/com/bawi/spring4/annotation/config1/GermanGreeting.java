@@ -1,10 +1,7 @@
-package com.bawi.spring4.xml.config;
-
-import org.springframework.stereotype.Component;
+package com.bawi.spring4.annotation.config1;
 
 import com.bawi.spring4.Greeting;
 
-@Component("GermanGreeting")
 public class GermanGreeting implements Greeting {
 
     @Override

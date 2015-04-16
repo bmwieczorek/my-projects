@@ -1,4 +1,4 @@
-package com.bawi.spring4.annotation.config;
+package com.bawi.spring4.annotation.config1;
 
 import com.bawi.spring4.Greeting;
 

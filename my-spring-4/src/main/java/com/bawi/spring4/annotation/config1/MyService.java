@@ -1,16 +1,11 @@
-package com.bawi.spring4.config;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+package com.bawi.spring4.annotation.config1;
 
 import com.bawi.spring4.Greeting;
 
-@Component
 public class MyService {
 
     private Greeting greeting;
 
-    @Autowired
     public MyService(Greeting greeting) {
         this.greeting = greeting;
     }

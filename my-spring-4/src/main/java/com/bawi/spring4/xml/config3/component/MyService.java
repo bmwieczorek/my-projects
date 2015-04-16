@@ -1,4 +1,4 @@
-package com.bawi.spring4.xml.config;
+package com.bawi.spring4.xml.config3.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

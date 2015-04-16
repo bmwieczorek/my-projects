@@ -1,4 +1,4 @@
-package com.bawi.spring4.config;
+package com.bawi.spring4.annotation.config2.component;
 
 import org.springframework.stereotype.Component;
 
