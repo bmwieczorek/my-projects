@@ -14,6 +14,7 @@ import javax.xml.bind.PropertyException;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
+import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.filter.Filters;
 import org.jdom2.input.SAXBuilder;
@@ -41,18 +42,39 @@ public class XsdJaxbClassGenerationTest {
         String generatedXml = marshall(myServiceRQ);
 
         assertEquals(expectedXml, generatedXml);
-        
+    }
+
+    @Test
+    public void shouldUseXpath() throws JAXBException, JDOMException, IOException {
+        //@formatter:off
+        String expectedXml = 
+                "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+                "<MyServiceRQ>\n" +
+                "    <MyElement myAttribute=\"some attribute value\">some element text value</MyElement>\n" +
+                "</MyServiceRQ>\n";
+        //@formatter:on
+
         SAXBuilder builder = new SAXBuilder();
-        Document document = builder.build(new StringReader(generatedXml));
+        Document document = builder.build(new StringReader(expectedXml));
 
         XPathFactory xPathFactory = XPathFactory.instance();
-        XPathExpression<Attribute> xPathExpression = xPathFactory.compile("/MyServiceRQ/@myAttribute", Filters.attribute());
-        List<Attribute> evaluate = xPathExpression.evaluate(document.getRootElement());
-        Attribute attribute = evaluate.get(0);
-        String value = attribute.getValue();
-        System.out.println(value);
+
+        XPathExpression<Attribute> attributeXPathExpression = xPathFactory.compile("/MyServiceRQ/MyElement/@myAttribute", Filters.attribute());
+        List<Attribute> attributes = attributeXPathExpression.evaluate(document.getRootElement());
+        Attribute attribute = attributes.get(0);
+        String attributeValue = attribute.getValue();
+        assertEquals("some attribute value", attributeValue);
+
+        XPathExpression<Element> elementXPathExpression = xPathFactory.compile("/MyServiceRQ/MyElement", Filters.element());
+        List<Element> elements = elementXPathExpression.evaluate(document.getRootElement());
+        Element element = elements.get(0);
+        String text = element.getText();
+        assertEquals("some element text value", text);
+        List<Attribute> attributes2 = element.getAttributes();
+        assertEquals("some attribute value", attributes2.get(0).getValue());
+
     }
-    
+
     @Test
     public void shouldMarshallToXmlWhenSameAttributeAndElement() throws JAXBException {
         // given
