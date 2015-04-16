@@ -9,12 +9,13 @@ import com.bawi.spring4.Greeting;
 @Component
 public class MyService {
 
-    @Autowired
     //@Qualifier("EnglishGreeting")
-    @Qualifier("GermanGreeting")
-    private Greeting greeting;
+    @Qualifier("GermanGreeting")  //@Qualifier can only by at property or setter level
+    @Autowired  // @Autowired can be at property/setter or constructor level
+    private Greeting greeting; 
 
     public void greet(String name) {
         System.out.println(greeting.getGreeting(name));
     }
+
 }
