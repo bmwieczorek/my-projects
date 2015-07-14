@@ -22,7 +22,7 @@ import com.bawi.spring.boot.MySpringBootDemoApplication.Hello;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MySpringBootDemoApplication.class)
 @WebIntegrationTest({"server.port:8080"})
-public class MySpringBootDemoApplicationTomcatIntegrationTests {
+public class MySpringBootDemoTomcatIntegrationTests {
 	
 	@Component
 	@EnableWebSecurity

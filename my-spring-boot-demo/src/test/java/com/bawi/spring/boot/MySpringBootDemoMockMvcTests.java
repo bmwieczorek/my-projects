@@ -21,7 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MySpringBootDemoApplication.class)
 @WebAppConfiguration
-public class MySpringBootDemoApplicationMockMvcTests {
+public class MySpringBootDemoMockMvcTests {
 	
     @Autowired
     private WebApplicationContext wac;

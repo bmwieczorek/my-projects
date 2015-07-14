@@ -20,7 +20,7 @@ import com.bawi.spring.boot.MySpringBootDemoApplication.Hello;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = MySpringBootDemoApplication.class)
 @WebAppConfiguration
-public class MySpringBootDemoApplicationMockRestTests {
+public class MySpringBootDemoRestClientTests {
 	
 	@Test
 	public void shouldTestHello() throws Exception {
