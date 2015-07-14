@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.bawi</groupId>
-	<artifactId>my-spring-boot-com.bawi.spring.boot</artifactId>
+	<artifactId>my-spring-boot-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
