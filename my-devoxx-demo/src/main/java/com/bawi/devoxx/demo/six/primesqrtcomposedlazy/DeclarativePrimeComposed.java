@@ -11,7 +11,7 @@ public class DeclarativePrimeComposed {
         Stream.iterate(5, i -> i + 1) 
             .filter(DeclarativePrimeComposed::isPrime) // composition of functions 
             .filter(n -> isSqrtGreaterThan5(n)) // only prime numbers go to the second filter
-            .map(n -> printAndReturn(n)) // lazy evaluation only for the first one matching the filters
+            .map(n -> { System.out.println("map:" + n); return n; }) // lazy evaluation only for the first one matching the filters
             .findFirst() // terminal operation
             .get()
         );
@@ -30,8 +30,4 @@ public class DeclarativePrimeComposed {
                     .noneMatch(i -> number % i == 0);
     }
 
-    private static int printAndReturn(int number) {
-        System.out.println("printAndReturn:" + number);
-        return number;
-    }
 }
