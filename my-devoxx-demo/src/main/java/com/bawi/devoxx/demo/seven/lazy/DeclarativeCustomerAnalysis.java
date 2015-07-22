@@ -15,7 +15,7 @@ public class DeclarativeCustomerAnalysis {
         long start = System.currentTimeMillis();
 
         // 1. stream single usage,
-        // laziness gain: duration 2s (steam()) or 1s (parallelStream()) in getCustomers
+        // laziness gain: duration 2s always (steam()) or 1-2s (parallelStream()) in getCustomers
         Stream<Customer> customers = getCustomers(names);
         printFirstMillionaire(customers);
 
@@ -56,10 +56,12 @@ public class DeclarativeCustomerAnalysis {
         //@formatter:off
         return names
                 //.stream()
-                .parallelStream()
+                .parallelStream() // customers in parallel, number of investigations no guaranteed 
                 .map(name -> {
                         int customerId = id.getAndIncrement();
-                        return new Customer(name, customerId, accountBalanceRetriever.getAccountBallance(customerId));
+                        Customer customer = new Customer(name, customerId, accountBalanceRetriever.getAccountBallance(customerId));
+                        System.out.println("getCustomers: " + customer + ", " + Thread.currentThread());
+                        return customer;
                     });
         //@formatter:on
     }
