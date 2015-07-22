@@ -14,10 +14,12 @@ public class ImperativeCustomerAnalysis {
 
         List<Customer> customers = getCustomers(names);
 
-        // printFirstMillionaire(customers);
-
+        // 1. collection single usage, no laziness gain: duration 6s
         printFirstMillionaire(customers);
-        printFirstCustomer(customers);
+
+        // 2. collection reuse: 6s
+        // printFirstMillionaire(customers);
+        // printFirstCustomer(customers);
 
         long stop = System.currentTimeMillis();
         System.out.println("Took ms: " + (stop - start));
