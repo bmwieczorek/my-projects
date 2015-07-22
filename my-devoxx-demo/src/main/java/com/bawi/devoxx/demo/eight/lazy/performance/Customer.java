@@ -1,4 +1,4 @@
-package com.bawi.devoxx.demo.seven.lazy;
+package com.bawi.devoxx.demo.eight.lazy.performance;
 
 public class Customer {
 
