@@ -1,6 +1,6 @@
 package com.bawi.devoxx.demo.two.lambda;
 
-public class Lambda {
+public class Lambda1Runnable {
 
     public static void main(String[] args) {
         String name = "Bob";
