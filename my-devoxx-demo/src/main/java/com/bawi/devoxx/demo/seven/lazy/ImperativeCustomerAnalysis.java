@@ -5,6 +5,7 @@ import static java.util.Arrays.asList;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ImperativeCustomerAnalysis {
     static AccountBalanceRetriever accountBalanceRetriever = new AccountBalanceRetriever();
 

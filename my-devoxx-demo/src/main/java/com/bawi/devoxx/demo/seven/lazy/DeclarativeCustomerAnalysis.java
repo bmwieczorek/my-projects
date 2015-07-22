@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
+@SuppressWarnings("unused")
 public class DeclarativeCustomerAnalysis {
     static AccountBalanceRetriever accountBalanceRetriever = new AccountBalanceRetriever();
 
