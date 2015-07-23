@@ -2,8 +2,8 @@ package com.bawi.devoxx.demo.two.lambda;
 
 public class Lambda1 {
 
-    interface Callback {
-        public void doIt();
+    interface Callback { // Consumer
+        public void accept();
     }
 
     static class Lazy {
@@ -13,8 +13,8 @@ public class Lambda1 {
             this.callback = callback;
         }
 
-        public void doIt() {
-            callback.doIt();
+        public void accept() {
+            callback.accept();
         }
 
     }
@@ -26,16 +26,16 @@ public class Lambda1 {
         Callback printHelloCallback = new Callback() {
 
             @Override
-            public void doIt() {
+            public void accept() {
                 System.out.println("Hello");
             }
         };
 
         Lazy lazy = new Lazy(printHelloCallback);
-        lazy.doIt();
+        lazy.accept();
 
         Lazy lazy2 = new Lazy(() -> System.out.println("Hello"));
-        lazy2.doIt();
+        lazy2.accept();
 
     }
 

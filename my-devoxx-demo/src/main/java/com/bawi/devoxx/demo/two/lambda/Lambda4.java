@@ -2,7 +2,7 @@ package com.bawi.devoxx.demo.two.lambda;
 
 public class Lambda4 {
 
-    interface Callback<R, T> {
+    interface Callback<R, T> { // Function
         R apply(T t);
     }
 

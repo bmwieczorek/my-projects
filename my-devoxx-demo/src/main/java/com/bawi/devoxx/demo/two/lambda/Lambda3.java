@@ -2,7 +2,7 @@ package com.bawi.devoxx.demo.two.lambda;
 
 public class Lambda3 {
 
-    interface Callback<R> {
+    interface Callback<R> { // Supplier
         R get();
     }
 
