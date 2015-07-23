@@ -8,7 +8,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import com.bawi.spring4.annotation.config2.component.MyService;
 
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "com.bawi.spring4.annotation.config2.component")
 public class MySpringApplication {
 
     public static void main(String[] args) {
