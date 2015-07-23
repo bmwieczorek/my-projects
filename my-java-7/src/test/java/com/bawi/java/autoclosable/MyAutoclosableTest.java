@@ -1,22 +1,22 @@
 package com.bawi.java.autoclosable;
 
-import java.util.Date;
+import java.io.IOException;
 
 import org.junit.Test;
 
 class MyAutoclosable implements AutoCloseable {
 
     public void doPass() {
-        System.out.println(new Date() + " doPass called");
+        System.out.println("doPass called");
     }
 
     public void doFail() {
-        throw new RuntimeException(new Date() + " doFail called");
+        throw new RuntimeException("doFail called");
     }
 
     @Override
-    public void close() throws Exception {
-        System.out.println(new Date() + " close called");
+    public void close() throws IOException { // originally throws Exception
+        System.out.println("close called");
     }
 }
 
@@ -68,9 +68,19 @@ public class MyAutoclosableTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void shouldFailWithTryWithResources() throws Exception {
+    public void shouldFailWithTryWithResources() {
         try (MyAutoclosable myAutoclosable = new MyAutoclosable()) {
             myAutoclosable.doFail();
+        } catch (IOException e) { // required catch/or re-throw IOException coming from close() throws IOException,
+                                  // possible also catch(Exception e) which would catch RuntimeException from doFail() and also IOException from close()
+            e.printStackTrace();
+        }
+        
+        String a = "";
+        if ("A".equals(a)) {
+            
         }
     }
+    // close called
+
 }
