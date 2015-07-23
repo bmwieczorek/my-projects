@@ -5,3 +5,9 @@ bin
 .settings
 .idea
 .iml
+!src/main/java
+!src/test/java
+!src/main/resources
+!src/test/resources
+
+.factorypath
