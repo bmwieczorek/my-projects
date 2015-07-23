@@ -1,24 +1,31 @@
 package com.bawi.devoxx.demo.seven.lazy.computation;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class MyLazy {
 
     static class Lazy<T> {
-
+        private Optional<T> instance = Optional.empty(); // instance holds the instance of target type T
         private Supplier<T> supplier;
 
-        public Lazy(Supplier<T> supplier) {
+        public Lazy(Supplier<T> supplier) { // supplier knows how to create an instance of target class T
             this.supplier = supplier;
 
         }
 
         public T get() {
-            return supplier.get();
+            if (!instance.isPresent()) {
+                instance = Optional.of(supplier.get());
+            }
+            return instance.get();
         }
 
     }
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         int n = 10;
 
@@ -40,6 +47,7 @@ public class MyLazy {
         // });
         System.out.println("Before printing value");
         System.out.println(lazy.get());
+        // System.out.println(lazy.get());
 
     }
 
