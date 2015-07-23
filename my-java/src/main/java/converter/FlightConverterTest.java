@@ -1,7 +1,5 @@
 package converter;
 
-import junit.framework.TestCase;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,6 +9,7 @@ import converter.model.backend.ImSegment;
 import converter.model.service.Flight;
 import converter.model.service.Leg;
 import converter.model.service.Segment;
+import junit.framework.TestCase;
 
 public class FlightConverterTest extends TestCase {
 
@@ -30,11 +29,6 @@ public class FlightConverterTest extends TestCase {
         // then
         assertImFlightHasImLegWithValues(imFlight, name, size);
         assertImFlightHasImSegmentWithValues(imFlight, name, size);
-    }
-
-    @Test
-    public void testConvertImFlightToFlight() {
-        fail("Not yet implemented");
     }
 
     private void assertImFlightHasImLegWithValues(ImFlight imFlight, String name, int size) {

@@ -20,7 +20,7 @@ public class HashMapTest {
         System.out.println(containsKey);
 
         // then
-        Assert.assertFalse(containsKey);
+        Assert.assertTrue(containsKey);
 
     }
 }
