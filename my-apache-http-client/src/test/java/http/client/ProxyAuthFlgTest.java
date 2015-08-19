@@ -18,12 +18,12 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-public class ProxyAuthFarelogixTest {
+public class ProxyAuthFlgTest {
 
     public static void main(String[] args) throws IOException {
         String xmlRq = FileUtils.readFileToString(new File("src/test/resource/EMDImageRQ.xml"));
         HttpClient client = createHttpClient();
-        HttpPost post = new HttpPost("https://stg.farelogix.com/xmlts/sandboxdm");
+        HttpPost post = new HttpPost("https://stg.flg.com/xmlts/sandboxdm");
         post.setEntity(new StringEntity(xmlRq));
         
         // when

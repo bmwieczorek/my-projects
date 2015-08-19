@@ -27,7 +27,7 @@ public class FormLoginAuthorizationTest {
         String xmlRq = FileUtils.readFileToString(new File("src/test/resource/EMDImageRQ.xml"));
         String httpPostContent = Executor.newInstance()
                 .auth(proxy, Settings.USERNAME, Settings.PASSWORD)
-                .execute(Request.Post("https://stg.f.com/xmlts/sandboxdm")
+                .execute(Request.Post("https://stg.flg.com/xmlts/sandboxdm")
                         .viaProxy(proxy)
                         .bodyString(xmlRq, ContentType.TEXT_PLAIN))
                 .returnContent()
