@@ -23,8 +23,7 @@ public class FluentProxyAuthorizationTest {
                 .asString();
         System.err.println(httpGetContent);
 
-
-        String xmlRq = FileUtils.readFileToString(new File("src/test/resource/EMDImageRQ.xml"));
+        String xmlRq = FileUtils.readFileToString(new File("src/test/resources/EMDImageRQ.xml"));
         String httpPostContent = Executor.newInstance()
                 .auth(proxy, Settings.USERNAME, Settings.PASSWORD)
                 .execute(Request.Post("https://stg.flg.com/xmlts/sandboxdm")

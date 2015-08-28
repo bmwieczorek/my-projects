@@ -21,7 +21,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 public class ProxyAuthorizationTest {
 
     public static void main(String[] args) throws IOException {
-        String xmlRq = FileUtils.readFileToString(new File("src/test/resource/EMDImageRQ.xml"));
+        String xmlRq = FileUtils.readFileToString(new File("src/test/resources/EMDImageRQ.xml"));
         HttpClient client = createHttpClient();
         HttpPost post = new HttpPost("https://stg.flg.com/xmlts/sandboxdm");
         post.setEntity(new StringEntity(xmlRq));

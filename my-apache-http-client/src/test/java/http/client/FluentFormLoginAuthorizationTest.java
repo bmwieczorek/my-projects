@@ -12,7 +12,6 @@ public class FluentFormLoginAuthorizationTest {
         Executor executor = Executor.newInstance()
                 .auth(new HttpHost("tkthli702.sabre.com", 8090), Settings.USERNAME, Settings.PASSWORD);
 
-        
         String content = executor
                 .execute(Request.Get("http://tkthli702.sabre.com:8090/view?pattern=6074551101538&path=/apps/tkt-hub/logs/t2.emd*.log&hosts=tkthli702"))
                 .returnContent()
