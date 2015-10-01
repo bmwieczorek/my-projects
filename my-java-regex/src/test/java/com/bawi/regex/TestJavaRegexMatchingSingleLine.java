@@ -33,7 +33,7 @@ public class TestJavaRegexMatchingSingleLine {
 
     private void shouldFindLinesUsingMultiLineMode(String multiLineText) {
         Matcher m = Pattern.compile("(?m)^.*$").matcher(multiLineText); // (?m) MULTI-LINE mode - when explicitly enabled - makes anchors ^ and $ indicate begin and end of line
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         while (m.find()) {
             lines.add(m.group());
             System.out.println("line = '" + m.group() + "'");
@@ -56,7 +56,7 @@ public class TestJavaRegexMatchingSingleLine {
 
     private void shouldFindLinesUsingSingleLineMode(String multiLineText) {
         Matcher m = Pattern.compile("(?s)^.*$").matcher(multiLineText); // (?s) SINGLE-LINE mode - when explicitly enabled - makes dot '.' match new line chars
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         while (m.find()) {
             lines.add(m.group());
             System.out.println("line = '" + m.group() + "'");
