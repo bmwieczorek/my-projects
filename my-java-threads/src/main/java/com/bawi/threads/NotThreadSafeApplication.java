@@ -1,28 +1,26 @@
 package com.bawi.threads;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class NotThreadSafeApplication {
-    
+
     private static final int ITERATIONS = 1000;
-    static Map<Integer, Boolean> map = new HashMap<>();
-    
-    static class MyThread extends Thread {
-        
-        private final int ticketNumber;
+    private static Map<Integer, Boolean> map = new HashMap<>();
 
-        public MyThread(int ticketNumber) {
-            this.ticketNumber = ticketNumber;
+    public static void main(String[] args) {
+        for (int i = 1; i <= ITERATIONS; i++) {
+            map.put(i, true);
         }
-        
-        @Override
-        public void run() {
-//            synchronized (NotThreadSafeApplication.class) {
-                findAndBuyIfFound();
-//            }
+        for (int i = 1; i <= ITERATIONS; i++) {
+            new Thread(() -> findAndBuyIfFound(1)).start();
+            new Thread(() -> findAndBuyIfFound(1)).start();
+            sleepMillis(10);
         }
+    }
 
-        private void findAndBuyIfFound() {
+    private static void findAndBuyIfFound(int ticketNumber) {
+        synchronized (NotThreadSafeApplication.class) {
             boolean available = map.get(ticketNumber);
             if (available) {
                 map.put(ticketNumber, false);
@@ -33,18 +31,6 @@ public class NotThreadSafeApplication {
         }
     }
 
-    public static void main(String[] args) {
-        for (int i = 1; i <= ITERATIONS; i++) {
-            map.put(i, true);
-        }
-        for (int i = 1; i <= ITERATIONS; i++) {
-            new MyThread(i).start();
-            new MyThread(i).start();
-            sleepMillis(10);
-        }
-
-    }
-    
     public static void sleepMillis(int i) {
         try {
             Thread.sleep(i);
@@ -52,9 +38,9 @@ public class NotThreadSafeApplication {
             e.printStackTrace();
         }
     }
- }
+}
 
 // result:
 // If not synchronized in line 20, then two thread bought the same ticket
-//Thread[Thread-487,5,main] bought: 244
-//Thread[Thread-486,5,main] bought: 244
+// Thread[Thread-487,5,main] bought: 244
+// Thread[Thread-486,5,main] bought: 244
