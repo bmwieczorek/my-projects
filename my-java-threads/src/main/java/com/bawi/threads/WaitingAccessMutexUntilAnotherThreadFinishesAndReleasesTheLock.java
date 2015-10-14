@@ -45,7 +45,7 @@ Thread[Thread-0,5,main] doSth1 begin
 Thread[Thread-0,5,main] doSth1 end
 
 Explanation:
-It does not matter if the Thread-0 wants to acccess doSth1 or doSth2 - the result is the same as they are both synchronized 
+It does not matter if the Thread-0 wants to access doSth1 or doSth2 - the result is the same as they are both synchronized 
 on the same lock. So Thread-0 needs to wait for main thread to finish sleeping while keeping the lock. 
 When main thread releases the lock by exiting doSth1, then Thread-0 can execute synchronized code from doSth1 or doSth2.
 */
