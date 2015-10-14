@@ -11,32 +11,44 @@ public class MyThreadPool {
     static class MyBlockingQueue {
         Lock lock = new ReentrantLock();
         Condition notEmpty;
-        Runnable r;
+        Runnable runnable;
         
         public MyBlockingQueue() {
             lock = new ReentrantLock();
             notEmpty = lock.newCondition();
         }
 
-        public Runnable get() throws InterruptedException {
-            lock.lock(); 
+        public Runnable take() throws InterruptedException {
             try {
-                while (r == null) {
-                    notEmpty.await();
+                System.out.println("[" + Thread.currentThread().getName() + "] Take: Before lockInterruptibly");
+                lock.lockInterruptibly();
+                System.out.println("[" + Thread.currentThread().getName() + "] Take: After lockInterruptibly");
+                while (runnable == null) {
+                    System.out.println("[" + Thread.currentThread().getName() + "] Take: Before await");
+                    notEmpty.await(); // releases the lock and becomes disabled for thread scheduling, start waiting for signal(all) or interrupts  
+                    System.out.println("[" + Thread.currentThread().getName() + "] Take: After await");
                 }
-                return r;
-            }
+                return runnable;
+            } 
             finally {
-                r = null;
+                runnable = null;
                 lock.unlock();
             }
         }
         
-        public void setR(Runnable r) {
-            lock.lock();
+        public void put(Runnable newRunnable) {
             try {
-                this.r = r;
+                System.out.println("[" + Thread.currentThread().getName() + "] Put: Before lockInterruptibly");
+                lock.lockInterruptibly();
+                System.out.println("[" + Thread.currentThread().getName() + "] Put: After lockInterruptibly");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                this.runnable = newRunnable;
+                System.out.println("[" + Thread.currentThread().getName() + "] Put: Before signal");
                 notEmpty.signal();
+                System.out.println("[" + Thread.currentThread().getName() + "] Put: After signal");
             }
             finally {
                 lock.unlock();
@@ -48,23 +60,25 @@ public class MyThreadPool {
     static class MyPool {
         
         MyBlockingQueue myBlockingQueue = new MyBlockingQueue();
-        List<Thread> workerThreads;
-        volatile boolean isShutdown = false;
+        List<Thread> workerThreads = new ArrayList<>();
         
-        public static MyPool createAndStartThreadsPool(int size) {
-            MyPool myPool = new MyPool();
-            myPool.workerThreads = new ArrayList<>(size);
-            for (int i = 0; i < size; i++) {
-                myPool.workerThreads.add(myPool.createWorkerThread());
-            }
+        public static MyPool createAndStartThreadPool(int size) {
+            MyPool myPool = new MyPool().withWorkerThreadCount(size);
             myPool.start();
             return myPool;
             
         }
+        private MyPool withWorkerThreadCount(int size) {
+            addWorkers(size);
+            return this;
+        }
         private void start() {
-            System.out.println("Starting my pool: " + Thread.currentThread().getName());
-            for (Thread workerThread : workerThreads) {
-                workerThread.start();
+            System.out.println("[" + Thread.currentThread().getName() + "] Starting my worker threads in my pool");
+            workerThreads.stream().forEach(Thread::start);
+        }
+        private void addWorkers(int size) {
+            for (int i = 0; i < size; i++) {
+                workerThreads.add(createWorkerThread());
             }
         }
         private Thread createWorkerThread() {
@@ -72,38 +86,33 @@ public class MyThreadPool {
                 
                 @Override
                 public void run() {
-                    System.out.println("Starting my thread in my pool: " + Thread.currentThread().getName());
+                    System.out.println("[" + Thread.currentThread().getName() + "] Started my worker thread in my pool");
                     while (true) {
                         Runnable runnable;
                         try {
-                            if (isShutdown) {
-                                System.out.println("Shutdown received: " + Thread.currentThread().getName());
-                                return;
-                            }
-                            runnable = myBlockingQueue.get();
-                            System.out.println("Starting to run a task: " + Thread.currentThread().getName());
-                            runnable.run();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            runnable = myBlockingQueue.take();
+                        } catch (@SuppressWarnings("unused") InterruptedException e) {
+                            System.out.println("[" + Thread.currentThread().getName() + "] My worker thread interrupted, exiting ...");
+                            return;
                         }
+
+                        System.out.println("[" + Thread.currentThread().getName() + "] Starting to run a task");
+                        runnable.run();
+                        System.out.println("[" + Thread.currentThread().getName() + "] Finished running a task");
                     }
                 }
             });
         }
         public void submit(Runnable r) {
-            myBlockingQueue.setR(r);
+            myBlockingQueue.put(r);
         }
         public void shutdown() {
-            isShutdown = true;
-            for (int i = 0; i < workerThreads.size(); i++) {
-                submit(() -> { /* */} );
-                sleepMillis(1);
-            }
+            workerThreads.stream().forEach(Thread::interrupt);
         };
     }
     
     public static void main(String[] args) {
-        MyPool myPool = MyPool.createAndStartThreadsPool(2);
+        MyPool myPool = MyPool.createAndStartThreadPool(2);
 
         myPool.submit(() -> doTheWork("My Runnable 1"));
         myPool.submit(() -> doTheWork("My Runnable 2"));
@@ -124,7 +133,8 @@ public class MyThreadPool {
     }
 
     private static void doTheWork(String name) {
-        System.out.println(name + ": " + Thread.currentThread().getName()); 
-        sleepMillis(1000);
+        int sleepMillis = 1000;
+        System.out.println("Task: " + name + ", sleeping: " + sleepMillis +  " ms ... [" + Thread.currentThread().getName() + "]"); 
+        sleepMillis(sleepMillis);
     }
 }
