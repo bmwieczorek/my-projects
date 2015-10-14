@@ -12,7 +12,11 @@ public class WaitingOnMonitorStateBySynchronizedAndWaitNotify {
                     try {
                         while (true) {
                             System.out.println("Before wait: " + Thread.currentThread().getName());
-                            monitor.wait(); // The current thread must own this object's monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object's monitor to wake up either through a call to the notify method or the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution. 
+                            monitor.wait(); // The current thread must own this object's monitor. 
+                                            // The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object's monitor to wake up either through a call to the notify method or the notifyAll method. 
+                                            // The thread then waits until it can re-obtain ownership of the monitor and resumes execution.
+                                            // Thread T becomes disabled for thread scheduling purposes and lies dormant.
+                                            // void java.lang.Object.wait(long timeout) -  the maximum time to wait in milliseconds
                                             // WAITING (on object monitor), at java.lang.Object.wait(Native Method)
                                             //  - waiting on <0x00000000d5b66428> (a java.lang.Object)
                                             //  - locked <0x00000000d5b66428> (a java.lang.Object)
