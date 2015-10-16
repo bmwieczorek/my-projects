@@ -31,7 +31,6 @@ public class MyThreadPool {
 		isShutdown = true;
 		workerThreads.stream().forEach(MyWorkerThread::shutdown);
 	}
-
 	
 	public static void main(String[] args) throws InterruptedException {
 		MyThreadPool myThreadPool = new MyThreadPoolBuilder()
@@ -56,5 +55,4 @@ public class MyThreadPool {
 			System.out.println("[" + Thread.currentThread().getName() + "] Hello from task #" + taskNumber);
 		};
 	}
-	
 }
