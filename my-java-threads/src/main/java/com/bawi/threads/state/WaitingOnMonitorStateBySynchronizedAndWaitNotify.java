@@ -62,9 +62,9 @@ Before long sleep: main
     at java.lang.Object.wait(Native Method)
     - waiting on <0x00000000d5b66428> (a java.lang.Object)
     at java.lang.Object.wait(Object.java:502)
-    at com.bawi.threads.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.lambda$0(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:12)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.lambda$0(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:12)
     - locked <0x00000000d5b66428> (a java.lang.Object)
-    at com.bawi.threads.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify$$Lambda$1/321001045.run(Unknown Source)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify$$Lambda$1/321001045.run(Unknown Source)
     at java.lang.Thread.run(Thread.java:745)
 
    Locked ownable synchronizers:
@@ -74,8 +74,8 @@ Before long sleep: main
 "main" #1 prio=5 os_prio=0 tid=0x000000000058e000 nid=0x23fc waiting on condition [0x00000000021bf000]
    java.lang.Thread.State: TIMED_WAITING (sleeping)
     at java.lang.Thread.sleep(Native Method)
-    at com.bawi.threads.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.sleepSeconds(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:30)
-    at com.bawi.threads.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.main(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:20)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.sleepSeconds(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:30)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorStateBySynchronizedAndWaitNotify.main(WaitingOnMonitorStateBySynchronizedAndWaitNotify.java:20)
 
    Locked ownable synchronizers:
     - None

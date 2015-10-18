@@ -45,9 +45,9 @@ Finished: main
 "Thread-0" #10 prio=5 os_prio=0 tid=0x0000000059132000 nid=0x24c8 waiting on condition [0x00000000598ee000]
    java.lang.Thread.State: TIMED_WAITING (sleeping)
     at java.lang.Thread.sleep(Native Method)
-    at com.bawi.threads.state.WaitingOnMonitorByWaitInThreadJoin.sleepSeconds(WaitingOnMonitorByWaitInThreadJoin.java:26)
-    at com.bawi.threads.state.WaitingOnMonitorByWaitInThreadJoin.lambda$0(WaitingOnMonitorByWaitInThreadJoin.java:9)
-    at com.bawi.threads.state.WaitingOnMonitorByWaitInThreadJoin$$Lambda$1/791452441.run(Unknown Source)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorByWaitInThreadJoin.sleepSeconds(WaitingOnMonitorByWaitInThreadJoin.java:26)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorByWaitInThreadJoin.lambda$0(WaitingOnMonitorByWaitInThreadJoin.java:9)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorByWaitInThreadJoin$$Lambda$1/791452441.run(Unknown Source)
     at java.lang.Thread.run(Thread.java:745)
 
    Locked ownable synchronizers:
@@ -61,7 +61,7 @@ Finished: main
     at java.lang.Thread.join(Thread.java:1245)
     - locked <0x00000000d5b664e0> (a java.lang.Thread)
     at java.lang.Thread.join(Thread.java:1319)
-    at com.bawi.threads.state.WaitingOnMonitorByWaitInThreadJoin.main(WaitingOnMonitorByWaitInThreadJoin.java:16)
+    at com.bawi.threads.my.thread.pool.state.WaitingOnMonitorByWaitInThreadJoin.main(WaitingOnMonitorByWaitInThreadJoin.java:16)
 
    Locked ownable synchronizers:
     - None
