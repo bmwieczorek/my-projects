@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
@@ -13,46 +14,52 @@ import org.slf4j.LoggerFactory;
 
 public class NotThreadSafeApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(NotThreadSafeApplication.class);
     private static final int ITERATIONS = 1000;
     private static Map<Integer, Boolean> map = new ConcurrentHashMap<>();
     private static final String BOUGHT = "bought";
+    
+    private static final Path PATH;
+    private static final Logger LOGGER;
+    static {
+        PATH = Paths.get("target/file.log");
+        try {
+            Files.deleteIfExists(PATH);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        LOGGER = LoggerFactory.getLogger(NotThreadSafeApplication.class);
+    }
 
-    public static void main(String[] args) throws IOException {
-        Path path = Paths.get("target/file.log");
-        // Files.deleteIfExists(path);
-        
+    public static void main(String[] args) throws IOException, InterruptedException {
         for (int i = 1; i <= ITERATIONS; i++) {
             map.put(i, true);
         }
         for (int i = 1; i <= ITERATIONS; i++) {
             final int j = i;
-            new Thread(() -> findAndBuyIfFound(j)).start();
-            new Thread(() -> findAndBuyIfFound(j)).start();
-            sleepMillis(10);
+            Thread t1 = new Thread(() -> findAndBuyIfFound(j));
+            Thread t2 = new Thread(() -> findAndBuyIfFound(j));
+            t1.start();
+            t2.start();
+            t1.join();
+            t2.join();
         }
 
-        Map<String, Integer> ticketToBookingCountMapping = new HashMap<>();
-        Files.lines(path)
-            .forEach(line -> { 
+        Set<String> boughtTicketNumber = new HashSet<>();
+        Files.lines(PATH)
+            .filter(line -> line.contains(BOUGHT))
+           .forEach(line -> { 
                 String[] split = line.split(":");
                 String ticket = split[2];
                 System.out.println(line);
-                ticketToBookingCountMapping.compute(ticket, (k, v) -> {
-                    if (!BOUGHT.equals(split[1])) {
-                        return null;
-                    }
-                    if (v == null) {
-                        return 1;
-                    }
+                if (!boughtTicketNumber.add(ticket)) { // adds return false for duplication
                     throw new RuntimeException("ticket booked twice: " + ticket);
-                });
+                }
             }
         );
     }
 
     private static void findAndBuyIfFound(int ticketNumber) {
-        synchronized (NotThreadSafeApplication.class) {
+        //synchronized (NotThreadSafeApplication.class) {
             boolean available = map.get(ticketNumber);
             if (available) {
                 map.put(ticketNumber, false);
@@ -60,7 +67,7 @@ public class NotThreadSafeApplication {
             } else {
                 LOGGER.info("not available:{}", ticketNumber);
             }
-       }
+       //}
     }
 
     public static void sleepMillis(int i) {
