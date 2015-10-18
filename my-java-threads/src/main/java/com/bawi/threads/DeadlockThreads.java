@@ -29,11 +29,11 @@ public class DeadlockThreads {
 
     static void synchR() {
         synchronized (Thread0.class) {
-            System.out.println(Thread.currentThread().getName() + " entered sync r");
+            System.out.println(Thread.currentThread().getName() + " entered sync runnable");
             DeadlockThreads.sleep(50);
             System.out.println(Thread.currentThread().getName() + " just before calling synchM");
             DeadlockThreads.synchM();
-            System.out.println(Thread.currentThread().getName() + " left sync r");
+            System.out.println(Thread.currentThread().getName() + " left sync runnable");
         }
     }
     
