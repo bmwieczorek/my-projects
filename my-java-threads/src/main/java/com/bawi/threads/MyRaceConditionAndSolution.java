@@ -84,6 +84,6 @@ public class MyRaceConditionAndSolution {
 /*
  * Output for NotSynchronizedNotAtomicCounter without any  
  * value=3 ... value=3 value=1 Exception in thread "main" java.lang.RuntimeException: value=1 at
- * com.bawi.threads.MyRaceConditionAndSolution.main(MyRaceConditionAndSolution.java:33)
+ * com.bawi.threads.my.thread.pool.MyRaceConditionAndSolution.main(MyRaceConditionAndSolution.java:33)
  * 
  */
