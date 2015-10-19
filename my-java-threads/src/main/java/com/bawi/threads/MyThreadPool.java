@@ -91,8 +91,8 @@ public class MyThreadPool {
                         Runnable runnable;
                         try {
                             runnable = myBlockingQueue.take();
-                        } catch (@SuppressWarnings("unused") InterruptedException e) {
-                            System.out.println("[" + Thread.currentThread().getName() + "] My worker thread interrupted, exiting ...");
+                        } catch (InterruptedException e) {
+                            System.out.println("[" + Thread.currentThread().getName() + "] My worker thread interrupted, exiting due to " + e );
                             return;
                         }
 
