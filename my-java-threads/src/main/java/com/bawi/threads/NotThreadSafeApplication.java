@@ -17,7 +17,6 @@ public class NotThreadSafeApplication {
     private static final int ITERATIONS = 1000;
     private static Map<Integer, Boolean> map = new ConcurrentHashMap<>();
     private static final String BOUGHT = "bought";
-    
     private static final Path PATH;
     private static final Logger LOGGER;
     static {
@@ -29,7 +28,6 @@ public class NotThreadSafeApplication {
         }
         LOGGER = LoggerFactory.getLogger(NotThreadSafeApplication.class);
     }
-
     public static void main(String[] args) throws IOException, InterruptedException {
         for (int i = 1; i <= ITERATIONS; i++) {
             map.put(i, true);
