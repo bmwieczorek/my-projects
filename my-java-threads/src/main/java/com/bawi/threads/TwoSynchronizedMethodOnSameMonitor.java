@@ -31,12 +31,12 @@ public class TwoSynchronizedMethodOnSameMonitor {
     }
 
     public static synchronized void sychronizedSleep1(int sleepMillis) {
-        LOGGER.debug("sleep1");
+        LOGGER.debug("synchronized sleep1");
         sleepMillis(sleepMillis);
     }
 
     public static synchronized void synchronizedSleep2(int sleepMillis) {
-        LOGGER.debug("sleep2");
+        LOGGER.debug("synchronized sleep2");
         sleepMillis(sleepMillis);
     }
 
@@ -50,12 +50,12 @@ public class TwoSynchronizedMethodOnSameMonitor {
 }
 
 /* 
-2015-10-18 22:15:31,987 main:Started
-2015-10-18 22:15:32,045 Thread-0:Started
-2015-10-18 22:15:32,045 Thread-0:sleep1
+2015-10-19 17:35:23,158|main    |Started
+2015-10-19 17:35:23,210|Thread-0|Started
+2015-10-19 17:35:23,210|Thread-0|synchronized sleep1
 
-2015-10-18 22:15:42,046 Thread-0:Finished
-2015-10-18 22:15:42,046 main:sleep2
+2015-10-19 17:35:26,210|Thread-0|Finished
+2015-10-19 17:35:26,210|main    |synchronized sleep2
 
-2015-10-18 22:15:52,046 main:Finished
+2015-10-19 17:35:28,210|main    |Finished
 */
