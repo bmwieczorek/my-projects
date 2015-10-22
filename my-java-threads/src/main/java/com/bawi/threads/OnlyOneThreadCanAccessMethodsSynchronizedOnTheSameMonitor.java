@@ -3,9 +3,9 @@ package com.bawi.threads;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TwoSynchronizedMethodOnSameMonitor {
+public class OnlyOneThreadCanAccessMethodsSynchronizedOnTheSameMonitor {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(TwoSynchronizedMethodOnSameMonitor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OnlyOneThreadCanAccessMethodsSynchronizedOnTheSameMonitor.class);
     
     public static void main(String[] args) throws InterruptedException {
         LOGGER.debug("Started");
@@ -21,7 +21,7 @@ public class TwoSynchronizedMethodOnSameMonitor {
         sleepMillis(10); // wait 10 ms so thread t1 enters synchronized sychronizedSleep1 method first
 
         /* Main thread cannot enter synchronizedSleep2 as thread t1 is already in synchronized method sychronizedSleep1
-           that owns the same shared monitor (TwoSynchronizedMethodOnSameMonitor.class) as synchronizedSleep2. 
+           that owns the same shared monitor (OnlyOneThreadCanAccessMethodsSynchronizedOnTheSameMonitor.class) as synchronizedSleep2. 
            So main thread needs to wait 3s till thread t1 leave sychronizedSleep1.
            After that time main thread can eventually enter synchronizedSleep2. 
         */
