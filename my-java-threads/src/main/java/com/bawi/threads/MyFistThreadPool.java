@@ -6,7 +6,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MyThreadPool {
+public class MyFistThreadPool {
     
     static class MyBlockingQueue {
         Lock lock = new ReentrantLock();

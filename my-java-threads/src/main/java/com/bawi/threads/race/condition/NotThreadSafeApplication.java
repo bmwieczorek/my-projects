@@ -1,4 +1,4 @@
-package com.bawi.threads;
+package com.bawi.threads.race.condition;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package com.bawi.threads;
+package com.bawi.threads.synchronization;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

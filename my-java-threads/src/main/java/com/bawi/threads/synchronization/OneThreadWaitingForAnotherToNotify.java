@@ -1,11 +1,11 @@
-package com.bawi.threads;
+package com.bawi.threads.synchronization;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class OnThreadWainingOnAnotherByObjectMonitor {
+public class OneThreadWaitingForAnotherToNotify {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(OnThreadWainingOnAnotherByObjectMonitor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OneThreadWaitingForAnotherToNotify.class);
 
     private static final Object MONITOR = new Object();
 
@@ -13,7 +13,7 @@ public class OnThreadWainingOnAnotherByObjectMonitor {
         LOGGER.debug("Started");
         Thread thread = new Thread(() -> {
             LOGGER.debug("Started");
-            sleepMillis(1000); // additional sleel time to show that main thread will also need to wait
+            sleepMillis(1000); // additional sleep time to show that main thread will also need to wait that time
             synchronized (MONITOR) {
                 MONITOR.notify();
             }

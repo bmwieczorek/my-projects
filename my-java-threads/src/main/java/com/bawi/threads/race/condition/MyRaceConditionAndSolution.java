@@ -1,4 +1,4 @@
-package com.bawi.threads;
+package com.bawi.threads.race.condition;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
@@ -82,8 +82,11 @@ public class MyRaceConditionAndSolution {
 }
 
 /*
- * Output for NotSynchronizedNotAtomicCounter without any  
- * value=3 ... value=3 value=1 Exception in thread "main" java.lang.RuntimeException: value=1 at
- * com.bawi.threads.my.thread.pool.MyRaceConditionAndSolution.main(MyRaceConditionAndSolution.java:33)
- * 
- */
+ Output for NotSynchronizedNotAtomicCounter:  
+ value=3 
+ ... 
+ value=3 
+ value=1 
+ Exception in thread "main" java.lang.RuntimeException: value=1 at
+ com.bawi.threads.com.bawi.threads.race.condition.MyRaceConditionAndSolution.main(MyRaceConditionAndSolution.java:33)
+  */
