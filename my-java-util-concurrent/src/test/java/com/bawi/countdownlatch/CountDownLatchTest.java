@@ -70,6 +70,7 @@ public class CountDownLatchTest {
     public void testWithoutSynchronization() {
         new Thread(new Worker(state)).start();
         new Thread(new Worker(state)).start();
+        System.out.println(state.i);
         // Assert.assertEquals(2, state.i); // fails most of time
     }
 
