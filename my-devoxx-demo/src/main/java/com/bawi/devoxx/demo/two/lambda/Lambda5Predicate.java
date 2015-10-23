@@ -1,6 +1,6 @@
 package com.bawi.devoxx.demo.two.lambda;
 
-public class Lambda2 {
+public class Lambda5Predicate {
 
     interface Callback<T> { // Predicate
         boolean matches(T t); // test
@@ -36,7 +36,7 @@ public class Lambda2 {
         System.out.println(lazy.matches(2));
 
         Lazy<Integer> lazy2 = new Lazy<Integer>(n -> isEvenNumber(n));
-        // Lazy<Integer> lazy2 = new Lazy<Integer>(Lambda2::isEvenNumber);
+        // Lazy<Integer> lazy2 = new Lazy<Integer>(Lambda5Predicate::isEvenNumber);
         System.out.println(lazy2.matches(2));
 
         Lazy<Integer> lazy3 = new Lazy<Integer>(n -> n % 2 == 1);

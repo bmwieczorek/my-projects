@@ -7,7 +7,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class ImperativeCustomerAnalysis {
-    static AccountBalanceRetriever accountBalanceRetriever = new AccountBalanceRetriever();
+    static LongRunningAccountBalanceRetriever longRunningAccountBalanceRetriever = new LongRunningAccountBalanceRetriever();
 
     public static void main(String[] args) {
         List<String> names = asList("Bob", "Bill", "Joe", "Mike", "Kim", "Lucy");
@@ -41,10 +41,10 @@ public class ImperativeCustomerAnalysis {
 
     private static List<Customer> getCustomers(List<String> names) {
         List<Customer> customers = new ArrayList<>();
-        int id = 0;
+        int counter = 0;
         for (String name : names) {
-            Double balance = accountBalanceRetriever.getAccountBallance(id);
-            Customer customer = new Customer(name, id++, balance);
+            Double balance = longRunningAccountBalanceRetriever.getAccountBallance(counter); // takes 1s to retrieve
+            Customer customer = new Customer(name, counter++, balance);
             customers.add(customer);
         }
         return customers;

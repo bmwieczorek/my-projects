@@ -1,6 +1,6 @@
 package com.bawi.devoxx.demo.two.lambda;
 
-public class Lambda4 {
+public class Lambda4Function {
 
     interface Callback<R, T> { // Function
         R apply(T t);
@@ -39,7 +39,7 @@ public class Lambda4 {
         // int length = getTextLength(t);
         // return length;
         // });
-        // Lazy<Integer, String> lazy2 = new Lazy<>(Lambda4::getTextLength);
+        // Lazy<Integer, String> lazy2 = new Lazy<>(Lambda4Function::getTextLength);
 
         System.out.println(text + " " + lazy2.apply("abc"));
 

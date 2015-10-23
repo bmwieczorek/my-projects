@@ -1,6 +1,6 @@
 package com.bawi.devoxx.demo.eight.lazy.performance;
 
-public class AccountBalanceRetriever {
+public class LongRunningAccountBalanceRetriever {
 
     public Double getAccountBallance(int id) {
         try {

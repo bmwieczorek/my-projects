@@ -3,13 +3,13 @@ package com.bawi.devoxx.demo.six.primesqrtcomposedlazy;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class DeclarativePrimeComposed {
+public class DeclarativePrimeFindFirstMatchingAddionalFilter {
 
     public static void main(String[] args) {
 
         System.out.println(
         Stream.iterate(5, i -> i + 1) 
-            .filter(DeclarativePrimeComposed::isPrime) // composition of functions 
+            .filter(DeclarativePrimeFindFirstMatchingAddionalFilter::isPrime) // composition of functions 
             .filter(n -> isSqrtGreaterThan5(n)) // only prime numbers go to the second filter
             .map(n -> { System.out.println("map:" + n); return n; }) // lazy evaluation only for the first one matching the filters
             .findFirst() // terminal operation

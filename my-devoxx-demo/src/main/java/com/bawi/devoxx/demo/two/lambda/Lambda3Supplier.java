@@ -1,6 +1,6 @@
 package com.bawi.devoxx.demo.two.lambda;
 
-public class Lambda3 {
+public class Lambda3Supplier {
 
     interface Callback<R> { // Supplier
         R get();
