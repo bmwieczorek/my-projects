@@ -10,6 +10,12 @@ public class ParallelStreamForkJoinThreadsReuse {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ParallelStreamForkJoinThreadsReuse.class);
 
+    /*
+     This time after first 3 threads (t0-t2) finished parallelStream() processing we started threads new three 
+     threads (t3-t5) to process new tasks. As the ForkJoin pool worker has not yet been stopped the same workers 
+     were reused for subsequent processing
+     */
+
     public static void main(String[] args) throws InterruptedException {
       LOGGER.debug("Available cores: {}", Runtime.getRuntime().availableProcessors()); // n=4 CPU cores 
                                                                                        // on my notebook

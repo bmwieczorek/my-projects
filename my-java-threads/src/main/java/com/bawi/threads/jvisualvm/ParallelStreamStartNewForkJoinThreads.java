@@ -10,6 +10,11 @@ public class ParallelStreamStartNewForkJoinThreads {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ParallelStreamStartNewForkJoinThreads.class);
 
+    /*
+    This time after first 3 threads (t0-t2) finished then main thread waited much longer (here 13 seconds) 
+    and then started new 3 threads (t3-t5). 13 seconds was apparently long enough to stop all the 3 fork-join pool 
+    workers and new forkjoin workers needed to be created to handle parallel processing.
+    */
     public static void main(String[] args) throws InterruptedException {
       LOGGER.debug("Available cores: {}", Runtime.getRuntime().availableProcessors()); // n=4 CPU cores 
       // on my notebook
