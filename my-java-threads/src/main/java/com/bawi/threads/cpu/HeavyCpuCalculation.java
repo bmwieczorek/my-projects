@@ -2,7 +2,7 @@ package com.bawi.threads.cpu;
 
 import java.math.BigDecimal;
 
-public class HeavyCpuCalculationThread {
+public class HeavyCpuCalculation {
 
     public static void main(String[] args) {
 
@@ -32,6 +32,6 @@ Elapsed time:                                5467 ms (100.00%)
 
 "main" #1 prio=5 os_prio=0 tid=0x000000000213d800 nid=0x1078 runnable [0x00000000023ef000]
    java.lang.Thread.State: RUNNABLE
-    at com.bawi.threads.cpu.HeavyCpuCalculationThread.main(HeavyCpuCalculationThread.java:17)
+    at com.bawi.threads.cpu.HeavyCpuCalculation.main(HeavyCpuCalculation.java:17)
 
 */

@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class WritingFileThread {
+public class WritingFile {
     private static final String LINE = "abcdefghijklmnopqrstuwvxyzABCDEFGHIJKLMNOPQRSUWVXYZ\r\n";
 
     public static void main(String[] args) throws IOException {
@@ -58,6 +58,6 @@ Elapsed time:                                21181 ms (100.00%)
     at java.io.BufferedWriter.write(BufferedWriter.java:230)
     - locked <0x00000000810110d0> (a java.io.OutputStreamWriter)
     at java.io.Writer.write(Writer.java:157)
-    at com.bawi.threads.cpu.WritingFileThread.main(WritingFileThread.java:23)
+    at com.bawi.threads.cpu.WritingFile.main(WritingFile.java:23)
 
  */ 
