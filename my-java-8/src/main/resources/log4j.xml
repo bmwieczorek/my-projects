@@ -20,6 +20,9 @@
 
     <appender name="ASYNC_CSV_FILE" class="org.apache.log4j.AsyncAppender">
         <param name="Blocking" value="true" />
+        <!-- 
+        <param name="Blocking" value="false" />
+        -->
         <appender-ref ref="CSV_FILE" />
     </appender>
 
