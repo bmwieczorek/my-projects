@@ -4,39 +4,37 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.OperatingSystemMXBean;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 
-public class AllCoresCpuLoad {
+public class MonitorAllCoresCpuLoad {
 
-    private static volatile boolean hasAnyFinished = false;
+    private static volatile boolean hasAnyThreadFinished = false;
 
-    public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
+    public static void main(String[] args) throws Exception {
         OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
-        int coresCount = Runtime.getRuntime().availableProcessors();
-        int threadsCount = coresCount;
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(threadsCount + 1); // + 1 to include main thread measuring CPU load
+        int threadsCount = Runtime.getRuntime().availableProcessors();
+        CyclicBarrier barrier = new CyclicBarrier(threadsCount + 1); // + 1 to include main thread measuring CPU load
         for (int i = 0; i < threadsCount; i++) {
-            createAndStartThreads(cyclicBarrier);
+            createAndStartThread(barrier);
         }
-        cyclicBarrier.await();
+        barrier.await();
         System.out.println("All threads started");
-        while (!hasAnyFinished) {
-            getMBeanInformation(operatingSystemMXBean);
+        while (!hasAnyThreadFinished) {
+            getCpuLoad(operatingSystemMXBean);
             TimeUnit.MILLISECONDS.sleep(100);
         }
         System.out.println("One of thread finished");
     }
 
-    private static void createAndStartThreads(CyclicBarrier cyclicBarrier) {
+    private static void createAndStartThread(CyclicBarrier cyclicBarrier) {
         new Thread(() -> {
             try {
                 cyclicBarrier.await();
                 for (long i = 0L; i < 19999999999L; i++) { // 6s
                     // Thread running 100%, taking 1/(n cores) of JVM/System overall CPU
                 }
-                hasAnyFinished = true;
+                hasAnyThreadFinished = true;
                 System.out.println(Thread.currentThread().getName() + " finished");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -45,8 +43,8 @@ public class AllCoresCpuLoad {
 
     }
 
-    private static void getMBeanInformation(Object bean) {
-        for (Method method : bean.getClass().getDeclaredMethods()) {
+    private static void getCpuLoad(OperatingSystemMXBean mxBean) {
+        for (Method method : mxBean.getClass().getDeclaredMethods()) {
             method.setAccessible(true);
             String methodName = method.getName();
             if (methodName.startsWith("get") && methodName.contains("Cpu") && methodName.contains("Load")
@@ -54,7 +52,7 @@ public class AllCoresCpuLoad {
 
                 Object value;
                 try {
-                    value = method.invoke(bean);
+                    value = method.invoke(mxBean);
                 } catch (Exception e) {
                     value = e;
                 }
