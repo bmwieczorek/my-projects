@@ -11,7 +11,7 @@ public class ParallelStreamMoreTasksThanThreads {
     private static final Logger LOGGER = LoggerFactory.getLogger(ParallelStreamMoreTasksThanThreads.class);
 
     public static void main(String[] args) throws InterruptedException {
-      LOGGER.debug("Available cores: {}",Runtime.getRuntime().availableProcessors());// n=4 CPU cores 
+      LOGGER.debug(currentThreadId() + "Available cores: {}",Runtime.getRuntime().availableProcessors());// n=4 CPU cores 
                                                                                     // on my notebook
 
     //In general CPU core count = ForkJoin pool size that consists of 1 current and n-1 worker threads
@@ -26,7 +26,7 @@ public class ParallelStreamMoreTasksThanThreads {
         t0.start();
 
         t0.join();
-        LOGGER.debug("Thread t0 finished");
+        LOGGER.debug(currentThreadId() + "Thread t0 finished");
 
         sleepSeconds("main", 100);
     }
@@ -45,12 +45,17 @@ public class ParallelStreamMoreTasksThanThreads {
     }
 
     private static void sleepSeconds(String id, int sleepSeconds) {
-        LOGGER.debug("{} about to sleep {}", id, sleepSeconds);
+        LOGGER.debug(currentThreadId() + "{} about to sleep {}", id, sleepSeconds);
         try{
             Thread.sleep(1000 * sleepSeconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private static String currentThreadId() {
+        long id = Thread.currentThread().getId();
+        return String.format("Thread id=%-2s|", id);
     }
 }
 
@@ -61,16 +66,16 @@ public class ParallelStreamMoreTasksThanThreads {
 
 /*
 Output:
-2015-10-25 10:47:51,073|main      |Available cores: 4
-2015-10-25 10:47:51,074|main      |main about to sleep 15
+2015-10-25 10:47:51,073|main                            |Thread id=1 |Available cores: 4
+2015-10-25 10:47:51,074|main                            |Thread id=1 |main about to sleep 15
 
-2015-10-25 10:48:06,143|Thread-0  |t0 about to sleep 3
-2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-3|t0 about to sleep 3
-2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-1|t0 about to sleep 3
-2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-2|t0 about to sleep 3
+2015-10-25 10:48:06,143|Thread-0                        |Thread id=10|t0 about to sleep 3
+2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-3|Thread id=13|t0 about to sleep 3
+2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-1|Thread id=11|t0 about to sleep 3
+2015-10-25 10:48:06,143|ForkJoinPool.commonPool-worker-2|Thread id=12|t0 about to sleep 3
 
-2015-10-25 10:48:09,143|ForkJoinPool.commonPool-worker-1|t0 about to sleep 3 <- completes work in next 3 seconds "slot"
+2015-10-25 10:48:09,143|ForkJoinPool.commonPool-worker-1|Thread id=11|t0 about to sleep 3 <- completes work in next 3 seconds "slot"
 
-2015-10-25 10:48:12,144|main      |Thread t0 finished
-2015-10-25 10:48:12,144|main      |main about to sleep 100
+2015-10-25 10:48:12,144|main                            |Thread id=1 |Thread t0 finished
+2015-10-25 10:48:12,144|main                            |Thread id=1 |main about to sleep 100
 */

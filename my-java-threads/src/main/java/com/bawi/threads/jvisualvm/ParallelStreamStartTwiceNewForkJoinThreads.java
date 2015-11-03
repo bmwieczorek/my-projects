@@ -16,7 +16,7 @@ public class ParallelStreamStartTwiceNewForkJoinThreads {
     workers and new forkjoin workers needed to be created to handle parallel processing.
     */
     public static void main(String[] args) throws InterruptedException {
-      LOGGER.debug("Available cores: {}", Runtime.getRuntime().availableProcessors()); // n=4 CPU cores 
+      LOGGER.debug(currentThreadId() + "Available cores: {}", Runtime.getRuntime().availableProcessors()); // n=4 CPU cores 
       // on my notebook
 
       // In general CPU core count = ForkJoin pool size that consists of 1 current and n-1 worker threads
@@ -36,7 +36,7 @@ public class ParallelStreamStartTwiceNewForkJoinThreads {
         t0.join();
         t1.join();
         t2.join();
-        LOGGER.debug("Threads t0, t1, t2 finished");
+        LOGGER.debug(currentThreadId() + "Threads t0, t1, t2 finished");
 
         sleepSeconds("main", 13); // 13 seconds was apparently enough to stop all the 3 fork-join workers 
                                   // and new fork-join workers needed to be created to handle parallel processing
@@ -52,7 +52,7 @@ public class ParallelStreamStartTwiceNewForkJoinThreads {
         t4.join();
         t5.join();
 
-        LOGGER.debug("Threads t3, t4, t5 finished");
+        LOGGER.debug(currentThreadId() + "Threads t3, t4, t5 finished");
         sleepSeconds("main", 100);
 
         // Java started initially with 9 daemon threads and one main thread from the application. 
@@ -70,13 +70,41 @@ public class ParallelStreamStartTwiceNewForkJoinThreads {
     }
 
     private static void sleepSeconds(String id, int sleepSeconds) {
-        LOGGER.debug("{} about to sleep {}", id, sleepSeconds);
-  
+        LOGGER.debug(currentThreadId() + "{} about to sleep {}", id, sleepSeconds);
         try{
-
             Thread.sleep(1000 * sleepSeconds);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    private static String currentThreadId() {
+        return String.format("Thread id=%-2s|", Thread.currentThread().getId());
+    }
 }
+/*
+2015-11-02 21:15:36,527|main                            |Thread id=1 |Available cores: 4
+2015-11-02 21:15:36,528|main                            |Thread id=1 |main about to sleep 15
+
+2015-11-02 21:15:51,598|Thread-1                        |Thread id=11|t1 about to sleep 5
+2015-11-02 21:15:51,598|ForkJoinPool.commonPool-worker-2|Thread id=15|t0 about to sleep 5
+2015-11-02 21:15:51,598|ForkJoinPool.commonPool-worker-3|Thread id=13|t2 about to sleep 5
+2015-11-02 21:15:51,598|Thread-0                        |Thread id=10|t0 about to sleep 5
+2015-11-02 21:15:51,598|Thread-2                        |Thread id=12|t2 about to sleep 5
+2015-11-02 21:15:51,598|ForkJoinPool.commonPool-worker-1|Thread id=14|t1 about to sleep 5
+
+2015-11-02 21:15:56,600|main                            |Thread id=1 |Threads t0, t1, t2 finished
+2015-11-02 21:15:56,602|main                            |Thread id=1 |main about to sleep 13
+
+2015-11-02 21:16:09,605|Thread-4                        |Thread id=17|t4 about to sleep 5
+2015-11-02 21:16:09,605|Thread-3                        |Thread id=16|t3 about to sleep 5
+2015-11-02 21:16:09,606|Thread-5                        |Thread id=18|t5 about to sleep 5
+2015-11-02 21:16:09,606|ForkJoinPool.commonPool-worker-0|Thread id=19|t4 about to sleep 5
+2015-11-02 21:16:09,606|ForkJoinPool.commonPool-worker-2|Thread id=21|t3 about to sleep 5
+2015-11-02 21:16:09,607|ForkJoinPool.commonPool-worker-1|Thread id=20|t5 about to sleep 5
+
+2015-11-02 21:16:14,611|main                            |Thread id=1 |Threads t3, t4, t5 finished
+2015-11-02 21:16:14,612|main                            |Thread id=1 |main about to sleep 100
+
+
+*/
