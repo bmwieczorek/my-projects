@@ -24,4 +24,7 @@
         <property name="serviceUrl" value="#{'service:jmx:rmi:///jndi/rmi://localhost:' + 4889 + '/jmxrmi'}" />
     </bean>
 
+    <!-- 
+    <bean id="myClassStartingNewSleepingThread" class="com.bawi.camel.MyClassStartingNewSleepingThread" init-method="init"/>
+     -->
 </beans>
