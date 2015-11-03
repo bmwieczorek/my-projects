@@ -22,7 +22,6 @@ public class HeavyCpuCalculation {
         stopWatch.stop();
         System.out.println(stopWatch);
     }
-
 }
 /*
 User (app code only) time:                   5304 ms (97.01%)
