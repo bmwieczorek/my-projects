@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <!-- console appenders -->
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-15d{ISO8601}|%-10.35t|%m%n" />
+        </layout>
+    </appender>
+
+    <!-- loggers -->
+    <logger name="com.bawi" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <!-- root logger -->
+    <root>
+        <level value="ERROR" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</log4j:configuration>
