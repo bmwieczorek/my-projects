@@ -23,7 +23,7 @@ public class InterruptThreadWaitingCallingWaitMethod {
                     LOGGER.debug("Finished sleeping, about to call wait() that releases monitor lock");
                     monitor.wait(); // start wait for notify and releases monitor lock
                 } catch (Exception e) {
-                    LOGGER.warn("Caught exception:", e);
+                    LOGGER.warn("Acquired monitor lock and logging exception in catch:", e);
                 }
                 LOGGER.debug("Leaving synchronized block");
             }
@@ -35,10 +35,11 @@ public class InterruptThreadWaitingCallingWaitMethod {
         sleepSeconds(1); //wait so that thread0 access to monitor first
         LOGGER.debug("Finished sleeping, about to enter synchronized block");
         synchronized (monitor) {
-            LOGGER.debug("Entered synchronized block");
-            LOGGER.debug("Interrupting thread waiting on monitor");
+            LOGGER.debug("Entered synchronized block, interrupting thread waiting on monitor");
             thread.interrupt();
-            LOGGER.debug("Leaving synchronized block");
+            LOGGER.debug("Sleeping while holding the monitor lock so Thread0 remains calling wait()");
+            sleepSeconds(3); 
+            LOGGER.debug("Finished sleeping and leaving synchronized block");
         }
 
         LOGGER.debug("Finished");
@@ -54,25 +55,26 @@ public class InterruptThreadWaitingCallingWaitMethod {
 }
 /*
 Output:
-2015-11-07 12:23:47,381|main                            |Started
-2015-11-07 12:23:47,432|Thread-0                        |Started, about to enter synchronized block
-2015-11-07 12:23:47,433|Thread-0                        |Entered synchronized block and sleeping 3 seconds
+2015-11-07 16:21:49,697|main                            |Started
+2015-11-07 16:21:49,748|Thread-0                        |Started, about to enter synchronized block
+2015-11-07 16:21:49,748|Thread-0                        |Entered synchronized block and sleeping 3 seconds
 
-2015-11-07 12:23:48,433|main                            |Finished sleeping, about to enter synchronized block
+2015-11-07 16:21:50,749|main                            |Finished sleeping, about to enter synchronized block
 
-2015-11-07 12:23:50,433|Thread-0                        |Finished sleeping, about to call wait() that releases monitor lock
-2015-11-07 12:23:50,433|main                            |Entered synchronized block
-2015-11-07 12:23:50,433|main                            |Interrupting thread waiting on monitor
-2015-11-07 12:23:50,433|main                            |Leaving synchronized block
-2015-11-07 12:23:50,433|main                            |Finished
-2015-11-07 12:23:50,434|Thread-0                        |Caught exception:
+2015-11-07 16:21:52,749|Thread-0                        |Finished sleeping, about to call wait() that releases monitor lock
+2015-11-07 16:21:52,749|main                            |Entered synchronized block, interrupting thread waiting on monitor
+2015-11-07 16:21:52,749|main                            |Sleeping while holding the monitor lock so Thread0 remains calling wait()
+
+2015-11-07 16:21:55,749|main                            |Finished sleeping and leaving synchronized block
+2015-11-07 16:21:55,749|main                            |Finished
+2015-11-07 16:21:55,750|Thread-0                        |Acquired monitor lock and logging exception in catch:
 java.lang.InterruptedException
     at java.lang.Object.wait(Native Method)
     at java.lang.Object.wait(Object.java:502)
-    at com.bawi.interrupt.InterruptThreadWaitingCallingWaitMethod.lambda$0(InterruptThreadWaitingCallingWaitMethod.java:25)
+    at com.bawi.interrupt.InterruptThreadWaitingCallingWaitMethod.lambda$0(InterruptThreadWaitingCallingWaitMethod.java:24)
     at java.lang.Thread.run(Thread.java:745)
-2015-11-07 12:23:50,436|Thread-0                        |Leaving synchronized block
-2015-11-07 12:23:50,436|Thread-0                        |Finished
+2015-11-07 16:21:55,752|Thread-0                        |Leaving synchronized block
+2015-11-07 16:21:55,752|Thread-0                        |Finished
 
 Note that thread0 fist accessed the monitor for synchronized block and sleeps 3 seconds to show that main thread 
 needs to wait for the monitor. When thread0 finished sleeping then it calls monitor.wait() method that internally 
