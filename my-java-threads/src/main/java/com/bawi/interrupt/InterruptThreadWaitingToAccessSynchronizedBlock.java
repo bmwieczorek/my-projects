@@ -5,9 +5,9 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InterruptThreadWaitingOnMonitor {
+public class InterruptThreadWaitingToAccessSynchronizedBlock {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InterruptThreadWaitingOnMonitor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(InterruptThreadWaitingToAccessSynchronizedBlock.class);
 
     public static void main(String[] args) throws InterruptedException {
 // 3
