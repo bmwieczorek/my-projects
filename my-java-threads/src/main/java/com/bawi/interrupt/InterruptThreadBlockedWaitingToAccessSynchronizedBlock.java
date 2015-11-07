@@ -5,12 +5,11 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class InterruptThreadWaitingToAccessSynchronizedBlock {
+public class InterruptThreadBlockedWaitingToAccessSynchronizedBlock {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InterruptThreadWaitingToAccessSynchronizedBlock.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(InterruptThreadBlockedWaitingToAccessSynchronizedBlock.class);
 
     public static void main(String[] args) throws InterruptedException {
-
         Object monitor = new Object();
 
         LOGGER.debug("Started");
@@ -29,7 +28,7 @@ public class InterruptThreadWaitingToAccessSynchronizedBlock {
 
         synchronized (monitor) {
             LOGGER.debug("Entered synchronized block, started sleeping");
-            sleepSeconds(3); // wait 3s to make sure thread0 starts waiting on monitor 
+            sleepSeconds(3); // wait 3s to make sure thread0 gets BLOCKED waiting on monitor to synchronized block
             LOGGER.debug("Interrupting thread waiting on monitor");
             thread.interrupt();
             sleepSeconds(3);
@@ -62,6 +61,15 @@ Output:
 2015-11-07 10:47:35,404|Thread-0                        |Entered synchronized block, thread isInterrupted:true
 2015-11-07 10:47:35,404|Thread-0                        |Finished
 
-Note that interrupting thread waiting on monitor to access synchronized block does not give any effect apart from 
-only changing thread isInterrupted flag. The thread keeps on waiting to access monitor.
+Note that interrupting Thread-0 BLOCKED waiting on monitor to get access to synchronized block
+
+"Thread-2" #16 prio=5 os_prio=0 tid=0x0000000058b5d000 nid=0x1294 waiting for monitor entry [0x000000005acbf000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+    at com.bawi.interrupt.InterruptThreadBlockedWaitingToAccessSynchronizedBlock.lambda$0(InterruptThreadBlockedWaitingToAccessSynchronizedBlock.java:23)
+    - waiting to lock <0x00000000d5f942b8> (a java.lang.Object)
+    at com.bawi.interrupt.InterruptThreadBlockedWaitingToAccessSynchronizedBlock$$Lambda$3/2046562095.run(Unknown Source)
+    at java.lang.Thread.run(Thread.java:745)
+
+does not give any effect apart from only changing thread isInterrupted flag. The Thread-0 keeps on being BLOCKED 
+waiting to access monitor.
 */
