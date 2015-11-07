@@ -10,7 +10,7 @@ public class InterruptThreadWaitingToAccessSynchronizedBlock {
     private static final Logger LOGGER = LoggerFactory.getLogger(InterruptThreadWaitingToAccessSynchronizedBlock.class);
 
     public static void main(String[] args) throws InterruptedException {
-// 3
+
         Object monitor = new Object();
 
         LOGGER.debug("Started");
