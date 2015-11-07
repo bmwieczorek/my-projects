@@ -16,7 +16,7 @@ public class InterruptBusyThread {
             LOGGER.debug("Started");
             for (long counter = 0; counter < 99999999999L; counter++) { // busy loop
             }
-            LOGGER.debug("Finished, thread isInterrupted:" + Thread.currentThread().isInterrupted());
+            LOGGER.debug("Finished, thread isInterrupted:{}", Thread.currentThread().isInterrupted());
         });
         thread.start();
 
