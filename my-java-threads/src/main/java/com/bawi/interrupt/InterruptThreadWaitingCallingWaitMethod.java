@@ -19,11 +19,18 @@ public class InterruptThreadWaitingCallingWaitMethod {
             synchronized (monitor) {
                 LOGGER.debug("Entered synchronized block and sleeping 3 seconds");
                 try {
-                    sleepSeconds(3); // sleep 3s to show that wait released the lock for main thread
+                    sleepSeconds(3); // sleep 3s to show that wait() released the lock for main thread
                     LOGGER.debug("Finished sleeping, about to call wait() that releases monitor lock");
-                    monitor.wait(); // start wait for notify and releases monitor lock
+                    monitor.wait(); // calling wait() must be in synchronized block otherwise 
+                                    // java.lang.IllegalMonitorStateException will be thrown
+
+                                    // wait() immediately releases the lock so other thread could enter synchronized 
+                                    // block ON THE SAME MONITOR lock and could send notify on that monitor
+
+                                    // current thread need wait to re-acquire the lock to execute next 
+                                    // instruction in the synchronized block
                 } catch (Exception e) {
-                    LOGGER.warn("Acquired monitor lock and logging exception in catch:", e);
+                    LOGGER.warn("Re-acquired monitor lock and logging exception in catch:", e);
                 }
                 LOGGER.debug("Leaving synchronized block");
             }
@@ -67,7 +74,7 @@ Output:
 
 2015-11-07 16:21:55,749|main                            |Finished sleeping and leaving synchronized block
 2015-11-07 16:21:55,749|main                            |Finished
-2015-11-07 16:21:55,750|Thread-0                        |Acquired monitor lock and logging exception in catch:
+2015-11-07 16:21:55,750|Thread-0                        |Re-acquired monitor lock and logging exception in catch:
 java.lang.InterruptedException
     at java.lang.Object.wait(Native Method)
     at java.lang.Object.wait(Object.java:502)
