@@ -13,6 +13,8 @@
 
     <bean id="mySubSystemProcessor" class="com.bawi.camel.MySubSystemProcessor" />
 
+    <bean id="mySubsystemExceptionHandlerProcessor" class="com.bawi.camel.MySubsystemExceptionHandlerProcessor" />
+
     <bean id="myRedeliveryProcessor" class="com.bawi.camel.MyRedeliveryProcessor" />
 
     <camel:camelContext xmlns="http://camel.apache.org/schema/spring" id="myCamelContext">

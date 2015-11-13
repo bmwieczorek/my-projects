@@ -13,13 +13,13 @@ public class MySubSystemProcessor implements Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         LOGGER.info("In MySubsystem, request counter={}, exchange={}", counter, ExchangeUtils.exchangeAsString(exchange));
-        if (counter % 2 == 1) {
+//        if (counter % 2 == 1) {
             counter++;
             IllegalArgumentException illegalArgumentException = new IllegalArgumentException("Exception from MySubSystemProcessor");
-            LOGGER.info("In MySubsystem, throwing {}", illegalArgumentException.getMessage());
+            LOGGER.info("In MySubsystem, throwing: {}", illegalArgumentException.getMessage());
             throw illegalArgumentException;
-        } 
-        counter++;
+//        } 
+//        counter++;
     }
 
 }
