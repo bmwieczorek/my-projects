@@ -6,9 +6,12 @@ import org.apache.camel.builder.RouteBuilder;
 public class MyRouteBuilder extends RouteBuilder {
     private static final String ORIGINAL_RQ = "originalRq";
     static final String MY_DIRECT_START = "direct:start";
+    static final String GLOBAL_ERROR_HANDLER_ERROR_MESSAGE = "My error";
+
 
     @Override
     public void configure() throws Exception {
+        errorHandler(defaultErrorHandler().logStackTrace(false)); // keep existing default error handler but do not log stack trace
 
         onException(Throwable.class)
             .handled(true)

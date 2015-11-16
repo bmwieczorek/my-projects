@@ -6,9 +6,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.bawi.camel.redelivery.MyRouteBuilder;
-
-
 public class MyRouteBuilderTest extends CamelTestSupport {
 
     private ApplicationContext springContext = new ClassPathXmlApplicationContext("redelivery/my-camel-spring.xml");
@@ -20,9 +17,8 @@ public class MyRouteBuilderTest extends CamelTestSupport {
 
     @Test
     public void testName() throws Exception {
-        String requestBody = template.requestBody(MyRouteBuilder.MY_DIRECT_START, "<RQ/>", String.class);
-        System.out.println(requestBody);
-        Thread.sleep(10000);
+        String response = template.requestBody(MyRouteBuilder.MY_DIRECT_START, "<RQ/>", String.class);
+        assertEquals(MyRouteBuilder.GLOBAL_ERROR_HANDLER_ERROR_MESSAGE, response);
     }
 
 }

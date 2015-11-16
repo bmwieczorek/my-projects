@@ -17,9 +17,8 @@ public class MyRouteBuilderTest extends CamelTestSupport {
 
     @Test
     public void testName() throws Exception {
-        String requestBody = template.requestBody(MyRouteBuilder.MY_DIRECT_START, "<RQ/>", String.class);
-        System.out.println(requestBody);
-        Thread.sleep(10000);
+        String response = template.requestBody(MyRouteBuilder.MY_DIRECT_START, "<RQ/>", String.class);
+        assertEquals(MyRouteBuilder.GLOBAL_ERROR_HANDLER_ERROR_MESSAGE, response);
     }
 
 }

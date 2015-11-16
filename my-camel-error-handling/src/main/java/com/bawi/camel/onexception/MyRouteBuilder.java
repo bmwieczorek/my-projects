@@ -9,7 +9,7 @@ public class MyRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         
-        errorHandler(defaultErrorHandler().logStackTrace(false));
+        errorHandler(defaultErrorHandler().logStackTrace(false)); // keep existing default error handler but do not log stack trace
 //        errorHandler(noErrorHandler()); 
 
 //        onException(IllegalArgumentException.class)
