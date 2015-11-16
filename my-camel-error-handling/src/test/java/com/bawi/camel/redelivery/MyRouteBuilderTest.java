@@ -16,7 +16,7 @@ public class MyRouteBuilderTest extends CamelTestSupport {
     }
 
     @Test
-    public void testName() throws Exception {
+    public void shouldRetryMutlipleTimesAndHandleExceptionFromSubsystem() throws Exception {
         String response = template.requestBody(MyRouteBuilder.MY_DIRECT_START, "<RQ/>", String.class);
         assertEquals(MyRouteBuilder.GLOBAL_ERROR_HANDLER_ERROR_MESSAGE, response);
     }
