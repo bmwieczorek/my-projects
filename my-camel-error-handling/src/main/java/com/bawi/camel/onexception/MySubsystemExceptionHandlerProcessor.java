@@ -13,7 +13,7 @@ public class MySubsystemExceptionHandlerProcessor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        LOGGER.info("Setting body {} from to {}", exchange.getIn().getBody(), ERROR_MESSAGE);
+        LOGGER.info("Setting body from {} to {}", exchange.getIn().getBody(), ERROR_MESSAGE);
         exchange.getIn().setBody(ERROR_MESSAGE);
     }
 
