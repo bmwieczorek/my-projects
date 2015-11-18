@@ -20,11 +20,18 @@ public class MyJavaAgent {
                         ClassPool cp = ClassPool.getDefault();
                         CtClass cc = cp.get("com.bawi.application.MyApplication");
                         CtMethod m = cc.getDeclaredMethod("getHelloMessage");
-                        m.addLocalVariable("elapsedTime", CtClass.longType);
-                        m.insertBefore("name=\"Bar instead of Foo\"; " +
-                                "elapsedTime = System.currentTimeMillis();");
-                        m.insertAfter("{elapsedTime = System.currentTimeMillis() - elapsedTime;"
-                                + "System.out.println(\"[MyJavaAgent] Method Executed in ms: \" + elapsedTime);}");
+
+                        // intercept before and break (not execute intercepted method)
+                        m.insertBefore("System.out.println(\"MyJavaAgent, intercepting getHelloMessage and exiting ... \");" +
+                                "return;");
+
+                        // intercept before, change intercepted method argument, execute method and post execution action
+//                        m.addLocalVariable("elapsedTime", CtClass.longType);
+//                        m.insertBefore("name=\"Bar instead of Foo\"; " +
+//                                "elapsedTime = System.currentTimeMillis();");
+//                        m.insertAfter("{elapsedTime = System.currentTimeMillis() - elapsedTime;"
+//                                + "System.out.println(\"[MyJavaAgent] Method Executed in ms: \" + elapsedTime);}");
+
                         byte[] byteCode = cc.toBytecode();
                         cc.detach();
                         return byteCode;
