@@ -21,7 +21,7 @@ public class MyJavaAgent {
                         CtClass cc = cp.get("com.bawi.application.MyApplication");
                         CtMethod m = cc.getDeclaredMethod("getHelloMessage");
                         m.addLocalVariable("elapsedTime", CtClass.longType);
-                        m.insertBefore("name=\"Bar\"; " +
+                        m.insertBefore("name=\"Bar instead of Foo\"; " +
                                 "elapsedTime = System.currentTimeMillis();");
                         m.insertAfter("{elapsedTime = System.currentTimeMillis() - elapsedTime;"
                                 + "System.out.println(\"[MyJavaAgent] Method Executed in ms: \" + elapsedTime);}");
