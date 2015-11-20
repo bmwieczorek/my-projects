@@ -4,7 +4,7 @@ target
 bin
 .settings
 .idea
-.iml
+*.iml
 !src/main/java
 !src/test/java
 !src/main/resources
