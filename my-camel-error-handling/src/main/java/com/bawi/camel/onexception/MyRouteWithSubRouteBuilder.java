@@ -3,8 +3,8 @@ package com.bawi.camel.onexception;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
-public class MyRouteBuilder extends RouteBuilder {
-    static final String MY_DIRECT_START = "direct:start";
+public class MyRouteWithSubRouteBuilder extends RouteBuilder {
+    static final String MY_DIRECT_START = "direct:start-main-route";
 
     @Override
     public void configure() throws Exception {
@@ -23,9 +23,13 @@ public class MyRouteBuilder extends RouteBuilder {
         from(MY_DIRECT_START)
             .onException(IllegalArgumentException.class)
                 .handled(true) // throw exception to the client (false) or return the exchange (true) 
-                .log(LoggingLevel.INFO, "com.bawi.camel.onexception.MyRouteBuilder","in main route onException route")
+                .log(LoggingLevel.INFO, "com.bawi.camel.onexception.MyRouteWithSubRouteBuilder","in main route onException route")
                 .to("bean:mySubsystemExceptionHandlerProcessor")
             .end()
-            .to("bean:mySubSystemProcessor");
+            .to("direct:mySubroute");
+        
+            from("direct:mySubroute")
+                .errorHandler(noErrorHandler())
+                .to("bean:mySubSystemProcessor");
     }
 }
