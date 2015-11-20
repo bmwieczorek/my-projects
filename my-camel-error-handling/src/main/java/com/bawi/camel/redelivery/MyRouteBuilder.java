@@ -49,7 +49,7 @@ public class MyRouteBuilder extends RouteBuilder {
             .log(LoggingLevel.INFO, "com.bawi.camel.redelivery.MyRouteBuilder","in main - end of processing");
 
         from("direct:subroute")
-            .errorHandler(noErrorHandler())
+            .errorHandler(noErrorHandler()) // disable error handler, so the entire route can be retried in case of redelivery
             .log(LoggingLevel.INFO, "com.bawi.camel.redelivery.MyRouteBuilder","in subroute before calling MySubSystemProcessor, body=${body}")
             .to("bean:mySubSystemProcessor")
             .log(LoggingLevel.INFO, "com.bawi.camel.redelivery.MyRouteBuilder","in subroute - end of processing");
