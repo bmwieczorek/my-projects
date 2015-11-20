@@ -10,7 +10,6 @@ public class MySubsystemExceptionHandlerProcessor implements Processor {
     private static final Logger LOGGER = LoggerFactory.getLogger(MySubsystemExceptionHandlerProcessor.class);
     static final String ERROR_MESSAGE = "My error";
 
-
     @Override
     public void process(Exchange exchange) throws Exception {
         LOGGER.info("Setting body from {} to {}", exchange.getIn().getBody(), ERROR_MESSAGE);
