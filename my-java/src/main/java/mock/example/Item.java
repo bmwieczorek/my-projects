@@ -1,4 +1,4 @@
-package mock;
+package mock.example;
 
 public class Item {
     public String name;

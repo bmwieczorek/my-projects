@@ -23,6 +23,6 @@ public class PassByValue3 {
 
         f(arg1);
 
-        System.out.println("arg1 = " + arg1);
+        System.out.println("arg1 = " + arg1); // this time method f changed the state of AAA object to which the passed reference value was pointing 
     }
 }

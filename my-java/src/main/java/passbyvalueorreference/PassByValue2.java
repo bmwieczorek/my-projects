@@ -12,7 +12,6 @@ class AA {
         return Integer.toString(x);
     }
 }
-@SuppressWarnings("unused") 
 public class PassByValue2 {
     static void f(AA arg1) {
         arg1 = null;
@@ -23,6 +22,6 @@ public class PassByValue2 {
 
         f(arg1);
 
-        System.out.println("arg1 = " + arg1);
+        System.out.println("arg1 = " + arg1); // remains 5 (not null) since method f get a value of the reference to AA object
     }
 }

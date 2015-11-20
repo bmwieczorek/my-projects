@@ -7,15 +7,17 @@ import java.lang.reflect.Method;
 class DemoClass {
     private String name;
     protected int age;
+    private long lll;
 
     DemoClass() {
     }
 
-    public DemoClass(@SuppressWarnings("unused") long l) {
+    public DemoClass(long lll) {
+        this.lll = lll;
     }
 
     void myMethod() {
-        System.out.println(name);
+        System.out.println(name + lll);
     }
 }
 

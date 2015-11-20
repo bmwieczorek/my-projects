@@ -7,8 +7,8 @@ import java.util.TreeSet;
 
 public class RemoveFromListAndSetExample {
 
-    public static void my(@SuppressWarnings("unused") Object o) {
-
+    public static void my(Object o) {
+        System.out.println(o);
     }
 
     public static void main(String[] args) {

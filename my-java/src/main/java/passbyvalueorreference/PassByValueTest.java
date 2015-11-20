@@ -1,6 +1,5 @@
 package passbyvalueorreference;
 
-@SuppressWarnings("unused") 
 public class PassByValueTest {
     private int value;
 
@@ -17,10 +16,11 @@ public class PassByValueTest {
     }
 
     public void run() {
-        value = 2;
-        setup(value);
-        add(value, 5);
-        subtract(this, 3);
+                            // this.value:
+        value = 2;          // 2
+        setup(value);       // 5
+        add(value, 5);      // 5
+        subtract(this, 3);  // 2 
         System.out.println(value);
     }
 

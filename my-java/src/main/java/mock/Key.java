@@ -41,4 +41,9 @@ public class Key {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Key [method=" + method + ", args=" + Arrays.toString(args) + "]";
+    }
+
 }

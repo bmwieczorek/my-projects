@@ -1,4 +1,4 @@
-package mock;
+package mock.example;
 
 import java.util.ArrayList;
 import java.util.List;

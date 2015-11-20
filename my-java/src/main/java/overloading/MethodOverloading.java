@@ -1,6 +1,5 @@
 package overloading;
 
-@SuppressWarnings("unused") 
 public class MethodOverloading {
     public static void a(Object o) {
         System.out.println("o");

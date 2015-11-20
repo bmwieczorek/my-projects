@@ -1,6 +1,5 @@
 package clean.code;
 
-@SuppressWarnings("unused") 
 public class DataStore {
 
     public DataStore(boolean isOracle, String user, String password, String url) {
