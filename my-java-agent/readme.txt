@@ -1,0 +1,1 @@
+run or debug with MyApplication with -javaagent:target/my-java-agent-1.0-SNAPSHOT.jar VM params
