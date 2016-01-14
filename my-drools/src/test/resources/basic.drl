@@ -1,0 +1,14 @@
+package com.bawi.drools.rules
+ 
+import com.bawi.drools.RoolVO
+ 
+rule "Basic Rule"
+  
+ when
+ $vo : RoolVO( stringValue == "Learning to drool", 
+                      $booleanVal : booleanValue )
+ eval( $booleanVal )
+ then 
+        System.out.println( "First Rule" ); 
+ $vo.setStringValue("Done."); 
+end
