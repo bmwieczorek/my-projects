@@ -35,7 +35,7 @@ public class MyDroolsTest {
     public void testBasic() {
 
         StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
-        KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
+        KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "target/test"); // logs to target/test.log
 
         RoolVO vo = new RoolVO();
         vo.setStringValue("Learning to drool");
