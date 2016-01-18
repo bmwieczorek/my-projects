@@ -21,9 +21,10 @@
             </plugins>
         </pluginManagement>
 
-
         <plugins>
-            <plugin>
+<!--
+
+        <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <dependencies>
@@ -96,7 +97,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+-->
         </plugins>
     </build>
 
