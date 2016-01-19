@@ -11,8 +11,9 @@ rule "Should apply discount for Poland"
     when
         orderRQ : OrderRQ()
         address : Address(country in ("Poland"))
-        product : Product(quantity >= 4)
+        $product : Product(quantity >= 4)
     then
-        countryDiscountAction.applyDiscount(orderRQ, product, "0.1");
+        System.out.println("Executing rule action for " + address + " and " + $product);
+        countryDiscountAction.applyDiscount(orderRQ, $product, "0.1");
 end
 

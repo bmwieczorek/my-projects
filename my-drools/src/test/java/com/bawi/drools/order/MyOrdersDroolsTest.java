@@ -1,6 +1,5 @@
 package com.bawi.drools.order;
 
-import com.bawi.drools.RoolVO;
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
 import org.drools.builder.*;
