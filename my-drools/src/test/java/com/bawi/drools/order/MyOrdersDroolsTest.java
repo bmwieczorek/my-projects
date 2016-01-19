@@ -16,21 +16,21 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class MyOrdersDroolsTest {
-    private KnowledgeBase kbase;
+    private KnowledgeBase knowledgeBase;
 
     @Before
     public void setup() {
-        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        kbuilder.add(ResourceFactory.newClassPathResource("orders.drl"), ResourceType.DRL);
-        KnowledgeBuilderErrors errors = kbuilder.getErrors();
+        KnowledgeBuilder knowledgeBuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+        knowledgeBuilder.add(ResourceFactory.newClassPathResource("orders.drl"), ResourceType.DRL);
+        KnowledgeBuilderErrors errors = knowledgeBuilder.getErrors();
         if (errors.size() > 0) {
             for (KnowledgeBuilderError error: errors) {
                 System.err.println(error);
             }
             throw new IllegalArgumentException("Could not parse knowledge.");
         }
-        kbase = KnowledgeBaseFactory.newKnowledgeBase();
-        kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
+        knowledgeBase = KnowledgeBaseFactory.newKnowledgeBase();
+        knowledgeBase.addKnowledgePackages(knowledgeBuilder.getKnowledgePackages());
 
 
     }
@@ -38,7 +38,7 @@ public class MyOrdersDroolsTest {
     @Test
     public void testBasic() {
 
-        StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
+        StatefulKnowledgeSession ksession = knowledgeBase.newStatefulKnowledgeSession();
         KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "target/orders-test"); // logs to target/orders-test.log
 
         OrderRQ orderRQ = new OrderRQ();
@@ -46,13 +46,13 @@ public class MyOrdersDroolsTest {
         Product vitC = new Product();
         vitC.setId(1L);
         vitC.setName("Vit C");
-        vitC.setPrice(new BigDecimal("12.34"));
+        vitC.setPrice(new BigDecimal("10.00"));
         vitC.setQuantity(4);
 
         Product immunePunch = new Product();
-        immunePunch.setId(1L);
+        immunePunch.setId(2L);
         immunePunch.setName("Immune Punch");
-        immunePunch.setPrice(new BigDecimal("37.89"));
+        immunePunch.setPrice(new BigDecimal("35.00"));
         immunePunch.setQuantity(1);
 
         orderRQ.setProducts(Arrays.asList(vitC, immunePunch));
@@ -65,13 +65,26 @@ public class MyOrdersDroolsTest {
         ksession.insert(vitC);
         ksession.insert(address);
 
-        ksession.insert(new CountryDiscountAction());
+        CountryDiscountAction countryDiscountAction = new CountryDiscountAction();
+        ksession.setGlobal("countryDiscountAction", countryDiscountAction);
 
         ksession.fireAllRules();
+
         ksession.getObjects()
                 .stream()
-                .filter(o -> o instanceof RoolVO)
-                .forEach(o -> Assert.assertEquals("Done.", ((RoolVO) o).getStringValue()));
+                .forEach(o -> System.out.println("Session object: " + o));
+
+        BigDecimal actual = ksession.getObjects()
+                .stream()
+                .filter(o -> o instanceof OrderRQ)
+                .map(o -> (OrderRQ) o)
+                .findFirst()
+                .get()
+                .calculateTotalValue();
+
+        BigDecimal expected = new BigDecimal(4 * (10 * 0.1) + 35);
+        Assert.assertEquals(0, expected.compareTo(actual));
+
         logger.close();
 
     }

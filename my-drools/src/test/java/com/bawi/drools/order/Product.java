@@ -2,9 +2,6 @@ package com.bawi.drools.order;
 
 import java.math.BigDecimal;
 
-/**
- * Created by SG0212148 on 18-Jan-16.
- */
 public class Product {
 
     private long id;
@@ -52,5 +49,21 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return id == product.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 }

@@ -1,16 +1,18 @@
-package com.bawi.drools.order
+package com.bawi.drools
 
-import com.bawi.drools.order.*;
+import com.bawi.drools.order.*
+import java.math.BigDecimal;
+
+global com.bawi.drools.order.CountryDiscountAction countryDiscountAction
 
 dialect "mvel"
 
-rule "Order Rule"
-  
- when
-    $orderRQ : OrderRQ()
-    $address : Address(country in ("Poland"))
-    $product : Product(quantity >= 0)
- then 
-    System.out.println( "Matching rule for: " + $product);
-    execute($orderRQ);
+rule "Should apply discount for Poland"
+    when
+        orderRQ : OrderRQ()
+        address : Address(country in ("Poland"))
+        product : Product(quantity >= 4)
+    then
+        countryDiscountAction.applyDiscount(orderRQ, product, "0.1");
 end
+
