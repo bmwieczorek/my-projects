@@ -1,0 +1,16 @@
+package com.bawi.drools.order
+
+import com.bawi.drools.order.*;
+
+dialect "mvel"
+
+rule "Order Rule"
+  
+ when
+    $orderRQ : OrderRQ()
+    $address : Address(country in ("Poland"))
+    $product : Product(quantity >= 0)
+ then 
+    System.out.println( "Matching rule for: " + $product);
+    execute($orderRQ);
+end
