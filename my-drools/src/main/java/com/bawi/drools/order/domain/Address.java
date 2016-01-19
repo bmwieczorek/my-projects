@@ -1,4 +1,4 @@
-package com.bawi.drools.order;
+package com.bawi.drools.order.domain;
 
 public class Address {
     private String country;

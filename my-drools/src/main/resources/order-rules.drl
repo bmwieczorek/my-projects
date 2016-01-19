@@ -1,9 +1,9 @@
 package com.bawi.drools
 
-import com.bawi.drools.order.*
+import com.bawi.drools.order.domain.*
 import java.math.BigDecimal;
 
-global com.bawi.drools.order.CountryDiscountAction countryDiscountAction
+global com.bawi.drools.order.actions.CountryAndQuantityDiscountAction countryAndQuantityDiscountAction
 
 dialect "mvel"
 
@@ -14,6 +14,6 @@ rule "Should apply discount for Poland"
         $product : Product(quantity >= 4)
     then
         System.out.println("Executing rule action for " + address + " and " + $product);
-        countryDiscountAction.applyDiscount(orderRQ, $product, "0.1");
+        countryAndQuantityDiscountAction.applyDiscount(orderRQ, $product, "0.1");
 end
 

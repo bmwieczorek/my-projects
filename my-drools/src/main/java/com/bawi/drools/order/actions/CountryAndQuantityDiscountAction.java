@@ -1,8 +1,11 @@
-package com.bawi.drools.order;
+package com.bawi.drools.order.actions;
+
+import com.bawi.drools.order.domain.OrderRQ;
+import com.bawi.drools.order.domain.Product;
 
 import java.math.BigDecimal;
 
-public class CountryDiscountAction {
+public class CountryAndQuantityDiscountAction {
 
     public void applyDiscount(OrderRQ orderRQ, Product product, String discountString) {
         BigDecimal discount = new BigDecimal(discountString);

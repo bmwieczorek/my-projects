@@ -1,4 +1,4 @@
-package com.bawi.drools.order;
+package com.bawi.drools.order.domain;
 
 import java.math.BigDecimal;
 

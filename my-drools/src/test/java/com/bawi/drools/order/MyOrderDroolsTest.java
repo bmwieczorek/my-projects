@@ -1,5 +1,9 @@
 package com.bawi.drools.order;
 
+import com.bawi.drools.order.actions.CountryAndQuantityDiscountAction;
+import com.bawi.drools.order.domain.Address;
+import com.bawi.drools.order.domain.OrderRQ;
+import com.bawi.drools.order.domain.Product;
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
 import org.drools.builder.*;
@@ -7,6 +11,7 @@ import org.drools.io.ResourceFactory;
 import org.drools.logger.KnowledgeRuntimeLogger;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,32 +19,29 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class MyOrdersDroolsTest {
-    private KnowledgeBase knowledgeBase;
+public class MyOrderDroolsTest {
+
+    private StatefulKnowledgeSession knowledgeSession;
+    private KnowledgeRuntimeLogger logger;
 
     @Before
     public void setup() {
         KnowledgeBuilder knowledgeBuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        knowledgeBuilder.add(ResourceFactory.newClassPathResource("orders.drl"), ResourceType.DRL);
+        knowledgeBuilder.add(ResourceFactory.newClassPathResource("order-rules.drl"), ResourceType.DRL);
         KnowledgeBuilderErrors errors = knowledgeBuilder.getErrors();
         if (errors.size() > 0) {
-            for (KnowledgeBuilderError error: errors) {
-                System.err.println(error);
-            }
+            errors.forEach(System.err::println);
             throw new IllegalArgumentException("Could not parse knowledge.");
         }
-        knowledgeBase = KnowledgeBaseFactory.newKnowledgeBase();
+        KnowledgeBase knowledgeBase = KnowledgeBaseFactory.newKnowledgeBase();
         knowledgeBase.addKnowledgePackages(knowledgeBuilder.getKnowledgePackages());
-
-
+        knowledgeSession = knowledgeBase.newStatefulKnowledgeSession();
+        logger = KnowledgeRuntimeLoggerFactory.newFileLogger(knowledgeSession, "target/orders-test"); // logs to target/orders-test.log
     }
 
     @Test
-    public void testBasic() {
-
-        StatefulKnowledgeSession ksession = knowledgeBase.newStatefulKnowledgeSession();
-        KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "target/orders-test"); // logs to target/orders-test.log
-
+    public void shouldApplyDiscount() {
+        // given
         OrderRQ orderRQ = new OrderRQ();
 
         Product vitC = new Product();
@@ -59,32 +61,41 @@ public class MyOrdersDroolsTest {
         address.setCountry("Poland");
         orderRQ.setAddress(address);
 
-        ksession.insert(orderRQ);
-        ksession.insert(immunePunch);
-        ksession.insert(vitC);
-        ksession.insert(address);
+        CountryAndQuantityDiscountAction countryAndQuantityDiscountAction = new CountryAndQuantityDiscountAction();
 
-        CountryDiscountAction countryDiscountAction = new CountryDiscountAction();
-        ksession.setGlobal("countryDiscountAction", countryDiscountAction);
+        // when
+        knowledgeSession.insert(orderRQ);
+        knowledgeSession.insert(immunePunch);
+        knowledgeSession.insert(vitC);
+        knowledgeSession.insert(address);
+        knowledgeSession.setGlobal("countryAndQuantityDiscountAction", countryAndQuantityDiscountAction);
+        knowledgeSession.fireAllRules(); // defined in order-rules.drl
 
-        ksession.fireAllRules();
+        BigDecimal actual = getTotalOrderPrice(knowledgeSession);
+        BigDecimal expected = new BigDecimal(4 * (10 * 0.1) + 35);
 
-        ksession.getObjects()
+        // then
+        Assert.assertEquals(0, expected.compareTo(actual));
+
+    }
+
+    private BigDecimal getTotalOrderPrice(StatefulKnowledgeSession knowledgeSession) {
+        knowledgeSession.getObjects()
                 .stream()
                 .forEach(o -> System.out.println("Session object: " + o));
 
-        BigDecimal actual = ksession.getObjects()
+        return knowledgeSession.getObjects()
                 .stream()
                 .filter(o -> o instanceof OrderRQ)
                 .map(o -> (OrderRQ) o)
                 .findFirst()
                 .get()
                 .calculateTotalValue();
-
-        BigDecimal expected = new BigDecimal(4 * (10 * 0.1) + 35);
-        Assert.assertEquals(0, expected.compareTo(actual));
-
-        logger.close();
-
     }
+
+    @After
+    public void cleanUp() {
+        logger.close();
+    }
+
 }
