@@ -6,7 +6,10 @@ import com.bawi.drools.order.domain.OrderRQ;
 import com.bawi.drools.order.domain.Product;
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
-import org.drools.builder.*;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderErrors;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
 import org.drools.logger.KnowledgeRuntimeLogger;
 import org.drools.logger.KnowledgeRuntimeLoggerFactory;
@@ -82,7 +85,7 @@ public class MyOrderDroolsTest {
     private BigDecimal getTotalOrderPrice(StatefulKnowledgeSession knowledgeSession) {
         knowledgeSession.getObjects()
                 .stream()
-                .forEach(o -> System.out.println("Session object: " + o));
+                .forEach(o -> System.out.println("Retrieved session object: " + o));
 
         return knowledgeSession.getObjects()
                 .stream()
