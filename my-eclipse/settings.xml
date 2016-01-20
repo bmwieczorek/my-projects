@@ -1,0 +1,36 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <mirrors>
+        <mirror>
+            <id>sabre-all</id>
+            <mirrorOf>central</mirrorOf>
+            <name>Central mirror</name>
+            <url>http://maven.sabre.com/content/groups/all</url>
+        </mirror>
+    </mirrors>
+    <proxies>
+        <proxy>
+            <id>myproxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>proxy.mycompany.com</host>
+            <port>80</port>
+            <username>my-login</username>
+            <password>my-pass</password>
+            <nonProxyHosts>*.mycompany.com</nonProxyHosts>
+        </proxy>
+    </proxies>
+    <servers>
+        <server>
+            <id>upload-releases</id>
+            <username>ticketing</username>
+            <password>ticketing</password>
+        </server>
+        <server>
+            <id>upload-snapshots</id>
+            <username>ticketing</username>
+            <password>ticketing</password>
+        </server>
+    </servers>
+</settings>
+
