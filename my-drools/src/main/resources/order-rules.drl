@@ -10,7 +10,8 @@ dialect "mvel"
 rule "Should apply discount for Poland"
     when
         orderRQ : OrderRQ()
-        address : Address(country in ("Poland"))
+        // address : Address(country in ("Poland")) // also ok
+        address : Address(isCountryInListCaseNotSensitive(["Poland"]))
         $product : Product(quantity >= 4)
     then
         System.out.println("Executing rule action for " + address + " and " + $product);

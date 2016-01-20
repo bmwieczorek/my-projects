@@ -1,5 +1,7 @@
 package com.bawi.drools.order.domain;
 
+import java.util.List;
+
 public class Address {
     private String country;
 
@@ -16,5 +18,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public boolean isCountryInListCaseNotSensitive(List<String> countries) {
+        return countries
+                    .stream()
+                    .filter(c -> c.equalsIgnoreCase(country))
+                    .findFirst()
+                    .isPresent();
     }
 }
