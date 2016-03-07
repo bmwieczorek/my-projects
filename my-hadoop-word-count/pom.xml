@@ -48,13 +48,6 @@
 			<version>${hadoop-cloudera.version}</version>
 		</dependency>
 
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-hdfs</artifactId>
-			<version>${hadoop-cloudera.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
