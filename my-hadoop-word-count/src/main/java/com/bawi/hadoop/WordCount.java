@@ -48,7 +48,7 @@ public class WordCount {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-
+        // conf.set("fs.defaultFS", "hdfs://localhost:8020");
         Job job = Job.getInstance(conf, "wordcount");
 
         job.setJarByClass(WordCount.class);
