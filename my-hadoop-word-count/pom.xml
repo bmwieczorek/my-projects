@@ -55,30 +55,6 @@
 			<version>${hadoop-cloudera.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-yarn-api</artifactId>
-			<version>2.6.0-cdh5.5.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-yarn-client</artifactId>
-			<version>2.6.0-cdh5.5.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-yarn-common</artifactId>
-			<version>2.6.0-cdh5.5.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-yarn-server-common</artifactId>
-			<version>2.6.0-cdh5.5.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
