@@ -1,15 +1,12 @@
-package com.bawi.spring.boot;
+package com.bawi.spring.boot.entity;
+
+import com.bawi.spring.boot.entity.BaseEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "person")
-public class PersonEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Person extends BaseEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -21,26 +18,21 @@ public class PersonEntity {
 
     private String place;
 
-    protected PersonEntity() {
-        // entity default constructor needed for ORM
+    protected Person() {
+        // default constructor needed for ORM
     }
 
-    PersonEntity(String firstName, String lastName, int age, String place) {
+    public Person(String firstName, String lastName, int age, String place) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.place = place;
     }
 
-    long getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
-        return "PersonEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", place='" + place + '\'' +
