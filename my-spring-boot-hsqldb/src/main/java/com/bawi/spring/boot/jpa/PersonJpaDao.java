@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class PersonJpaDao extends GenericJpaDao<Long, Person> {
 
-    public List<Person> findAll2(){
+    public List<Person> findAll2() {
         Query query = em.createQuery("from Person");
         @SuppressWarnings("unchecked")
         List<Person> resultList = query.getResultList();

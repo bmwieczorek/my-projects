@@ -1,8 +1,8 @@
 package com.bawi.spring.boot.entity;
 
-import com.bawi.spring.boot.entity.BaseEntity;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "person")

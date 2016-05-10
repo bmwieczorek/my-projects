@@ -22,10 +22,10 @@ public class GenericJpaDao<PK extends Serializable, T> {
     protected GenericJpaDao() {
         ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();
         Type[] actualTypeArguments = genericSuperclass.getActualTypeArguments();
-        this.persistentClass =(Class<T>) actualTypeArguments[1];
+        this.persistentClass = (Class<T>) actualTypeArguments[1];
     }
 
-    public List<T> findAll(){
+    public List<T> findAll() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<T> cq = cb.createQuery(persistentClass);
         Root<T> rootEntry = cq.from(persistentClass);
@@ -35,7 +35,7 @@ public class GenericJpaDao<PK extends Serializable, T> {
     }
 
     @Transactional
-    public void save(T t){
+    public void save(T t) {
         em.persist(t);
     }
 

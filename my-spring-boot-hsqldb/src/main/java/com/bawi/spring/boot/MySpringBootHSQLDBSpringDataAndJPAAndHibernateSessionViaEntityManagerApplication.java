@@ -32,15 +32,6 @@ public class MySpringBootHSQLDBSpringDataAndJPAAndHibernateSessionViaEntityManag
     @Autowired
     PersonEntityManagerHibernateDAO personEntityManagerHibernateDAO;
 
-//    @Autowired
-//    PersonSessionFactoryHibernateDao personSessionFactoryHibernateDao;
-//
-//    @Bean // needed only by PersonSessionFactoryHibernateDao
-//    public SessionFactory sessionFactory(HibernateEntityManagerFactory hibernateEntityManagerFactory){
-//        return hibernateEntityManagerFactory.getSessionFactory();
-//    }
-
-
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
@@ -60,7 +51,6 @@ public class MySpringBootHSQLDBSpringDataAndJPAAndHibernateSessionViaEntityManag
 
 
             // JPA
-
             Stream.of(new Person("Jan", "Kowalski", 25, "PL"), new Person("Sergei", "Ivanov", 27, "RU"))
                     .forEach(person -> {
                         personJpaDao.save(person);
@@ -74,7 +64,6 @@ public class MySpringBootHSQLDBSpringDataAndJPAAndHibernateSessionViaEntityManag
                     .forEach(person -> LOGGER.info("JPA retrieved: {} with id: {}", person, person.getId()));
 
             // Hibernate session from entity manager
-
             Stream.of(new Person("Jan", "Kowalski", 25, "PL"), new Person("Sergei", "Ivanov", 27, "RU"))
                     .forEach(person -> {
                         personEntityManagerHibernateDAO.save(person);
@@ -89,25 +78,6 @@ public class MySpringBootHSQLDBSpringDataAndJPAAndHibernateSessionViaEntityManag
 
             personEntityManagerHibernateDAO.findByFirstName("John").stream()
                     .forEach(person -> LOGGER.info("Hibernate (EM) query retrieved firstName John: {} with id: {}", person, person.getId()));
-
-
-            // Hibernate session from session factory
-
-//            Stream.of(new Person("Jan", "Kowalski", 25, "PL"), new Person("Sergei", "Ivanov", 27, "RU"))
-//                    .forEach(person -> {
-//                        personSessionFactoryHibernateDao.save(person);
-//                        LOGGER.info("JPA  {} saved successfully", person);
-//                    });
-//
-//            personSessionFactoryHibernateDao.findAllByCriteria().stream()
-//                    .forEach(person -> LOGGER.info("Hibernate criteria retrieved: {} with id: {}", person, person.getId()));
-//
-//            personSessionFactoryHibernateDao.findAll2().stream()
-//                    .forEach(person -> LOGGER.info("Hibernate query retrieved: {} with id: {}", person, person.getId()));
-//
-//            personSessionFactoryHibernateDao.findByFirstName("John").stream()
-//                    .forEach(person -> LOGGER.info("Hibernate query retrieved firstName John: {} with id: {}", person, person.getId()));
-
         };
     }
 }
