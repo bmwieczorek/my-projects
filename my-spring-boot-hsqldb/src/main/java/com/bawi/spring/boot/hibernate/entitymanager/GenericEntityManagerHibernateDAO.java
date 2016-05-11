@@ -13,11 +13,7 @@ public abstract class GenericEntityManagerHibernateDAO<PK extends Serializable, 
 
     @Override
     protected Session getCurrentSession() {
-        em = em.getEntityManagerFactory().createEntityManager();
+        em = em.getEntityManagerFactory().createEntityManager();  // that is not needed when called from web controller
         return em.unwrap(Session.class);
-    }
-
-    protected EntityManager getEntityManager() {
-        return em;
     }
 }
