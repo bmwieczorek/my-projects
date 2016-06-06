@@ -2,10 +2,12 @@ package com.bawi.spring.boot.web;
 
 import org.junit.Assume;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.TOO_MANY_REQUESTS;
 
 @SuppressWarnings("unchecked")
+@RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource(properties = { "throttling.enabled = true", "throttling.request.count.limit = 1"} )
 public class ThrottlingEnabledTest extends ThrottlingTestBase {
 

@@ -19,7 +19,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(MySpringBootWebApp.class)
 @WebIntegrationTest({"server.port = 0"})
 public class ThrottlingTestBase {
