@@ -1,10 +1,15 @@
 package com.bawi.spring.boot.version;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MySpringBootVersionApplication {
+
+
+	@Value("${my.property}")
+	String myProperty;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MySpringBootVersionApplication.class, args);

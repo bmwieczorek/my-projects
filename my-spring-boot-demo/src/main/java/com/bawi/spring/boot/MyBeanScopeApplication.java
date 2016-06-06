@@ -10,9 +10,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,11 +26,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Configuration
+@ConfigurationProperties
 @EnableAutoConfiguration
+@EnableConfigurationProperties
 @ComponentScan
 public class MyBeanScopeApplication extends SpringBootServletInitializer {
-	
-	public static void main(String[] args) {
+
+
+    @Value("${myProperty2}")
+	private String myProperty2;
+
+
+    public static void main(String[] args) {
 		SpringApplication.run(MyBeanScopeApplication.class, args);
 	}
 	
