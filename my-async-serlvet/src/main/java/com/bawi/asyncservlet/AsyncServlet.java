@@ -17,6 +17,8 @@ import java.util.stream.Collectors;
 public class AsyncServlet extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(AsyncServlet.class.getName());
+    private ExecutorService executorService = Executors.newFixedThreadPool(10);
+
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -39,13 +41,6 @@ public class AsyncServlet extends HttpServlet {
     private void longRunning(final AsyncContext asyncCtx) {
 
         List<String> strings = Arrays.asList("a", "bb", "ccc", "dddd");
-
-        ExecutorService executorService = Executors.newFixedThreadPool(strings.size(), r -> {
-            ThreadFactory threadFactory = Executors.defaultThreadFactory();
-            Thread thread = threadFactory.newThread(r);
-            thread.setDaemon(true);
-            return thread;
-        });
 
         List<CompletableFuture<Double>> doublesCF = strings
             .stream()
