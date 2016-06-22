@@ -58,11 +58,11 @@ public class AsyncServlet extends HttpServlet {
             )
             .collect(Collectors.toList());
 
-        CompletableFuture<Void> voidCF = CompletableFuture.allOf(doublesCF.toArray(new CompletableFuture[doublesCF.size()]));
-        CompletableFuture<List<Double>> listOfDoublesCF = voidCF.thenApply(v -> doublesCF
-            .stream()
-            .map(CompletableFuture::join)
-            .collect(Collectors.toList()));
+        CompletableFuture<List<Double>> listOfDoublesCF = CompletableFuture.allOf(doublesCF.toArray(new CompletableFuture[doublesCF.size()]))
+            .thenApply(v -> doublesCF
+                                .stream()
+                                .map(CompletableFuture::join)
+                                .collect(Collectors.toList()));
 
         listOfDoublesCF.thenAccept(list -> write(asyncCtx.getResponse(), "size=" + list.size()))
                        .thenRun(asyncCtx::complete);
