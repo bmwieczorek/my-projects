@@ -1,0 +1,5 @@
+set HADOOP_HOME=C:\dev\my-projects\my-apache-spark
+set SPARK_HOME=c:\dev\env\spark-1.6.2-bin-hadoop2.6
+set YARN_CONF_DIR=c:\dev\env\hadoop01-hadoop-conf
+set SPARK_JAR=hdfs:///user/bdaldr/apps/spark/spark-assembly-1.6.1-hadoop2.6.0.jar
+c:\dev\env\spark-1.6.2-bin-hadoop2.6\bin\spark-submit --class com.geekcap.javaworld.sparkexample.WordCount --master yarn --deploy-mode cluster c:\dev\my-projects\my-apache-spark\target\spark-example-0.3-SNAPSHOT.jar hdfs://hadoop01:8020/user/bdaldr/bartek/pom.xml

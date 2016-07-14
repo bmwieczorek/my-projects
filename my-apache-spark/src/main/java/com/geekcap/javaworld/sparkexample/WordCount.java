@@ -17,16 +17,21 @@ import java.util.Arrays;
 public class WordCount
 {
 
-    public static void wordCountJava7( String filename )
+    public static void wordCountJava7( String[] args )
     {
         // Define a configuration to use to interact with Spark
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("Work Count App");
+        SparkConf conf;
+        if (args.length == 2) {
+            conf = new SparkConf().setMaster(args[1]).setAppName("Work Count App");
+        } else {
+            conf = new SparkConf().setAppName("Work Count App");
+        }
 
         // Create a Java version of the Spark Context from the configuration
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         // Load the input data, which is a text file read from the command line
-        JavaRDD<String> input = sc.textFile( filename );
+        JavaRDD<String> input = sc.textFile( args[0] );
 
         // Java 7 and earlier
         JavaRDD<String> words = input.flatMap(
@@ -67,16 +72,21 @@ public class WordCount
         reducedCounts.saveAsTextFile( "output" );
     }
 
-    public static void wordCountJava8( String filename )
+    public static void wordCountJava8( String[] args )
     {
         // Define a configuration to use to interact with Spark
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("Work Count App");
+        SparkConf conf;
+        if (args.length == 2) {
+            conf = new SparkConf().setMaster(args[1]).setAppName("Work Count App");
+        } else {
+            conf = new SparkConf().setAppName("Work Count App");
+        }
 
         // Create a Java version of the Spark Context from the configuration
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         // Load the input data, which is a text file read from the command line
-        JavaRDD<String> input = sc.textFile( filename );
+        JavaRDD<String> input = sc.textFile( args[0] );
 
         // Java 8 with lambdas: split the input string into words
         JavaRDD<String> words = input.flatMap( s -> Arrays.asList( s.split( " " ) ) );
@@ -92,7 +102,7 @@ public class WordCount
     {
         if( args.length == 0 )
         {
-            System.out.println( "Usage: WordCount <file>" );
+            System.out.println( "Usage: WordCount <file> <master-mode: (e.g. local)>" );
             System.exit( 0 );
         }
 
@@ -101,6 +111,7 @@ public class WordCount
             System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         }
 
-        wordCountJava8( args[ 0 ] );
+        wordCountJava8(args);
+
     }
 }

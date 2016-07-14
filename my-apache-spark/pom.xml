@@ -3,7 +3,7 @@
     <groupId>com.geekcap.javaworld</groupId>
     <artifactId>spark-example</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <name>spark-example</name>
     <url>http://maven.apache.org</url>
 

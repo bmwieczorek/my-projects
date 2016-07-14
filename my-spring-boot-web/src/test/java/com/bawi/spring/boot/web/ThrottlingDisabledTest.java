@@ -4,6 +4,7 @@ import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
@@ -15,6 +16,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 
+@SpringApplicationConfiguration(MySpringBootWebApp.class)
 @SuppressWarnings("unchecked")
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource(properties = { "throttling.enabled = false" } )

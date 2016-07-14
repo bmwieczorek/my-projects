@@ -3,11 +3,17 @@ package com.bawi.spring.boot.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +26,11 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class MySpringBootWebApp {
@@ -30,6 +38,19 @@ public class MySpringBootWebApp {
     public static void main(String[] args) {
         SpringApplication.run(MySpringBootWebApp.class, args);
     }
+
+
+    @Autowired
+    Environment environment;
+
+    @Bean
+    CommandLineRunner commandLineRunner() {
+        return args -> {
+            System.err.println(environment.getProperty("my.pass"));
+            System.err.println(environment.getProperty("my.pwd"));
+        };
+    }
+
 
     @RestController
     static class MyController {
@@ -46,7 +67,71 @@ public class MySpringBootWebApp {
             LOGGER.info("Finished sleeping {} seconds", sleepSeconds);
             return "DONE";
         }
+
+
+        @RequestMapping("/parallel")
+        public List<Result> handle() {
+            List<Result> response = Arrays.asList(1, 2, 3)
+                .parallelStream()
+                .map(i -> getJsonResponse(i)) // call external service for json response
+                .collect(Collectors.toList());
+            return response;
+        }
+
+        @RequestMapping("/parallel2")
+        public List<Result> handle2() {
+            List<CompletableFuture<Result>> cfs = Arrays.asList(1, 2, 3)
+                .stream()
+                .map(i -> CompletableFuture.supplyAsync(() -> getJsonResponse(i)))
+                .collect(Collectors.toList());
+
+            CompletableFuture<Void> vcf = CompletableFuture.allOf(cfs.toArray(new CompletableFuture[cfs.size()]));
+            CompletableFuture<List<Result>> lrcf = vcf.thenApply(v -> cfs
+                .stream()
+                .map(CompletableFuture::join)
+                .collect(Collectors.toList())
+            );
+            return lrcf.join();
+        }
+
+        static class Service {
+
+            @Async
+            Future<List<Result>> longRunning() {
+                List<CompletableFuture<Result>> cfs = Arrays.asList(1, 2, 3)
+                    .stream()
+                    .map(i -> CompletableFuture.supplyAsync(() -> getJsonResponse(i)))
+                    .collect(Collectors.toList());
+
+                CompletableFuture<Void> vcf = CompletableFuture.allOf(cfs.toArray(new CompletableFuture[cfs.size()]));
+                CompletableFuture<List<Result>> lrcf = vcf.thenApply(v -> cfs
+                    .stream()
+                    .map(CompletableFuture::join)
+                    .collect(Collectors.toList())
+                );
+                List<Result> results = lrcf.join();
+                return new AsyncResult<>(results);
+            }
+        }
+
+//        @Autowired
+        Service service;
+
+        @RequestMapping("/parallel3")
+        public Future<List<Result>> handle3() throws ExecutionException, InterruptedException {
+            return service.longRunning();
+        }
+
+        private static Result getJsonResponse(int serverId) {
+            return new Result();
+        }
+
+        static class Result { }
     }
+
+
+
+
 
     @ConditionalOnProperty("throttling.enabled")
     @Component
@@ -112,7 +197,7 @@ public class MySpringBootWebApp {
                     currentRequestCount = 0;
                 }
                 if (currentRequestCount == requestCountLimit) {
-                    String message = "Rejecting request as exceeding throttling limit of " + requestCountLimit + " of concurrently processed requests for url parameter " + parameterName;
+                    String message = "Rejecting request as exceeding throttling limit of " + requestCountLimit + " of concurrently processed requests for id parameter " + parameterName;
                     LOGGER.warn(message);
                     throw new RequestThrottledException(message);
                 }
