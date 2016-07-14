@@ -1,0 +1,5 @@
+bartek@ubuntu-vm:~$ export SPARK_HOME=~/dev/env/spark-1.6.2-bin-hadoop2.6
+bartek@ubuntu-vm:~$ export YARN_CONF_DIR=~/dev/env/hadoop01-hadoop-conf
+bartek@ubuntu-vm:~$ export SPARK_JAR=hdfs:///user/bdaldr/apps/spark/spark-assembly-1.6.1-hadoop2.6.0.jar
+bartek@ubuntu-vm:~$ $SPARK_HOME/bin/spark-submit --class com.geekcap.javaworld.sparkexample.WordCount --master yarn --deploy-mode cluster ~/dev/my-projects/my-apache-spark/target/spark-example-0.3-SNAPSHOT.jar hdfs://hadoop01.mycompany.com:8020/user/bdaldr/bartek/pom.xml
+
