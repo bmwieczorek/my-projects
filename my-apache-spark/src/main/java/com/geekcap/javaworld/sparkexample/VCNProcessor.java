@@ -22,9 +22,14 @@ import java.util.stream.IntStream;
 
 public class VCNProcessor {
 
-    static void processVCN(String input, String output) {
-        //SparkConf conf = new SparkConf().setMaster("local[*]").setAppName("VCN Processor");
-        SparkConf conf = new SparkConf().setAppName("VCN Processor");
+    static void processVCN(String input, String output, String master) {
+        SparkConf conf;
+        if (master == null) {
+            conf = new SparkConf().setAppName("VCN Processor");
+        } else {
+            conf = new SparkConf().setMaster(master).setAppName("VCN Processor");
+        }
+
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
         DataFrame df = sqlContext.read().format("com.databricks.spark.avro").load(input);
@@ -47,7 +52,6 @@ public class VCNProcessor {
             XPath xPath = XPathFactory.newInstance().newXPath();
             XPathExpression xExprRecordLocator = xPath.compile("/SabreASDS/GetReservationRS/Reservation/BookingDetails/RecordLocator/text()");
             XPathExpression xExprPseudoCityCode = xPath.compile("/SabreASDS/GetReservationRS/Reservation/POS/Source/@PseudoCityCode");
-            //XPathExpression xExprRemarks = xPath.compile("/GetReservationRS/Reservation/Remarks/Remark[@type='HS']/RemarkLines/RemarkLine/Text[starts-with(.,'*/VCN')]/text()");
             XPathExpression xExprRemarks = xPath.compile("/SabreASDS/GetReservationRS/Reservation/Remarks/Remark[@type='HS']/RemarkLines/RemarkLine/Text[starts-with(.,'*/VCN') or starts-with(.,'*VCN')]/text()");
 
             final String pnrLocator = (String) xExprRecordLocator.evaluate(document, XPathConstants.STRING);
@@ -80,7 +84,7 @@ public class VCNProcessor {
             System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
         }
 
-        processVCN(args[0], args[1]);
+        processVCN(args[0], args[1], args.length == 3 ? args[2] : null);
 
     }
 }
