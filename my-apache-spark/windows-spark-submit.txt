@@ -1,12 +1,15 @@
 #ssh bdaldr@hadoop01 "hadoop fs -rm -r /user/SG0212148"
+ssh bdaldr@hadoop01 "hadoop fs -rm -r hdfs:///user/bdaldr/a-vcn/a"
+ssh bdaldr@hadoop01 "hadoop fs -ls hdfs:///user/bdaldr/a-vcn/a"
+ssh bdaldr@hadoop01 "hadoop fs -cat hdfs:///user/bdaldr/a-vcn/a/part-00000"
+ssh bdaldr@hadoop01 "hadoop fs -cat hdfs:///user/bdaldr/a-vcn/a/part-00001"
+#src/main/resources/avro/data.1467982803298.avro target/vcn local
 
 set HADOOP_HOME=C:\dev\my-projects\my-apache-spark
 set SPARK_HOME=c:\dev\env\spark-1.6.2-bin-hadoop2.6
 set YARN_CONF_DIR=c:\dev\env\hadoop01-hadoop-conf
-set SPARK_JAR=hdfs:///user/bdaldr/apps/spark/spark-assembly-1.6.1-hadoop2.6.0.jar
+set SPARK_JAR=hdfs:///user/bdaldr/spark/spark-assembly-1.6.2-hadoop2.6.0.jar
+
 c:\dev\env\spark-1.6.2-bin-hadoop2.6\bin\spark-submit --class com.geekcap.javaworld.sparkexample.WordCount --master yarn --deploy-mode cluster c:\dev\my-projects\my-apache-spark\target\spark-example-0.3-SNAPSHOT.jar hdfs:///user/bdaldr/bartek/pom.xml
 
-
-C:\dev\my-projects\my-apache-spark>c:\dev\env\spark-1.6.2-bin-hadoop2.6\bin\spark-submit --class com.geekcap.javaworld.sparkexample.VCNProcessorJava7 --master yarn --deploy-mode cluster c:\dev\my-projects\my-apache-s
-park\target\spark-example-0.3-SNAPSHOT-jar-with-dependencies.jar hdfs://hadoop01.sgdcelab.sabre.com:8020/user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/hour=08/data.1467982803298.avro  hdfs:///
-user/bdaldr/aaa-vcn
+c:\dev\env\spark-1.6.2-bin-hadoop2.6\bin\spark-submit --class com.geekcap.javaworld.sparkexample.VCNProcessor --master yarn --deploy-mode cluster c:\dev\my-projects\my-apache-spark\target\spark-example-0.3-SNAPSHOT.jar hdfs:///user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/hour=08/data.1467982803298.avro  hdfs:///user/bdaldr/a-vcn/a

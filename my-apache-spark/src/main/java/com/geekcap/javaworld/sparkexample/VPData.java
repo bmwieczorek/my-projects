@@ -2,9 +2,6 @@ package com.geekcap.javaworld.sparkexample;
 
 import java.io.Serializable;
 
-/**
- * Created by SG0212148 on 7/15/2016.
- */
 public class VPData implements Serializable {
 
     private String pnrLocator;
