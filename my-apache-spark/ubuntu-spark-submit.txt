@@ -1,6 +1,12 @@
 scp -r bdaldr@hadoop01.sgdcelab.sabre.com:/etc/hadoop/conf hadoop01-hadoop-conf
+ssh bdaldr@hadoop01 "hadoop fs -rm -r hdfs:///user/bdaldr/b-vcn/b"
+ssh bdaldr@hadoop01 "hadoop fs -ls hdfs:///user/bdaldr/b-vcn/b"
+ssh bdaldr@hadoop01 "hadoop fs -cat hdfs:///user/bdaldr/b-vcn/b/part-00000"
+ssh bdaldr@hadoop01 "hadoop fs -cat hdfs:///user/bdaldr/b-vcn/b/part-00001"
+#src/main/resources/avro/data.1467982803298.avro target/vcn local
+
 export SPARK_HOME=~/dev/env/spark-1.6.2-bin-hadoop2.6
 export YARN_CONF_DIR=~/dev/env/hadoop01-hadoop-conf
-export SPARK_JAR=hdfs:///user/bdaldr/apps/spark/spark-assembly-1.6.1-hadoop2.6.0.jar
-$SPARK_HOME/bin/spark-submit --class com.geekcap.javaworld.sparkexample.WordCount --master yarn --deploy-mode cluster ~/dev/my-projects/my-apache-spark/target/spark-example-0.3-SNAPSHOT.jar hdfs://hadoop01.mycompany.com:8020/user/bdaldr/bartek/pom.xml
+export SPARK_JAR=hdfs:///user/bdaldr/spark/spark-assembly-1.6.2-hadoop2.6.0.jar
+$SPARK_HOME/bin/spark-submit --class com.geekcap.javaworld.sparkexample.VCNProcessor --master yarn --deploy-mode cluster ~/dev/my-projects/my-apache-spark/target/spark-example-0.3-SNAPSHOT.jar hdfs:///user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/hour=08/data.1467982803298.avro hdfs:///user/bdaldr/b-vcn/b
 

@@ -3,9 +3,13 @@
     <groupId>com.geekcap.javaworld</groupId>
     <artifactId>spark-example</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <name>spark-example</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <build>
         <plugins>
@@ -18,33 +22,170 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.geekcap.javaworld.sparkexample.WordCount</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
                 <executions>
                     <execution>
-                        <id>copy</id>
-                        <phase>install</phase>
+                        <phase>package</phase>
                         <goals>
-                            <goal>copy-dependencies</goal>
+                            <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <artifactSet>
+                                <excludes>
+
+                                    <!-- mvn clean package | grep Including | grep -v databricks | grep -o '\S*:jar' | sed 's/^/<exclude>/' | sed 's/:jar$/<\/exclude>/' -->
+                                    <exclude>org.apache.spark:spark-core_2.11</exclude>
+                                    <exclude>org.apache.avro:avro-mapred</exclude>
+                                    <exclude>org.apache.avro:avro-ipc</exclude>
+                                    <exclude>org.apache.avro:avro-ipc</exclude>
+                                    <exclude>org.codehaus.jackson:jackson-core-asl</exclude>
+                                    <exclude>org.codehaus.jackson:jackson-mapper-asl</exclude>
+                                    <exclude>com.twitter:chill_2.11</exclude>
+                                    <exclude>com.esotericsoftware.kryo:kryo</exclude>
+                                    <exclude>com.esotericsoftware.reflectasm:reflectasm</exclude>
+                                    <exclude>com.esotericsoftware.minlog:minlog</exclude>
+                                    <exclude>org.objenesis:objenesis</exclude>
+                                    <exclude>com.twitter:chill-java</exclude>
+                                    <exclude>org.apache.xbean:xbean-asm5-shaded</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-client</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-common</exclude>
+                                    <exclude>commons-cli:commons-cli</exclude>
+                                    <exclude>org.apache.commons:commons-math</exclude>
+                                    <exclude>xmlenc:xmlenc</exclude>
+                                    <exclude>commons-configuration:commons-configuration</exclude>
+                                    <exclude>commons-collections:commons-collections</exclude>
+                                    <exclude>commons-digester:commons-digester</exclude>
+                                    <exclude>commons-beanutils:commons-beanutils</exclude>
+                                    <exclude>commons-beanutils:commons-beanutils-core</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-auth</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-hdfs</exclude>
+                                    <exclude>org.mortbay.jetty:jetty-util</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-mapreduce-client-app</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-mapreduce-client-common</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-yarn-client</exclude>
+                                    <exclude>com.google.inject:guice</exclude>
+                                    <exclude>javax.inject:javax.inject</exclude>
+                                    <exclude>aopalliance:aopalliance</exclude>
+                                    <exclude>com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2</exclude>
+                                    <exclude>com.sun.jersey.jersey-test-framework:jersey-test-framework-core</exclude>
+                                    <exclude>javax.servlet:javax.servlet-api</exclude>
+                                    <exclude>com.sun.jersey:jersey-client</exclude>
+                                    <exclude>com.sun.jersey:jersey-grizzly2</exclude>
+                                    <exclude>org.glassfish.grizzly:grizzly-http</exclude>
+                                    <exclude>org.glassfish.grizzly:grizzly-framework</exclude>
+                                    <exclude>org.glassfish.gmbal:gmbal-api-only</exclude>
+                                    <exclude>org.glassfish.external:management-api</exclude>
+                                    <exclude>org.glassfish.grizzly:grizzly-http-server</exclude>
+                                    <exclude>org.glassfish.grizzly:grizzly-rcm</exclude>
+                                    <exclude>org.glassfish.grizzly:grizzly-http-servlet</exclude>
+                                    <exclude>org.glassfish:javax.servlet</exclude>
+                                    <exclude>com.sun.jersey:jersey-json</exclude>
+                                    <exclude>org.codehaus.jettison:jettison</exclude>
+                                    <exclude>stax:stax-api</exclude>
+                                    <exclude>com.sun.xml.bind:jaxb-impl</exclude>
+                                    <exclude>javax.xml.bind:jaxb-api</exclude>
+                                    <exclude>javax.activation:activation</exclude>
+                                    <exclude>org.codehaus.jackson:jackson-jaxrs</exclude>
+                                    <exclude>org.codehaus.jackson:jackson-xc</exclude>
+                                    <exclude>com.sun.jersey.contribs:jersey-guice</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-yarn-server-common</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-mapreduce-client-shuffle</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-yarn-api</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-mapreduce-client-core</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-yarn-common</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-mapreduce-client-jobclient</exclude>
+                                    <exclude>org.apache.hadoop:hadoop-annotations</exclude>
+                                    <exclude>org.apache.spark:spark-launcher_2.11</exclude>
+                                    <exclude>org.apache.spark:spark-network-common_2.11</exclude>
+                                    <exclude>org.apache.spark:spark-network-shuffle_2.11</exclude>
+                                    <exclude>org.fusesource.leveldbjni:leveldbjni-all</exclude>
+                                    <exclude>com.fasterxml.jackson.core:jackson-annotations</exclude>
+                                    <exclude>org.apache.spark:spark-unsafe_2.11</exclude>
+                                    <exclude>net.java.dev.jets3t:jets3t</exclude>
+                                    <exclude>commons-codec:commons-codec</exclude>
+                                    <exclude>commons-httpclient:commons-httpclient</exclude>
+                                    <exclude>org.apache.curator:curator-recipes</exclude>
+                                    <exclude>org.apache.curator:curator-framework</exclude>
+                                    <exclude>org.apache.curator:curator-client</exclude>
+                                    <exclude>org.apache.zookeeper:zookeeper</exclude>
+                                    <exclude>jline:jline</exclude>
+                                    <exclude>com.google.guava:guava</exclude>
+                                    <exclude>org.eclipse.jetty.orbit:javax.servlet</exclude>
+                                    <exclude>org.apache.commons:commons-lang3</exclude>
+                                    <exclude>org.apache.commons:commons-math3</exclude>
+                                    <exclude>com.google.code.findbugs:jsr305</exclude>
+                                    <exclude>org.slf4j:slf4j-api</exclude>
+                                    <exclude>org.slf4j:jul-to-slf4j</exclude>
+                                    <exclude>org.slf4j:jcl-over-slf4j</exclude>
+                                    <exclude>log4j:log4j</exclude>
+                                    <exclude>org.slf4j:slf4j-log4j12</exclude>
+                                    <exclude>com.ning:compress-lzf</exclude>
+                                    <exclude>org.xerial.snappy:snappy-java</exclude>
+                                    <exclude>net.jpountz.lz4:lz4</exclude>
+                                    <exclude>org.roaringbitmap:RoaringBitmap</exclude>
+                                    <exclude>commons-net:commons-net</exclude>
+                                    <exclude>com.typesafe.akka:akka-remote_2.11</exclude>
+                                    <exclude>com.typesafe.akka:akka-actor_2.11</exclude>
+                                    <exclude>com.typesafe:config</exclude>
+                                    <exclude>io.netty:netty</exclude>
+                                    <exclude>com.google.protobuf:protobuf-java</exclude>
+                                    <exclude>org.uncommons.maths:uncommons-maths</exclude>
+                                    <exclude>com.typesafe.akka:akka-slf4j_2.11</exclude>
+                                    <exclude>org.scala-lang:scala-library</exclude>
+                                    <exclude>org.json4s:json4s-jackson_2.11</exclude>
+                                    <exclude>org.json4s:json4s-core_2.11</exclude>
+                                    <exclude>org.json4s:json4s-ast_2.11</exclude>
+                                    <exclude>org.scala-lang:scalap</exclude>
+                                    <exclude>org.scala-lang:scala-compiler</exclude>
+                                    <exclude>org.scala-lang.modules:scala-xml_2.11</exclude>
+                                    <exclude>org.scala-lang.modules:scala-parser-combinators_2.11</exclude>
+                                    <exclude>com.sun.jersey:jersey-server</exclude>
+                                    <exclude>asm:asm</exclude>
+                                    <exclude>com.sun.jersey:jersey-core</exclude>
+                                    <exclude>org.apache.mesos:mesos</exclude>
+                                    <exclude>io.netty:netty-all</exclude>
+                                    <exclude>com.clearspring.analytics:stream</exclude>
+                                    <exclude>io.dropwizard.metrics:metrics-core</exclude>
+                                    <exclude>io.dropwizard.metrics:metrics-jvm</exclude>
+                                    <exclude>io.dropwizard.metrics:metrics-json</exclude>
+                                    <exclude>io.dropwizard.metrics:metrics-graphite</exclude>
+                                    <exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
+                                    <exclude>com.fasterxml.jackson.core:jackson-core</exclude>
+                                    <exclude>com.fasterxml.jackson.module:jackson-module-scala_2.11</exclude>
+                                    <exclude>org.scala-lang:scala-reflect</exclude>
+                                    <exclude>com.thoughtworks.paranamer:paranamer</exclude>
+                                    <exclude>org.apache.ivy:ivy</exclude>
+                                    <exclude>oro:oro</exclude>
+                                    <exclude>org.tachyonproject:tachyon-client</exclude>
+                                    <exclude>commons-lang:commons-lang</exclude>
+                                    <exclude>commons-io:commons-io</exclude>
+                                    <exclude>org.tachyonproject:tachyon-underfs-hdfs</exclude>
+                                    <exclude>org.tachyonproject:tachyon-underfs-s3</exclude>
+                                    <exclude>org.tachyonproject:tachyon-underfs-local</exclude>
+                                    <exclude>net.razorvine:pyrolite</exclude>
+                                    <exclude>net.sf.py4j:py4j</exclude>
+                                    <exclude>org.spark-project.spark:unused</exclude>
+                                    <exclude>org.apache.spark:spark-sql_2.11</exclude>
+                                    <exclude>org.apache.spark:spark-catalyst_2.11</exclude>
+                                    <exclude>org.codehaus.janino:janino</exclude>
+                                    <exclude>org.codehaus.janino:commons-compiler</exclude>
+                                    <exclude>org.apache.parquet:parquet-column</exclude>
+                                    <exclude>org.apache.parquet:parquet-common</exclude>
+                                    <exclude>org.apache.parquet:parquet-encoding</exclude>
+                                    <exclude>org.apache.parquet:parquet-generator</exclude>
+                                    <exclude>org.apache.parquet:parquet-hadoop</exclude>
+                                    <exclude>org.apache.parquet:parquet-format</exclude>
+                                    <exclude>org.apache.parquet:parquet-jackson</exclude>
+                                    <exclude>org.apache.avro:avro</exclude>
+                                    <exclude>org.apache.commons:commons-compress</exclude>
+                                    <exclude>org.tukaani:xz</exclude>
+
+                                </excludes>
+                            </artifactSet>
                         </configuration>
                     </execution>
                 </executions>
@@ -55,11 +196,25 @@
     <dependencies>
 
         <!-- Import Spark -->
+
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>1.6.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.databricks</groupId>
+            <artifactId>spark-avro_2.11</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
     </dependencies>
 </project>
+
