@@ -23,7 +23,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,28 +43,19 @@ public class VCNProcessor {
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
 
-        long start = System.currentTimeMillis();
-        List<String> pathList;
+//        Path path = new Path("hdfs://hadoop01.sgdcelab.sabre.com:8020/user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/");
+//        URI uri = new URI("hdfs://hadoop01.sgdcelab.sabre.com:8020");
+//        FileSystem fileSystem = FileSystem.get(uri, sc.hadoopConfiguration());
+//
+//        List<String> pathList = getPathsWithHadoopListFiles(fileSystem, path);
+//        System.out.println("Found: " + pathList.size());
+//        System.out.println(pathList);
+//        String[] paths = pathList.toArray(new String[pathList.size()]);
 
-        Path path = new Path("hdfs://hadoop01.sgdcelab.sabre.com:8020/user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/");
-        URI uri = new URI("hdfs://hadoop01.sgdcelab.sabre.com:8020");
-        FileSystem fileSystem = FileSystem.get(uri, sc.hadoopConfiguration());
+        //DataFrame df = sqlContext.read().format("com.databricks.spark.avro").load(paths);
 
-//        Took ms: 9534
-        pathList = getPathsWithHadoopListFiles(fileSystem, path);
-
-        // Took ms: 131020
-//        pathList = listWholeFiles(sc, "hdfs://hadoop01.sgdcelab.sabre.com:8020/user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/*");
-
-        long end = System.currentTimeMillis();
-        System.out.println("Took ms: " + (end - start));
-
-        System.out.println("Found: " + pathList.size());
-        System.out.println(pathList);
-
-        String[] paths = pathList.toArray(new String[pathList.size()]);
-
-        DataFrame df = sqlContext.read().format("com.databricks.spark.avro").load(paths);
+        //DataFrame df = sqlContext.read().format("com.databricks.spark.avro").load("hdfs://hadoop01.sgdcelab.sabre.com:8020/user/bdaldr/data-ingestion-service/ASDS/PNR/year=2016/month=07/day=08/*");
+        DataFrame df = sqlContext.read().format("com.databricks.spark.avro").load(input);
             JavaRDD<VPData> vpDataJavaRDD = df
                     .toJavaRDD()
                     .map(row -> new String((byte[]) row.getAs(14)))

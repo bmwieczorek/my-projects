@@ -11,16 +11,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-client</artifactId>
-                <version>2.6.0</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -193,6 +183,22 @@
                                     <exclude>org.apache.avro:avro</exclude>
                                     <exclude>org.apache.commons:commons-compress</exclude>
                                     <exclude>org.tukaani:xz</exclude>
+                                    <exclude>com.google.code.gson:gson</exclude>
+                                    <exclude>org.apache.directory.server:apacheds-kerberos-codec</exclude>
+                                    <exclude>org.apache.directory.server:apacheds-i18n</exclude>
+                                    <exclude>org.apache.directory.api:api-asn1-api</exclude>
+                                    <exclude>org.apache.directory.api:api-util</exclude>
+                                    <exclude>org.htrace:htrace-core</exclude>
+                                    <exclude>xerces:xercesImpl</exclude>
+                                    <exclude>xml-apis:xml-apis</exclude>
+                                    <exclude>javax.xml.stream:stax-api</exclude>
+                                    <exclude>org.apache.httpcomponents:httpcore</exclude>
+                                    <exclude>org.apache.httpcomponents:httpclient</exclude>
+                                    <exclude>mx4j:mx4j</exclude>
+                                    <exclude>javax.mail:mail</exclude>
+                                    <exclude>org.bouncycastle:bcprov-jdk15on</exclude>
+                                    <exclude>com.jamesmurty.utils:java-xmlbuilder</exclude>
+                                    <exclude>net.iharder:base64</exclude>
 
                                 </excludes>
                             </artifactSet>
