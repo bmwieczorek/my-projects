@@ -97,7 +97,7 @@ public class VCNProcessor {
             XPath xPath = XPathFactory.newInstance().newXPath();
             XPathExpression xExprRecordLocator = xPath.compile("/SabreASDS/GetReservationRS/Reservation/BookingDetails/RecordLocator/text()");
             XPathExpression xExprPseudoCityCode = xPath.compile("/SabreASDS/GetReservationRS/Reservation/POS/Source/@PseudoCityCode");
-            XPathExpression xExprRemarks = xPath.compile("/SabreASDS/GetReservationRS/Reservation/Remarks/Remark[@type='HS']/RemarkLines/RemarkLine/Text[starts-with(.,'*/VCN') or starts-with(.,'*VCN')]/text()");
+            XPathExpression xExprRemarks = xPath.compile("/SabreASDS/GetReservationRS/Reservation/Remarks/Remark[@type='HS' or @type='FOP']/RemarkLines/RemarkLine/Text[starts-with(.,'*/VCN') or starts-with(.,'*VCN')]/text()");
 
             final String pnrLocator = (String) xExprRecordLocator.evaluate(document, XPathConstants.STRING);
             final String pcc = (String) xExprPseudoCityCode.evaluate(document, XPathConstants.STRING);
