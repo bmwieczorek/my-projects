@@ -1,4 +1,4 @@
-#ssh bdaldr@hadoop01 "hadoop fs -rm -r /user/SG0212148"
+ssh bdaldr@hadoop01 "hadoop fs -rm -r /user/SG0212148"
 ssh bdaldr@hadoop01 "hadoop fs -rm -r hdfs:///user/bdaldr/a-vcn/a"
 ssh bdaldr@hadoop01 "hadoop fs -ls hdfs:///user/bdaldr/a-vcn/a"
 ssh bdaldr@hadoop01 "hadoop fs -cat hdfs:///user/bdaldr/a-vcn/a/part-00000"
