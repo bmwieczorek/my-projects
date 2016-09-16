@@ -47,6 +47,10 @@ public class WordCount {
     }
 
     public static void main(String[] args) throws Exception {
+        // for windows we need to set hadoop.home.dir to parent dir of bin/winutils.exe
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            System.setProperty("hadoop.home.dir", System.getProperty("user.dir"));
+        
         Configuration conf = new Configuration();
         // conf.set("fs.defaultFS", "hdfs://localhost:8020");
         Job job = Job.getInstance(conf, "wordcount");
