@@ -47,10 +47,10 @@ ln -s ~/dev/env/scala-2.11.8 ~/dev/env/scala
 ln -s /media/sf_.m2/ ~/.m2
 
 mkdir ~/dev/env/install
-cp -r /media/sf_my-projects/my-install/install/common/. ~/dev/env/install
-cp -r /media/sf_my-projects/my-install/install/ubuntu/. ~/dev/env/install
+cp -r /media/sf_my-projects/my-install/common/. ~/dev/env/install
+cp -r /media/sf_my-projects/my-install/ubuntu/. ~/dev/env/install
 
-cp ~/dev/env/install.gitconfig* ~
+cp ~/dev/env/install/.gitconfig* ~
 cp ~/dev/env/install/setenv.sh ~/dev/env/
 cp ~/dev/env/install/*proxy.sh ~
 
