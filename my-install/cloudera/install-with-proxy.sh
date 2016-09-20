@@ -66,25 +66,21 @@ ln -s /usr/local/git ~/dev/env/git
 #echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.bashrc
 #. ~/.bashrc
 
-sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
-sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
+#sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
+#sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
 
-sudo cp /media/sf_vbox-shared/install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
+#sudo cp /media/sf_vbox-shared/install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
 
-sudo cp /media/sf_vbox-shared/install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
+#sudo cp /media/sf_vbox-shared/install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
 
-#lrwxrwxrwx 1 root root 39 Apr  5 23:55 /usr/bin/java -> /usr/java/jdk1.7.0_67-cloudera/bin/java
-#sudo rm /usr/bin/java
-#sudo ln -s ~/dev/env/jdk1.8 /usr/bin/java
+sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
+sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
 
-#sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
-#sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
+#sudo service spark-history-server stop
+#sudo service spark-history-server start
 
-sudo service spark-history-server stop
-sudo service spark-history-server start
-
-sudo /etc/init.d/hadoop-yarn-nodemanager restart 
-sudo /etc/init.d/hadoop-yarn-resourcemanager restart
+#sudo /etc/init.d/hadoop-yarn-nodemanager restart 
+#sudo /etc/init.d/hadoop-yarn-resourcemanager restart
 
 echo "##############################################################################"
 echo "!!! First connect VPN, then run ~/proxy.sh and eventually accept Intellij policy agreement !!!"
