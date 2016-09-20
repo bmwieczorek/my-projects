@@ -25,6 +25,7 @@ cp -r /media/sf_my-install/cloudera ~/dev/env/
 
 sudo mv /etc/profile /etc/profile.orig
 sudo cp /media/sf_my-install/cloudera/profile /etc
+sudo chmod 644 /etc/profile
 
 cd ~
 ideaIU=$(find /home/cloudera/dev/env/ -name idea-IU-*)
