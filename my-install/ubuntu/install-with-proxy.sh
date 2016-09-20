@@ -35,7 +35,7 @@ echo "Installing Java, Maven, Intellij, Scala and Apache Spark ..."
 
 mkdir -p ~/dev/env
 cd ~/dev/env
-tar xzf /media/sf_vbox-shared/ideaIU-2016.2.1.tar.gz
+tar xzf /media/sf_vbox-shared/ideaIU-2016.2.4.tar.gz
 tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
 tar xzf /media/sf_vbox-shared/jdk-8u102-linux-x64.tar.gz
 tar xzf /media/sf_vbox-shared/scala-2.11.8.tgz
@@ -47,8 +47,8 @@ ln -s ~/dev/env/scala-2.11.8 ~/dev/env/scala
 ln -s /media/sf_.m2/ ~/.m2
 
 mkdir ~/dev/env/install
-cp -r /media/sf_vbox-shared/install/common/. ~/dev/env/install
-cp -r /media/sf_vbox-shared/install/ubuntu/. ~/dev/env/install
+cp -r /media/sf_my-projects/my-install/install/common/. ~/dev/env/install
+cp -r /media/sf_my-projects/my-install/install/ubuntu/. ~/dev/env/install
 
 cp ~/dev/env/install.gitconfig* ~
 cp ~/dev/env/install/setenv.sh ~/dev/env/
@@ -69,7 +69,7 @@ echo ". ~/dev/env/setenv.sh" >> ~/.profile
 cd ~
 ideaIU=$(find /home/bartek/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
-echo "-Duser.name=myusername" >> $ideaIU/bin/idea64.vmoptions
+echo "-Duser.name=sg0212148" >> $ideaIU/bin/idea64.vmoptions
 
 tar xzf ~/dev/env/install/.IntelliJIdea2016.2.orig-no-scala.tgz
 mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
