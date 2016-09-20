@@ -20,18 +20,18 @@ ln -s /usr/java/jdk1.8.0_102 ~/dev/env/jdk1.8
 ln -s /usr/local/apache-maven/apache-maven-3.3.9 ~/dev/env/apache-maven
 ln -s /media/sf_.m2/ ~/.m2
 
-cp -r /media/sf_vbox-shared/install/common ~/dev/env/
-cp -r /media/sf_vbox-shared/install/cloudera ~/dev/env/
+cp -r /media/sf_my-install/common ~/dev/env/
+cp -r /media/sf_my-install/cloudera ~/dev/env/
 
 sudo mv /etc/profile /etc/profile.orig
-sudo cp /media/sf_vbox-shared/install/cloudera/profile /etc
+sudo cp /media/sf_my-install/cloudera/profile /etc
 
 cd ~
 ideaIU=$(find /home/cloudera/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
 echo "-Duser.name=myusername" >> $ideaIU/bin/idea64.vmoptions
 
-tar xzf /media/sf_vbox-shared/install/common/.IntelliJIdea2016.2.orig-no-scala.tgz
+tar xzf /media/sf_my-install/common/.IntelliJIdea2016.2.orig-no-scala.tgz
 mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
 
 
@@ -46,9 +46,9 @@ cp $prefsjs $prefsjs.orig
 cp -r ~/dev/env/cloudera/*proxy*.sh ~/
 sudo cp ~/dev/env/common/cntlm.conf.proxy /etc/cntlm.conf
 
-echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.profile
+#echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.profile
 
-. ~/.profile
+#. ~/.profile
 
 echo "Installing git 2.9.2"
 sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -y
@@ -69,9 +69,9 @@ ln -s /usr/local/git ~/dev/env/git
 #sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
 #sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
 
-#sudo cp /media/sf_vbox-shared/install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
+#sudo cp /media/sf_my-install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
 
-#sudo cp /media/sf_vbox-shared/install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
+#sudo cp /media/sf_my-install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
 
 sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
 sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
