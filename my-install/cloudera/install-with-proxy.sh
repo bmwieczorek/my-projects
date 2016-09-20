@@ -9,16 +9,22 @@ echo "Installing Java, maven and Intellij ..."
 mkdir -p ~/dev/env
 cd ~/dev/env
 tar xzf /media/sf_vbox-shared/ideaIU-2016.2.4.tar.gz
-tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
-tar xzf /media/sf_vbox-shared/jdk-8u102-linux-x64.tar.gz
 
-ln -s ~/dev/env/jdk1.8.0_102 ~/dev/env/jdk1.8
-ln -s ~/dev/env/apache-maven-3.3.9 ~/dev/env/apache-maven
+cd /usr/local/apache-maven/
+sudo tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
+
+cd /usr/java/
+sudo tar xzf /media/sf_vbox-shared/jdk-8u102-linux-x64.tar.gz
+
+ln -s /usr/java/jdk1.8.0_102 ~/dev/env/jdk1.8
+ln -s /usr/local/apache-maven/apache-maven-3.3.9 ~/dev/env/apache-maven
 ln -s /media/sf_.m2/ ~/.m2
 
 cp -r /media/sf_vbox-shared/install/common ~/dev/env/
 cp -r /media/sf_vbox-shared/install/cloudera ~/dev/env/
 
+sudo mv /etc/profile /etc/profile.orig
+sudo cp /media/sf_vbox-shared/install/cloudera/profile /etc
 
 cd ~
 ideaIU=$(find /home/cloudera/dev/env/ -name idea-IU-*)
@@ -57,8 +63,8 @@ git --version
 
 ln -s /usr/local/git ~/dev/env/git
 
-echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.bashrc
-. ~/.bashrc
+#echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.bashrc
+#. ~/.bashrc
 
 sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
 sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
@@ -71,8 +77,8 @@ sudo cp /media/sf_vbox-shared/install/cloudera/etc/hadoop/conf/yarn-site.xml.yar
 #sudo rm /usr/bin/java
 #sudo ln -s ~/dev/env/jdk1.8 /usr/bin/java
 
-sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
-sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
+#sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
+#sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
 
 sudo service spark-history-server stop
 sudo service spark-history-server start
