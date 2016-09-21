@@ -52,7 +52,8 @@ cp -r /media/sf_my-projects/my-install/ubuntu/. ~/dev/env/install
 
 cp ~/dev/env/install/.gitconfig* ~
 cp ~/dev/env/install/setenv.sh ~/dev/env/
-cp ~/dev/env/install/*proxy.sh ~
+cp ~/dev/env/install/proxy.sh ~
+cp ~/dev/env/install/no-proxy.sh ~
 
 sudo cp ~/dev/env/install/cntlm.conf.proxy /etc/cntlm.conf
 sudo cp ~/dev/env/install/detect-proxy /etc/network/if-up.d/
