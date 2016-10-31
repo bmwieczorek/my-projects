@@ -126,7 +126,7 @@ bartek@ubuntu-vm:~$ sudo cat /etc/cntlm.conf
 #
 
 Username	myusername
-Domain		global
+Domain		mydomain
 #Password	
 # NOTE: Use plaintext password only at your own risk
 # Use hashes instead. You can use a "cntlm -M" and "cntlm -H"
