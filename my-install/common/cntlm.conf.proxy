@@ -19,20 +19,23 @@ Domain		mydomain
 # PassNTLMv2      D5826E9C665C37C80B53397D5C07BBCB
 #
 
-#T..55
-#[root@quickstart cloudera]# cntlm -I -M http://test.com
+#T..99
+#sg0212148@MacBook:~$ vim /usr/local/etc/cntlm.conf
+#sg0212148@MacBook:~$ sudo su
+#root@MacBook:/Users/sg0212148$ cntlm -I -M http://test.com
 #Password: 
 #Config profile  1/4... Credentials rejected
 #Config profile  2/4... OK (HTTP code: 302)
 #----------------------------[ Profile  1 ]------
 #Auth            NTLM
-#PassNT          3DD3D7CBD6F741ECE1DD06EBD6DBAE7B
-#PassLM          67CE777FF867BFD2A8693DC60030D49F
-#-----------------------------------------------
+#PassNT          BB64F2B322C1D3B3425CB17B579BEAB5
+#PassLM          67CE777FF867BFD2DB7E43C8AC813D40
+#------------------------------------------------
 
 Auth            NTLM
-PassNT          3DD3D7CBD6F741ECE1DD06EBD6DBAE7B
-PassLM          67CE777FF867BFD2A8693DC60030D49F
+PassNT          BB64F2B322C1D3B3425CB17B579BEAB5
+PassLM          67CE777FF867BFD2DB7E43C8AC813D40
+
 
 # Specify the netbios hostname cntlm will send to the parent
 # proxies. Normally the value is auto-guessed.
