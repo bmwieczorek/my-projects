@@ -2,7 +2,10 @@
 #import vmdk and enable bidirectional clipboard and shared folers for vbox-shared and .m2
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf bartek
-# 
+#
+jdkVersion=112
+intellijVersion=2016.2.5-no-jdk
+ 
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install vim git subversion cntlm -y
@@ -35,13 +38,13 @@ echo "Installing Java, Maven, Intellij, Scala and Apache Spark ..."
 
 mkdir -p ~/dev/env
 cd ~/dev/env
-tar xzf /media/sf_vbox-shared/ideaIU-2016.2.4.tar.gz
+tar xzf /media/sf_vbox-shared/ideaIU-${intellijVersion}.tar.gz
 tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
-tar xzf /media/sf_vbox-shared/jdk-8u102-linux-x64.tar.gz
+tar xzf /media/sf_vbox-shared/jdk-8u${jdkVersion}-linux-x64.tar.gz
 tar xzf /media/sf_vbox-shared/scala-2.11.8.tgz
 tar xzf /media/sf_vbox-shared/spark-1.6.2-bin-hadoop2.6.tgz
 
-ln -s ~/dev/env/jdk1.8.0_102 ~/dev/env/jdk1.8
+ln -s ~/dev/env/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
 ln -s ~/dev/env/apache-maven-3.3.9 ~/dev/env/apache-maven
 ln -s ~/dev/env/scala-2.11.8 ~/dev/env/scala
 ln -s /media/sf_.m2/ ~/.m2
