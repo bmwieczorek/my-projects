@@ -53,6 +53,8 @@ mkdir ~/dev/env/install
 cp -r /media/sf_my-install/common/. ~/dev/env/install
 cp -r /media/sf_my-install/ubuntu/. ~/dev/env/install
 
+sudo chown -R bartek:bartek ~/dev/env/install
+
 cp ~/dev/env/install/.gitconfig* ~
 cp ~/dev/env/install/setenv.sh ~/dev/env/
 cp ~/dev/env/install/proxy.sh ~
