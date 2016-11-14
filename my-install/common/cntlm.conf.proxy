@@ -5,8 +5,8 @@
 # do not quote. Use 0600 perms if you use plaintext password.
 #
 
-Username	myusername
-Domain		mydomain
+Username	sg0212148
+Domain		global
 #Password	password
 # NOTE: Use plaintext password only at your own risk
 # Use hashes instead. You can use a "cntlm -M" and "cntlm -H"
@@ -44,16 +44,16 @@ PassLM          67CE777FF867BFD22C3872C13FBC95FA
 # List of parent proxies to use. More proxies can be defined
 # one per line in format <proxy_ip>:<proxy_port>
 #
-#www-ad-proxy.mycompany.com
+#www-ad-proxy.sabre.com
 Proxy		10.136.87.17:80
 
-#tulsa-proxy.mycompany.com
+#tulsa-proxy.sabre.com
 Proxy		151.193.220.27:80
 
 # List addresses you do not want to pass to parent proxies
 # * and ? wildcards can be used
 #
-NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.mycompany.com
+NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.sabre.com
 
 # Specify the port cntlm will listen on
 # You can bind cntlm to specific interface by specifying

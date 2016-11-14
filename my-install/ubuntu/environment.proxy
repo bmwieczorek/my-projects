@@ -3,9 +3,9 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 http_proxy="http://localhost:3128/"
 https_proxy="http://localhost:3128/"
 ftp_proxy="http://localhost:3128/"
-no_proxy="localhost,127.0.0.1,.mycompany.com"
+no_proxy="localhost,127.0.0.1,.sabre.com"
 HTTP_PROXY="http://localhost:3128/"
 HTTPS_PROXY="http://localhost:3128/"
 FTP_PROXY="http://localhost:3128/"
-NO_PROXY="localhost,127.0.0.1,.mycompany.com"
+NO_PROXY="localhost,127.0.0.1,.sabre.com"
 

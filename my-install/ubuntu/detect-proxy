@@ -1,5 +1,5 @@
 #!/bin/bash 
 
-#10.19.147.58 maven.mycompany.com
+#10.19.147.58 maven.sabre.com
 ping -q -c 1 -W 1 10.19.147.58 && /home/bartek/proxy.sh || /home/bartek/no-proxy.sh
 

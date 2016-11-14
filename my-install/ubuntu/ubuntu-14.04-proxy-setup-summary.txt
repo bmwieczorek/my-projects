@@ -13,31 +13,31 @@ bartek@ubuntu-vm:~$ cat /etc/resolv.conf
 nameserver 10.136.85.27
 nameserver 10.136.85.32
 nameserver 192.168.11.1
-search mycompany.com
+search sabre.com
 bartek@ubuntu-vm:~$ cat /etc/environment
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 http_proxy="http://localhost:3128/"
-no_proxy="localhost,127.0.0.1,.mycompany.com"
+no_proxy="localhost,127.0.0.1,.sabre.com"
 HTTP_PROXY="http://localhost:3128/"
 HTTPS_PROXY="http://localhost:3128/"
 FTP_PROXY="http://localhost:3128/"
-NO_PROXY="localhost,127.0.0.1,.mycompany.com"
+NO_PROXY="localhost,127.0.0.1,.sabre.com"
 bartek@ubuntu-vm:~$ cat /etc/apt/apt.conf.d/95proxies 
 Acquire::http::proxy "http://localhost:3128/";
 Acquire::ftp::proxy "ftp://localhost:3128/";
 Acquire::https::proxy "https://localhost:3128/";
 bartek@ubuntu-vm:~$ cat .mozilla/firefox/rvtrpduo.default/prefs.js | grep proxy
-user_pref("network.proxy.backup.ftp", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.ftp", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.ftp_port", 80);
-user_pref("network.proxy.backup.socks", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.socks", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.socks_port", 80);
-user_pref("network.proxy.backup.ssl", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.ssl", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.ssl_port", 80);
 user_pref("network.proxy.ftp", "localhost");
 user_pref("network.proxy.ftp_port", 3128);
 user_pref("network.proxy.http", "localhost");
 user_pref("network.proxy.http_port", 3128);
-user_pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, .mycompany.com");
+user_pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, .sabre.com");
 user_pref("network.proxy.share_proxy_settings", true);
 user_pref("network.proxy.socks", "localhost");
 user_pref("network.proxy.socks_port", 3128);
@@ -49,31 +49,31 @@ bartek@ubuntu-vm:~$ cat /etc/resolv.conf
 nameserver 10.136.85.27
 nameserver 10.136.85.32
 nameserver 192.168.11.1
-search mycompany.com
+search sabre.com
 bartek@ubuntu-vm:~$ cat /etc/environment
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 http_proxy="http://localhost:3128/"
-no_proxy="localhost,127.0.0.1,.mycompany.com"
+no_proxy="localhost,127.0.0.1,.sabre.com"
 HTTP_PROXY="http://localhost:3128/"
 HTTPS_PROXY="http://localhost:3128/"
 FTP_PROXY="http://localhost:3128/"
-NO_PROXY="localhost,127.0.0.1,.mycompany.com"
+NO_PROXY="localhost,127.0.0.1,.sabre.com"
 bartek@ubuntu-vm:~$ cat /etc/apt/apt.conf.d/95proxies 
 Acquire::http::proxy "http://localhost:3128/";
 Acquire::ftp::proxy "ftp://localhost:3128/";
 Acquire::https::proxy "https://localhost:3128/";
 bartek@ubuntu-vm:~$ cat .mozilla/firefox/rvtrpduo.default/prefs.js | grep proxy
-user_pref("network.proxy.backup.ftp", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.ftp", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.ftp_port", 80);
-user_pref("network.proxy.backup.socks", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.socks", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.socks_port", 80);
-user_pref("network.proxy.backup.ssl", "www-ad-proxy.mycompany.com");
+user_pref("network.proxy.backup.ssl", "www-ad-proxy.sabre.com");
 user_pref("network.proxy.backup.ssl_port", 80);
 user_pref("network.proxy.ftp", "localhost");
 user_pref("network.proxy.ftp_port", 3128);
 user_pref("network.proxy.http", "localhost");
 user_pref("network.proxy.http_port", 3128);
-user_pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, .mycompany.com");
+user_pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, .sabre.com");
 user_pref("network.proxy.share_proxy_settings", true);
 user_pref("network.proxy.socks", "localhost");
 user_pref("network.proxy.socks_port", 3128);
@@ -125,8 +125,8 @@ bartek@ubuntu-vm:~$ sudo cat /etc/cntlm.conf
 # do not quote. Use 0600 perms if you use plaintext password.
 #
 
-Username	myusername
-Domain		mydomain
+Username	sg0212148
+Domain		global
 #Password	
 # NOTE: Use plaintext password only at your own risk
 # Use hashes instead. You can use a "cntlm -M" and "cntlm -H"
@@ -159,16 +159,16 @@ PassLM          67CE777FF867BFD2B1858F7C8CB2A895
 # one per line in format <proxy_ip>:<proxy_port>
 #
 
-#www-ad-proxy.mycompany.com
+#www-ad-proxy.sabre.com
 Proxy		10.136.87.17:80
 
-#tulsa-proxy.mycompany.com
+#tulsa-proxy.sabre.com
 Proxy		151.193.220.27:80
 
 # List addresses you do not want to pass to parent proxies
 # * and ? wildcards can be used
 #
-NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.mycompany.com
+NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.sabre.com
 
 # Specify the port cntlm will listen on
 # You can bind cntlm to specific interface by specifying

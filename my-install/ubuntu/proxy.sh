@@ -9,8 +9,12 @@ cp $HOME_DIR/dev/env/install/prefs.js.proxy $prefsjs
 cp $HOME_DIR/.gitconfig.proxy $HOME_DIR/.gitconfig
 sudo cp $HOME_DIR/dev/env/install/95proxies /etc/apt/apt.conf.d/
 sudo chmod 644 /etc/apt/apt.conf.d/95proxies
-sudo cp $HOME_DIR/dev/env/install/docker.proxy /etc/default/docker
-sudo service docker restart
+
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo cp $HOME_DIR/dev/env/install/docker.service.d--http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo systemctl daemon-reload
+sudo systemctl show --property Environment docker
+sudo systemctl restart docker
 
 #gsettings set org.gnome.system.proxy mode 'manual'
 #gsettings set org.gnome.system.proxy use-same-proxy false

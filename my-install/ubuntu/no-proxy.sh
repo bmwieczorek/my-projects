@@ -8,8 +8,11 @@ prefsjs=$(find $HOME_DIR/.mozilla/firefox/ -name prefs.js)
 cp $HOME_DIR/dev/env/install/prefs.js.orig $prefsjs
 cp $HOME_DIR/.gitconfig.orig $HOME_DIR/.gitconfig
 sudo rm -f /etc/apt/apt.conf.d/95proxies
-sudo cp /etc/default/docker.orig /etc/default/docker
-sudo service docker restart
+
+sudo rm -rf /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo systemctl daemon-reload
+sudo systemctl show --property Environment docker
+sudo systemctl restart docker
 
 #gsettings set org.gnome.system.proxy mode 'none'
 #gsettings reset org.gnome.system.proxy use-same-proxy

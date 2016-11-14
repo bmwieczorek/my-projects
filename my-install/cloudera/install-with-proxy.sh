@@ -30,7 +30,7 @@ sudo chmod 644 /etc/profile
 cd ~
 ideaIU=$(find /home/cloudera/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
-echo "-Duser.name=myusername" >> $ideaIU/bin/idea64.vmoptions
+echo "-Duser.name=sg0212148" >> $ideaIU/bin/idea64.vmoptions
 
 tar xzf /media/sf_my-install/common/.IntelliJIdea2016.2.orig-no-scala.tgz
 mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
