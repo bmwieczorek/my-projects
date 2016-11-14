@@ -29,6 +29,23 @@ echo "##############################"
 firefox
 sudo pipelight-plugin --create-mozilla-plugins -y
 
+#docker
+sudo apt-get install apt-transport-https ca-certificates
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+sudo apt-get update
+apt-cache policy docker-engine
+sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
+sudo apt-get update
+sudo apt-get install docker-engine -y
+#sudo service docker start
+sudo groupadd docker
+sudo usermod -aG docker $USER
+#docker run hello-world
+
+echo "Start docker via: 'sudo service docker start' and run it via 'docker run hello-world'"
+
+
 sudo apt-get clean -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 #Disabling password for sudo:
@@ -103,17 +120,4 @@ $ideaIU/bin/idea.sh
 #start intellij -> create desktop entry and go to centos Applications/Programming and right click Add this launcher to desktop
 
 
-sudo apt-get install apt-transport-https ca-certificates
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-#echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-apt-cache policy docker-engine
-sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
-sudo apt-get update
-sudo apt-get install docker-engine -y
-sudo service docker start
-sudo groupadd docker
-sudo usermod -aG docker $USER
-#docker run hello-world
 
