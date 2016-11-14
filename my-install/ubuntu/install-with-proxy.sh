@@ -49,6 +49,10 @@ sudo apt-get install docker-engine -y
 sudo usermod -aG docker $USER
 #docker run hello-world
 
+#docker pull wnameless/oracle-xe-11g
+#docker run -d -p 2222:22 -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true --name dev-db  wnameless/oracle-xe-11g
+#docker ps
+
 echo "Start docker via: 'sudo service docker start' and run it via 'docker run hello-world'"
 
 echo "Cleaning up packages..."
