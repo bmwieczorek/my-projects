@@ -30,10 +30,10 @@ firefox
 sudo pipelight-plugin --create-mozilla-plugins -y
 
 echo "Installing chrome..."
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-apt-get update
-apt-get install google-chrome-stable -y
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo bash -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+sudo apt-get update
+sudo apt-get install google-chrome-stable -y
 
 echo "Installing docker..."
 sudo apt-get install apt-transport-https ca-certificates
@@ -45,7 +45,7 @@ sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
 sudo apt-get update
 sudo apt-get install docker-engine -y
 #sudo service docker start
-sudo groupadd docker
+#sudo groupadd docker
 sudo usermod -aG docker $USER
 #docker run hello-world
 
