@@ -29,7 +29,13 @@ echo "##############################"
 firefox
 sudo pipelight-plugin --create-mozilla-plugins -y
 
-#docker
+echo "Installing chrome..."
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+apt-get update
+apt-get install google-chrome-stable -y
+
+echo "Installing docker..."
 sudo apt-get install apt-transport-https ca-certificates
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
@@ -45,7 +51,7 @@ sudo usermod -aG docker $USER
 
 echo "Start docker via: 'sudo service docker start' and run it via 'docker run hello-world'"
 
-
+echo "Cleaning up packages..."
 sudo apt-get clean -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 #Disabling password for sudo:
