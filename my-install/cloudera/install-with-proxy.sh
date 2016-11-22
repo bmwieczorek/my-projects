@@ -2,21 +2,24 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf cloudera
 
+jdkVersion=112
+intellijVersion=2016.3-no-jdk
+
 sudo rpm -ivh /media/sf_vbox-shared/cntlm-0.92.3-1.x86_64.rpm
 
 echo "Installing Java, maven and Intellij ..."
 
 mkdir -p ~/dev/env
 cd ~/dev/env
-tar xzf /media/sf_vbox-shared/ideaIU-2016.2.4.tar.gz
+tar xzf /media/sf_vbox-shared/ideaIU-${intellijVersion}.tar.gz
 
 cd /usr/local/apache-maven/
 sudo tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
 
 cd /usr/java/
-sudo tar xzf /media/sf_vbox-shared/jdk-8u102-linux-x64.tar.gz
+sudo tar xzf /media/sf_vbox-shared/jdk-8u${jdkVersion}-linux-x64.tar.gz
 
-ln -s /usr/java/jdk1.8.0_102 ~/dev/env/jdk1.8
+ln -s /usr/java/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
 ln -s /usr/local/apache-maven/apache-maven-3.3.9 ~/dev/env/apache-maven
 ln -s /media/sf_.m2/ ~/.m2
 

@@ -4,7 +4,7 @@
 # sudo usermod -a -G vboxsf bartek
 #
 jdkVersion=112
-intellijVersion=2016.2.5-no-jdk
+intellijVersion=2016.3-no-jdk
  
 
 sudo apt-get update && sudo apt-get upgrade -y
