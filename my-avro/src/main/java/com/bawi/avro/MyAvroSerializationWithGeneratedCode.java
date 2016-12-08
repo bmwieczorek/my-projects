@@ -11,6 +11,7 @@ import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class MyAvroSerializationWithGeneratedCode {
 
@@ -21,7 +22,7 @@ public class MyAvroSerializationWithGeneratedCode {
         // Leave favorite color null
 
         // Alternate constructor
-        User user2 = new User("Ben", 7, "red");
+        User user2 = new User("Ben", 7, "red", Arrays.asList("vw", "toyota"));
 
         // Construct via builder
         User user3 = User.newBuilder()
