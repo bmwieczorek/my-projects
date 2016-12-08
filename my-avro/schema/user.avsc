@@ -5,13 +5,16 @@
   "fields": [
     {
       "name": "name",
-      "type": "string"
+      "type": [
+        "null",
+        "string"
+      ]
     },
     {
       "name": "favorite_number",
       "type": [
-        "int",
-        "null"
+        "null",
+        "int"
       ]
     },
     {
@@ -23,16 +26,19 @@
     },
     {
       "name": "parent",
-      "type": {
-        "name": "Parent",
-        "type": "record",
-        "fields": [
-          {
-            "name": "first_name",
-            "type": "string"
-          }
-        ]
-      }
+      "type": [
+        "null",
+        {
+          "name": "Parent",
+          "type": "record",
+          "fields": [
+            {
+              "name": "first_name",
+              "type": "string"
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "cars_colors",
@@ -43,7 +49,7 @@
           "items": "string"
         }
       ],
-      "default": "null"
+      "default": null
     },
     {
       "name": "friends",
@@ -66,8 +72,7 @@
             ]
           }
         }
-      ],
-      "default": "null"
+      ]
     }
   ]
 }
