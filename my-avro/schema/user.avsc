@@ -1,15 +1,73 @@
-{"namespace": "com.bawi.avro.model",
- "type": "record",
- "name": "User",
- "fields": [
-     {"name": "name", "type": "string"},
-     {"name": "favorite_number",  "type": ["int", "null"]},
-     {"name": "favorite_color", "type": ["string", "null"]},
-     {"name": "cars", "type":
-        [{
-            "type": "array", "items": "string"
-        }, "null"],
-        "default": "null"
-     }
- ]
+{
+  "namespace": "com.bawi.avro.model",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "favorite_number",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "favorite_color",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "parent",
+      "type": {
+        "name": "Parent",
+        "type": "record",
+        "fields": [
+          {
+            "name": "first_name",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cars_colors",
+      "type": [
+        {
+          "type": "array",
+          "items": "string"
+        },
+        "null"
+      ],
+      "default": "null"
+    },
+    {
+      "name": "friends",
+      "type": [
+        {
+          "type": "array",
+          "items": {
+            "name": "Friend",
+            "type": "record",
+            "fields": [
+              {
+                "name": "age",
+                "type": "int"
+              },
+              {
+                "name": "isAdult",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "null"
+      ],
+      "default": "null"
+    }
+  ]
 }
