@@ -37,17 +37,18 @@
     {
       "name": "cars_colors",
       "type": [
+        "null",
         {
           "type": "array",
           "items": "string"
-        },
-        "null"
+        }
       ],
       "default": "null"
     },
     {
       "name": "friends",
       "type": [
+        "null",
         {
           "type": "array",
           "items": {
@@ -64,8 +65,7 @@
               }
             ]
           }
-        },
-        "null"
+        }
       ],
       "default": "null"
     }
