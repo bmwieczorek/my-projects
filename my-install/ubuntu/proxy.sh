@@ -9,6 +9,7 @@ cp $HOME_DIR/dev/env/install/prefs.js.proxy $prefsjs
 cp $HOME_DIR/.gitconfig.proxy $HOME_DIR/.gitconfig
 sudo cp $HOME_DIR/dev/env/install/95proxies /etc/apt/apt.conf.d/
 sudo chmod 644 /etc/apt/apt.conf.d/95proxies
+sudo /etc/init.d/cntlm restart
 
 sudo mkdir -p /etc/systemd/system/docker.service.d
 sudo cp $HOME_DIR/dev/env/install/docker.service.d--http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf

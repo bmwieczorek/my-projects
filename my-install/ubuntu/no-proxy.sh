@@ -8,6 +8,7 @@ prefsjs=$(find $HOME_DIR/.mozilla/firefox/ -name prefs.js)
 cp $HOME_DIR/dev/env/install/prefs.js.orig $prefsjs
 cp $HOME_DIR/.gitconfig.orig $HOME_DIR/.gitconfig
 sudo rm -f /etc/apt/apt.conf.d/95proxies
+sudo /etc/init.d/cntlm stop
 
 sudo rm -rf /etc/systemd/system/docker.service.d/http-proxy.conf
 sudo systemctl daemon-reload
