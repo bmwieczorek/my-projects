@@ -3,7 +3,7 @@
 # sudo usermod -a -G vboxsf cloudera
 
 jdkVersion=112
-intellijVersion=2016.3-no-jdk
+intellijVersion=2016.3.1-no-jdk
 
 sudo rpm -ivh /media/sf_vbox-shared/cntlm-0.92.3-1.x86_64.rpm
 
