@@ -19,7 +19,7 @@ Domain		global
 # PassNTLMv2      D5826E9C665C37C80B53397D5C07BBCB
 #
 
-#T..66
+#T..00
 #sg0212148@MacBook:~$ vim /usr/local/etc/cntlm.conf
 #sg0212148@MacBook:~$ sudo su
 #root@MacBook:/Users/sg0212148$ cntlm -I -M http://test.com
@@ -28,13 +28,13 @@ Domain		global
 #Config profile  2/4... OK (HTTP code: 302)
 #----------------------------[ Profile  1 ]------
 #Auth            NTLM
-#PassNT          BF8DEDEF3447ADB6B46332BDCA69F317
-#PassLM          67CE777FF867BFD20DAE0287779D9D75
+PassNT          951517EE5D81E48A75A323A06AB33B44
+PassLM          67CE777FF867BFD27FECC0B9355CDF6F
 #------------------------------------------------
 
 Auth            NTLM
-PassNT          BF8DEDEF3447ADB6B46332BDCA69F317
-PassLM          67CE777FF867BFD20DAE0287779D9D75
+PassNT          951517EE5D81E48A75A323A06AB33B44
+PassLM          67CE777FF867BFD27FECC0B9355CDF6F
 
 # Specify the netbios hostname cntlm will send to the parent
 # proxies. Normally the value is auto-guessed.
