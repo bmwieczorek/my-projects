@@ -1,1 +1,1 @@
-http://licenses.dev.sabre.com:8000/jetbrains
+http://licenses.dev.mycompany.com:8000/jetbrains

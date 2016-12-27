@@ -5,8 +5,8 @@
 # do not quote. Use 0600 perms if you use plaintext password.
 #
 
-Username	sg0212148
-Domain		global
+Username	myuser
+Domain		mydomain
 #Password	password
 # NOTE: Use plaintext password only at your own risk
 # Use hashes instead. You can use a "cntlm -M" and "cntlm -H"
@@ -20,9 +20,9 @@ Domain		global
 #
 
 #T..00
-#sg0212148@MacBook:~$ vim /usr/local/etc/cntlm.conf
-#sg0212148@MacBook:~$ sudo su
-#root@MacBook:/Users/sg0212148$ cntlm -I -M http://test.com
+#myuser@MacBook:~$ vim /usr/local/etc/cntlm.conf
+#myuser@MacBook:~$ sudo su
+#root@MacBook:/Users/myuser$ cntlm -I -M http://test.com
 #Password: 
 #Config profile  1/4... Credentials rejected
 #Config profile  2/4... OK (HTTP code: 302)
@@ -44,16 +44,16 @@ PassLM          67CE777FF867BFD27FECC0B9355CDF6F
 # List of parent proxies to use. More proxies can be defined
 # one per line in format <proxy_ip>:<proxy_port>
 #
-#www-ad-proxy.sabre.com
+#www-ad-proxy.mycompany.com
 Proxy		10.136.87.17:80
 
-#tulsa-proxy.sabre.com
+#tulsa-proxy.mycompany.com
 Proxy		151.193.220.27:80
 
 # List addresses you do not want to pass to parent proxies
 # * and ? wildcards can be used
 #
-NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.sabre.com
+NoProxy		localhost, 127.0.0.*, 10.*, 192.168.*, *.mycompany.com
 
 # Specify the port cntlm will listen on
 # You can bind cntlm to specific interface by specifying

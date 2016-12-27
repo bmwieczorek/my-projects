@@ -102,7 +102,7 @@ echo ". ~/dev/env/setenv.sh" >> ~/.profile
 cd ~
 ideaIU=$(find /home/bartek/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
-echo "-Duser.name=sg0212148" >> $ideaIU/bin/idea64.vmoptions
+echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
 
 tar xzf ~/dev/env/install/.IntelliJIdea2016.2.orig-no-scala.tgz
 mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
