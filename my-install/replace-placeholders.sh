@@ -5,6 +5,6 @@ if ! [ $# -eq 3 ]; then
 fi
 
 grep -rl mycompany * | grep -v replace | xargs sed -i "s/mycompany/$1/g"
-grep -rl myuser * | grep -v replace |  xargs sed -i "s/myusername/$2/g"
+grep -rl myuser * | grep -v replace |  xargs sed -i "s/myuser/$2/g"
 grep -rl mydomain * | grep -v replace |  xargs sed -i "s/mydomain/$3/g"
 
