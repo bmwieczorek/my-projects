@@ -20,21 +20,16 @@ Domain		mydomain
 #
 
 #T..00
-#myuser@MacBook:~$ vim /usr/local/etc/cntlm.conf
-#myuser@MacBook:~$ sudo su
+#me@MacBook:~$ vim /usr/local/etc/cntlm.conf
+#me@MacBook:~$ sudo su
 #root@MacBook:/Users/myuser$ cntlm -I -M http://test.com
 #Password: 
 #Config profile  1/4... Credentials rejected
 #Config profile  2/4... OK (HTTP code: 302)
 #----------------------------[ Profile  1 ]------
-#Auth            NTLM
-PassNT          951517EE5D81E48A75A323A06AB33B44
-PassLM          67CE777FF867BFD27FECC0B9355CDF6F
-#------------------------------------------------
-
 Auth            NTLM
-PassNT          951517EE5D81E48A75A323A06AB33B44
-PassLM          67CE777FF867BFD27FECC0B9355CDF6F
+PassNT          mypassnt
+PassLM          mypasslm
 
 # Specify the netbios hostname cntlm will send to the parent
 # proxies. Normally the value is auto-guessed.
