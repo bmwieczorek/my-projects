@@ -19,7 +19,6 @@ Domain		mydomain
 # PassNTLMv2      D5826E9C665C37C80B53397D5C07BBCB
 #
 
-#T..00
 #me@MacBook:~$ vim /usr/local/etc/cntlm.conf
 #me@MacBook:~$ sudo su
 #root@MacBook:/Users/myuser$ cntlm -I -M http://test.com
@@ -39,10 +38,8 @@ PassLM          mypasslm
 # List of parent proxies to use. More proxies can be defined
 # one per line in format <proxy_ip>:<proxy_port>
 #
-#www-ad-proxy.mycompany.com
 Proxy		10.136.87.17:80
 
-#tulsa-proxy.mycompany.com
 Proxy		151.193.220.27:80
 
 # List addresses you do not want to pass to parent proxies
