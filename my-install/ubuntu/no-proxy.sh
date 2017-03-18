@@ -1,12 +1,11 @@
 #!/bin/bash
 echo "Disabling proxy ..."
 
-HOME_DIR=/home/bartek
-sudo cp $HOME_DIR/dev/env/install/environment.orig /etc/environment
-sudo cp $HOME_DIR/dev/env/install/resolv.conf.orig /etc/resolv.conf
-prefsjs=$(find $HOME_DIR/.mozilla/firefox/ -name prefs.js)
-cp $HOME_DIR/dev/env/install/prefs.js.orig $prefsjs
-cp $HOME_DIR/.gitconfig.orig $HOME_DIR/.gitconfig
+sudo cp ~/dev/env/install/environment.orig /etc/environment
+sudo cp ~/dev/env/install/resolv.conf.orig /etc/resolv.conf
+prefsjs=$(find ~/.mozilla/firefox/ -name prefs.js)
+cp ~/dev/env/install/prefs.js.orig $prefsjs
+cp ~/.gitconfig.orig ~/.gitconfig
 sudo rm -f /etc/apt/apt.conf.d/95proxies
 sudo /etc/init.d/cntlm stop
 

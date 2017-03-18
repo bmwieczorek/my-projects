@@ -1,7 +1,7 @@
 #!/bin/bash
 #import vmdk and enable bidirectional clipboard and shared folers for vbox-shared and .m2
 #Devices/Insert Guest Additions CD Image
-# sudo usermod -a -G vboxsf bartek
+# sudo usermod -a -G vboxsf $USER
 #
 jdkVersion=121
 intellijVersion=2016.3.5-no-jdk
@@ -80,7 +80,7 @@ mkdir ~/dev/env/install
 cp -r /media/sf_my-install/common/. ~/dev/env/install
 cp -r /media/sf_my-install/ubuntu/. ~/dev/env/install
 
-sudo chown -R bartek:bartek ~/dev/env/install
+sudo chown -R $USER:$USER ~/dev/env/install
 
 cp ~/dev/env/install/.gitconfig* ~
 cp ~/dev/env/install/setenv.sh ~/dev/env/
@@ -100,7 +100,7 @@ echo ". ~/dev/env/setenv.sh" >> ~/.profile
 . ~/.profile
 
 cd ~
-ideaIU=$(find /home/bartek/dev/env/ -name idea-IU-*)
+ideaIU=$(find ~/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
 echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
 
