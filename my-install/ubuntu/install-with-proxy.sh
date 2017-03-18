@@ -3,8 +3,8 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf bartek
 #
-jdkVersion=112
-intellijVersion=2016.3.1-no-jdk
+jdkVersion=121
+intellijVersion=2016.3.5-no-jdk
  
 
 sudo apt-get update && sudo apt-get upgrade -y
