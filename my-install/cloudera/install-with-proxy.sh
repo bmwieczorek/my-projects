@@ -2,8 +2,9 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf cloudera
 
-jdkVersion=112
-intellijVersion=2016.3.1-no-jdk
+jdkVersion=121
+intellijVersion=2017.1.1-no-jdk
+gitVersion=2.9.3
 
 sudo rpm -ivh /media/sf_vbox-shared/cntlm-0.92.3-1.x86_64.rpm
 
@@ -35,8 +36,8 @@ ideaIU=$(find /home/cloudera/dev/env/ -name idea-IU-*)
 cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
 echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
 
-tar xzf /media/sf_my-install/common/.IntelliJIdea2016.2.orig-no-scala.tgz
-mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
+#tar xzf /media/sf_my-install/common/.IntelliJIdea2016.2.orig-no-scala.tgz
+#mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
 
 
 #tar xzf /media/sf_vbox-shared/.IntelliJIdea2016.2.orig-scala.tgz
@@ -54,12 +55,12 @@ sudo cp ~/dev/env/common/cntlm.conf.proxy /etc/cntlm.conf
 
 #. ~/.profile
 
-echo "Installing git 2.9.2"
+echo "Installing git ${gitVersion}"
 sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -y
 sudo yum install gcc perl-ExtUtils-MakeMaker -y
 cd /usr/src
-sudo tar xzf /media/sf_vbox-shared/git-2.9.2.tar.gz 
-cd git-2.9.2
+sudo tar xzf /media/sf_vbox-shared/git-${gitVersion}.tar.gz 
+cd ${gitVersion}
 sudo make prefix=/usr/local/git all
 sudo make prefix=/usr/local/git install
 export PATH=/usr/local/git/bin:$PATH
@@ -77,7 +78,7 @@ ln -s /usr/local/git ~/dev/env/git
 
 #sudo cp /media/sf_my-install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
 
-sudo rm -rf /usr/java/jdk1.7.0_67-cloudera
+sudo mv /usr/java/jdk1.7.0_67-cloudera /usr/java/jdk1.7.0_67-cloudera.orig
 sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
 
 #sudo service spark-history-server stop
