@@ -2,8 +2,8 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf cloudera
 
-jdkVersion=121
-intellijVersion=2017.1.1-no-jdk
+jdkVersion=131
+intellijVersion=2017.1.2-no-jdk
 gitVersion=2.9.3
 
 sudo rpm -ivh /media/sf_vbox-shared/cntlm-0.92.3-1.x86_64.rpm
@@ -60,7 +60,7 @@ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -
 sudo yum install gcc perl-ExtUtils-MakeMaker -y
 cd /usr/src
 sudo tar xzf /media/sf_vbox-shared/git-${gitVersion}.tar.gz 
-cd ${gitVersion}
+cd git-${gitVersion}
 sudo make prefix=/usr/local/git all
 sudo make prefix=/usr/local/git install
 export PATH=/usr/local/git/bin:$PATH

@@ -3,8 +3,8 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf $USER
 #
-jdkVersion=121
-intellijVersion=2016.3.5-no-jdk
+jdkVersion=131
+intellijVersion=2017.1.2-no-jdk
  
 
 sudo apt-get update && sudo apt-get upgrade -y
