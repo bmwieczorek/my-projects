@@ -1,0 +1,2 @@
+g0212148@MacBook:~/Downloads/JakMowic/JM2$ find . -name \*.mp3 -exec /Users/sg0212148/dev/my-projects/my-bash/rename-file-to-remove-polish-chars.sh "{}" \;
+Renamed file "./01_Mój wysiłek zamiast klapsa.mp3" to "./01_Moj wysilek zamiast klapsa.mp3"
