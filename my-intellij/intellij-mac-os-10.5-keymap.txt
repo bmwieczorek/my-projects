@@ -27,6 +27,7 @@ ctrl + Enter -> accept highlighted button in popup
 VCS
 Update: added cmd + U, added ctrl + U or added alt + shift + V, U
 Diff: existing cmd + D (compare with local in vcs view)
+Compare with same repository version: cmd+shift+D
 Compare with local version: alt+shift+V, D
 Compare with latest repo version: alt+shift+V, Shift+D
 
@@ -60,3 +61,8 @@ Find by action: added ctrl + shift + A
 Ctrl + N added: new (Java, Scala)
 
 Project Defaults -> Project Structure -> search sdk
+
+Scala 
+Preferences-> Languages and Frameworks/Scala -> Show type info on mouse hover
+Alt+Enter when cursor on valu/method -> Add type annotation to value definition
+run scala console: cmd+shift+S
