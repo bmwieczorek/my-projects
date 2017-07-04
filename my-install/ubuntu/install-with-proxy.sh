@@ -8,6 +8,7 @@ intellijVersion=2017.1.4-no-jdk
 sbtVersion=0.13.15
 mavenVersion=3.5.0
 nodejsVersion=6.11.0
+cdapVersion=4.2.0
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install vim git subversion cntlm -y
@@ -75,6 +76,7 @@ tar xzf /media/sf_vbox-shared/sbt-${sbtVersion}.tgz
 tar xzf /media/sf_vbox-shared/kafka_2.11-0.11.0.0.tgz
 tar xzf /media/sf_vbox-shared/spark-1.6.3-bin-hadoop2.6.tgz
 tar xf /media/sf_vbox-shared/node-v${nodejsVersion}-linux-x64.tar.xz
+unzip /media/sf_vbox-shared/cdap-sandbox-${cdapVersion}.zip
 
 ln -s ~/dev/env/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
 ln -s ~/dev/env/apache-maven-${mavenVersion} ~/dev/env/apache-maven
