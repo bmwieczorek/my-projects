@@ -4,7 +4,9 @@
 # sudo usermod -a -G vboxsf $USER
 #
 jdkVersion=131
-intellijVersion=2017.1.2-no-jdk
+intellijVersion=2017.1.4-no-jdk
+sbtVersion=0.13.15
+mavenVersion=3.5.0
  
 
 sudo apt-get update && sudo apt-get upgrade -y
@@ -35,25 +37,25 @@ sudo bash -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stab
 sudo apt-get update
 sudo apt-get install google-chrome-stable -y
 
-echo "Installing docker..."
-sudo apt-get install apt-transport-https ca-certificates
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-sudo apt-get update
-apt-cache policy docker-engine
-sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
-sudo apt-get update
-sudo apt-get install docker-engine -y
+#echo "Installing docker..."
+#sudo apt-get install apt-transport-https ca-certificates
+#sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+#sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+#sudo apt-get update
+#apt-cache policy docker-engine
+#sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
+#sudo apt-get update
+#sudo apt-get install docker-engine -y
 #sudo service docker start
 #sudo groupadd docker
-sudo usermod -aG docker $USER
+#sudo usermod -aG docker $USER
 #docker run hello-world
 
 #docker pull wnameless/oracle-xe-11g
 #docker run -d -p 2222:22 -p 1521:1521 -e ORACLE_ALLOW_REMOTE=true --name dev-db  wnameless/oracle-xe-11g
 #docker ps
 
-echo "Start docker via: 'sudo service docker start' and run it via 'docker run hello-world'"
+#echo "Start docker via: 'sudo service docker start' and run it via 'docker run hello-world'"
 
 echo "Cleaning up packages..."
 sudo apt-get clean -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y && sudo apt clean -y && sudo apt autoremove -y && sudo apt autoclean -y
@@ -61,19 +63,23 @@ sudo apt-get clean -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
 #Disabling password for sudo:
 #sudo visudo and add as LAST LINE bartek ALL=(ALL) NOPASSWD: ALL and delete password for user sudo passwd bartek -d
 
-echo "Installing Java, Maven, Intellij, Scala and Apache Spark ..."
+echo "Installing Java, Maven, Intellij, Scala, SBT, Kafka and Apache Spark ..."
 
 mkdir -p ~/dev/env
 cd ~/dev/env
 tar xzf /media/sf_vbox-shared/ideaIU-${intellijVersion}.tar.gz
-tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
+tar xzf /media/sf_vbox-shared/apache-maven-${mavenVersion}-bin.tar.gz
 tar xzf /media/sf_vbox-shared/jdk-8u${jdkVersion}-linux-x64.tar.gz
-tar xzf /media/sf_vbox-shared/scala-2.11.8.tgz
-tar xzf /media/sf_vbox-shared/spark-1.6.2-bin-hadoop2.6.tgz
+tar xzf /media/sf_vbox-shared/scala-2.11.11.tgz
+tar xzf /media/sf_vbox-shared/sbt-${sbtVersion}.tgz
+tar xzf /media/sf_vbox-shared/kafka_2.11-0.11.0.0.tgz
+tar xzf /media/sf_vbox-shared/spark-1.6.3-bin-hadoop2.6.tgz
 
 ln -s ~/dev/env/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
-ln -s ~/dev/env/apache-maven-3.3.9 ~/dev/env/apache-maven
-ln -s ~/dev/env/scala-2.11.8 ~/dev/env/scala
+ln -s ~/dev/env/apache-maven-${mavenVersion} ~/dev/env/apache-maven
+ln -s ~/dev/env/scala-2.11.11 ~/dev/env/scala
+mv sbt sbt-${sbtVersion}
+ln -s ~/dev/env/sbt-${sbtVersion} ~/dev/env/sbt
 ln -s /media/sf_.m2/ ~/.m2
 
 mkdir ~/dev/env/install
@@ -103,11 +109,11 @@ echo ". ~/dev/env/setenv.sh" >> ~/.profile
 
 cd ~
 ideaIU=$(find ~/dev/env/ -name idea-IU-*)
-cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
-echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
+#cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
+#echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
 
-tar xzf ~/dev/env/install/.IntelliJIdea2016.2.orig-no-scala.tgz
-mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
+#tar xzf ~/dev/env/install/.IntelliJIdea2016.2.orig-no-scala.tgz
+#mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
 
 #tar xzf /media/sf_vbox-shared/.IntelliJIdea2016.2.orig-scala.tgz
 #mv .IntelliJIdea2016.2.orig-scala .IntelliJIdea2016.2
