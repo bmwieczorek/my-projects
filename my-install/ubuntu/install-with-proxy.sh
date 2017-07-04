@@ -7,7 +7,7 @@ jdkVersion=131
 intellijVersion=2017.1.4-no-jdk
 sbtVersion=0.13.15
 mavenVersion=3.5.0
- 
+nodejsVersion=6.11.0
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install vim git subversion cntlm -y
@@ -74,6 +74,7 @@ tar xzf /media/sf_vbox-shared/scala-2.11.11.tgz
 tar xzf /media/sf_vbox-shared/sbt-${sbtVersion}.tgz
 tar xzf /media/sf_vbox-shared/kafka_2.11-0.11.0.0.tgz
 tar xzf /media/sf_vbox-shared/spark-1.6.3-bin-hadoop2.6.tgz
+tar xf /media/sf_vbox-shared/node-v${nodejsVersion}-linux-x64.tar.xz
 
 ln -s ~/dev/env/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
 ln -s ~/dev/env/apache-maven-${mavenVersion} ~/dev/env/apache-maven
@@ -109,8 +110,6 @@ echo ". ~/dev/env/setenv.sh" >> ~/.profile
 
 cd ~
 ideaIU=$(find ~/dev/env/ -name idea-IU-*)
-#cp $ideaIU/bin/idea64.vmoptions $ideaIU/bin/idea64.vmoptions.orig
-#echo "-Duser.name=myuser" >> $ideaIU/bin/idea64.vmoptions
 
 #tar xzf ~/dev/env/install/.IntelliJIdea2016.2.orig-no-scala.tgz
 #mv .IntelliJIdea2016.2.orig-no-scala .IntelliJIdea2016.2
