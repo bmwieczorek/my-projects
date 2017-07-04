@@ -3,25 +3,26 @@
 # sudo usermod -a -G vboxsf cloudera
 
 jdkVersion=131
-intellijVersion=2017.1.2-no-jdk
-gitVersion=2.9.3
+intellijVersion=2017.1.4-no-jdk
+gitVersion=2.13.2
+mavenVersion=3.5.0
 
 sudo rpm -ivh /media/sf_vbox-shared/cntlm-0.92.3-1.x86_64.rpm
 
-echo "Installing Java, maven and Intellij ..."
+echo "Installing Java, Maven, Git and Intellij ..."
 
 mkdir -p ~/dev/env
 cd ~/dev/env
 tar xzf /media/sf_vbox-shared/ideaIU-${intellijVersion}.tar.gz
 
 cd /usr/local/apache-maven/
-sudo tar xzf /media/sf_vbox-shared/apache-maven-3.3.9-bin.tar.gz
+sudo tar xzf /media/sf_vbox-shared/apache-maven-${mavenVersion}-bin.tar.gz
 
 cd /usr/java/
 sudo tar xzf /media/sf_vbox-shared/jdk-8u${jdkVersion}-linux-x64.tar.gz
 
 ln -s /usr/java/jdk1.8.0_${jdkVersion} ~/dev/env/jdk1.8
-ln -s /usr/local/apache-maven/apache-maven-3.3.9 ~/dev/env/apache-maven
+ln -s /usr/local/apache-maven/apache-maven-${mavenVersion} ~/dev/env/apache-maven
 ln -s /media/sf_.m2/ ~/.m2
 
 cp -r /media/sf_my-install/common ~/dev/env/
@@ -51,9 +52,9 @@ cp $prefsjs $prefsjs.orig
 cp -r ~/dev/env/cloudera/*proxy*.sh ~/
 sudo cp ~/dev/env/common/cntlm.conf.proxy /etc/cntlm.conf
 
-#echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.profile
+echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.profile
 
-#. ~/.profile
+. ~/.profile
 
 echo "Installing git ${gitVersion}"
 sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -y
@@ -68,36 +69,36 @@ git --version
 
 ln -s /usr/local/git ~/dev/env/git
 
-#echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.bashrc
-#. ~/.bashrc
+echo ". ~/dev/env/cloudera/setenv.sh" >> ~/.bashrc
+. ~/.bashrc
 
-#sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
-#sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
+sudo cp /etc/spark/conf/spark-defaults.conf /etc/spark/conf/spark-defaults.conf.orig
+sudo cp /etc/hadoop/conf/yarn-site.xml /etc/hadoop/conf/yarn-site.xml.orig
 
-#sudo cp /media/sf_my-install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
+sudo cp /media/sf_my-install/cloudera/etc/spark/conf/spark-defaults.conf.event-history /etc/spark/conf/spark-defaults.conf
 
-#sudo cp /media/sf_my-install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
+sudo cp /media/sf_my-install/cloudera/etc/hadoop/conf/yarn-site.xml.yarn-log-server-url /etc/hadoop/conf/yarn-site.xml
 
 sudo mv /usr/java/jdk1.7.0_67-cloudera /usr/java/jdk1.7.0_67-cloudera.orig
 sudo ln -s ~/dev/env/jdk1.8 /usr/java/jdk1.7.0_67-cloudera
 
-#sudo service spark-history-server stop
-#sudo service spark-history-server start
+sudo service spark-history-server stop
+sudo service spark-history-server start
 
-#sudo /etc/init.d/hadoop-yarn-nodemanager restart 
-#sudo /etc/init.d/hadoop-yarn-resourcemanager restart
+sudo /etc/init.d/hadoop-yarn-nodemanager restart 
+sudo /etc/init.d/hadoop-yarn-resourcemanager restart
 
 echo "##############################################################################"
 echo "!!! First connect VPN, then run ~/proxy.sh and eventually accept Intellij policy agreement !!!"
 echo "##############################################################################"
 
-echo "##############################################################################"
+#echo "##############################################################################"
 echo "!!! Then create Intellij desktop entry and ctrl+shift+alt+S to add SDK-> ~/dev/env/jdk8, change git executable to /home/cloudera/dev/env/git/bin/git and lock it to laucher together with terminal !!!"
-echo "##############################################################################"
+#echo "##############################################################################"
 
-echo "##############################################################################"
+#echo "##############################################################################"
 echo "!!! Restart VBOX to make proxy working !!!"
-echo "##############################################################################"
+#echo "##############################################################################"
 
 
 $ideaIU/bin/idea.sh
