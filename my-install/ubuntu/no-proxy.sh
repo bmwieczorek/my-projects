@@ -15,11 +15,12 @@ sudo /etc/init.d/cntlm stop
 #sudo systemctl show --property Environment docker
 #sudo systemctl restart docker
 
-#gsettings set org.gnome.system.proxy mode 'none'
-#gsettings reset org.gnome.system.proxy use-same-proxy
-#gsettings reset org.gnome.system.proxy.http host
-#gsettings reset org.gnome.system.proxy.http port
-#gsettings reset org.gnome.system.proxy.https host
-#gsettings reset org.gnome.system.proxy.https port
-#gsettings reset org.gnome.system.proxy.ftp host
-#gsettings reset org.gnome.system.proxy.ftp port
+gsettings set org.gnome.system.proxy mode 'none'
+gsettings reset org.gnome.system.proxy use-same-proxy
+gsettings reset org.gnome.system.proxy.http host
+gsettings reset org.gnome.system.proxy.http port
+gsettings reset org.gnome.system.proxy.https host
+gsettings reset org.gnome.system.proxy.https port
+gsettings reset org.gnome.system.proxy.ftp host
+gsettings reset org.gnome.system.proxy.ftp port
+

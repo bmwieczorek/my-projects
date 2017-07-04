@@ -17,11 +17,12 @@ sudo /etc/init.d/cntlm restart
 #sudo systemctl show --property Environment docker
 #sudo systemctl restart docker
 
-#gsettings set org.gnome.system.proxy mode 'manual'
-#gsettings set org.gnome.system.proxy use-same-proxy false
-#gsettings set org.gnome.system.proxy.http host 'localhost'
-#gsettings set org.gnome.system.proxy.http port 3128
-#gsettings set org.gnome.system.proxy.https host 'localhost'
-#gsettings set org.gnome.system.proxy.https port 3128
-#gsettings set org.gnome.system.proxy.ftp host 'localhost'
-#gsettings set org.gnome.system.proxy.ftp port 3128
+gsettings set org.gnome.system.proxy mode 'manual'
+gsettings set org.gnome.system.proxy use-same-proxy false
+gsettings set org.gnome.system.proxy.http host 'localhost'
+gsettings set org.gnome.system.proxy.http port 3128
+gsettings set org.gnome.system.proxy.https host 'localhost'
+gsettings set org.gnome.system.proxy.https port 3128
+gsettings set org.gnome.system.proxy.ftp host 'localhost'
+gsettings set org.gnome.system.proxy.ftp port 3128
+
