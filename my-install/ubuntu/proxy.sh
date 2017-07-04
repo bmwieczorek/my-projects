@@ -10,11 +10,12 @@ sudo cp ~/dev/env/install/95proxies /etc/apt/apt.conf.d/
 sudo chmod 644 /etc/apt/apt.conf.d/95proxies
 sudo /etc/init.d/cntlm restart
 
-sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo cp ~/dev/env/install/docker.service.d--http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
-sudo systemctl daemon-reload
-sudo systemctl show --property Environment docker
-sudo systemctl restart docker
+#Docker
+#sudo mkdir -p /etc/systemd/system/docker.service.d
+#sudo cp ~/dev/env/install/docker.service.d--http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
+#sudo systemctl daemon-reload
+#sudo systemctl show --property Environment docker
+#sudo systemctl restart docker
 
 #gsettings set org.gnome.system.proxy mode 'manual'
 #gsettings set org.gnome.system.proxy use-same-proxy false

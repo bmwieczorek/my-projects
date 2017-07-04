@@ -9,10 +9,11 @@ cp ~/.gitconfig.orig ~/.gitconfig
 sudo rm -f /etc/apt/apt.conf.d/95proxies
 sudo /etc/init.d/cntlm stop
 
-sudo rm -rf /etc/systemd/system/docker.service.d/http-proxy.conf
-sudo systemctl daemon-reload
-sudo systemctl show --property Environment docker
-sudo systemctl restart docker
+# Docker
+#sudo rm -rf /etc/systemd/system/docker.service.d/http-proxy.conf
+#sudo systemctl daemon-reload
+#sudo systemctl show --property Environment docker
+#sudo systemctl restart docker
 
 #gsettings set org.gnome.system.proxy mode 'none'
 #gsettings reset org.gnome.system.proxy use-same-proxy
