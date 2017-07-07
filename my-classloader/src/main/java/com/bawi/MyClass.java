@@ -12,10 +12,10 @@ public class MyClass {
             at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1907)
          */
 
-//        String libFilePath = "/some-path/lib/libvibesimplejava.jnilib";
-//        System.out.println("loading: " + libFilePath );
-//        System.load(libFilePath);
-//        System.out.println("loaded");
+        String libFilePath = "/some-path/lib/libvibesimplejava.jnilib";
+        System.out.println("loading: " + libFilePath );
+        System.load(libFilePath);
+        System.out.println("loaded");
 
 
     }
@@ -29,7 +29,12 @@ public class MyClass {
     public static MyClass getInstance(){
         System.out.println("[MyClass] called static getInstance method, id = " + id);
         // comment System.load to see each class initialized non-shared id
-        return new MyClass();
+        //return new MyClass();
+        return Holder.INSTANCE;
+    }
+
+    static class Holder {
+        static MyClass INSTANCE = new MyClass();
     }
 
 }

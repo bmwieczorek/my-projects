@@ -14,10 +14,17 @@ public class TestClassLoader {
         System.out.println(MyClass.id);
 
         System.out.println("[TestClassLoader] calling static getInstance on " + myClassName);
-        MyClass.getInstance();
+        MyClass instance01 = MyClass.getInstance();
+        System.out.println("[TestClassLoader] instance01: " + instance01);
 
         MyClass.id = 2;
         System.out.println("[TestClassLoader] set static id to " + MyClass.id);
+
+        System.out.println("[TestClassLoader] calling static getInstance on " + myClassName);
+        MyClass instance02 = MyClass.getInstance(); // note shared static id
+        System.out.println("[TestClassLoader] instance02: " + instance02);
+
+        System.out.println(instance01 == instance02); // the same instance since loaded by the same classloader
         System.out.println("----------------------------------------------------------------");
 
         MyClassLoader myClassLoader1 = new MyClassLoader();
@@ -37,16 +44,21 @@ public class TestClassLoader {
         System.out.println("[TestClassLoader] invoking method getInstance on "  + loadedClass1 + " loaded by classloader: " + myClassLoader1);
         Object instance1 = loadedClass1.getMethod("getInstance").invoke(null);
         //Object instance1 = loadedClass1.newInstance(); // calls public non-arg constructor
+        System.out.println("[TestClassLoader] instance1: " + instance1);
 
         System.out.println("***************************");
 
 
         System.out.println("[TestClassLoader] invoking method getInstance on "  + loadedClass2 + " loaded by classloader: " + myClassLoader2);
         Object instance2 = loadedClass2.getMethod("getInstance").invoke(null);
+        System.out.println("[TestClassLoader] instance2: " + instance2);
+
+        System.out.println(instance01 == instance1);
+        System.out.println(instance1 == instance2);
+        System.out.println(instance2 == instance01);
 
         MyClass myClassInstance = (MyClass) instance2; // causes Exception in thread "main" java.lang.ClassCastException:
                                                          //     com.bawi.MyClass cannot be cast to com.bawi.MyClass
-
 
     }
 }

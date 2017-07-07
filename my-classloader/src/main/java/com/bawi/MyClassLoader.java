@@ -9,12 +9,12 @@ public class MyClassLoader extends ClassLoader {
 
     @Override
     public Class<?> loadClass(String className) throws ClassNotFoundException {
-        if (!className.equals(MY_CLASS_NAME)) { // load Object class and other
+        if (!className.startsWith(MY_CLASS_NAME)) { // load Object class and other
             System.out.println("[MyClassLoader] delegating loadClass for " + className + " to parent classloader");
             return super.loadClass(className);
         }
         try {
-            String myClassResource = MY_CLASS_NAME.replace(".", "/") + ".class";
+            String myClassResource = className.replace(".", "/") + ".class";
             System.out.println("[MyClassLoader] getting stream for resource: " + myClassResource);
             InputStream in = ClassLoader.getSystemResourceAsStream(myClassResource);
             byte[] bytes = new byte[10000];
