@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
            xmlns="http://www.bawi.com/my-schema" targetNamespace="http://www.bawi.com/my-schema"
-           xmlns:other="http://www.bawi.com/my-other-schema">
+           xmlns:other="http://www.bawi.com/my-imported-schema">
     <!-- xmlns and target namespace must be either both present or none -->
 
-    <xs:import namespace="http://www.bawi.com/my-other-schema" schemaLocation="my-other-schema.xsd" />
+    <xs:include schemaLocation="my-included-schema.xsd"/>
+    <xs:import namespace="http://www.bawi.com/my-imported-schema" schemaLocation="my-imported-schema.xsd" />
 
     <xs:element name="MyRootElement">
         <xs:annotation>
@@ -31,25 +32,21 @@
                     <xs:complexType/>
                 </xs:element>
 
-                <xs:element name="MySubElementWithOptionalAttrAndOptionalText" type="MySubElementWithOptionalAttrAndOptionalText"/>
+                <xs:element name="MyIncludedSubElementWithOptionalAttrAndOptionalText" type="MyIncludedSubElementWithOptionalAttrAndOptionalText"/>
 
-                <xs:element name="MyOtherSubElementWithOptionalAttrAndOptionalText" type="other:MyOtherRootElementType"  />
+                <xs:element name="MyImportedRootElementViaType" type="other:MyImportedRootElementType"/>
+
+                <xs:element ref="other:MyImportedRootElement"/>
+
 
             </xs:sequence>
 
             <!-- attribute needs to be below sequence -->
-            <xs:attribute name="myAttribute" type="xs:integer"/>
+            <xs:attribute name="myAttribute" type="xs:int"/>
 
             <!-- by default attributes are optional -->
-            <xs:attribute name="myRequiredAttribute" type="xs:integer" use="required"/>
+            <xs:attribute name="myRequiredAttribute" type="xs:int" use="required"/>
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="MySubElementWithOptionalAttrAndOptionalText">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="myIntegerAttribute"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
 </xs:schema>

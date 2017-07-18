@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xmlns="http://www.bawi.com/my-schema" targetNamespace="http://www.bawi.com/my-schema">
+    <!-- target namespace must be same as including schema -->
+
+    <xs:complexType name="MyIncludedSubElementWithOptionalAttrAndOptionalText">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="myIncludedIntegerAttribute"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

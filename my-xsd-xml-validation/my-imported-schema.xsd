@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xmlns="http://www.bawi.com/my-imported-schema" targetNamespace="http://www.bawi.com/my-imported-schema">
+    <!-- xmlns and target namespace must be either both present or none -->
+
+    <xs:element name="MyImportedRootElement" type="MyImportedRootElementType" />
+
+    <xs:complexType name="MyImportedRootElementType" >
+        <xs:sequence>
+            <xs:element name="MyImportedSubElement"/>
+        </xs:sequence>
+        <xs:attribute name="myImportedAttribute" type="xs:int"/>
+    </xs:complexType>
+
+</xs:schema>
