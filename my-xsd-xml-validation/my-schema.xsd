@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
-           xmlns="http://www.bawi.com/my-schema" targetNamespace="http://www.bawi.com/my-schema">
+           xmlns="http://www.bawi.com/my-schema" targetNamespace="http://www.bawi.com/my-schema"
+           xmlns:other="http://www.bawi.com/my-other-schema">
     <!-- xmlns and target namespace must be either both present or none -->
+
+    <xs:import namespace="http://www.bawi.com/my-other-schema" schemaLocation="my-other-schema.xsd" />
 
     <xs:element name="MyRootElement">
         <xs:annotation>
@@ -14,6 +17,7 @@
 
                 <!-- by default elements are required -->
                 <xs:element name="MySubElementOptional" minOccurs="0"/>
+
                 <xs:element name="MySubElementRequiring3CharString">
                     <xs:simpleType>
                         <!-- restriction needs to have base type -->
@@ -22,10 +26,15 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
+
                 <xs:element name="MySubElementDisallowingText">
                     <xs:complexType/>
                 </xs:element>
+
                 <xs:element name="MySubElementWithOptionalAttrAndOptionalText" type="MySubElementWithOptionalAttrAndOptionalText"/>
+
+                <xs:element name="MyOtherSubElementWithOptionalAttrAndOptionalText" type="other:MyOtherRootElementType"  />
+
             </xs:sequence>
 
             <!-- attribute needs to be below sequence -->

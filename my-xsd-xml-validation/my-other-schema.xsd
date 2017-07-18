@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xmlns="http://www.bawi.com/my-other-schema" targetNamespace="http://www.bawi.com/my-other-schema">
+    <!-- xmlns and target namespace must be either both present or none -->
+
+    <xs:element name="MyOtherRootElement" type="MyOtherRootElementType" />
+
+    <xs:complexType name="MyOtherRootElementType" >
+        <xs:sequence>
+            <xs:element name="MyOtherSubElement"/>
+        </xs:sequence>
+        <xs:attribute name="myOtherAttribute" type="xs:integer"/>
+    </xs:complexType>
+
+</xs:schema>
