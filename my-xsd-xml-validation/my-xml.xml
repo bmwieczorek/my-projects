@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MyRootElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" myAttribute="0" myRequiredAttribute="0"
+               xmlns="http://www.bawi.com/my-schema" xsi:schemaLocation="http://www.bawi.com/my-schema my-schema.xsd">
+
+    <MySubElement>anyType</MySubElement> <!-- can be replaced with: <MySubElement /> -->
+    <MySubElementString>String</MySubElementString> <!-- can be replaced with: <MySubElementString /> -->
+    <MySubElementOptional>anyType</MySubElementOptional> <!-- can be completely removed -->
+    <MySubElementRequiring3CharString>aaa</MySubElementRequiring3CharString>
+    <MySubElementDisallowingText/>
+
+    <!-- can be replaced with:   <MySubElementWithOptionalAttrAndOptionalText /> -->
+    <MySubElementWithOptionalAttrAndOptionalText myIntegerAttribute="anySimpleType">String</MySubElementWithOptionalAttrAndOptionalText>
+
+</MyRootElement>

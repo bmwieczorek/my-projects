@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified"
+           xmlns="http://www.bawi.com/my-schema" targetNamespace="http://www.bawi.com/my-schema">
+    <!-- xmlns and target namespace must be either both present or none -->
+
+    <xs:element name="MyRootElement">
+        <xs:annotation>
+            <xs:documentation>Comment describing your root element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="MySubElement"/>
+                <xs:element name="MySubElementString" type="xs:string"/>
+
+                <!-- by default elements are required -->
+                <xs:element name="MySubElementOptional" minOccurs="0"/>
+                <xs:element name="MySubElementRequiring3CharString">
+                    <xs:simpleType>
+                        <!-- restriction needs to have base type -->
+                        <xs:restriction base="xs:string">
+                            <xs:length value="3"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="MySubElementDisallowingText">
+                    <xs:complexType/>
+                </xs:element>
+                <xs:element name="MySubElementWithOptionalAttrAndOptionalText" type="MySubElementWithOptionalAttrAndOptionalText"/>
+            </xs:sequence>
+
+            <!-- attribute needs to be below sequence -->
+            <xs:attribute name="myAttribute" type="xs:integer"/>
+
+            <!-- by default attributes are optional -->
+            <xs:attribute name="myRequiredAttribute" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="MySubElementWithOptionalAttrAndOptionalText">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="myIntegerAttribute"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
