@@ -7,46 +7,120 @@
     <xs:include schemaLocation="my-included-schema.xsd"/>
     <xs:import namespace="http://www.bawi.com/my-imported-schema" schemaLocation="my-imported-schema.xsd" />
 
-    <xs:element name="MyRootElement">
+    <xs:element name="MyRootElement" type="MyRootElement">
         <xs:annotation>
             <xs:documentation>Comment describing your root element</xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="MySubElement"/>
-                <xs:element name="MySubElementString" type="xs:string"/>
-
-                <!-- by default elements are required -->
-                <xs:element name="MySubElementOptional" minOccurs="0"/>
-
-                <xs:element name="MySubElementRequiring3CharString">
-                    <xs:simpleType>
-                        <!-- restriction needs to have base type -->
-                        <xs:restriction base="xs:string">
-                            <xs:length value="3"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-
-                <xs:element name="MySubElementDisallowingText">
-                    <xs:complexType/>
-                </xs:element>
-
-                <xs:element name="MyIncludedSubElementWithOptionalAttrAndOptionalText" type="MyIncludedSubElementWithOptionalAttrAndOptionalText"/>
-
-                <xs:element name="MyImportedRootElementViaType" type="other:MyImportedRootElementType"/>
-
-                <xs:element ref="other:MyImportedRootElement"/>
-
-
-            </xs:sequence>
-
-            <!-- attribute needs to be below sequence -->
-            <xs:attribute name="myAttribute" type="xs:int"/>
-
-            <!-- by default attributes are optional -->
-            <xs:attribute name="myRequiredAttribute" type="xs:int" use="required"/>
-        </xs:complexType>
     </xs:element>
+
+    <xs:complexType name="MyRootElement">
+        <xs:sequence>
+            <xs:element name="MySubElement"/>
+            <xs:element name="MySubElementString" type="xs:string"/>
+
+            <!-- by default elements are required -->
+            <xs:element name="MySubElementOptional" minOccurs="0"/>
+
+            <xs:element name="MySubElementRequiring3CharString">
+                <xs:simpleType>
+                    <!-- restriction needs to have base type -->
+                    <xs:restriction base="xs:string">
+                        <xs:length value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+            <xs:element name="MySubElementDisallowingText">
+                <xs:complexType>
+                    <xs:attribute name="myAttributeForSubElementDisallowingText"/>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="MyIncludedSubElementWithOptionalAttrAndOptionalText" type="MyIncludedSubElementWithOptionalAttrAndOptionalText"/>
+
+            <xs:element ref="other:MyImportedRootElement"/>
+
+            <xs:element name="MyImportedRootElementViaType" type="other:MyImportedRootElement"/>
+
+            <xs:element name="MySubElementChoice" type="MySubElementPersonChoice"/>
+
+            <xs:element name="Colors" type="Colors" />
+
+            <xs:element name="MySubElementNestedComplex">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="MyImportedRootElement" type="other:MyImportedRootElement"/>
+                        <xs:element name="MySubSubNestedElement" >
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="MySubElementBase">
+                                        <xs:sequence>
+                                            <xs:element name="SubElement1"/>
+                                            <xs:element name="SubElement2">
+                                                <xs:simpleType>
+                                                    <xs:restriction base="xs:string">
+                                                        <xs:pattern value="[A-Ca-c]{2,4}"/>
+                                                    </xs:restriction>
+                                                </xs:simpleType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                        <xs:attribute name="mySubSubNestedElementAttr" />
+                                    </xs:extension>
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attributeGroup ref="myAttributeGroup" />
+                </xs:complexType>
+            </xs:element>
+
+        </xs:sequence>
+
+        <!-- attribute needs to be below sequence -->
+        <xs:attribute name="myAttribute" type="xs:int"/>
+
+        <!-- by default attributes are optional -->
+        <xs:attribute name="myRequiredAttribute" type="xs:int" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="MySubElementPersonChoice">
+        <xs:choice>
+            <xs:element name="Employee" type="xs:string" />
+            <xs:element name="Employer" type="xs:string" />
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="Colors">
+        <xs:sequence>
+            <xs:element name="Color" type="Color" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="Color">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="red" />
+            <xs:enumeration value="blue" />
+            <xs:enumeration value="black" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:attributeGroup name="myAttributeGroup" >
+        <xs:attribute name="myBooleanAttribute" type="xs:boolean" />
+        <xs:attribute name="myIndicatorEnumAttribute">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="T" />
+                    <xs:enumeration value="F" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:complexType name="MySubElementBase">
+        <xs:sequence>
+            <xs:element name="MySubElementBaseSubElement" />
+        </xs:sequence>
+        <xs:attribute name="mySubElementBaseAttribute" />
+    </xs:complexType>
 
 </xs:schema>

@@ -13,12 +13,32 @@
     <MyIncludedSubElementWithOptionalAttrAndOptionalText
             myIncludedIntegerAttribute="anySimpleType">String</MyIncludedSubElementWithOptionalAttrAndOptionalText>
 
+    <other:MyImportedRootElement myImportedAttribute="0">
+        <other:MyImportedSubElement>text</other:MyImportedSubElement>
+    </other:MyImportedRootElement>
+
     <MyImportedRootElementViaType myImportedAttribute="0">
         <other:MyImportedSubElement>text</other:MyImportedSubElement>
     </MyImportedRootElementViaType>
 
-    <other:MyImportedRootElement myImportedAttribute="0">
-        <other:MyImportedSubElement>text</other:MyImportedSubElement>
-    </other:MyImportedRootElement>
+    <MySubElementChoice>
+        <Employee>Employee1</Employee>
+    </MySubElementChoice>
+
+    <Colors>
+        <Color>red</Color>
+        <Color>blue</Color>
+    </Colors>
+
+    <MySubElementNestedComplex myBooleanAttribute="false" myIndicatorEnumAttribute="F">
+        <MyImportedRootElement myImportedAttribute="0">
+            <other:MyImportedSubElement>text</other:MyImportedSubElement>
+        </MyImportedRootElement>
+        <MySubSubNestedElement mySubSubNestedElementAttr="anyAttrVal" mySubElementBaseAttribute="anyBaseAttrVal">
+            <MySubElementBaseSubElement>anyType</MySubElementBaseSubElement>
+            <SubElement1>anyType</SubElement1>
+            <SubElement2>ABbc</SubElement2>
+        </MySubSubNestedElement>
+    </MySubElementNestedComplex>
 
 </MyRootElement>

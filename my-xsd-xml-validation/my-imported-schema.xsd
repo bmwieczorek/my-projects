@@ -4,9 +4,9 @@
            xmlns="http://www.bawi.com/my-imported-schema" targetNamespace="http://www.bawi.com/my-imported-schema">
     <!-- xmlns and target namespace must be either both present or none -->
 
-    <xs:element name="MyImportedRootElement" type="MyImportedRootElementType" />
+    <xs:element name="MyImportedRootElement" type="MyImportedRootElement" />
 
-    <xs:complexType name="MyImportedRootElementType" >
+    <xs:complexType name="MyImportedRootElement" >
         <xs:sequence>
             <xs:element name="MyImportedSubElement"/>
         </xs:sequence>
