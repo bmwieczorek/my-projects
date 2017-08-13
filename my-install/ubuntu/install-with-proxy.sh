@@ -17,6 +17,7 @@ sudo apt-get remove linux-generic linux-headers-generic linux-image-generic -y
 
 gsettings set com.canonical.desktop.interface scrollbar-mode normal
 gsettings set org.gnome.nautilus.desktop home-icon-visible true
+dconf write /org/compiz/profiles/unity/plugins/unityshell/show-launcher '""'
 
 #Install Silverlight (with closed firefox during installation) for Ipla:
 sudo add-apt-repository ppa:pipelight/stable -y
