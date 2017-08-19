@@ -1,13 +1,13 @@
 #!/bin/bash
-#import vmdk and enable bidirectional clipboard and shared folers for vbox-shared and .m2
+#import vmdk and enable bidirectional clipboard and shared folders for vbox-shared and .m2
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf $USER
 #
-jdkVersion=131
-intellijVersion=2017.1.4-no-jdk
-sbtVersion=0.13.15
+jdkVersion=144
+intellijVersion=2017.2.2-no-jdk
+sbtVersion=1.0.0
 mavenVersion=3.5.0
-nodejsVersion=6.11.0
+nodejsVersion=6.11.2
 cdapVersion=4.2.0
 
 sudo apt-get update && sudo apt-get upgrade -y
