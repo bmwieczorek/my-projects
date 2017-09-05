@@ -1,0 +1,39 @@
+https://superuser.com/questions/1190329/can-i-switch-the-alt-and-ctrl-keys-on-my-keyboard
+
+For remapping any physical key on the keyboard is a registry entry.
+
+It's in [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+You create a key with the name Scancode Map. It can redirect any key to another key or disable it.
+
+That key is a hex-value with the following meaning:
+
+00,00,00,00 Header: Version. Set to all zeroes.
+00,00,00,00 Header: Flags. Set to all zeroes.
+05,00,00,00 5 entries in the map (including null entry).
+38,00,1d,00 Left CTRL -> Left ALT (can also be another key).
+1d,00,38,00 Left ALT -> Left CTRL.
+38,e0,1d,e0 Right CTRL -> Right ALT.
+1d,e0,38,e0 Right ALT -> Right CTRL.
+00,00,00,00 Null entry.
+To swap the CTRL and ALT keys you need four entries (plus null).
+The Left Left-CTRL (1d 00), the Left Left-ALT (38 00), the Right-CTRL (1d e0), and the Right-ALT (38 e0).
+
+So you can create a .reg file like this: Disable_CTRL-key.reg
+
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,38,00,1d,00,1d,00,38,00,38,e0,1d,e0,1d,e0,38,e0,00,00,00,00
+Execute (double click) the .reg file and log out and back in (or restart your computer). Now your CTRL and ALT keys should have been swapped.
+
+Other useful keys to know:
+
+1d 00    Left Ctrl
+1d e0    Right Ctrl
+38 00    Left Alt
+38 e0    Right Alt
+5b e0    Left Windows Key
+5c e0    Right Windows Key
+5d e0    Windows Menu Key
+If you are not comfortable with changing the registry or you want other keys too you can use the program SharpKeys to edit them more easily. It also has a convenient list of all keys so you can just add them in a window.
+
