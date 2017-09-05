@@ -4,11 +4,14 @@
 # sudo usermod -a -G vboxsf $USER
 #
 jdkVersion=144
-intellijVersion=2017.2.2-no-jdk
+intellijVersion=2017.2.3-no-jdk
 sbtVersion=1.0.0
 mavenVersion=3.5.0
 nodejsVersion=6.11.2
 cdapVersion=4.2.0
+
+gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:ctrl_win']"
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install vim git subversion cntlm -y
@@ -76,6 +79,7 @@ tar xzf /media/sf_vbox-shared/scala-2.11.11.tgz
 tar xzf /media/sf_vbox-shared/sbt-${sbtVersion}.tgz
 tar xzf /media/sf_vbox-shared/kafka_2.11-0.11.0.0.tgz
 tar xzf /media/sf_vbox-shared/spark-1.6.3-bin-hadoop2.6.tgz
+tar xzf /media/sf_vbox-shared/db-derby-10.13.1.1-bin.tar.gz
 tar xf /media/sf_vbox-shared/node-v${nodejsVersion}-linux-x64.tar.xz
 unzip /media/sf_vbox-shared/cdap-sandbox-${cdapVersion}.zip
 
@@ -85,6 +89,9 @@ ln -s ~/dev/env/scala-2.11.11 ~/dev/env/scala
 mv sbt sbt-${sbtVersion}
 ln -s ~/dev/env/sbt-${sbtVersion} ~/dev/env/sbt
 ln -s /media/sf_.m2/ ~/.m2
+ln -s ~/dev/env/node-v${nodejsVersion}-linux-x64 ~/dev/env/node
+ln -s ~/dev/env/cdap-sandbox-4.2.0 ~/dev/env/cdap
+
 
 mkdir ~/dev/env/install
 cp -r /media/sf_my-install/common/. ~/dev/env/install
