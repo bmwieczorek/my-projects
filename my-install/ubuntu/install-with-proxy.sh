@@ -12,6 +12,7 @@ cdapVersion=4.2.0
 
 gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:ctrl_win']"
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'
+gsettings set com.canonical.Unity always-show-menus true
 
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install vim git subversion cntlm -y
