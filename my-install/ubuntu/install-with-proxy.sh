@@ -4,11 +4,11 @@
 # sudo usermod -a -G vboxsf $USER
 #
 jdkVersion=144
-intellijVersion=2017.2.3-no-jdk
+intellijVersion=2017.2.4-no-jdk
 sbtVersion=1.0.0
 mavenVersion=3.5.0
 nodejsVersion=6.11.2
-cdapVersion=4.2.0
+cdapVersion=4.3.0
 
 gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:ctrl_win']"
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'
@@ -42,6 +42,12 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo bash -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt-get update
 sudo apt-get install google-chrome-stable -y
+
+echo "Installing sublime..."
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install sublime-text
 
 #echo "Installing docker..."
 #sudo apt-get install apt-transport-https ca-certificates
@@ -91,7 +97,7 @@ mv sbt sbt-${sbtVersion}
 ln -s ~/dev/env/sbt-${sbtVersion} ~/dev/env/sbt
 ln -s /media/sf_.m2/ ~/.m2
 ln -s ~/dev/env/node-v${nodejsVersion}-linux-x64 ~/dev/env/node
-ln -s ~/dev/env/cdap-sandbox-4.2.0 ~/dev/env/cdap
+ln -s ~/dev/env/cdap-sandbox-${cdapVersion} ~/dev/env/cdap
 
 
 mkdir ~/dev/env/install
@@ -146,6 +152,5 @@ $ideaIU/bin/idea.sh
 
 #Install chrome - Import all bookmarks from Chrome: Ctrl+Shift+O
 #start intellij -> create desktop entry and go to centos Applications/Programming and right click Add this launcher to desktop
-
 
 
