@@ -3,12 +3,12 @@
 #Devices/Insert Guest Additions CD Image
 # sudo usermod -a -G vboxsf $USER
 #
-jdkVersion=144
-intellijVersion=2017.2.4-no-jdk
-sbtVersion=1.0.0
+jdkVersion=152
+intellijVersion=2017.2.5-no-jdk
+sbtVersion=1.0.2
 mavenVersion=3.5.0
-nodejsVersion=6.11.2
-cdapVersion=4.3.0
+nodejsVersion=6.11.3
+cdapVersion=4.3.1
 
 gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:ctrl_win']"
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'

@@ -1,10 +1,12 @@
-file stru
-Navigate: class cmd O, additional ctrl shift TNavigate file: cmd shift O, added ctrl shift R (removed run context configuration)Navigate declaration, removed: cmd B, added: F3 (removed toggle bookmark)
-Navigate type declaration, removed: shift + cmd B, added: shift + F3Find usages: alt F7, added ctrl + shift + G (removed: unselect occurrences)Find: cmd +F, added ctrl+ F (removed: right in editor actions)Navigate File structure: cmd + F12, added ctrl + O (removed: override methods) Refactor this: ctrl +T , added alt + shift + T (removed: switch task)Rename: shift + F6, added alt + shift + R (removed: rerun tests)Extract variable: alt+cmd+V, added alt + shift + LExtract method: alt+cmd + M, added alt + shift  + M
+file structure
+Navigate: class cmd O, additional ctrl shift TNavigate file: cmd shift O, added ctrl shift R (removed run context configuration)Navigate declaration and usages, removed: cmd B, added: F3 (removed toggle bookmark)
+Navigate type declaration, removed: shift + cmd B, added: shift + F3Navigate implementations: cmd + I, ctrl + I, ctrl + shift + I
+Navigate between matching braces: added ctrl + shift + [/]
+Find usages: alt F7, added ctrl + shift + G (removed: unselect occurrences)Find: cmd +F, added ctrl+ F (removed: right in editor actions)Navigate File structure: cmd + F12, added ctrl + O (removed: override methods) Refactor this: ctrl +T , added alt + shift + T (removed: switch task)Rename: shift + F6, added alt + shift + R (removed: rerun tests)Extract variable: alt+cmd+V, added alt + shift + LExtract method: alt+cmd + M, added alt + shift  + M
 Duplicate line: added: alt+shift+D (removed cmd+D)Hide all tool windows: shift + cmd + F12, added ctrl + M (removed:  move caret to matching brace and commit message history)Preferences: cmd + ,    added ctrl + alt + sShow intention actions:  alt + enter, added ctrl + 1 (Remove Go to bookmark 1)Next highlighted error:  F2, added ctrl+ . (removed: Choose lookup item and insert dot), added alt + .Previous highlighted error:  shift + F2, added ctrl+ , added alt + .Reformat code: alt + cmd + L, added: ctrl + shift + F
 Inline: added: alt + shift + IInline: alt + cmd + N,  added alt + shift + I  (removed: inspect code with editor settings) Source code generate: cmd + N, ctrl + Enter, additionally: alt + shift + S Extract field: alt + cmd + F, additionally alt + shift + F(removed: add to favorites)Extract constant: alt + cmd + C,  additionally: alt + shift + C (removed: recent changes)**Extend/shrink selection: original: alt + up arrow/alt + down arrow changed to: alt + shift + arrow Up/Down, added additionally ctrl +W / ctrl + shift + WFind in path: shift + cmd + F, added additionally: ctrl + alt + shift + FReplace in path: shift + cmd + R, added additionally: ctrl + alt + shift + R**Move line up: original: alt + shift + arrow Up/Down changed to: alt + arrow Up/DownOrganize imports: ctrl + alt + O, additionally: ctrl + shift + O, alt+shift+O
-Navigate to Test/Junit (junit) added: ctrl + shift + J (removed: join lines), ctrl+shift+alt+T
-Join lines: added: alt+shift+J
+Navigate to Test/Junit (junit) added: ctrl + shift + J (removed: join lines), ctrl + shift + alt + T
+Join lines: added: alt + shift + J (used also to compress/minify/linearize xml or json to single line)
 Navigate type declaration: shift + cmd + B (removed shift + ctrl +B), added: shift + ctrl + D
 Navigate declaration: added F3
 Navigate Super method: added: ctrl + shift + U or added: ctrl + shift + M
@@ -12,14 +14,17 @@ Navigate bookmark show: added: shift + cmd + B, added: shift + ctrl + B, added: 
 Bookmark add: added: cmd + B, added: ctrl + B, added: alt+ shift +B, A
 Navigate bookmark menu: added ctrl + shift + alt + B, added alt+ shift +B, B (removed navigate type declaration)
 Complete statement: ctrl + shift + Enter
-Navigate to last edit location: ctrl + shift + E
+Navigate to last edit location: ctrl + shift + backspace, added: cmd + L, added: ctrl + L
 Navigate line number: ctrl + shift + L** Rename: alt + shift + R (removed: rerun tests)** Run/Debug context configuration original: run context configuration alt + shift + R,(removed: run/debug in main menu)
 
-ctrl+R/D - run/debug selected class in editor
-ctrl+alt+R/D - run selected class in run/debug menu
-ctrl+alt+cmd+R/D - serun/debug from menu
+ctrl + R/D - run/debug junit test class opened in the editor
+ctrl + alt + R/D - popup run/debug menu with classes/methods to select for running/debugging
+ctrl + alt + cmd + R/D - rerun/debug class/method previously selected in the menu
+alt + E - evaluate expression (in debug)
+alt + shift + E - quick evaluate expression (in debug)
 
-Added cmd+0, alt+0 terminal
+
+Added cmd + 0, alt + 0 terminal
 
 
 Existing:
@@ -49,11 +54,11 @@ Rerun failed tests: alt + shift + X, Shift + T or alt + shift + X, F
 
 Quick documentation: ctrl + Q
 Navigate back/forward: added ctrl+alt+left/right arrow, added: alt+cmd+left/right arrow
-Navigate Last edit location added: ctrl+shift+L
-Navigate to line: cmd + L or added ctrl + L
+Navigate to last edit location: ctrl + shift + backspace, added: cmd + L, added: ctrl + L
+Navigate line number: ctrl + shift + L
 Navigate bookmark: added ctrl + shift + B
-Navigate to recently edited files: cmd+shift + E, ctrl+shift+E
-Navigate to recent files: cmd+E, ctrl+E
+Navigate to recently edited files: cmd + shift + E, ctrl + shift + E
+Navigate to recent files: cmd + E, ctrl + E
 
 
 Highlight usages in file: ctrl + F, ctrl + G
